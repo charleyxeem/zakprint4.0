@@ -64,6 +64,67 @@
         .brand-glow-blue {
             box-shadow: 0 14px 36px -18px rgba(249, 115, 22, 0.24);
         }
+        /* GSAP animation initial states */
+        .gsap-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .gsap-fade-in {
+            opacity: 0;
+        }
+        /* Exclusive Offer shimmer overlay */
+        .offer-shimmer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: shimmer 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes shimmer {
+            0%   { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+        /* Floating hero image */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-14px); }
+        }
+        .hero-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        /* Pulse ring on CTA buttons */
+        .pulse-ring {
+            position: relative;
+        }
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            border: 2px solid rgba(236,91,19,0.4);
+            animation: pulseRing 2s ease-out infinite;
+            pointer-events: none;
+        }
+        @keyframes pulseRing {
+            0%   { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.15); opacity: 0; }
+        }
+        /* Countdown digit flip feel */
+        .countdown-digit {
+            display: inline-block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .countdown-digit.flip {
+            animation: digitFlip 0.4s ease;
+        }
+        @keyframes digitFlip {
+            0%   { transform: rotateX(0deg); opacity: 1; }
+            50%  { transform: rotateX(90deg); opacity: 0; }
+            51%  { transform: rotateX(-90deg); opacity: 0; }
+            100% { transform: rotateX(0deg); opacity: 1; }
+        }
     </style>
 </head>
 <body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
@@ -148,7 +209,7 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
                                 Shop All Products <span class="material-symbols-outlined">arrow_forward</span>
 </a>
 </div>
-<img alt="Hero Printing Product" class="absolute right-0 bottom-0 h-4/5 w-1/2 object-cover mix-blend-multiply opacity-80 hidden lg:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiWPMhLbMSgDMMRkxLkCqnKVHfTU7DpkEuAKNmTEQG20wSyJfNxhTn0PrxtHrm1MAFzYmcrIQzRqJXa_Ude688xVbQG5YLenhC9opg5SsMLAhcZ_l0x8pScJtbwDtyhd1CoCYUgwmsjHGfF0LXkdwC3j3TOPLmecIpu4l_-4Y_UURECXZotoU4naQkLRvUgkkX33ESzteRyAuERva9qsvxuB9F1URCYIZzSfzxNIHtDxFHaEI7SIF7BPnICLDeXL7kE9r9YkeF92g"/>
+<img alt="Hero Printing Product" class="absolute right-0 bottom-0 h-4/5 w-1/2 object-cover mix-blend-multiply opacity-80 hidden lg:block hero-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiWPMhLbMSgDMMRkxLkCqnKVHfTU7DpkEuAKNmTEQG20wSyJfNxhTn0PrxtHrm1MAFzYmcrIQzRqJXa_Ude688xVbQG5YLenhC9opg5SsMLAhcZ_l0x8pScJtbwDtyhd1CoCYUgwmsjHGfF0LXkdwC3j3TOPLmecIpu4l_-4Y_UURECXZotoU4naQkLRvUgkkX33ESzteRyAuERva9qsvxuB9F1URCYIZzSfzxNIHtDxFHaEI7SIF7BPnICLDeXL7kE9r9YkeF92g"/>
 </div>
 </div>
 <div class="col-span-12 lg:col-span-3 flex flex-col gap-6">
@@ -263,17 +324,28 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 </div>
 <p class="font-bold text-center text-slate-700">Luxury Envelopes</p>
 </a>
+<a class="min-w-[200px] flex-shrink-0 group block" href="#product-detail-self-inking-stamp">
+<div class="bg-white dark:bg-slate-800 rounded-3xl p-4 border border-slate-100 dark:border-slate-700 mb-4 overflow-hidden brand-glow hover:border-primary/20 transition-all">
+<img alt="Self Inking Stamp" class="w-full h-40 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKptpVDtQJr3iyvqT8y2jPCOJHjX10z1wzp1CjDHq6yLTynG6BLNZeAfkKlXZ4_D0zUN4C0gQn-WiiCpvhEZMcbMQ-3l4DF-Mykn0AyIzK6xUuwKrKZ-pme5zxmceFJAVqtK6yabpeCu0awgdG2hjLHuzuUzBrgcgtIYdJef9BVdGxi0_GpxOQnP4pBhXKVK4yM3p1a-i0lN8v-XSD4b05SFyIRC-F10LPRidxDT8-gW2oayTNHr_1dcSh1tKOqFMNuyvMvXDP8YM"/>
 </div>
+<p class="font-bold text-center text-slate-700">Self Inking Stamp</p>
+</a>
+<a class="min-w-[200px] flex-shrink-0 group block" href="#product-detail-corporate-boxes">
+<div class="bg-white dark:bg-slate-800 rounded-3xl p-4 border border-slate-100 dark:border-slate-700 mb-4 overflow-hidden brand-glow hover:border-secondary/20 transition-all">
+<img alt="Corporate Boxes" class="w-full h-40 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrn3rgN8Kud01moMqdVPToQmJuheeExqxq5STWiMg9SlDKAuIZxTZDHlex78GcEkNmaGNnIMCifVtO_TetM3oMQBgOo8eJ38zYMArFpb-tKPWBPyj4sBEVwu7Sdtng69rbcugNufBxsCpQW4ThALGnri1SxjuFWcnPNvNDt49ocHZmCDmMQ_VLjStgkgdzo7VQk3SFQ4fcXotHnuZuTIe11cS2I1PfiOotDF3l5BYk9eOeXX6M2HmYwj_OUoyCMA_yUFNBOrWGSa4"/>
+</div>
+<p class="font-bold text-center text-slate-700">Corporate Boxes</p>
+</a>
 </section>
 <section class="container mx-auto px-4 lg:px-8 py-6">
-<div class="gradient-bg rounded-[2.5rem] p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-2xl shadow-primary/30">
+<div class="gradient-bg rounded-[2.5rem] p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-2xl shadow-primary/30 offer-shimmer">
 <div class="absolute top-0 right-0 w-64 h-64 bg-white blur-[120px] opacity-20"></div>
 <div class="relative z-10 text-center lg:text-left">
 <span class="text-white/80 font-bold uppercase tracking-widest text-sm mb-2 block">Exclusive Offer</span>
 <h3 class="text-3xl lg:text-5xl font-black text-white mb-4">Apply Today And Get <span class="text-white underline decoration-orange-200">10% OFF</span> for corporate orders</h3>
 <p class="text-white/70 font-medium">Bulk printing solutions for offices and events.</p>
 </div>
-<a class="inline-block relative z-10 bg-white text-primary px-10 py-4 rounded-full font-extrabold whitespace-nowrap hover:bg-slate-900 hover:text-white transition-all transform hover:scale-105" href="#corporate-deals">Explore This Deal</a>
+<a class="inline-block relative z-10 bg-white text-primary px-10 py-4 rounded-full font-extrabold whitespace-nowrap hover:bg-slate-900 hover:text-white transition-all transform hover:scale-105 pulse-ring" href="#corporate-deals">Explore This Deal</a>
 </div>
 </section>
 <section class="container mx-auto px-4 lg:px-8 py-16">
@@ -292,11 +364,11 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 <p class="text-primary font-bold mb-4 uppercase tracking-tighter">Countdown Is On</p>
 <h3 class="text-3xl font-black mb-8 leading-tight">Save on Your Favorite <span class="gradient-text">Prints</span></h3>
 <div class="flex gap-4 mb-8">
-<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span class="text-3xl font-black text-primary">09</span><p class="text-[10px] uppercase font-bold text-slate-500">Days</p></div>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-hours" class="text-3xl font-black text-primary countdown-digit">--</span><p class="text-[10px] uppercase font-bold text-slate-500">Hours</p></div>
 <span class="text-3xl font-black text-slate-300 flex items-center">:</span>
-<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span class="text-3xl font-black text-primary">02</span><p class="text-[10px] uppercase font-bold text-slate-500">Hours</p></div>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-mins" class="text-3xl font-black text-primary countdown-digit">--</span><p class="text-[10px] uppercase font-bold text-slate-500">Mins</p></div>
 <span class="text-3xl font-black text-slate-300 flex items-center">:</span>
-<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span class="text-3xl font-black text-primary">38</span><p class="text-[10px] uppercase font-bold text-slate-500">Mins</p></div>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-secs" class="text-3xl font-black text-primary countdown-digit">--</span><p class="text-[10px] uppercase font-bold text-slate-500">Secs</p></div>
 </div>
 <a class="inline-block gradient-bg text-white px-8 py-3 rounded-full font-bold w-full hover:scale-105 transition-transform shadow-lg shadow-primary/20" href="#sale">Shop The Sale</a>
 <img alt="Stationery" class="mt-8 rounded-2xl w-full h-48 object-cover border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4cksaYfbJxzlxiiDr8uYIsSAtaFbcOpwMT_36DvY0HXjEUdq5DR244dTBJr8KcuxjBbkduGCJo8UE2f09aHungeMf1G0cYlodoE0jiRVgmTDldyoHNEM5XN6J6Tmru9AF3C_zKCTyglYBv9yxex-OLEFQs58JTgknw2jw9f6ElUtOb2YVCcXkTOsZSI04-YLavj7nfi7ldcmZwoBRBO5u7P0N7iDDhWe53oD_neW-gVcwX7nWw2b2iBKfe2QMb8ZY5cgrOSo6r98"/>
@@ -549,6 +621,9 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 <a class="bg-primary text-white w-16 h-16 rounded-full shadow-2xl shadow-primary/30 hover:scale-110 transition-transform flex items-center justify-center group overflow-hidden" href="#chat"><span class="material-symbols-outlined text-2xl">chat</span><span class="sr-only">Chat with us</span></a>
 </div>
 </body>
+<!-- GSAP + ScrollTrigger for page animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <!-- ZAK V4: Home page wiring -->
 <script src="js/public-shell.js"></script>
 <script src="js/api.js"></script>
@@ -589,5 +664,193 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   } catch(e) { /* static fallback */ }
 });
+</script>
+<script>
+// ─── GSAP Page Animations ─────────────────────────────────────────────────
+gsap.registerPlugin(ScrollTrigger);
+
+// 1. Hero section entrance
+gsap.from('.hero-gradient', {
+  duration: 0.9,
+  opacity: 0,
+  y: 30,
+  ease: 'power3.out',
+  delay: 0.1
+});
+gsap.from('.hero-gradient .relative.z-10 > *', {
+  duration: 0.7,
+  opacity: 0,
+  y: 25,
+  stagger: 0.15,
+  ease: 'power3.out',
+  delay: 0.3
+});
+
+// 2. Top categories panel
+gsap.from('.col-span-12.lg\\:col-span-3', {
+  duration: 0.8,
+  opacity: 0,
+  x: 30,
+  ease: 'power3.out',
+  delay: 0.5
+});
+
+// 3. Promo mini-cards below hero
+gsap.from('.grid.grid-cols-1.md\\:grid-cols-3 > div', {
+  scrollTrigger: { trigger: '.grid.grid-cols-1.md\\:grid-cols-3', start: 'top 85%' },
+  duration: 0.6,
+  opacity: 0,
+  y: 30,
+  stagger: 0.12,
+  ease: 'power2.out'
+});
+
+// 4. Trending Now cards
+gsap.from('.flex.gap-6.overflow-x-auto > a', {
+  scrollTrigger: { trigger: '.flex.gap-6.overflow-x-auto', start: 'top 90%' },
+  duration: 0.5,
+  opacity: 0,
+  x: 40,
+  stagger: 0.1,
+  ease: 'power2.out'
+});
+
+// 5. Exclusive Offer section bounce-in
+gsap.from('.offer-shimmer', {
+  scrollTrigger: { trigger: '.offer-shimmer', start: 'top 85%' },
+  duration: 0.7,
+  opacity: 0,
+  scale: 0.94,
+  ease: 'back.out(1.4)'
+});
+gsap.from('.offer-shimmer .relative.z-10', {
+  scrollTrigger: { trigger: '.offer-shimmer', start: 'top 85%' },
+  duration: 0.6,
+  opacity: 0,
+  x: -30,
+  ease: 'power3.out',
+  delay: 0.3
+});
+gsap.from('.offer-shimmer a', {
+  scrollTrigger: { trigger: '.offer-shimmer', start: 'top 85%' },
+  duration: 0.6,
+  opacity: 0,
+  x: 30,
+  ease: 'power3.out',
+  delay: 0.4
+});
+
+// 6. Business customers section
+gsap.from('.grid.grid-cols-1.lg\\:grid-cols-3 > div', {
+  scrollTrigger: { trigger: '.grid.grid-cols-1.lg\\:grid-cols-3', start: 'top 85%' },
+  duration: 0.6,
+  opacity: 0,
+  y: 40,
+  stagger: 0.15,
+  ease: 'power2.out'
+});
+
+// 7. Packaging Solutions cards
+gsap.from('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4 > div', {
+  scrollTrigger: { trigger: '.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4', start: 'top 85%' },
+  duration: 0.6,
+  opacity: 0,
+  y: 35,
+  stagger: 0.1,
+  ease: 'power2.out'
+});
+
+// 8. Wedding collection cards
+gsap.from('.grid.grid-cols-2.md\\:grid-cols-3.lg\\:grid-cols-5 > a', {
+  scrollTrigger: { trigger: '.grid.grid-cols-2.md\\:grid-cols-3.lg\\:grid-cols-5', start: 'top 85%' },
+  duration: 0.5,
+  opacity: 0,
+  scale: 0.9,
+  stagger: 0.08,
+  ease: 'power2.out'
+});
+
+// 9. Testimonial section
+gsap.from('.order-2.lg\\:order-1', {
+  scrollTrigger: { trigger: '.order-2.lg\\:order-1', start: 'top 85%' },
+  duration: 0.8,
+  opacity: 0,
+  x: -40,
+  ease: 'power3.out'
+});
+gsap.from('.order-1.lg\\:order-2', {
+  scrollTrigger: { trigger: '.order-1.lg\\:order-2', start: 'top 85%' },
+  duration: 0.8,
+  opacity: 0,
+  x: 40,
+  ease: 'power3.out'
+});
+
+// 10. Section headings
+document.querySelectorAll('h2.gradient-text, h2.font-black').forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 90%' },
+    duration: 0.7,
+    opacity: 0,
+    y: 20,
+    ease: 'power3.out'
+  });
+});
+
+// ─── Live Countdown Timer ─────────────────────────────────────────────────
+(function() {
+  const SALE_KEY = 'zak_sale_end';
+  let endTime = parseInt(localStorage.getItem(SALE_KEY) || '0', 10);
+  const now = Date.now();
+
+  // Generate new end time if expired or first visit (random 4–23 hours)
+  if (!endTime || endTime <= now) {
+    const randMs = (Math.floor(Math.random() * 19) + 4) * 3600 * 1000
+                 + Math.floor(Math.random() * 60) * 60 * 1000
+                 + Math.floor(Math.random() * 60) * 1000;
+    endTime = now + randMs;
+    localStorage.setItem(SALE_KEY, endTime.toString());
+  }
+
+  const elH  = document.getElementById('cd-hours');
+  const elM  = document.getElementById('cd-mins');
+  const elS  = document.getElementById('cd-secs');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function flipDigit(el, newVal) {
+    const cur = el.textContent;
+    if (cur !== newVal) {
+      el.classList.remove('flip');
+      void el.offsetWidth; // reflow to restart animation
+      el.classList.add('flip');
+      el.textContent = newVal;
+    }
+  }
+
+  function tick() {
+    const remaining = Math.max(0, endTime - Date.now());
+    const totalSecs = Math.floor(remaining / 1000);
+    const h = Math.floor(totalSecs / 3600);
+    const m = Math.floor((totalSecs % 3600) / 60);
+    const s = totalSecs % 60;
+
+    flipDigit(elH, pad(h));
+    flipDigit(elM, pad(m));
+    flipDigit(elS, pad(s));
+
+    if (remaining <= 0) {
+      // Reset with a new random window when sale ends
+      const randMs = (Math.floor(Math.random() * 19) + 4) * 3600 * 1000
+                   + Math.floor(Math.random() * 60) * 60 * 1000
+                   + Math.floor(Math.random() * 60) * 1000;
+      endTime = Date.now() + randMs;
+      localStorage.setItem(SALE_KEY, endTime.toString());
+    }
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
 </script>
 </html>
