@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quotations Management | Admin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light font-display text-slate-900 antialiased">
+<div class="flex min-h-screen overflow-hidden">
+<!-- Mobile sidebar toggle -->
+<button id="sidebar-toggle" class="fixed bottom-6 right-6 z-40 lg:hidden p-3 min-h-12 min-w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform" aria-label="Toggle sidebar menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Sidebar backdrop for mobile -->
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50" onclick="document.getElementById('sidebar-overlay').classList.add('hidden'); document.getElementById('sidebar-nav').classList.add('-translate-x-full');"></div>
+<!-- Sidebar Navigation -->
+<aside id="sidebar-nav" class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 font-bold text-lg leading-none">Admin Panel</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Super Admin</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="admin-dash.html">
+<span class="material-symbols-outlined">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="invoice-list.html">
+<span class="material-symbols-outlined">description</span>
+<span>Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium" href="quotation-list.html">
+<span class="material-symbols-outlined">request_quote</span>
+<span>Quotations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="product-inventory.html">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="my-earning.html">
+<span class="material-symbols-outlined">payments</span>
+<span>Earnings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="user-mgmt.html" data-super-only>
+<span class="material-symbols-outlined">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="general-settings.html">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="content studio.html" data-super-only>
+<span class="material-symbols-outlined">brush</span>
+<span>Content Studio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4" href="#" data-logout>
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<div class="text-center">
+<p class="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">v4.0</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Design and Developed by</p>
+<a href="http://theamadeuslab.com" target="_blank" class="text-xs font-semibold text-primary hover:underline">Amadeus Lab</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light overflow-y-auto">
+<!-- Top Navigation -->
+<header class="h-16 border-b border-slate-200 bg-white flex items-center justify-between px-8 shrink-0 sticky top-0 z-10">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Search quotations, clients, or IDs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer hover:bg-slate-50 p-1 rounded-lg">
+<img class="h-8 w-8 rounded-full border border-slate-200" data-alt="User profile avatar with professional look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC50Oq9l7DG5Oqi5yK_hlme4rMZZoRUNwYkn0lm7OmnUKYuly8p9mODw6iOg58lvgprXF9DB0EIXf8ZiSuKolQdxG0eber-odclyKOFYEZEjm470wYzfNYqO58JWJHEwT1FEstgSAWMRoNpOV-Th_yN0rjLd13xHxYiPAYU0eD5XsNh7tFXt3m-4uY0HQMqJ7EJekayPBVA208NHtx-5iv4kCyo131YvUVxFHM4qK_P1cwwWbfkHeK5R9bHS6jy3xkFeV4SAn7_29XD"/>
+<div class="hidden sm:block">
+<p class="text-sm font-semibold text-slate-900 leading-none">Alex Rivera</p>
+<p class="text-xs text-slate-500 mt-1">Administrator</p>
+</div>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 tracking-tight">Quotations</h2>
+<p class="text-slate-500 text-sm mt-1">Manage, track and convert your customer price estimates.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 bg-white hover:bg-slate-50">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export CSV
+                    </button>
+<a class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 shadow-sm shadow-primary/20 transition-colors" href="create-quotation.html">
+<span class="material-symbols-outlined text-lg">add_box</span>
+            Create New Quotation
+          </a>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500">Total Quotes</p>
+<h3 class="text-2xl font-bold text-slate-900 mt-1">1,284</h3>
+</div>
+<div class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined block">description</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-xs font-semibold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span> 12%
+                        </span>
+<span class="text-xs text-slate-400">vs last month</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500">Pending Approval</p>
+<h3 class="text-2xl font-bold text-slate-900 mt-1">156</h3>
+</div>
+<div class="p-2 bg-amber-100 text-amber-600 rounded-lg">
+<span class="material-symbols-outlined block">pending_actions</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-xs font-semibold px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span> 5%
+                        </span>
+<span class="text-xs text-slate-400">Action required</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500">Converted</p>
+<h3 class="text-2xl font-bold text-slate-900 mt-1">842</h3>
+</div>
+<div class="p-2 bg-emerald-100 text-emerald-600 rounded-lg">
+<span class="material-symbols-outlined block">task_alt</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-xs font-semibold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span> 8%
+                        </span>
+<span class="text-xs text-slate-400">Conversion rate 65%</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500">Expired</p>
+<h3 class="text-2xl font-bold text-slate-900 mt-1">38</h3>
+</div>
+<div class="p-2 bg-rose-100 text-rose-600 rounded-lg">
+<span class="material-symbols-outlined block">event_busy</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-xs font-semibold px-1.5 py-0.5 rounded bg-rose-100 text-rose-700 flex items-center">
+<span class="material-symbols-outlined text-xs">trending_down</span> 2%
+                        </span>
+<span class="text-xs text-slate-400">Lost opportunities</span>
+</div>
+</div>
+</div>
+<!-- List Controls -->
+<div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+<div class="relative min-w-40">
+<select class="w-full pl-3 pr-10 py-2 border-slate-200 rounded-lg text-sm focus:ring-primary focus:border-primary appearance-none bg-white">
+<option>All Statuses</option>
+<option>Draft</option>
+<option>Sent</option>
+<option>Converted</option>
+<option>Expired</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+<div class="relative min-w-48">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-2 border-slate-200 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Date Range" type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-lg border border-slate-200">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<div class="text-slate-500 text-sm font-medium">
+                    Showing 1-10 of 1,284 quotations
+                </div>
+</div>
+<!-- Data Table -->
+<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50 border-b border-slate-200">
+<tr>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Quote ID</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Client Name</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date Created</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Expiry Date</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Amount</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#QT-2023-001</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">AC</div>
+<span class="text-sm font-medium text-slate-900">Acme Corp.</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 12, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600">Nov 12, 2023</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900">$12,450.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Sent</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary" title="View"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary" title="Edit"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary" title="Download PDF"><span class="material-symbols-outlined text-lg">picture_as_pdf</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary" title="Send Email"><span class="material-symbols-outlined text-lg">mail</span></button>
+<button class="ml-2 px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-xs font-bold hover:bg-primary/20 transition-colors uppercase tracking-tight">Convert</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#QT-2023-002</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-xs">GS</div>
+<span class="text-sm font-medium text-slate-900">Global Solutions</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 10, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600">Nov 10, 2023</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900">$8,200.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Converted</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary" title="View"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary" disabled="" title="Edit"><span class="material-symbols-outlined text-lg opacity-50">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary" title="Download PDF"><span class="material-symbols-outlined text-lg">picture_as_pdf</span></button>
+<span class="ml-2 px-3 py-1.5 bg-slate-100 text-slate-500 rounded-lg text-xs font-bold flex items-center gap-1"><span class="material-symbols-outlined text-xs">done_all</span> Invoiced</span>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#QT-2023-003</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">BT</div>
+<span class="text-sm font-medium text-slate-900">Binary Tech Ltd</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Sep 15, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 15, 2023</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900">$2,340.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800">Expired</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">history</span></button>
+<button class="px-3 py-1.5 border border-slate-200 text-slate-600 rounded-lg text-xs font-bold hover:bg-slate-50">Renew</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#QT-2023-004</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-xs">SM</div>
+<span class="text-sm font-medium text-slate-900">Sarah Miller</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 14, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600">Nov 14, 2023</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900">$550.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">Draft</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">send</span></button>
+<button class="p-1.5 text-slate-400 hover:text-rose-500"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-slate-50 border-t border-slate-200 px-6 py-4 flex items-center justify-between">
+<div class="text-sm text-slate-500">
+                        Page 1 of 129
+                    </div>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-slate-300 rounded bg-white text-slate-600 disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1 border border-slate-300 rounded bg-white text-slate-600 hover:bg-slate-50">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script src="js/sidebar-controller.js" defer></script></body>
+<!-- ZAK V4: Quotation list wiring -->
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const tbody = document.querySelector('tbody');
+  if (!tbody) return;
+
+  async function loadQuotations(search = '') {
+    try {
+      const url = '/quotations.php' + (search ? '?search=' + encodeURIComponent(search) : '');
+      const data = await adminFetch(url);
+      const qs = data.quotations || [];
+      if (!qs.length) {
+        tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-slate-400">No quotations found.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = qs.map(q => `
+        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30">
+          <td class="p-4 text-sm font-medium">${q.quotation_no}</td>
+          <td class="p-4 text-sm">${q.client_name || 'â€”'}</td>
+          <td class="p-4 text-sm text-slate-500">${formatDate(q.created_at)}</td>
+          <td class="p-4 text-sm font-bold">${formatPKR(q.total || 0)}</td>
+          <td class="p-4">${statusBadge(q.status)}</td>
+          <td class="p-4 text-right">
+            <div class="flex justify-end gap-1">
+              <a href="quotation-view.html?id=${q.id}" class="p-1.5 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-primary">
+                <span class="material-symbols-outlined text-lg">visibility</span>
+              </a>
+              <a href="create-quotation.html?edit=${q.id}" class="p-1.5 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-primary">
+                <span class="material-symbols-outlined text-lg">edit</span>
+              </a>
+            </div>
+          </td>
+        </tr>`).join('');
+    } catch(e) { showAdminToast('Failed to load quotations', 'error'); }
+  }
+
+  loadQuotations();
+
+  const searchInput = document.querySelector('input[type="search"], input[placeholder*="Search"]');
+  if (searchInput) {
+    let timer;
+    searchInput.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => loadQuotations(searchInput.value), 400); });
+  }
+});
+</script>
+<script>
+// Mobile sidebar toggle
+document.getElementById('sidebar-toggle').addEventListener('click', function() {
+  const overlay = document.getElementById('sidebar-overlay');
+  const nav = document.getElementById('sidebar-nav');
+  const isHidden = overlay.classList.contains('hidden');
+  if (isHidden) {
+    overlay.classList.remove('hidden');
+    nav.classList.remove('-translate-x-full');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    overlay.classList.add('hidden');
+    nav.classList.add('-translate-x-full');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+<script src="js/sidebar-controller.js" defer></script>
+</html>
+

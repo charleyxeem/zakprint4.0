@@ -1,0 +1,533 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>My Earnings - Admin Dashboard</title>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- Mobile sidebar toggle -->
+<button id="sidebar-toggle" class="fixed bottom-6 right-6 z-40 lg:hidden p-3 min-h-12 min-w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform" aria-label="Toggle sidebar menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Sidebar backdrop for mobile -->
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50" onclick="document.getElementById('sidebar-overlay').classList.add('hidden'); document.getElementById('sidebar-nav').classList.add('-translate-x-full');"></div>
+<!-- Sidebar Navigation -->
+<aside id="sidebar-nav" class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 font-bold text-lg leading-none">Admin Panel</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Super Admin</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="admin-dash.html">
+<span class="material-symbols-outlined">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="invoice-list.html">
+<span class="material-symbols-outlined">description</span>
+<span>Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="quotation-list.html">
+<span class="material-symbols-outlined">request_quote</span>
+<span>Quotations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="product-inventory.html">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium" href="my-earning.html">
+<span class="material-symbols-outlined">payments</span>
+<span>Earnings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="user-mgmt.html" data-super-only>
+<span class="material-symbols-outlined">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="general-settings.html">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="content studio.html" data-super-only>
+<span class="material-symbols-outlined">brush</span>
+<span>Content Studio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4" href="#" data-logout>
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<div class="text-center">
+<p class="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">v4.0</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Design and Developed by</p>
+<a href="http://theamadeuslab.com" target="_blank" class="text-xs font-semibold text-primary hover:underline">Amadeus Lab</a>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex h-full grow flex-col overflow-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-lg">admin_panel_settings</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Admin Panel</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="admin-dash.html">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-1" href="my-earning.html">Earnings</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="cash-ledger.html">Reports</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="general-settings.html">Settings</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden lg:flex flex-col w-64">
+<div class="flex w-full items-stretch rounded-lg bg-slate-100 dark:bg-slate-800 border border-transparent focus-within:border-primary transition-all">
+<div class="text-slate-400 flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder:text-slate-400 text-sm py-2 px-3" placeholder="Search analytics..." value=""/>
+</div>
+</label>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700"></div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-primary/10" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhZzDOlmylo3c0fsIqk46i08PNiineiuBqqKoGmsFUflsVj1mC-lBMyh4p_sq-v5ye_v8HmPpJ-ivKU06hkYckRISuDwVAJNOCDUPxyz13u-Erq6boWJLUgvTx6sO5Ufyyu1NW6ZJLdpmWeejHvS16L58_TwA_YUduV8kuV88_xjO2eIApNNYBz489xsXo02b604jkyx9I80Enkku-SH6foxnfDEGHb07px0LSbQMxFmGn08dCkDQJtZl9rC2X4HhUK82t4oUVnJtj");'></div>
+</div>
+</div>
+</header>
+<main class="flex flex-col flex-1 px-6 lg:px-12 py-8 max-w-[1600px] mx-auto w-full gap-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-3xl font-extrabold tracking-tight">My Earnings</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Real-time revenue tracking and performance analytics.</p>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-1.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm font-semibold">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+<span>Last 30 Days</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined">file_download</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Today's Earnings</span>
+<div class="p-2 bg-emerald-500/10 text-emerald-600 rounded-lg">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-2xl font-bold text-slate-900 dark:text-white" data-field="today_revenue">PKR 0.00</span>
+<span class="text-emerald-600 text-sm font-bold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                                +12.5% <span class="text-slate-400 font-normal">from yesterday</span>
+</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Last 7 Days</span>
+<div class="p-2 bg-rose-500/10 text-rose-600 rounded-lg">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-2xl font-bold text-slate-900 dark:text-white" data-field="week_revenue">PKR 0.00</span>
+<span class="text-rose-600 text-sm font-bold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">trending_down</span>
+                                -2.3% <span class="text-slate-400 font-normal">from last week</span>
+</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Monthly Revenue</span>
+<div class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-2xl font-bold text-slate-900 dark:text-white" data-field="monthly_revenue">PKR 0.00</span>
+<span class="text-emerald-600 text-sm font-bold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                                +8.1% <span class="text-slate-400 font-normal">from last month</span>
+</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Net Profit</span>
+<div class="p-2 bg-amber-500/10 text-amber-600 rounded-lg">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-2xl font-bold text-slate-900 dark:text-white" data-field="net_profit">PKR 0.00</span>
+<span class="text-emerald-600 text-sm font-bold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                                +4.5% <span class="text-slate-400 font-normal">from last month</span>
+</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
+<div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Revenue vs. Expenses</h3>
+<p class="text-slate-500 text-sm">Comparison of operational costs against gross income</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-primary"></div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Revenue</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Expenses</span>
+</div>
+</div>
+</div>
+<div class="relative h-[320px] w-full flex items-end justify-between gap-1 overflow-hidden">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-t border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-t border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-t border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-t border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-t border-slate-100 dark:border-slate-800 w-full h-0"></div>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1 px-1 h-full z-10 group cursor-pointer">
+<div class="bg-primary/20 w-full h-[40%] rounded-t-sm relative">
+<div class="absolute bottom-0 w-full h-[60%] bg-primary transition-all group-hover:h-[65%] rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium text-center">MON</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1 px-1 h-full z-10 group cursor-pointer">
+<div class="bg-primary/20 w-full h-[65%] rounded-t-sm relative">
+<div class="absolute bottom-0 w-full h-[40%] bg-primary transition-all group-hover:h-[45%] rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium text-center">TUE</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1 px-1 h-full z-10 group cursor-pointer">
+<div class="bg-primary/20 w-full h-[55%] rounded-t-sm relative">
+<div class="absolute bottom-0 w-full h-[30%] bg-primary transition-all group-hover:h-[35%] rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium text-center">WED</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1 px-1 h-full z-10 group cursor-pointer">
+<div class="bg-primary/20 w-full h-[85%] rounded-t-sm relative">
+<div class="absolute bottom-0 w-full h-[20%] bg-primary transition-all group-hover:h-[25%] rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium text-center">THU</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1 px-1 h-full z-10 group cursor-pointer">
+<div class="bg-primary/20 w-full h-[70%] rounded-t-sm relative">
+<div class="absolute bottom-0 w-full h-[50%] bg-primary transition-all group-hover:h-[55%] rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium text-center">FRI</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1 px-1 h-full z-10 group cursor-pointer">
+<div class="bg-primary/20 w-full h-[45%] rounded-t-sm relative">
+<div class="absolute bottom-0 w-full h-[15%] bg-primary transition-all group-hover:h-[20%] rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium text-center">SAT</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1 px-1 h-full z-10 group cursor-pointer">
+<div class="bg-primary/20 w-full h-[95%] rounded-t-sm relative">
+<div class="absolute bottom-0 w-full h-[25%] bg-primary transition-all group-hover:h-[30%] rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium text-center">SUN</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold mb-1">Monthly Target</h3>
+<p class="text-slate-500 text-sm mb-8">Goal progress for October 2023</p>
+<div class="flex-1 flex flex-col items-center justify-center">
+<div class="relative flex items-center justify-center">
+<svg class="size-48 transform -rotate-90">
+<circle class="text-slate-100 dark:text-slate-800" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary rounded-full" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502.4" stroke-dashoffset="125.6" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="text-4xl font-black text-slate-900 dark:text-white">75%</span>
+<span class="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Completed</span>
+</div>
+</div>
+<div class="mt-8 text-center">
+<p class="text-slate-600 dark:text-slate-400 text-sm">Remaining to target: <span class="font-bold text-slate-900 dark:text-white">PKR 10,600</span></p>
+<div class="mt-4 flex gap-4">
+<div class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500 uppercase">Daily Avg: PKR 1,045</div>
+<div class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500 uppercase">Projected: 104%</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Earnings by Category</h3>
+<button class="text-xs text-primary font-bold hover:underline">View Breakdown</button>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-700 dark:text-slate-300 font-medium">Professional Services</span>
+<span class="text-slate-900 dark:text-white font-bold">PKR 0.00</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[56%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-700 dark:text-slate-300 font-medium">Direct Product Sales</span>
+<span class="text-slate-900 dark:text-white font-bold">PKR 0.00</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[25%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-700 dark:text-slate-300 font-medium">Recurring Subscriptions</span>
+<span class="text-slate-900 dark:text-white font-bold">PKR 0.00</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[15%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-700 dark:text-slate-300 font-medium">Other Revenue</span>
+<span class="text-slate-900 dark:text-white font-bold">PKR 0.00</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-slate-400 h-full w-[4%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Top Performing</h3>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-bold text-slate-500">WEEKLY</span>
+</div>
+</div>
+<div class="space-y-5">
+<div class="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">design_services</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">UX Design System</span>
+<span class="text-xs text-slate-400">Services</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex items-end gap-0.5 h-6">
+<div class="w-1 bg-primary/20 h-2"></div>
+<div class="w-1 bg-primary/40 h-3"></div>
+<div class="w-1 bg-primary/60 h-2"></div>
+<div class="w-1 bg-primary h-4"></div>
+<div class="w-1 bg-primary h-5"></div>
+</div>
+<div class="text-right">
+<span class="text-sm font-bold text-slate-900 dark:text-white">PKR 0.00</span>
+<div class="text-[10px] text-emerald-500 font-bold flex items-center justify-end">
+<span class="material-symbols-outlined text-[10px]">arrow_drop_up</span>
+                                            18%
+                                        </div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined">api</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Cloud Integration Kit</span>
+<span class="text-xs text-slate-400">Products</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex items-end gap-0.5 h-6">
+<div class="w-1 bg-emerald-500/20 h-3"></div>
+<div class="w-1 bg-emerald-500/40 h-2"></div>
+<div class="w-1 bg-emerald-500/60 h-4"></div>
+<div class="w-1 bg-emerald-500 h-3"></div>
+<div class="w-1 bg-emerald-500 h-4"></div>
+</div>
+<div class="text-right">
+<span class="text-sm font-bold text-slate-900 dark:text-white">PKR 0.00</span>
+<div class="text-[10px] text-emerald-500 font-bold flex items-center justify-end">
+<span class="material-symbols-outlined text-[10px]">arrow_drop_up</span>
+                                            12%
+                                        </div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">SEO Strategy Audit</span>
+<span class="text-xs text-slate-400">Services</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex items-end gap-0.5 h-6">
+<div class="w-1 bg-amber-500 h-5"></div>
+<div class="w-1 bg-amber-500/80 h-4"></div>
+<div class="w-1 bg-amber-500/60 h-3"></div>
+<div class="w-1 bg-amber-500/40 h-2"></div>
+<div class="w-1 bg-amber-500/20 h-1"></div>
+</div>
+<div class="text-right">
+<span class="text-sm font-bold text-slate-900 dark:text-white">PKR 0.00</span>
+<div class="text-[10px] text-rose-500 font-bold flex items-center justify-end">
+<span class="material-symbols-outlined text-[10px]">arrow_drop_down</span>
+                                            4%
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<script src="js/sidebar-controller.js" defer></script>
+<!-- ZAK V4: My earnings wiring -->
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const data = await adminFetch('/finance.php?action=earnings');
+    const earnings = data.earnings || {};
+
+    const currencyFields = ['today_revenue', 'week_revenue', 'monthly_revenue', 'net_profit'];
+
+    const setField = (field, value) => {
+      document.querySelectorAll(`[data-field="${field}"]`).forEach((el) => {
+        el.textContent = currencyFields.includes(field) ? formatPKR(value) : String(value ?? '0');
+      });
+    };
+
+    if (Array.isArray(earnings)) {
+      const totals = earnings.reduce((acc, row) => {
+        acc.invoiceCount += Number(row.invoice_count || 0);
+        acc.revenue += Number(row.total_revenue || 0);
+        acc.collected += Number(row.total_collected || 0);
+        return acc;
+      }, { invoiceCount: 0, revenue: 0, collected: 0 });
+
+      setField('today_revenue', totals.collected);
+      setField('week_revenue', totals.revenue);
+      setField('monthly_revenue', totals.revenue);
+      setField('net_profit', totals.collected - (totals.revenue - totals.collected));
+    } else {
+      setField('today_revenue', earnings.total_collected || 0);
+      setField('week_revenue', earnings.total_revenue || 0);
+      setField('monthly_revenue', earnings.total_revenue || 0);
+      setField('net_profit', (Number(earnings.total_collected || 0) - Math.max(0, Number(earnings.total_revenue || 0) - Number(earnings.total_collected || 0))));
+    }
+
+    // Update stat cards using data-field attributes.
+    document.querySelectorAll('[data-field]').forEach(el => {
+      const f = el.dataset.field;
+      if (earnings[f] !== undefined) {
+        el.textContent = currencyFields.includes(f) ? formatPKR(earnings[f]) : String(earnings[f]);
+      }
+    });
+
+    const categoryLabels = document.querySelectorAll('.grid.grid-cols-1.lg\:grid-cols-2 .space-y-6 .space-y-2 .font-bold');
+    categoryLabels.forEach((el) => {
+      if (el && el.textContent && el.textContent.includes('$')) {
+        el.textContent = el.textContent.replace(/\$[\d,]+(?:\.\d{2})?/g, 'PKR 0.00');
+      }
+    });
+
+    // Populate earnings table if present
+    const tbody = document.querySelector('tbody');
+    const rows = Array.isArray(earnings) ? earnings : (earnings.rows || []);
+    if (tbody && rows.length) {
+      tbody.innerHTML = rows.map(r => `
+        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30">
+          <td class="p-4 text-sm">${formatDate(r.created_at)}</td>
+          <td class="p-4 text-sm font-medium">${r.description || r.reference_type || '—'}</td>
+          <td class="p-4 text-sm font-bold text-emerald-600">${formatPKR(r.amount)}</td>
+          <td class="p-4">${statusBadge(r.type || 'credit')}</td>
+        </tr>`).join('');
+    } else if (tbody) {
+      tbody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-slate-400">No earnings data yet.</td></tr>`;
+    }
+  } catch(e) { showAdminToast('Failed to load earnings', 'error'); console.warn(e); }
+});
+</script>
+<script>
+// Mobile sidebar toggle
+document.getElementById('sidebar-toggle').addEventListener('click', function() {
+  const overlay = document.getElementById('sidebar-overlay');
+  const nav = document.getElementById('sidebar-nav');
+  const isHidden = overlay.classList.contains('hidden');
+  if (isHidden) {
+    overlay.classList.remove('hidden');
+    nav.classList.remove('-translate-x-full');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    overlay.classList.add('hidden');
+    nav.classList.add('-translate-x-full');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+<script src="js/sidebar-controller.js" defer></script>
+</body>
+</html>
+

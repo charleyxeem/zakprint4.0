@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZAK Printing - Custom Luxury Corrugated Boxes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .price-calculator-gradient {
+            background: linear-gradient(135deg, rgba(236, 91, 19, 0.05) 0%, rgba(236, 91, 19, 0.1) 100%);
+        }
+        .primary-btn-gradient {
+            background: #ec5b13;
+        }
+        .brand-gradient {
+            background: #ec5b13;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 lg:px-20 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-4 sm:gap-8 flex-1">
+<a class="flex items-center gap-2 sm:gap-3 text-primary flex-shrink-0" href="home.html">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="hidden sm:block text-slate-900 dark:text-slate-100 text-lg sm:text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-4 xl:gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="shop.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="hidden sm:flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg sm:rounded-xl px-2 sm:px-3 py-1 sm:py-1.5 border border-transparent focus-within:border-primary transition-all flex-1 max-w-xs">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-24 sm:w-full placeholder:text-slate-400" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-1 sm:gap-2">
+<button class="p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg sm:rounded-xl transition-colors" aria-label="Account">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg sm:rounded-xl transition-colors relative" aria-label="Shopping cart">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+</div>
+<a class="hidden md:flex items-center justify-center px-3 sm:px-5 py-2 sm:py-2.5 bg-primary text-white text-xs sm:text-sm font-bold rounded-lg sm:rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
+                        Appointment
+                    </a>
+<button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
+<nav id="mobile-nav" class="hidden lg:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
+<div class="p-4 space-y-2">
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
+<hr class="my-2 border-slate-200 dark:border-slate-800">
+<a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="appointment.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
+</div>
+</nav>
+<script>
+document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+  const menu = document.getElementById('mobile-menu');
+  const nav = document.getElementById('mobile-nav');
+  const isHidden = menu.classList.contains('hidden');
+  if (isHidden) {
+    menu.classList.remove('hidden');
+    nav.classList.remove('hidden');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    menu.classList.add('hidden');
+    nav.classList.add('hidden');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<nav class="flex mb-8 text-xs font-medium uppercase tracking-wider text-slate-500 gap-2">
+<a class="hover:text-primary transition-colors" href="home.html">Home</a>
+<span>/</span>
+<span class="text-slate-500">Packaging</span>
+<span>/</span>
+<span class="text-slate-900 dark:text-slate-100">Custom Luxury Corrugated Boxes</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
+<div class="lg:col-span-7">
+<div class="sticky top-24 sm:top-32 space-y-3 sm:space-y-4">
+<div class="relative group aspect-square overflow-hidden rounded-lg sm:rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm cursor-zoom-in">
+<img alt="Luxury Packaging" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Premium black luxury corrugated box with gold foil branding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6CF_cmB0lBJ3v2labJYIaU4nNtV0466VpuTX58DVHZiJzJpfa2SXgtKlNlrZR_ia0YFpyT2RQ6DZ78Mhb8_8q1Bs0yBpYyw8-VskHcmw_LojjmLz4CowvBfpZvjjS49vct2zm_MBe27XHyUA1XOs1vcpIoQXH9MEqWpPCrqxyVItgBGNUF7-BsTiWWiNAT7dT3cx0B5CIqjWhH0wpi7n2RoMxntMtHGlBzqfyrROX7MopDui1tzMUZrjReYjlgNnOon8OvU25gyk"/>
+<div class="absolute bottom-4 right-4 bg-white/90 dark:bg-background-dark/90 p-2 rounded-lg shadow-lg">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">zoom_in</span>
+</div>
+</div>
+<div class="grid grid-cols-4 sm:grid-cols-4 gap-2 sm:gap-4">
+<button class="aspect-square rounded-lg overflow-hidden border-2 border-primary ring-2 ring-primary/20">
+<img class="w-full h-full object-cover" data-alt="Main view of premium box" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcmF7qhl0IhXbk1udetxHowsrKBS2KrihHVxC4tKhYY2_U4CPSoaVw-RT_EfaZQLcfp7dq_ZkmBdOdiAihQ3WPXJv9yFyuLymEtHXvI1GJ68EcWG1UZWLTUkpZvCdMFSlem36Qri-83NGjsHbW6yBTzNXi0kgqUrl4bfxLJ9W4DpMBnceuZ5mKRVTUV1cCcK69eANo-Q_7Kix1uFbOcQgbKlvJRi5ETdtN8RzTrHp1JIcpMpGNRLgdSLTowC-up_Vbx2Wf0pBkDC0"/>
+</button>
+<button class="aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 opacity-70 hover:opacity-100 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Side view detailing box structure" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFTeBx5Gm50S7VTWXDcP8f_kTARoMxaFlUa_P3O7ryM7GWa9hLem5a4bfZDk-Quf1VJ9hnqQcxr-PBhfqFdZmRmZvzzbXXBrvw9loFuwy_xo_bA_nwI22uXnlAymwrKJaXyX2fQXXCdmLfObsm1zzjy_OaPvwg2QyKvQYs1gYloB9i8Npi71Kz5vuclIVnX9dyMnx14a4WdsJbjUSYps5lLWbnvDvLhKjGFGxe3QDVcDzzgYdxH8Uo5i0WIXNsMoFFiWKDzYlySYg"/>
+</button>
+<button class="aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 opacity-70 hover:opacity-100 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Detail of gold foil finish on matte black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCshnB0cRFj6IMPKQp6CcRVJdw3Gae6SQbEfx4ql9Vg6MXoIjoxqP-z1KKJtq-Rs_ybZdWOYd5iLo-PIAhKSlerKSieamh3AjAW4yXrnu9iW_tJx_BUE2EZguxMJCJ3f2tmFVPFEKleQPZMyLl_Qz1luFTMIOZTMk1VSF8GmdDp7VDerf6ef4pkLacECVugoAg1lILM9TKey5-wcesc5bV9LGoUc-74lMKEQMBzZkU0LJ7m6u2843lzOi15WE0OqqNILrhgOnsm_Hg"/>
+</button>
+<button class="aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 opacity-70 hover:opacity-100 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Open box view showing interior strength" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYQ_2_YVL2a9VKnZEtURDLGHQlOpkZP-t57IqU34OzoemKslHRv4JbFLCr9hs6zoc_TH-UvWW2FsXRLm4EA8FcCk0VontsCRQgdzWcUJCVhCG_0nVOrQg9NJDsqUwKErBsBw1EIdC-ganwcSGCOLeFqbL8T9YPuYMEE6wu0qeF0EKzqH7VVwKzE_uizwxZ7DVBsruDdObw6cBkj_OXLvzaBvQj7HQLEV5djUEoLa5uNE5_d-IXja_SrJU-sFQbhPq7aSbDGzuXZeg"/>
+</button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-8">
+<div>
+<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2 leading-tight">Custom Luxury Corrugated Boxes</h2>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star_half</span>
+</div>
+<span class="text-sm font-medium text-slate-500">4.9 (124 reviews)</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Elevate your unboxing experience with our high-strength, premium-finish mailer boxes. Perfect for subscription kits, gift boxes, and e-commerce shipping.</p>
+</div>
+<div class="space-y-6">
+<div class="space-y-3">
+<label class="block text-sm font-bold text-primary uppercase tracking-wide">Select Size (inches)</label>
+<select class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:ring-primary focus:border-primary">
+<option>Standard: 10" x 8" x 4"</option>
+<option>Medium: 12" x 10" x 6"</option>
+<option>Large: 14" x 12" x 8"</option>
+<option>Custom Dimensions...</option>
+</select>
+</div>
+<div class="space-y-3">
+<label class="block text-sm font-bold text-primary uppercase tracking-wide">Material Type</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="px-4 py-3 rounded-lg border-2 border-primary bg-primary/10 text-slate-900 dark:text-white font-bold text-sm transition-all">
+                            Premium Matte
+                        </button>
+<button class="px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium">
+                            High Gloss
+                        </button>
+<button class="px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium">
+                            Natural Kraft
+                        </button>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<label class="block text-sm font-bold text-primary uppercase tracking-wide">Quantity</label>
+<span class="text-xs font-bold text-green-600 dark:text-green-400">Save 15% at 500+ units</span>
+</div>
+<div class="flex gap-4">
+<input class="w-32 rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:ring-primary" type="number" value="100"/>
+<div class="flex-1 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center px-4 gap-2 text-xs font-medium text-slate-500">
+<span class="material-symbols-outlined text-sm">info</span>
+                            Bulk pricing applied automatically
+                        </div>
+</div>
+</div>
+<div class="space-y-3">
+<label class="block text-sm font-bold text-primary uppercase tracking-wide">Special Finishes</label>
+<div class="flex flex-wrap gap-4">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary bg-transparent border-slate-300" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Gold Foil Stamps</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary bg-transparent border-slate-300" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Spot UV</span>
+</label>
+</div>
+</div>
+</div>
+<div class="price-calculator-gradient border border-primary/20 p-6 rounded-xl space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-slate-600 dark:text-slate-400 font-medium">Unit Price</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">$3.25</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-600 dark:text-slate-400 font-medium">Est. Subtotal</span>
+<span class="text-2xl font-black text-primary">$325.00</span>
+</div>
+<div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-slate-500 font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">local_shipping</span> Est. Delivery: Oct 24 - 27</span>
+<span>Ship to: 90210</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 flex items-center justify-center gap-2 px-8 py-4 border-2 font-bold rounded-xl hover:bg-secondary-pink/5 transition-all uppercase text-sm tracking-widest" href="contact.html?intent=artwork">
+<span class="material-symbols-outlined">upload_file</span>
+                    Upload Artwork
+                </a>
+<a class="flex-1 flex items-center justify-center gap-2 px-8 py-4 primary-btn-gradient text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all uppercase text-sm tracking-widest" href="checkout.html">
+<span class="material-symbols-outlined">shopping_cart_checkout</span>
+                    Proceed to Checkout
+                </a>
+</div>
+</div>
+</div>
+<div class="mt-24 border-t border-slate-200 dark:border-slate-800 pt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-6">
+<h3 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">description</span>
+                Specifications
+            </h3>
+<dl class="space-y-3 text-sm">
+<div class="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+<dt class="text-slate-500 font-medium">Material</dt>
+<dd class="text-slate-900 dark:text-slate-100 font-semibold">32 ECT E-flute Corrugated</dd>
+</div>
+<div class="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+<dt class="text-slate-500 font-medium">Printing</dt>
+<dd class="text-slate-900 dark:text-slate-100 font-semibold">Digital CMYK Full Color</dd>
+</div>
+<div class="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+<dt class="text-slate-500 font-medium">Turnaround</dt>
+<dd class="text-slate-900 dark:text-slate-100 font-semibold">5-7 Business Days</dd>
+</div>
+<div class="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+<dt class="text-slate-500 font-medium">Sustainable</dt>
+<dd class="text-green-600 font-bold flex items-center gap-1">100% Recyclable <span class="material-symbols-outlined text-xs">eco</span></dd>
+</div>
+</dl>
+</div>
+<div class="space-y-6">
+<h3 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">draw</span>
+                Preparation Guide
+            </h3>
+<ul class="space-y-4 text-sm">
+<li class="flex gap-3">
+<span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 font-bold text-xs italic">PDF</span>
+<p class="text-slate-600 dark:text-slate-400">Submit artwork in vector format (PDF, AI, or EPS) for the best print quality.</p>
+</li>
+<li class="flex gap-3">
+<span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 font-bold text-xs italic">3mm</span>
+<p class="text-slate-600 dark:text-slate-400">Include a 3mm bleed on all sides to avoid white edges after cutting.</p>
+</li>
+<li class="flex gap-3">
+<span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 font-bold text-xs italic">300</span>
+<p class="text-slate-600 dark:text-slate-400">All raster images must be at least 300 DPI at full print size.</p>
+</li>
+</ul>
+<span class="inline-flex items-center gap-1 text-slate-500 text-sm font-bold">Template available on request<span class="material-symbols-outlined text-sm">description</span></span>
+</div>
+<div class="space-y-6">
+<h3 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">reviews</span>
+                Recent Reviews
+            </h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Sarah M.</span>
+<span class="text-[10px] px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-bold uppercase tracking-tighter">Verified Buyer</span>
+</div>
+<div class="flex text-amber-400 text-xs">
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+</div>
+<p class="text-sm italic text-slate-600 dark:text-slate-400">"The matte finish feels incredible. These transformed our brand unboxing experience completely!"</p>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-slate-900 dark:text-white">James T.</span>
+<span class="text-[10px] px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-bold uppercase tracking-tighter">Verified Buyer</span>
+</div>
+<div class="flex text-amber-400 text-xs">
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+</div>
+<p class="text-sm italic text-slate-600 dark:text-slate-400">"Super sturdy and the print alignment was perfect on all 500 units."</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
+<div class="flex">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-3 rounded-r-xl"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2024 ZAK Printing. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-xs text-slate-400">Powered by ZAK Core</span>
+</div>
+</div>
+</footer>
+</body>
+<!-- ZAK V4: Product detail wiring -->
+<script src="js/public-shell.js"></script>
+<script src="js/api.js"></script>
+<script src="js/public-ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const id = new URLSearchParams(window.location.search).get('id');
+  if (!id) return;
+
+  try {
+    const data = await apiFetch(`/products.php?id=${id}`);
+    const p = data.product;
+    if (!p) {
+      showToast('Product not found', 'error');
+      return;
+    }
+
+    const breadcrumbCurrent = document.querySelector('nav span:last-child');
+    const titleEl = document.querySelector('.lg\\:col-span-5 h2') || document.querySelector('main h2');
+    const metaBlock = titleEl ? titleEl.closest('div') : null;
+    const descriptionEl = metaBlock ? metaBlock.querySelector('p.leading-relaxed') : null;
+
+    const mainImageEl = document.querySelector('.sticky .relative.group img');
+    const thumbsGrid = document.querySelector('.sticky .grid.grid-cols-4');
+
+    const materialButtons = Array.from(document.querySelectorAll('.space-y-6 .grid.grid-cols-3 button'));
+    const quantityInput = document.querySelector('input[type="number"]');
+    const finishInputs = Array.from(document.querySelectorAll('.space-y-6 input[type="checkbox"]'));
+
+    const priceCard = document.querySelector('.price-calculator-gradient');
+    const unitPriceEl = priceCard
+      ? Array.from(priceCard.querySelectorAll('.flex.justify-between.items-center')).find((row) => row.textContent.includes('Unit Price'))?.querySelector('span:last-child')
+      : null;
+    const subtotalEl = priceCard
+      ? Array.from(priceCard.querySelectorAll('.flex.justify-between.items-center')).find((row) => row.textContent.includes('Est. Subtotal'))?.querySelector('span:last-child')
+      : null;
+
+    const uploadLink = Array.from(document.querySelectorAll('a')).find((a) => a.textContent.includes('Upload Artwork'));
+    const checkoutLink = Array.from(document.querySelectorAll('a')).find((a) => a.textContent.includes('Proceed to Checkout'));
+
+    function resolveProductImagePath(imageValue) {
+      const value = String(imageValue || '').trim();
+      if (!value) return '';
+      if (value.startsWith('http://') || value.startsWith('https://')) return value;
+      if (value.startsWith('/')) return '..' + value;
+      if (value.startsWith('storage/') || value.startsWith('uploads/')) return '../' + value;
+      return '../uploads/' + encodeURIComponent(value);
+    }
+
+    document.title = `${p.title} — ZAK Printing`;
+    if (breadcrumbCurrent) breadcrumbCurrent.textContent = p.title;
+    if (titleEl) titleEl.textContent = p.title;
+    if (descriptionEl) descriptionEl.textContent = p.description || 'Premium production quality with custom finishes and reliable turnaround.';
+
+    const imagePaths = [p.image, p.image2, p.image3, p.image4]
+      .filter(Boolean)
+      .map((name) => resolveProductImagePath(name));
+
+    function setActiveThumb(button) {
+      if (!thumbsGrid) return;
+      thumbsGrid.querySelectorAll('.gallery-thumb').forEach((thumb) => {
+        thumb.classList.remove('border-2', 'border-primary', 'ring-2', 'ring-primary/20', 'opacity-100');
+        thumb.classList.add('border', 'border-slate-200', 'dark:border-slate-800', 'opacity-70');
+      });
+      button.classList.remove('border', 'border-slate-200', 'dark:border-slate-800', 'opacity-70');
+      button.classList.add('border-2', 'border-primary', 'ring-2', 'ring-primary/20', 'opacity-100');
+    }
+
+    if (mainImageEl && imagePaths.length) {
+      mainImageEl.src = imagePaths[0];
+      mainImageEl.alt = p.title;
+      if (thumbsGrid) {
+        thumbsGrid.innerHTML = imagePaths.slice(0, 4).map((src, index) => `
+          <button type="button" class="gallery-thumb aspect-square rounded-lg overflow-hidden ${index === 0 ? 'border-2 border-primary ring-2 ring-primary/20 opacity-100' : 'border border-slate-200 dark:border-slate-800 opacity-70 hover:opacity-100'}" data-src="${src}">
+            <img class="w-full h-full object-cover" src="${src}" alt="${p.title} ${index + 1}" />
+          </button>
+        `).join('');
+
+        thumbsGrid.querySelectorAll('.gallery-thumb').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const src = btn.getAttribute('data-src');
+            if (!src || !mainImageEl) return;
+            mainImageEl.src = src;
+            setActiveThumb(btn);
+          });
+        });
+      }
+    }
+
+    const basePrice = Number.parseFloat(p.price) || 0;
+    const materialFactors = [1, 1.08, 0.95];
+    let selectedMaterial = 0;
+
+    function formatPkr(value) {
+      return `PKR ${Math.round(value).toLocaleString('en-PK')}`;
+    }
+
+    function selectMaterial(index) {
+      selectedMaterial = Math.max(0, Math.min(index, materialButtons.length - 1));
+      materialButtons.forEach((button, idx) => {
+        const active = idx === selectedMaterial;
+        button.classList.toggle('border-2', active);
+        button.classList.toggle('border-primary', active);
+        button.classList.toggle('bg-primary/10', active);
+        button.classList.toggle('font-bold', active);
+        button.classList.toggle('border', !active);
+        button.classList.toggle('border-slate-300', !active);
+        button.classList.toggle('dark:border-slate-700', !active);
+      });
+    }
+
+    function calculatePricing() {
+      const qty = Math.max(parseInt(quantityInput?.value || '1', 10) || 1, 1);
+      const finishCount = finishInputs.filter((input) => input.checked).length;
+      const finishFactor = 1 + finishCount * 0.08;
+      const materialFactor = materialFactors[selectedMaterial] || 1;
+
+      let discount = 1;
+      if (qty >= 500) discount = 0.85;
+      else if (qty >= 250) discount = 0.9;
+      else if (qty >= 100) discount = 0.95;
+
+      const unit = Math.max(basePrice * materialFactor * finishFactor * discount, 0);
+      return { qty, unit, subtotal: unit * qty };
+    }
+
+    function updatePricingUi() {
+      const pricing = calculatePricing();
+      if (unitPriceEl) unitPriceEl.textContent = formatPkr(pricing.unit);
+      if (subtotalEl) subtotalEl.textContent = formatPkr(pricing.subtotal);
+      return pricing;
+    }
+
+    function updateCheckoutLink() {
+      if (!checkoutLink) return;
+      const pricing = updatePricingUi();
+      const selectedFinishes = finishInputs
+        .filter((input) => input.checked)
+        .map((input) => input.closest('label')?.textContent?.trim() || '')
+        .filter(Boolean)
+        .join(',');
+
+      const selectedMaterialText = materialButtons[selectedMaterial]?.textContent?.trim() || 'Standard';
+      const params = new URLSearchParams({
+        product_id: String(p.id),
+        product_title: p.title,
+        qty: String(pricing.qty),
+        material: selectedMaterialText,
+      });
+      if (selectedFinishes) params.set('finishes', selectedFinishes);
+      checkoutLink.href = `checkout.html?${params.toString()}`;
+    }
+
+    if (uploadLink) {
+      uploadLink.href = `contact.html?intent=artwork&product=${encodeURIComponent(p.title)}`;
+    }
+
+    materialButtons.forEach((button, index) => {
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        selectMaterial(index);
+        updateCheckoutLink();
+      });
+    });
+
+    finishInputs.forEach((input) => input.addEventListener('change', updateCheckoutLink));
+
+    if (quantityInput) {
+      quantityInput.min = '1';
+      quantityInput.addEventListener('input', () => {
+        if (!quantityInput.value || Number(quantityInput.value) < 1) quantityInput.value = '1';
+        updateCheckoutLink();
+      });
+    }
+
+    selectMaterial(0);
+    updateCheckoutLink();
+  } catch (e) {
+    console.warn('Product detail error:', e);
+    showToast('Unable to load product details', 'error');
+  }
+});
+</script>
+</html>

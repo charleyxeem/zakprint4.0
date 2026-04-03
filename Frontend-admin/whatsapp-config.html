@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Settings - WhatsApp Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Mobile sidebar toggle -->
+<button id="sidebar-toggle" class="fixed bottom-6 right-6 z-40 lg:hidden p-3 min-h-12 min-w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform" aria-label="Toggle sidebar menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Sidebar backdrop for mobile -->
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50" onclick="document.getElementById('sidebar-overlay').classList.add('hidden'); document.getElementById('sidebar-nav').classList.add('-translate-x-full');"></div>
+<!-- Sidebar Navigation -->
+<aside id="sidebar-nav" class="w-72 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white"><span class="material-symbols-outlined">dashboard</span></div>
+<div><h1 class="text-slate-900 dark:text-slate-100 font-bold text-lg leading-none">Admin Panel</h1><p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Super Admin</p></div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="admin-dash.html"><span class="material-symbols-outlined">grid_view</span><span>Dashboard</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="invoice-list.html"><span class="material-symbols-outlined">description</span><span>Invoices</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="quotation-list.html"><span class="material-symbols-outlined">request_quote</span><span>Quotations</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="product-inventory.html"><span class="material-symbols-outlined">inventory_2</span><span>Products</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="my-earning.html"><span class="material-symbols-outlined">payments</span><span>Earnings</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="user-mgmt.html" data-super-only><span class="material-symbols-outlined">group</span><span>Users</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium" href="general-settings.html"><span class="material-symbols-outlined">settings</span><span>Settings</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="content studio.html" data-super-only><span class="material-symbols-outlined">brush</span><span>Content Studio</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4" href="#" data-logout><span class="material-symbols-outlined">logout</span><span>Logout</span></a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800"><div class="text-center"><p class="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">v4.0</p><p class="text-xs text-slate-500 dark:text-slate-400">Design and Developed by</p><a href="http://theamadeuslab.com" target="_blank" class="text-xs font-semibold text-primary hover:underline">Amadeus Lab</a></div></div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between px-8"><h1 class="text-lg font-bold">System Settings</h1></header>
+<div class="bg-white dark:bg-slate-900 px-8 border-b border-slate-200 dark:border-slate-800"><div class="flex gap-8"><a class="py-4 text-sm font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent" href="general-settings.html">General</a><a class="py-4 text-sm font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent" href="smtp-config.html">SMTP Configuration</a><a class="py-4 text-sm font-bold text-primary border-b-2 border-primary" href="whatsapp-config.html">WhatsApp Config</a><a class="py-4 text-sm font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent" href="security.html">Security</a></div></div>
+<div class="flex-1 overflow-y-auto p-8"><div class="max-w-3xl"><div class="mb-6"><h2 class="text-xl font-bold mb-1">WhatsApp Configuration</h2><p class="text-sm text-slate-500">Configure your WhatsApp Business API credentials to enable automated notifications.</p></div>
+<form id="whatsapp-form" class="space-y-6 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex flex-col gap-2"><label class="text-sm font-semibold text-slate-700 dark:text-slate-300">API Provider</label><select name="api_provider" class="w-full h-11 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"><option value="twilio">Twilio</option><option value="meta">Meta Graph API</option><option value="messagebird">MessageBird</option><option value="gupshup">Gupshup</option></select></div>
+<div class="flex flex-col gap-2"><label class="text-sm font-semibold text-slate-700 dark:text-slate-300">API Key / Access Token</label><input name="whatsapp_token" class="w-full h-11 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" type="password" value=""/></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="flex flex-col gap-2"><label class="text-sm font-semibold text-slate-700 dark:text-slate-300">WhatsApp Number</label><input name="whatsapp_number" class="w-full h-11 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="1 555 000 0000" type="text"/></div><div class="flex flex-col gap-2"><label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Region</label><select name="whatsapp_region" class="w-full h-11 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"><option value="us-east">US East (N. Virginia)</option><option value="eu">EU (Frankfurt)</option><option value="ap">Asia Pacific (Mumbai)</option></select></div></div>
+<div class="pt-4 flex flex-col sm:flex-row items-center gap-4"><button type="submit" class="w-full sm:w-auto px-6 h-11 bg-primary text-white font-bold rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-primary/20">Save Settings</button><button type="button" class="w-full sm:w-auto px-6 h-11 bg-primary/10 text-primary font-bold rounded-lg hover:bg-primary/20 transition-colors">Test WhatsApp Notification</button></div>
+</form>
+</div></div>
+</main>
+</div>
+<script src="js/sidebar-controller.js" defer></script>
+</body>
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const data = await adminFetch('/settings.php?type=whatsapp');
+    const s = data.settings || {};
+    document.querySelectorAll('#whatsapp-form [name]').forEach(input => {
+      if (s[input.name] !== undefined) input.value = s[input.name];
+    });
+  } catch (e) { console.warn('WhatsApp settings load:', e); }
+  const form = document.querySelector('#whatsapp-form');
+  if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(form).entries());
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+    try {
+      await adminFetch('/settings.php', { method: 'POST', data: { type: 'whatsapp', settings: formData } });
+      showAdminToast('WhatsApp configuration saved!', 'success');
+    } catch (err) {
+      showAdminToast(err.message || 'Save failed.', 'error');
+    } finally {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  });
+});
+</script>
+<script>
+// Mobile sidebar toggle
+document.getElementById('sidebar-toggle').addEventListener('click', function() {
+  const overlay = document.getElementById('sidebar-overlay');
+  const nav = document.getElementById('sidebar-nav');
+  const isHidden = overlay.classList.contains('hidden');
+  if (isHidden) {
+    overlay.classList.remove('hidden');
+    nav.classList.remove('-translate-x-full');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    overlay.classList.add('hidden');
+    nav.classList.add('-translate-x-full');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+<script src="js/sidebar-controller.js" defer></script>
+</html>

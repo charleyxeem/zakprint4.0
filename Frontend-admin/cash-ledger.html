@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cash Ledger - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: '#1337ec',
+          'background-light': '#f6f6f8',
+          'background-dark': '#101322',
+        },
+        fontFamily: {
+          display: ['Inter'],
+        },
+        borderRadius: {
+          DEFAULT: '0.25rem',
+          lg: '0.5rem',
+          xl: '0.75rem',
+          full: '9999px',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Mobile sidebar toggle -->
+<button id="sidebar-toggle" class="fixed bottom-6 right-6 z-40 lg:hidden p-3 min-h-12 min-w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform" aria-label="Toggle sidebar menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Sidebar backdrop for mobile -->
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50" onclick="document.getElementById('sidebar-overlay').classList.add('hidden'); document.getElementById('sidebar-nav').classList.add('-translate-x-full');"></div>
+<!-- Sidebar Navigation -->
+<aside id="sidebar-nav" class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto">
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white">
+          <span class="material-symbols-outlined">dashboard</span>
+        </div>
+        <div>
+          <h1 class="text-slate-900 dark:text-slate-100 font-bold text-lg leading-none">Admin Panel</h1>
+          <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Super Admin</p>
+        </div>
+      </div>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="admin-dash.html">
+          <span class="material-symbols-outlined">grid_view</span>
+          <span>Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="invoice-list.html">
+          <span class="material-symbols-outlined">description</span>
+          <span>Invoices</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="quotation-list.html">
+          <span class="material-symbols-outlined">request_quote</span>
+          <span>Quotations</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="product-inventory.html">
+          <span class="material-symbols-outlined">inventory_2</span>
+          <span>Products</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium" href="cash-ledger.html">
+          <span class="material-symbols-outlined">payments</span>
+          <span>Cash Ledger</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="my-earning.html">
+          <span class="material-symbols-outlined">bar_chart</span>
+          <span>Earnings</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="user-mgmt.html" data-super-only>
+          <span class="material-symbols-outlined">group</span>
+          <span>Users</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="general-settings.html">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Settings</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="content studio.html" data-super-only>
+          <span class="material-symbols-outlined">brush</span>
+          <span>Content Studio</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4" href="#" data-logout>
+          <span class="material-symbols-outlined">logout</span>
+          <span>Logout</span>
+        </a>
+      </nav>
+    </div>
+    <div class="mt-auto p-6">
+      <div class="bg-primary/5 dark:bg-primary/10 rounded-2xl p-4 border border-primary/10">
+        <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Finance Center</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-3">Track inflow, outflow, and manual adjustments.</p>
+        <button type="button" id="jump-to-entry" class="w-full py-2 bg-primary text-white text-sm font-bold rounded-lg hover:opacity-90 transition-opacity">Record Entry</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 flex flex-col overflow-y-auto">
+    <header class="sticky top-0 z-10 flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 bg-white/85 dark:bg-background-dark/85 backdrop-blur-md px-8 py-4">
+      <div class="flex flex-col">
+        <h2 class="text-2xl font-black tracking-tight text-slate-900 dark:text-slate-100">Cash Ledger</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Monitor inflow, outflow, and manual cash entries.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-2 border border-transparent focus-within:border-primary/40">
+          <span class="material-symbols-outlined text-slate-400 mr-2">search</span>
+          <input id="ledger-search" class="bg-transparent border-none focus:ring-0 text-sm w-64 placeholder:text-slate-400" placeholder="Search entries..." type="text" />
+        </div>
+        <button type="button" id="refresh-ledger" class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
+          <span class="material-symbols-outlined">refresh</span>
+          Refresh
+        </button>
+      </div>
+    </header>
+
+    <div class="p-8 space-y-8">
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Cash In</span>
+            <div class="size-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+              <span class="material-symbols-outlined">trending_up</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-2xl font-black text-slate-900 dark:text-slate-100" data-total-in>PKR 0.00</span>
+            <span class="text-xs text-green-600 font-medium flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+              Ledger credits
+            </span>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Cash Out</span>
+            <div class="size-8 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600">
+              <span class="material-symbols-outlined">trending_down</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-2xl font-black text-slate-900 dark:text-slate-100" data-total-out>PKR 0.00</span>
+            <span class="text-xs text-red-600 font-medium flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+              Ledger debits
+            </span>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Net Balance</span>
+            <div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined">account_balance_wallet</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-2xl font-black text-slate-900 dark:text-slate-100" data-net-balance>PKR 0.00</span>
+            <span class="text-xs text-primary font-medium flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">history</span>
+              Updated from live data
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+        <div class="flex flex-wrap items-center gap-3">
+          <label class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium border border-slate-200 dark:border-slate-700">
+            <span class="material-symbols-outlined">filter_alt</span>
+            <select id="ledger-direction-filter" class="bg-transparent border-none focus:ring-0 text-sm p-0 pr-6">
+              <option value="all">All Entries</option>
+              <option value="in">Cash In</option>
+              <option value="out">Cash Out</option>
+            </select>
+          </label>
+          <button type="button" id="reload-ledger" class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+            <span class="material-symbols-outlined">sync</span>
+            Reload
+          </button>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+          <span class="material-symbols-outlined text-[18px]">shield</span>
+          Scoped to the current admin session
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-6 items-start">
+        <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-slate-100">Ledger Entries</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Latest 200 entries from the finance ledger.</p>
+            </div>
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400" data-entry-count>0 entries</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead class="bg-slate-50 dark:bg-slate-800/50">
+                <tr>
+                  <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Date</th>
+                  <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Description</th>
+                  <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Source</th>
+                  <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Type</th>
+                  <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="ledger-table-body" class="divide-y divide-slate-200 dark:divide-slate-800">
+                <tr>
+                  <td colspan="5" class="px-6 py-12 text-center text-slate-400">Loading ledger entries...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <aside id="record-entry" class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 sticky top-24">
+          <div class="flex items-start justify-between gap-4 mb-6">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-slate-100">Record Entry</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Add a manual cash movement to the ledger.</p>
+            </div>
+            <div class="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+              <span class="material-symbols-outlined">add_circle</span>
+            </div>
+          </div>
+
+          <form id="ledger-entry-form" class="space-y-4">
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">Direction</span>
+              <select name="direction" class="w-full rounded-xl border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary" required>
+                <option value="in">Cash In</option>
+                <option value="out">Cash Out</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">Amount</span>
+              <input name="amount" type="number" min="0.01" step="0.01" class="w-full rounded-xl border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary" placeholder="0.00" required />
+            </label>
+
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">Description</span>
+              <textarea name="description" rows="4" class="w-full rounded-xl border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary" placeholder="What is this entry for?" required></textarea>
+            </label>
+
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">Source Type</span>
+              <input name="source_type" type="text" value="Manual" class="w-full rounded-xl border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary" placeholder="Manual" />
+            </label>
+
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">Invoice ID</span>
+              <input name="invoice_id" type="number" min="1" class="w-full rounded-xl border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary" placeholder="Optional" />
+            </label>
+
+            <button type="submit" class="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary text-white text-sm font-bold rounded-xl hover:bg-primary/90 transition-colors">
+              <span class="material-symbols-outlined">save</span>
+              Save Entry
+            </button>
+          </form>
+        </aside>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script src="js/sidebar-controller.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const state = {
+    entries: [],
+    search: '',
+    direction: 'all',
+  };
+
+  const body = document.getElementById('ledger-table-body');
+  const searchInput = document.getElementById('ledger-search');
+  const directionFilter = document.getElementById('ledger-direction-filter');
+  const entryCount = document.querySelector('[data-entry-count]');
+  const totalInEl = document.querySelector('[data-total-in]');
+  const totalOutEl = document.querySelector('[data-total-out]');
+  const netBalanceEl = document.querySelector('[data-net-balance]');
+  const form = document.getElementById('ledger-entry-form');
+  const reloadButton = document.getElementById('reload-ledger');
+  const refreshButton = document.getElementById('refresh-ledger');
+  const jumpButton = document.getElementById('jump-to-entry');
+
+  function money(amount) {
+    const numeric = Number(amount || 0);
+    const formatted = formatPKR(Math.abs(numeric));
+    return numeric < 0 ? `-${formatted}` : formatted;
+  }
+
+  function directionBadge(direction) {
+    const isIn = direction === 'in';
+    const classes = isIn
+      ? 'bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400'
+      : 'bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400';
+    return `<span class="px-2.5 py-1 text-xs font-bold rounded-full ${classes}">${isIn ? 'IN' : 'OUT'}</span>`;
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#39;');
+  }
+
+  function matchesSearch(entry) {
+    const haystack = [
+      entry.description,
+      entry.source_type,
+      entry.direction,
+      entry.invoice_id ? `inv ${entry.invoice_id}` : '',
+      entry.created_at,
+    ].join(' ').toLowerCase();
+
+    return haystack.includes(state.search.trim().toLowerCase());
+  }
+
+  function renderSummary(entries) {
+    let totalIn = 0;
+    let totalOut = 0;
+
+    entries.forEach((entry) => {
+      const amount = Number(entry.amount || 0);
+      if (entry.direction === 'in') {
+        totalIn += amount;
+      } else {
+        totalOut += amount;
+      }
+    });
+
+    if (totalInEl) totalInEl.textContent = money(totalIn);
+    if (totalOutEl) totalOutEl.textContent = money(totalOut);
+    if (netBalanceEl) netBalanceEl.textContent = money(totalIn - totalOut);
+  }
+
+  function renderEntries() {
+    const filtered = state.entries.filter((entry) => {
+      if (state.direction !== 'all' && entry.direction !== state.direction) {
+        return false;
+      }
+      return matchesSearch(entry);
+    });
+
+    if (entryCount) {
+      entryCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'entry' : 'entries'}`;
+    }
+
+    renderSummary(filtered);
+
+    if (!filtered.length) {
+      body.innerHTML = `
+        <tr>
+          <td colspan="5" class="px-6 py-12 text-center text-slate-400">No matching ledger entries found.</td>
+        </tr>
+      `;
+      return;
+    }
+
+    body.innerHTML = filtered.map((entry) => {
+      const source = entry.source_type || 'Manual';
+      const invoiceRef = entry.invoice_id ? `#${escapeHtml(entry.invoice_id)}` : 'Manual';
+
+      return `
+        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+          <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">${formatDate(entry.created_at)}</td>
+          <td class="px-6 py-4">
+            <div class="space-y-1">
+              <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">${escapeHtml(entry.description || 'Untitled entry')}</p>
+              <p class="text-xs text-slate-500">${escapeHtml(source)}</p>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">${escapeHtml(invoiceRef)}</td>
+          <td class="px-6 py-4">${directionBadge(entry.direction)}</td>
+          <td class="px-6 py-4 text-right">
+            <span class="text-sm font-bold ${entry.direction === 'in' ? 'text-emerald-600' : 'text-red-600'}">${entry.direction === 'in' ? '+' : '-'}${money(entry.amount)}</span>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  async function loadLedger() {
+    if (body) {
+      body.innerHTML = '<tr><td colspan="5" class="px-6 py-12 text-center text-slate-400">Loading ledger entries...</td></tr>';
+    }
+
+    try {
+      const query = new URLSearchParams();
+      query.set('action', 'ledger');
+      if (state.direction !== 'all') {
+        query.set('direction', state.direction);
+      }
+
+      const data = await adminFetch(`/finance.php?${query.toString()}`);
+      state.entries = Array.isArray(data.entries) ? data.entries : [];
+      renderEntries();
+    } catch (error) {
+      if (body) {
+        body.innerHTML = '<tr><td colspan="5" class="px-6 py-12 text-center text-red-500">Failed to load ledger entries.</td></tr>';
+      }
+      showAdminToast(error.message || 'Failed to load ledger entries', 'error');
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      state.search = searchInput.value;
+      renderEntries();
+    });
+  }
+
+  if (directionFilter) {
+    directionFilter.addEventListener('change', async () => {
+      state.direction = directionFilter.value;
+      await loadLedger();
+    });
+  }
+
+  const reload = () => loadLedger();
+  if (reloadButton) reloadButton.addEventListener('click', reload);
+  if (refreshButton) refreshButton.addEventListener('click', reload);
+  if (jumpButton) jumpButton.addEventListener('click', () => {
+    document.getElementById('record-entry')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  if (form) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload.amount = Number(payload.amount || 0);
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<span class="material-symbols-outlined">hourglass_top</span> Saving...';
+      }
+
+      try {
+        await adminFetch('/finance.php', {
+          method: 'POST',
+          data: payload,
+        });
+        showAdminToast('Ledger entry saved.', 'success');
+        form.reset();
+        form.querySelector('[name="direction"]').value = 'in';
+        form.querySelector('[name="source_type"]').value = 'Manual';
+        await loadLedger();
+      } catch (error) {
+        showAdminToast(error.message || 'Failed to save entry', 'error');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = '<span class="material-symbols-outlined">save</span> Save Entry';
+        }
+      }
+    });
+  }
+
+  loadLedger();
+});
+</script>
+<script>
+// Mobile sidebar toggle
+document.getElementById('sidebar-toggle').addEventListener('click', function() {
+  const overlay = document.getElementById('sidebar-overlay');
+  const nav = document.getElementById('sidebar-nav');
+  const isHidden = overlay.classList.contains('hidden');
+  if (isHidden) {
+    overlay.classList.remove('hidden');
+    nav.classList.remove('-translate-x-full');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    overlay.classList.add('hidden');
+    nav.classList.add('-translate-x-full');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+<script src="js/sidebar-controller.js" defer></script>
+</body>
+</html>

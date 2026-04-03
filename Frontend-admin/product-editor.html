@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Edit Product | Admin Dashboard</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">inventory_2</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Admin Dashboard</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64 hidden md:block">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-500 flex bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-slate-800 focus:ring-0 h-full placeholder:text-slate-500 px-4 rounded-r-lg text-sm" placeholder="Search products..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button id="sidebar-toggle" class="fixed bottom-6 right-6 z-40 lg:hidden p-3 min-h-12 min-w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform" aria-label="Toggle sidebar menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors hidden lg:flex">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2 hidden lg:block"></div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700 hidden lg:block" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFb_p3oC85unG6CZaJb-TV5IQc7AMOOFIptMV4LAFDTLxwWpl2y6lB3hyRFVv1sHikPs0zjgoTkc8q0Cw1Xw3sq4cv4-7vfdeOBTt4_SZ8KI3KRtnvu9uuRpARKAwtqImqm1VbAhC9fGgtdsQ2qwZKGyqE_eH4FpVvmAhMsOxK_sQs7U05LZ_rDZMzu3HPC63KQVrOZHq33YXBbctO45ojyyTio-JCNLTXqz47EnjA9d9s0KN3GQ2xmORYtY9ntRrqeGJdIrD5HG4Z");'></div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto w-full px-6 py-8">
+<!-- Breadcrumbs & Header Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<nav class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+<a class="hover:text-primary" href="product-inventory.html">Catalog</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary" href="product-editor.html">Products</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">Edit Product</span>
+</nav>
+<h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Premium Wireless Headphones</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex-1 md:flex-none px-5 py-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:bg-slate-50 transition-colors">
+                        Discard
+                    </button>
+<button class="flex-1 md:flex-none px-5 py-2.5 rounded-lg bg-primary text-white font-semibold text-sm hover:bg-blue-700 transition-colors shadow-lg shadow-primary/20">
+                        Save Changes
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Main Form -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Basic Information -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                            Basic Information
+                        </h2>
+<div class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Product Title</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" type="text" value="Premium Wireless Headphones Gen 2"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">SKU</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" type="text" value="WRLS-HD-002"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Category</label>
+<select class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm">
+<option>Electronics</option>
+<option selected="">Audio &amp; Headphones</option>
+<option>Accessories</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Description</label>
+<div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+<div class="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 p-2 flex gap-2">
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">link</span></button>
+</div>
+<textarea class="w-full border-none focus:ring-0 dark:bg-slate-800 text-sm" placeholder="Describe your product..." rows="4">The new generation of wireless headphones with active noise cancellation and 40-hour battery life. Perfect for travel and high-fidelity music listening.</textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Media Section -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">image</span>
+                                Media
+                            </h2>
+<span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Up to 4 images</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Image 1 (Primary) -->
+<div class="relative group aspect-square rounded-lg border-2 border-primary overflow-hidden">
+<img alt="Primary Product" class="w-full h-full object-cover" data-alt="Close up of golden headphones on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHhRdc4dSD7E6AM_m9LsTtfSMmtWpzkJ_v9eix2CokEebdAM-ipVlriI86U-1iEWx0Jedm9Zv2NomxGnO_nAmxZXmgvBM4_GaKw1oZotdbwTGKCJ5eXb7U8PYmk1UNL0zhZ7k2ZMmmiYI5e2JoT6Igwl_t5TOBU7tFN7i6th0aZrERrIFwoBr10FMMIpug5qda6ssqXYKgUJVJeSvxH8X03OvOhVPEtVDKx05pKSVqxdrIPGLqddkFFm_wF-DCjbo1QvWT4fnesJFH"/>
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Primary</div>
+<button class="absolute top-2 right-2 p-1 bg-white/90 rounded-full text-red-500 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<!-- Image 2 -->
+<div class="relative group aspect-square rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+<img alt="Product Side" class="w-full h-full object-cover" data-alt="Side view of wireless headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-1GdtLfqTsvP_Yryz2eOYuQo4zDIYBQFF2Wo5J_e4bkr8s_OwxeFuTqt36lDTKUepRGjtW4r0Ucu9NwSpNd6Llzfo8tueWd4TNvnRc7lyGyjM9YDvwHv3FQ23ipT8SbldGKQ_wGUAhdd0290D7przA7ZPIAEY0BFjrZEsTypl2QeYXvx7H-xUD48ddExW1I5A-BYd3DSsPx9b2DGRZNkM5Ti2uxU-DpU-mNb0ZFNg0n2CWFYcqB1-XadHq8TAuIkL4wgmh-Qhdvo1"/>
+<button class="absolute top-2 right-2 p-1 bg-white/90 rounded-full text-red-500 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<!-- Image 3 -->
+<div class="relative group aspect-square rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+<img alt="Product Case" class="w-full h-full object-cover" data-alt="Charging case for premium headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBtTA9A4dui6TS99oi37Lszh6xl0wEy81MjIBE_ZYGu1BDxtvKwSBaAjgSRjEQ38Y56JPV9bRW1EWg5GJqq2_JmevW3pChwfrXnBVADDVZVFHCxmQcxqbNQLDiVUXSMGhQbTEDKe_B2VHxZBIBAou9KQcEKky4iwDf4UPfRtS4tOoOHR1tPJVOJXCdMTT0zef2PYOTtYXrRn2j3l8YLU8QtKj-vyvi-WjddRL9eiSWJUgj5dsXBZSVeCZ0r0aTK-SO5UQKyLfR4Gxa"/>
+<button class="absolute top-2 right-2 p-1 bg-white/90 rounded-full text-red-500 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<!-- Upload New -->
+<button class="aspect-square rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center gap-2 text-slate-400 hover:border-primary hover:text-primary transition-all bg-slate-50 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-3xl">add_photo_alternate</span>
+<span class="text-[11px] font-bold uppercase tracking-widest">Add Image</span>
+</button>
+</div>
+</section>
+<!-- Pricing & Weight -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+                            Pricing &amp; Weight
+                        </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Price ($)</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" type="number" value="299.00"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Compare at Price ($)</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" type="number" value="349.00"/>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Weight (kg)</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" type="number" value="0.45"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Dimensions (L x W x H cm)</label>
+<div class="grid grid-cols-3 gap-2">
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" placeholder="L" type="number" value="18"/>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" placeholder="W" type="number" value="20"/>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" placeholder="H" type="number" value="8"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar -->
+<div class="space-y-8">
+<!-- Product Status -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h2 class="text-base font-bold text-slate-900 dark:text-white mb-4">Product Status</h2>
+<div class="space-y-4">
+<select class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm font-medium">
+<option value="active">Active</option>
+<option value="draft">Draft</option>
+<option value="archived">Archived</option>
+</select>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm text-slate-700 dark:text-slate-300">Featured Product</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Inventory -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h2 class="text-base font-bold text-slate-900 dark:text-white mb-4">Inventory</h2>
+<div class="space-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Stock Quantity</label>
+<div class="flex items-center">
+<button class="px-3 py-2 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 rounded-l-lg hover:bg-slate-100"><span class="material-symbols-outlined text-sm">remove</span></button>
+<input class="w-full border-x-0 border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-0 text-center text-sm" type="number" value="128"/>
+<button class="px-3 py-2 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 rounded-r-lg hover:bg-slate-100"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Low stock threshold</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm" type="number" value="10"/>
+<p class="text-[11px] text-slate-500 italic mt-1">Get notified when stock reaches this level.</p>
+</div>
+</div>
+</section>
+<!-- Visibility -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h2 class="text-base font-bold text-slate-900 dark:text-white mb-4">Sales Channels</h2>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded text-primary focus:ring-primary border-slate-300 dark:border-slate-700 dark:bg-slate-800" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Online Store</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded text-primary focus:ring-primary border-slate-300 dark:border-slate-700 dark:bg-slate-800" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Mobile App</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300 dark:border-slate-700 dark:bg-slate-800" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Point of Sale</span>
+</label>
+</div>
+</section>
+<!-- Danger Zone -->
+<button class="w-full py-3 rounded-lg border border-red-200 dark:border-red-900/30 text-red-600 bg-red-50 dark:bg-red-900/10 hover:bg-red-100 dark:hover:bg-red-900/20 text-sm font-bold flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-lg">delete</span>
+                        Delete Product
+                    </button>
+</div>
+</div>
+<!-- Sticky Bottom Save Bar for Mobile -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 flex gap-3 z-40">
+<button class="flex-1 py-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-sm">Discard</button>
+<button class="flex-1 py-3 rounded-lg bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20">Save Changes</button>
+</div>
+</main>
+</div>
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50"></div>
+<script src="js/sidebar-controller.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('sidebar-toggle');
+  if (!toggle) return;
+  const overlay = document.getElementById('sidebar-overlay');
+  if (!overlay) return;
+  toggle.addEventListener('click', function() {
+    overlay.classList.toggle('hidden');
+  });
+  overlay.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+  });
+});
+</script></body>
+<!-- ZAK V4: Product editor wiring -->
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const id = new URLSearchParams(window.location.search).get('id');
+
+  if (id) {
+    try {
+      const data = await adminFetch(`/products.php?id=${id}`);
+      const p = data.product || {};
+      document.querySelectorAll('[name]').forEach(input => {
+        if (p[input.name] !== undefined) input.value = p[input.name];
+      });
+      const heading = document.querySelector('h1, h2');
+      if (heading) heading.textContent = 'Edit Product';
+    } catch(e) { showAdminToast('Could not load product.', 'error'); }
+  }
+
+  const form = document.querySelector('form');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const formData = Object.fromEntries(new FormData(form).entries());
+    btn.textContent = 'Saving...'; btn.disabled = true;
+    try {
+      if (id) {
+        await adminFetch(`/products.php?id=${id}`, { method: 'PATCH', data: formData });
+        showAdminToast('Product updated!', 'success');
+      } else {
+        await adminFetch('/products.php', { method: 'POST', data: formData });
+        showAdminToast('Product created!', 'success');
+        setTimeout(() => window.location.href = 'product-inventory.html', 1000);
+      }
+    } catch(err) {
+      showAdminToast(err.message || 'Save failed.', 'error');
+      btn.textContent = 'Save Product'; btn.disabled = false;
+    }
+  });
+});
+</script>
+</html>
+

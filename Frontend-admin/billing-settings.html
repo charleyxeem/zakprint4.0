@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Billing Settings - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header / TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">dashboard_customize</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Admin Dashboard</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden">
+<div class="text-slate-500 bg-slate-100 dark:bg-slate-800 flex items-center justify-center pl-4 border-none">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-500 px-4 pl-2 text-sm font-normal" placeholder="Search" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="admin-dash.html">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="invoice-list.html">Invoices</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="quotation-list.html">Quotes</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="admin-dash.html">Clients</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-4" href="general-settings.html">Settings</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button id="sidebar-toggle" class="lg:hidden flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="Toggle sidebar">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile picture of a professional man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9ve9bC4jEMR4XwZngJTK3PTMfOHWSC1p6XXKDV-UQojD5Zphg2LofdrAYx8t4NPB5w41BhNglnZIBQG4O193qcjIenso-8n0_RdirnyMMA-jIoxLyCMoCVDwyChr_-oUmTzwtsLCibuMbLJqCRdfptVHHjnhvVsMEQBeei2-HEZ0ArB1x1WlvVzHlAh9pTL_6I6syTfXdloONotitqah_DXYY7Qca9OnJsC2ii9AbovW5phNjKZMgxpMxKHV7FgnrlDu1vSE5IgAO");'></div>
+</div>
+</header>
+<main class="flex flex-1 flex-col lg:flex-row">
+<!-- Sidebar Navigation -->
+<aside class="w-full lg:w-72 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 flex flex-col gap-8 hidden lg:flex fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto" id="sidebar-nav">
+<div>
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold mb-4">My Profile</h3>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="general-settings.html">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="text-sm font-medium">General</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="security.html">
+<span class="material-symbols-outlined text-xl">security</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" href="billing-settings.html">
+<span class="material-symbols-outlined text-xl font-fill">payments</span>
+<span class="text-sm font-bold">Billing Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="admin-dash.html">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm font-medium">Team Members</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="admin-dash.html">
+<span class="material-symbols-outlined text-xl">extension</span>
+<span class="text-sm font-medium">Integrations</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto">
+<div class="border-t border-slate-200 dark:border-slate-800 p-4 text-center">
+<p class="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">v4.0</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Design and Developed by</p>
+<a href="http://theamadeuslab.com" target="_blank" class="text-xs font-semibold text-primary hover:underline">Amadeus Lab</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 p-6 lg:p-10 max-w-5xl mx-auto w-full">
+<div class="mb-8">
+<h1 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-2">Billing Settings</h1>
+<p class="text-slate-500 dark:text-slate-400">Manage your company branding and details for invoices and quotations.</p>
+</div>
+<div class="space-y-8">
+<!-- Business Profile Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">business_center</span>
+<h2 class="text-lg font-bold">Business Profile</h2>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Company Name</span>
+<input name="company_name" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="Acme Dynamics Corp"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Contact Person</span>
+<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="Jonathan Miller"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</span>
+<input name="email" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="email" value="billing@acmedynamics.com"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Phone Number</span>
+<input name="phone" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="tel" value="+1 (555) 000-1234"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Branding Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">palette</span>
+<h2 class="text-lg font-bold">Document Branding</h2>
+</div>
+<div class="p-6">
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">This logo will appear on all your outgoing invoices and quotes. Recommended size: 400x120px.</p>
+<div class="flex flex-col sm:flex-row items-center gap-6">
+<div class="w-48 h-24 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center border-2 border-dashed border-slate-300 dark:border-slate-700 relative overflow-hidden group">
+<span class="material-symbols-outlined text-slate-400 text-4xl group-hover:hidden">image</span>
+<div class="hidden group-hover:flex absolute inset-0 bg-slate-900/40 items-center justify-center cursor-pointer">
+<span class="text-white text-xs font-bold">Replace Logo</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<div class="w-full h-full bg-contain bg-center bg-no-repeat opacity-80" data-alt="Corporate logo for billing documents" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCb2oSuAXeMbIMqFVl_ZAzoW6b0Yd7MwjsDbD0uSs6N8dko_OUwUODFGRlOEWr9fqi3d-Sm5jLlelsFXtA-Zj0Et8fnTeZ978t1f9neo1pVZu4nzY5aKTob6VCztJ8C5bofjCVPI8DSAJ2x6G8S9uBNEfXWIDyweBWcpfaK2tkcPrR1rLCFBCR5HXxwfnxuswrtJPZ0soAuu0DZNMfq1rXvMU_UhGds_CJIMSXnK04xcqVPFbVJZLRtoBECzuePRQ29bBD-Kk09KeDK');"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2 w-full sm:w-auto">
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/90">Upload New Logo</button>
+<button class="text-slate-500 dark:text-slate-400 px-4 py-2 rounded-lg text-sm font-medium hover:text-red-500 transition-colors">Remove Image</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Address & Tax Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<h2 class="text-lg font-bold">Address &amp; Tax Information</h2>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col gap-2 md:col-span-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Physical Address</span>
+<textarea name="address" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="3">123 Business Way, Tech Park
+Suite 400
+San Francisco, CA 94103</textarea>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Tax ID / VAT Registration</span>
+<input name="gst_no" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="VAT-9876543210"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Company Registration No.</span>
+<input name="ntn_no" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="REG-11223344"/>
+</label>
+</div>
+</div>
+<!-- Payment Methods Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+<h2 class="text-lg font-bold">Payment Methods &amp; Instructions</h2>
+</div>
+<div class="p-6">
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Provide the bank details or payment links that will be displayed in the footer of your invoices.</p>
+<div class="mb-4">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Account Number</span>
+<input name="account_number" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" placeholder="e.g. 987654321" type="text" value=""/>
+</label>
+</div>
+<label class="flex flex-col gap-2">
+<textarea name="payment_methods" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" placeholder="e.g. Please wire transfer funds to: Bank Name: First Global Bank, IBAN: US00 1234 5678 9012..." rows="4">Bank: Global Savings Bank
+Account Name: Acme Dynamics Corp
+Account Number: 987654321
+Routing Number: 123456789
+SWIFT: GSBNUS33</textarea>
+</label>
+</div>
+</div>
+<!-- Default Terms Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+<h2 class="text-lg font-bold">Default Terms &amp; Conditions</h2>
+</div>
+<div class="p-6">
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">These notes will appear at the bottom of every document by default. You can still edit them individually per document.</p>
+<div class="grid grid-cols-1 gap-4 mb-4">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Default Invoice Notes</span>
+<textarea name="invoice_special_notes" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="3"></textarea>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Default Quotation Notes</span>
+<textarea name="quotation_special_notes" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="3"></textarea>
+</label>
+</div>
+<label class="flex flex-col gap-2">
+<textarea name="terms" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="5">Payment is due within 30 days of invoice date. 
+Late payments are subject to a 1.5% monthly interest fee.
+All goods remain the property of Acme Dynamics Corp until fully paid.
+Thank you for your business!</textarea>
+</label>
+</div>
+</div>
+<!-- Form Actions -->
+<div class="flex items-center justify-end gap-4 pb-12">
+<button type="button" class="px-6 py-2.5 rounded-lg text-sm font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-action="billing-discard">Discard Changes</button>
+<button type="button" class="px-8 py-2.5 rounded-lg text-sm font-bold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20" data-action="save-billing">Save Settings</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+<script src="js/sidebar-controller.js" defer></script></body>
+<!-- ZAK V4: Billing settings wiring -->
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const billingKeys = ['company_name', 'address', 'phone', 'email', 'terms', 'payment_methods', 'gst_no', 'ntn_no', 'logo_path'];
+  const invoiceSettingKeys = ['account_number', 'invoice_special_notes', 'quotation_special_notes'];
+
+  try {
+    const data = await adminFetch('/billing.php?mine=1');
+    const billing = (data.profiles || data.billing_profiles || [])[0] || {};
+    document.querySelectorAll('[name]').forEach(input => {
+      if (billing[input.name] !== undefined) input.value = billing[input.name];
+    });
+    window._billingId = billing.id;
+  } catch(e) { console.warn('billing load error', e); }
+
+  try {
+    const settingsData = await adminFetch('/settings.php?type=invoice');
+    const invoiceSettings = settingsData.settings || {};
+    invoiceSettingKeys.forEach((key) => {
+      const el = document.querySelector(`[name="${key}"]`);
+      if (el && invoiceSettings[key] !== undefined) el.value = invoiceSettings[key];
+    });
+  } catch (e) {
+    console.warn('invoice settings load error', e);
+  }
+
+  const saveButton = document.querySelector('[data-action="save-billing"]');
+  const discardButton = document.querySelector('[data-action="billing-discard"]');
+  if (discardButton) discardButton.addEventListener('click', () => window.location.reload());
+  if (!saveButton) return;
+  saveButton.addEventListener('click', async () => {
+    const allData = Object.fromEntries(Array.from(document.querySelectorAll('[name]')).map(input => [input.name, input.value]));
+    const formData = {};
+    billingKeys.forEach((key) => { if (allData[key] !== undefined) formData[key] = allData[key]; });
+    const invoiceSettings = {};
+    invoiceSettingKeys.forEach((key) => { if (allData[key] !== undefined) invoiceSettings[key] = allData[key]; });
+
+    saveButton.textContent = 'Saving...'; saveButton.disabled = true;
+    try {
+      if (window._billingId) {
+        await adminFetch(`/billing.php?id=${window._billingId}`, { method: 'PATCH', data: formData });
+      } else {
+        await adminFetch('/billing.php', { method: 'POST', data: formData });
+      }
+      await adminFetch('/settings.php', { method: 'POST', data: { type: 'invoice', settings: invoiceSettings } });
+      showAdminToast('Billing settings saved!', 'success');
+    } catch(err) { showAdminToast(err.message || 'Save failed.', 'error'); }
+    finally { saveButton.textContent = 'Save Settings'; saveButton.disabled = false; }
+  });
+});
+</script>
+<script>
+// Mobile sidebar toggle
+const toggle = document.getElementById('sidebar-toggle');
+if (toggle) {
+  toggle.addEventListener('click', function() {
+    const nav = document.getElementById('sidebar-nav');
+    nav.classList.toggle('-translate-x-full');
+    this.setAttribute('aria-expanded', nav.classList.contains('-translate-x-full') ? 'false' : 'true');
+  });
+}
+</script>
+</html>
+

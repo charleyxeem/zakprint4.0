@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAK Printing | My Orders</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#ff6b00",
+            "background-light": "#fdfcfb",
+            "background-dark": "#1a120e"
+          },
+          fontFamily: {
+            display: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+  <div class="min-h-screen flex flex-col">
+    <header class="sticky top-0 z-50 border-b border-primary/10 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
+        <a href="user-dash.html" class="flex items-center gap-3 text-primary">
+          <span class="size-9 rounded-lg bg-primary text-white flex items-center justify-center">
+            <span class="material-symbols-outlined">print</span>
+          </span>
+          <span class="text-lg font-extrabold tracking-tight">ZAK Printing</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="home.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">Home</a>
+          <a href="shop.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">Shop</a>
+          <a href="services.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">Services</a>
+          <a href="about.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">About</a>
+          <a href="contact.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <button id="mobile-menu-toggle" class="md:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+          <a href="shop.html" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors">Reorder</a>
+          <a href="user-login.html" class="size-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="Account">
+            <span class="material-symbols-outlined">person</span>
+          </a>
+        </div>
+      </div>
+    </header>
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
+    <nav id="mobile-nav" class="hidden md:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
+    <div class="p-4 space-y-2">
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
+    <a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Reorder</a>
+    </div>
+    </nav>
+
+    <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
+        <aside class="bg-white dark:bg-slate-900/60 border border-primary/10 rounded-2xl p-5 h-fit">
+          <div class="pb-4 mb-4 border-b border-primary/10">
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">User Panel</p>
+            <h2 class="text-lg font-extrabold mt-1">Alex Thompson</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Customer ID: ZAK-99283</p>
+          </div>
+          <nav class="space-y-2">
+            <a href="user-dash.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-primary/10 transition-colors font-semibold">
+              <span class="material-symbols-outlined">dashboard</span>
+              <span>Dashboard</span>
+            </a>
+            <a href="user-my-order.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20 font-bold">
+              <span class="material-symbols-outlined">shopping_bag</span>
+              <span>My Orders</span>
+            </a>
+            <a href="user-my-settings.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-primary/10 transition-colors font-semibold">
+              <span class="material-symbols-outlined">settings</span>
+              <span>Settings</span>
+            </a>
+          </nav>
+        </aside>
+
+        <section class="space-y-6">
+          <div class="bg-white dark:bg-slate-900/60 border border-primary/10 rounded-2xl p-6">
+            <h1 class="text-3xl font-extrabold tracking-tight">My Orders</h1>
+            <p class="text-slate-600 dark:text-slate-400 mt-2">Review order progress, approvals, and shipping updates.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold">All</button>
+            <button class="px-4 py-2 rounded-lg bg-white dark:bg-slate-900/60 border border-primary/10 text-sm font-semibold">In Progress</button>
+            <button class="px-4 py-2 rounded-lg bg-white dark:bg-slate-900/60 border border-primary/10 text-sm font-semibold">Shipped</button>
+            <button class="px-4 py-2 rounded-lg bg-white dark:bg-slate-900/60 border border-primary/10 text-sm font-semibold">Delivered</button>
+          </div>
+
+          <div class="space-y-4">
+            <article class="bg-white dark:bg-slate-900/60 border border-primary/10 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">#ZP-8821</p>
+                <h2 class="text-lg font-bold mt-1">Corporate Brochures</h2>
+                <p class="text-sm text-slate-600 dark:text-slate-400">250 units - Premium Matte - ETA: Mar 20</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-100 text-amber-700">In Progress</span>
+                <a href="order-confirm.html?id=8821" class="text-sm font-bold text-primary hover:underline">Details</a>
+              </div>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900/60 border border-primary/10 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">#ZP-8815</p>
+                <h2 class="text-lg font-bold mt-1">Business Cards</h2>
+                <p class="text-sm text-slate-600 dark:text-slate-400">500 units - Spot UV - Tracking: ZX-77391</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">Shipped</span>
+                <a href="order-confirm.html?id=8815" class="text-sm font-bold text-primary hover:underline">Track</a>
+              </div>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900/60 border border-primary/10 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">#ZP-8780</p>
+                <h2 class="text-lg font-bold mt-1">Event Standee Set</h2>
+                <p class="text-sm text-slate-600 dark:text-slate-400">3 units - 2x6 ft - Delivered on Mar 12</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-200 text-slate-700">Delivered</span>
+                <a href="shop.html" class="text-sm font-bold text-primary hover:underline">Reorder</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+<!-- ZAK V4: My orders wiring -->
+<script src="js/user-shell.js"></script>
+<script src="js/api.js"></script>
+<script src="js/public-ui.js"></script>
+<script src="js/auth-guard.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  await new Promise(r => setTimeout(r, 50));
+  if (window.currentUser) {
+    const nameEl = document.querySelector('.text-lg.font-extrabold.mt-1');
+    if (nameEl) nameEl.textContent = window.currentUser.name;
+    const cidEl = document.querySelectorAll('.text-xs.text-slate-500')[1];
+    if (cidEl) cidEl.textContent = 'Customer ID: ZAK-' + String(window.currentUser.id).padStart(5,'0');
+  }
+
+  // Load orders
+  const container = document.querySelector('.space-y-4');
+  if (!container) return;
+
+  try {
+    const data = await apiFetch('/user.php?orders=1');
+    const orders = data.orders || [];
+    if (!orders.length) {
+      container.innerHTML = `<div class="bg-white dark:bg-slate-900/60 border border-primary/10 rounded-2xl p-10 text-center text-slate-400">
+        No orders yet. <a href="shop.html" class="text-primary font-bold hover:underline">Start shopping -></a>
+      </div>`;
+      return;
+    }
+
+    const statusColors = {
+      pending: 'bg-amber-100 text-amber-700',
+      processing: 'bg-blue-100 text-blue-700',
+      completed: 'bg-emerald-100 text-emerald-700',
+      shipped: 'bg-emerald-100 text-emerald-700',
+      cancelled: 'bg-red-100 text-red-700',
+    };
+
+    container.innerHTML = orders.map(o => {
+      const sc = statusColors[o.status] || 'bg-slate-200 text-slate-700';
+      const label = o.status.charAt(0).toUpperCase() + o.status.slice(1);
+      return `
+        <article class="bg-white dark:bg-slate-900/60 border border-primary/10 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">#${o.code || o.id}</p>
+            <h2 class="text-lg font-bold mt-1">${o.customer_name || 'My Order'}</h2>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Total: PKR ${parseFloat(o.total).toLocaleString()} - Placed: ${o.created_at ? new Date(o.created_at).toLocaleDateString('en-PK') : 'N/A'}</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full ${sc}">${label}</span>
+            <a href="order-confirm.html?id=${encodeURIComponent(o.id || o.code)}" class="text-sm font-bold text-primary hover:underline">Details</a>
+          </div>
+        </article>`;
+    }).join('');
+  } catch(e) { console.warn('Orders load error', e); }
+});
+document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+  const menu = document.getElementById('mobile-menu');
+  const nav = document.getElementById('mobile-nav');
+  menu.classList.toggle('hidden');
+  nav.classList.toggle('hidden');
+});
+</script>
+</html>

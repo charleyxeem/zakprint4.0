@@ -1,0 +1,595 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoice #INV-2023-1042 - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Admin Dashboard</h2>
+</div>
+<div class="hidden md:flex flex-col min-w-64">
+<div class="flex w-full items-stretch rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<div class="flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-slate-500 text-lg">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm py-2 px-3 placeholder:text-slate-500" placeholder="Search invoices..."/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button id="mobile-menu-toggle" class="lg:hidden flex items-center justify-center p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold">Alex Johnson</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Super Admin</p>
+</div>
+<div class="size-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="size-full" data-alt="User profile avatar illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbML5dfXuXEkmw4k0HnBNnXnyrZTlwT_mMyvkWBSs7D3m1hZcdb6jpIaKlDZAyRIb5zQrB9FpD-yKqCCtFOhXb0D2xjLmZKKAFT5ZzPY1lNEYxao8WMmDfNsYl3JsDwZzpbZrbS2jjcmggYpQXcDazAYeAQbVhb-gYOb91v63U_UqBhmYmukakpexhtO8zlk5reUAp7z1lVfgK6R7JyMx8G_0J6uLWx-1A1qfHsqCl3eS0jANTv03NgBXQhiJ6C-GZW66AHI50hbRz"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Wrapper -->
+<main class="max-w-[1440px] mx-auto w-full px-4 lg:px-10 py-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-6 text-sm">
+<a class="text-slate-500 hover:text-primary transition-colors" href="admin-dash.html">Billing</a>
+<span class="material-symbols-outlined text-slate-400 text-xs">chevron_right</span>
+<a class="text-slate-500 hover:text-primary transition-colors" href="invoice-list.html">Invoices</a>
+<span class="material-symbols-outlined text-slate-400 text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">#INV-2023-1042</span>
+</nav>
+<!-- Page Header Actions -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4">
+<h1 id="invoice-number" class="text-3xl lg:text-4xl font-black tracking-tight">#INV-2023-1042</h1>
+<span id="invoice-status" class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-800">PARTIALLY PAID</span>
+</div>
+<p id="invoice-dates" class="text-slate-500 text-sm">Issued on Oct 24, 2023 â€¢ Due on Nov 07, 2023</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<button class="flex items-center gap-2 px-4 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+                        Edit
+                    </button>
+<button class="flex items-center gap-2 px-4 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                        PDF
+                    </button>
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-lg">share</span>
+                            Share
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<!-- Simple Dropdown Placeholder -->
+<div class="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 hidden group-hover:block z-10">
+<a class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-slate-50 dark:hover:bg-slate-700" href="admin-dash.html">
+<span class="material-symbols-outlined text-primary">mail</span> Email Client
+                            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 border-t border-slate-100 dark:border-slate-700" href="admin-dash.html">
+<span class="material-symbols-outlined text-emerald-500">chat</span> WhatsApp
+                            </a>
+</div>
+</div>
+<button class="flex items-center gap-2 px-6 h-10 rounded-lg bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">payments</span>
+                        Record Payment
+                    </button>
+</div>
+</div>
+<!-- Dashboard Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Main Invoice Content -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<!-- Invoice Header (Branding) -->
+<div class="p-8 lg:p-12 border-b border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between gap-10">
+<div class="flex flex-col gap-4">
+<div id="invoice-brand-name" class="flex items-center gap-2 text-primary font-black text-2xl">
+<span class="material-symbols-outlined text-3xl">deployed_code</span>
+                                    TECHFLOW
+                                </div>
+<div id="invoice-brand-address" class="text-sm text-slate-500 leading-relaxed">
+<p>123 Innovation Drive</p>
+<p>Silicon Valley, CA 94025</p>
+<p>United States</p>
+<p class="mt-2">contact@techflow.io</p>
+</div>
+</div>
+<div class="flex flex-col md:items-end gap-4">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Bill To</p>
+<div class="md:text-right">
+<p id="invoice-client-name" class="text-lg font-bold">Acme Corporation</p>
+<p id="invoice-client-address" class="text-sm text-slate-500 leading-relaxed">
+                                        456 Enterprise Way<br/>
+                                        New York, NY 10001<br/>
+                                        Attention: Sarah Jenkins
+                                    </p>
+<p id="invoice-client-email" class="text-sm text-primary mt-1 font-medium underline">sarah@acme.co</p>
+</div>
+</div>
+</div>
+<!-- Line Items Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800">
+<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase">Item Description</th>
+<th class="px-4 py-4 text-xs font-bold text-slate-500 uppercase text-center">Qty</th>
+<th class="px-4 py-4 text-xs font-bold text-slate-500 uppercase text-right">Price</th>
+<th class="px-4 py-4 text-xs font-bold text-slate-500 uppercase text-right">Tax</th>
+<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase text-right">Total</th>
+</tr>
+</thead>
+<tbody id="invoice-items-body" class="divide-y divide-slate-50 dark:divide-slate-800">
+<tr>
+<td class="px-8 py-6">
+<p class="font-bold">UI/UX Design - Dashboard Project</p>
+<p class="text-xs text-slate-500 mt-1">Full design system and high-fidelity wireframes</p>
+</td>
+<td class="px-4 py-6 text-center text-sm">1</td>
+<td class="px-4 py-6 text-right text-sm">$4,500.00</td>
+<td class="px-4 py-6 text-right text-sm">8%</td>
+<td class="px-8 py-6 text-right font-bold text-sm">$4,860.00</td>
+</tr>
+<tr>
+<td class="px-8 py-6">
+<p class="font-bold">Frontend Development (React)</p>
+<p class="text-xs text-slate-500 mt-1">Component architecture and API integration</p>
+</td>
+<td class="px-4 py-6 text-center text-sm">80 hrs</td>
+<td class="px-4 py-6 text-right text-sm">$120.00</td>
+<td class="px-4 py-6 text-right text-sm">8%</td>
+<td class="px-8 py-6 text-right font-bold text-sm">$10,368.00</td>
+</tr>
+<tr>
+<td class="px-8 py-6">
+<p class="font-bold">Hosting &amp; Cloud Services</p>
+<p class="text-xs text-slate-500 mt-1">Annual subscription for AWS managed services</p>
+</td>
+<td class="px-4 py-6 text-center text-sm">1</td>
+<td class="px-4 py-6 text-right text-sm">$1,200.00</td>
+<td class="px-4 py-6 text-right text-sm">0%</td>
+<td class="px-8 py-6 text-right font-bold text-sm">$1,200.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Financial Summary -->
+<div class="p-8 lg:p-12 flex flex-col md:flex-row justify-between gap-10">
+<div class="flex-1 max-w-md">
+<div class="p-6 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Notes &amp; Instructions</p>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        Payment is due within 14 days. Please include the invoice number <span class="font-bold text-slate-900 dark:text-white">#INV-2023-1042</span> as the payment reference for wire transfers.
+                                    </p>
+</div>
+</div>
+<div class="flex flex-col gap-3 min-w-[240px]">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Subtotal</span>
+<span id="invoice-subtotal" class="font-medium">$15,300.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Tax (Estimated)</span>
+<span id="invoice-tax" class="font-medium">$1,128.00</span>
+</div>
+<div class="h-[1px] bg-slate-100 dark:bg-slate-800 my-2"></div>
+<div class="flex justify-between text-lg font-black">
+<span>Total Amount</span>
+<span id="invoice-total">$16,428.00</span>
+</div>
+<div class="flex justify-between text-sm text-emerald-600 font-bold bg-emerald-50 dark:bg-emerald-900/20 px-3 py-2 rounded mt-2">
+<span>Amount Paid</span>
+<span id="invoice-paid">- $6,000.00</span>
+</div>
+<div class="flex justify-between text-xl font-black text-primary border-t-2 border-primary/20 pt-4 mt-2">
+<span>Balance Due</span>
+<span id="invoice-balance">$10,428.00</span>
+</div>
+</div>
+</div>
+<!-- Footer Info -->
+<div class="px-8 py-6 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row gap-6 md:items-center justify-between text-[11px] text-slate-400 font-medium uppercase tracking-widest">
+<div class="flex flex-wrap gap-x-8 gap-y-2">
+<span>IBAN: US93 1234 5678 9012 3456</span>
+<span>SWIFT/BIC: TECHFUS33</span>
+</div>
+<span>Tax ID: 98-7654321</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Content -->
+<aside class="lg:col-span-4 flex flex-col gap-6">
+<!-- Quick Context -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+<h3 class="font-bold text-sm mb-4">Quick Context</h3>
+<div class="flex flex-col gap-3">
+<a class="flex items-center justify-between p-3 rounded-lg border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:bg-primary/5 transition-all group" href="admin-dash.html">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-lg group-hover:text-primary">person</span>
+</div>
+<span class="text-sm font-medium">Acme Corp Profile</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">open_in_new</span>
+</a>
+<a class="flex items-center justify-between p-3 rounded-lg border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:bg-primary/5 transition-all group" href="quotation-list.html">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-lg group-hover:text-primary">description</span>
+</div>
+<span class="text-sm font-medium">Quotation #QT-992</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Payment History Timeline -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-sm">Payment History</h3>
+<button class="text-xs text-primary font-bold hover:underline">View All</button>
+</div>
+<div id="invoice-payments" class="relative flex flex-col gap-6 ml-2">
+<div class="absolute left-[7px] top-2 bottom-2 w-[2px] bg-slate-100 dark:bg-slate-800"></div>
+<div class="relative flex gap-4">
+<div class="size-4 rounded-full bg-emerald-500 border-4 border-white dark:border-slate-900 z-10 mt-1"></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-slate-900 dark:text-white">$6,000.00 Received</p>
+<p class="text-xs text-slate-500">Oct 28, 2023 â€¢ Wire Transfer</p>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="size-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10 mt-1"></div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-slate-400 italic">Remaining Balance</p>
+<p class="text-xs text-slate-400">$10,428.00 Pending</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Invoice Activity -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+<h3 class="font-bold text-sm mb-6">Invoice Activity</h3>
+<div class="flex flex-col gap-5">
+<div class="flex gap-4">
+<div class="flex items-center justify-center size-8 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 shrink-0">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</div>
+<div>
+<p class="text-sm font-medium">Viewed by Client</p>
+<p class="text-[11px] text-slate-500 uppercase">Oct 25, 2023 at 02:45 PM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center justify-center size-8 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 shrink-0">
+<span class="material-symbols-outlined text-lg">send</span>
+</div>
+<div>
+<p class="text-sm font-medium">Sent to sarah@acme.co</p>
+<p class="text-[11px] text-slate-500 uppercase">Oct 24, 2023 at 11:20 AM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center justify-center size-8 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 shrink-0">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+</div>
+<div>
+<p class="text-sm font-medium">Invoice Created</p>
+<p class="text-[11px] text-slate-500 uppercase">Oct 24, 2023 at 09:00 AM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Internal Notes -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-sm">Internal Notes</h3>
+<button class="text-xs text-slate-400 font-bold hover:text-primary transition-colors">Add</button>
+</div>
+<div class="p-3 bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20 rounded-lg">
+<p class="text-xs text-amber-800 dark:text-amber-400 leading-relaxed italic">
+                                "Client requested a breakdown of hosting costs. Mentioned they might upgrade the plan next quarter."
+                            </p>
+<div class="mt-2 flex items-center gap-2">
+<div class="size-4 rounded-full bg-amber-200"></div>
+<p class="text-[10px] font-bold text-amber-700 dark:text-amber-500 uppercase">Alex J. â€¢ 2 days ago</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-10">
+<div class="max-w-[1440px] mx-auto px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<div>
+<h4 class="text-sm font-bold mb-4 uppercase tracking-widest text-slate-400">Security &amp; Compliance</h4>
+<p class="text-xs text-slate-500 leading-relaxed">
+                        This document is electronically generated and digitally signed. Verified for integrity and authenticity via blockchain timestamping services.
+                    </p>
+</div>
+<div>
+<h4 class="text-sm font-bold mb-4 uppercase tracking-widest text-slate-400">Payment Help</h4>
+<p class="text-xs text-slate-500 leading-relaxed">
+                        Facing issues with payment? Contact our billing department at billing@techflow.io or call +1 (800) 555-0192 during business hours.
+                    </p>
+</div>
+<div class="lg:text-right">
+<p class="text-xs text-slate-400 mb-1">Â© 2023 TechFlow Solutions Inc.</p>
+<div class="flex lg:justify-end gap-4 text-xs font-bold text-primary">
+<a class="hover:underline" href="#">Privacy Policy</a>
+<a class="hover:underline" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src="js/sidebar-controller.js" defer></script></body>
+<!-- ZAK V4: Invoice view wiring -->
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const id = new URLSearchParams(window.location.search).get('id');
+  if (!id) return;
+
+  let invoiceData = null;
+
+  const money = (value) => formatPKR(Number(value) || 0);
+  const escapeHtml = (value) => String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+  try {
+    const data = await adminFetch(`/invoices.php?id=${id}`);
+    invoiceData = data.invoice;
+    if (!invoiceData) { showAdminToast('Invoice not found', 'error'); return; }
+    const inv = invoiceData;
+
+    const total = Number(inv.total ?? 0);
+    const paid = Number(inv.amount_paid ?? 0);
+    const balanceDue = inv.balance_due !== undefined ? Number(inv.balance_due) : Math.max(0, total - paid);
+
+    const invoiceNumber = document.getElementById('invoice-number');
+    if (invoiceNumber) invoiceNumber.textContent = inv.invoice_no || `INV-${id}`;
+
+    const statusBadgeEl = document.getElementById('invoice-status');
+    if (statusBadgeEl) {
+      statusBadgeEl.outerHTML = statusBadge(inv.status || 'draft');
+    }
+
+    const datesEl = document.getElementById('invoice-dates');
+    if (datesEl) {
+      datesEl.textContent = `Issued on ${formatDate(inv.created_at)} â€¢ Due on ${inv.due_date ? formatDate(inv.due_date) : 'â€”'}`;
+    }
+
+    const brandName = document.getElementById('invoice-brand-name');
+    if (brandName) {
+      brandName.innerHTML = `<span class="material-symbols-outlined text-3xl">deployed_code</span>${escapeHtml(inv.company_name || 'ZAK Printing')}`;
+    }
+
+    const brandAddress = document.getElementById('invoice-brand-address');
+    if (brandAddress) {
+      const brandLines = [inv.address, inv.bp_phone, inv.bp_email].filter(Boolean);
+      brandAddress.innerHTML = brandLines.map((line) => `<p>${escapeHtml(line)}</p>`).join('');
+    }
+
+    const clientName = document.getElementById('invoice-client-name');
+    if (clientName) clientName.textContent = inv.client_name || '';
+
+    const clientAddress = document.getElementById('invoice-client-address');
+    if (clientAddress) {
+      const clientLines = [inv.client_company, inv.client_phone].filter(Boolean);
+      clientAddress.innerHTML = clientLines.map((line) => escapeHtml(line)).join('<br/>');
+    }
+
+    const clientEmail = document.getElementById('invoice-client-email');
+    if (clientEmail) clientEmail.textContent = inv.client_email || '';
+
+    const itemsBody = document.getElementById('invoice-items-body');
+    if (itemsBody) {
+      itemsBody.innerHTML = (inv.items || []).map((item) => {
+        const qty = Number(item.quantity ?? 0);
+        const price = Number(item.price ?? 0);
+        const lineTotal = Number(item.line_total ?? qty * price);
+        const taxPercent = Number(item.tax_percent ?? 0);
+        return `
+          <tr>
+            <td class="px-8 py-6">
+              <p class="font-bold">${escapeHtml(item.description || '')}</p>
+            </td>
+            <td class="px-4 py-6 text-center text-sm">${qty}</td>
+            <td class="px-4 py-6 text-right text-sm">${money(price)}</td>
+            <td class="px-4 py-6 text-right text-sm">${taxPercent ? `${taxPercent}%` : 'Exempt'}</td>
+            <td class="px-8 py-6 text-right font-bold text-sm">${money(lineTotal)}</td>
+          </tr>`;
+      }).join('') || '<tr><td colspan="5" class="px-8 py-6 text-center text-sm text-slate-400">No items found.</td></tr>';
+    }
+
+    const subtotalEl = document.getElementById('invoice-subtotal');
+    if (subtotalEl) subtotalEl.textContent = money(inv.subtotal ?? 0);
+
+    const taxEl = document.getElementById('invoice-tax');
+    if (taxEl) taxEl.textContent = money(inv.tax ?? 0);
+
+    const totalEl = document.getElementById('invoice-total');
+    if (totalEl) totalEl.textContent = money(total);
+
+    const paidEl = document.getElementById('invoice-paid');
+    if (paidEl) paidEl.textContent = `- ${money(paid)}`;
+
+    const balanceEl = document.getElementById('invoice-balance');
+    if (balanceEl) balanceEl.textContent = money(balanceDue);
+
+    const paymentsEl = document.getElementById('invoice-payments');
+    if (paymentsEl) {
+      const payments = Array.isArray(inv.payments) ? inv.payments : [];
+      if (payments.length) {
+        paymentsEl.innerHTML = payments.map((payment) => `
+          <div class="relative flex gap-4">
+            <div class="size-4 rounded-full bg-emerald-500 border-4 border-white dark:border-slate-900 z-10 mt-1"></div>
+            <div class="flex flex-col">
+              <p class="text-sm font-bold text-slate-900 dark:text-white">${money(payment.amount)} Received</p>
+              <p class="text-xs text-slate-500">${formatDate(payment.paid_at)}${payment.method ? ` â€¢ ${escapeHtml(payment.method)}` : ''}</p>
+            </div>
+          </div>`).join('');
+      } else {
+        paymentsEl.innerHTML = `
+          <div class="relative flex gap-4">
+            <div class="size-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10 mt-1"></div>
+            <div class="flex flex-col">
+              <p class="text-sm font-medium text-slate-400 italic">No payments recorded</p>
+              <p class="text-xs text-slate-400">Balance due ${money(balanceDue)}</p>
+            </div>
+          </div>`;
+      }
+    }
+
+    const heading = document.querySelector('h1, h2.text-2xl');
+    if (heading && !heading.id) heading.textContent = inv.invoice_no;
+
+  } catch(e) { showAdminToast('Failed to load invoice', 'error'); console.error(e); }
+
+  // â”€â”€â”€ Wire Action Buttons â”€â”€â”€
+  const buttons = document.querySelectorAll('.flex.flex-wrap.items-center.gap-3 button, .flex.flex-wrap.items-center.gap-3 a');
+
+  buttons.forEach(btn => {
+    const text = btn.textContent.trim();
+
+    // Edit button
+    if (text.includes('Edit')) {
+      btn.addEventListener('click', () => window.location.href = 'create-invoice.html?edit=' + id);
+    }
+    // PDF download button
+    else if (text.includes('PDF')) {
+      btn.addEventListener('click', () => {
+        window.open(adminApiBase() + '/pdf.php?type=invoice&id=' + id, '_blank');
+      });
+    }
+    // Record Payment button
+    else if (text.includes('Record Payment')) {
+      btn.addEventListener('click', () => {
+        const amount = prompt('Enter payment amount (PKR):');
+        if (!amount || isNaN(amount)) return;
+        const method = prompt('Payment method (e.g. Cash, Bank Transfer, Cheque):') || 'Cash';
+        adminFetch(`/invoices.php?id=${id}`, {
+          method: 'PATCH',
+          data: { payment_amount: parseFloat(amount), method: method }
+        }).then(() => {
+          showAdminToast('Payment recorded!', 'success');
+          setTimeout(() => location.reload(), 800);
+        }).catch(e => showAdminToast(e.message || 'Failed', 'error'));
+      });
+    }
+  });
+
+  // Email Client link
+  const emailLink = document.querySelector('a .material-symbols-outlined.text-primary');
+  if (emailLink) {
+    const emailA = emailLink.closest('a');
+    if (emailA) {
+      emailA.href = '#';
+      emailA.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const toEmail = invoiceData?.client_email || prompt('Enter client email:');
+        if (!toEmail) return;
+        try {
+          await adminFetch('/email.php', {
+            method: 'POST',
+            data: { type: 'invoice', id, to_email: toEmail, to_name: invoiceData?.client_name || '' }
+          });
+          showAdminToast('Email sent to ' + toEmail, 'success');
+        } catch(err) { showAdminToast(err.message || 'Email failed', 'error'); }
+      });
+    }
+  }
+
+  // WhatsApp link
+  const waIcon = document.querySelector('.material-symbols-outlined.text-emerald-500');
+  if (waIcon) {
+    const waA = waIcon.closest('a');
+    if (waA) {
+      waA.href = '#';
+      waA.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const phone = invoiceData?.client_phone || prompt('Enter client WhatsApp number:');
+        if (!phone) return;
+        try {
+          await adminFetch('/whatsapp.php', {
+            method: 'POST',
+            data: { type: 'invoice', id, phone }
+          });
+          showAdminToast('WhatsApp sent to ' + phone, 'success');
+        } catch(err) { showAdminToast(err.message || 'WhatsApp failed', 'error'); }
+      });
+    }
+  }
+});
+
+// Helper to get admin API base URL
+function adminApiBase() {
+  const loc = window.location;
+  const pathParts = loc.pathname.split('/');
+  const projectIdx = pathParts.findIndex(p => p.toLowerCase().includes('zakprinting'));
+  const basePath = projectIdx >= 0 ? '/' + pathParts.slice(1, projectIdx + 1).join('/') : '';
+  return loc.origin + basePath + '/api/admin';
+}
+</script>
+<script>
+// Mobile menu toggle for header-only layout
+const toggle = document.getElementById('mobile-menu-toggle');
+if (toggle) {
+  toggle.addEventListener('click', function() {
+    alert('Navigation menu\nDashboard\nInvoices\nQuotations\nProducts\nUsers\nSettings\nEarnings\nQueries');
+  });
+}
+</script>
+</html>
+

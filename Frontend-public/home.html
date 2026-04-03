@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZAK Printing | Premium Custom Printing Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ec5b13",
+              secondary: "#f97316",
+              "background-light": "#f8f6f6",
+              "background-alt": "#fff4ec",
+              "background-dark": "#221610",
+            },
+            fontFamily: {
+              display: ["Public Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        :root {
+            --brand-gradient: linear-gradient(90deg, #ec5b13 0%, #f97316 100%);
+        }
+        .gradient-text {
+            background: var(--brand-gradient);
+          background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: var(--brand-gradient);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #fff8f3 0%, #fde9da 100%);
+        }
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #312019 0%, #221610 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .brand-glow {
+            box-shadow: 0 14px 36px -18px rgba(236, 91, 19, 0.28);
+        }
+        .brand-glow-blue {
+            box-shadow: 0 14px 36px -18px rgba(249, 115, 22, 0.24);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
+<div class="layout-container flex min-h-screen flex-col gap-0">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap gap-6">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-primary" href="home.html">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-primary text-sm font-bold transition-colors" href="home.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="shop.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors" aria-label="Account" onclick="window.location.href='user-login.html'">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative" aria-label="Shopping cart" onclick="window.location.href='checkout.html'">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+</div>
+<a class="hidden sm:flex items-center justify-center px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
+            Appointment
+          </a>
+<button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
+<nav id="mobile-nav" class="hidden lg:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
+<div class="p-4 space-y-2">
+<a class="block px-4 py-3 text-primary font-bold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
+<hr class="my-2 border-slate-200 dark:border-slate-800">
+<a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="appointment.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
+</div>
+</nav>
+<script>
+document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+  const menu = document.getElementById('mobile-menu');
+  const nav = document.getElementById('mobile-nav');
+  const isHidden = menu.classList.contains('hidden');
+  if (isHidden) {
+    menu.classList.remove('hidden');
+    nav.classList.remove('hidden');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    menu.classList.add('hidden');
+    nav.classList.add('hidden');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+<main class="flex-1 m-0 p-0">
+<section class="relative mt-0 px-6 pt-0 pb-20 lg:px-20">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-12 gap-6 items-start content-start">
+<div class="col-span-12 lg:col-span-9">
+<div class="hero-gradient m-0 rounded-[2.5rem] p-5 lg:p-8 relative overflow-hidden flex items-start border border-white/50">
+<div class="relative z-10 max-w-lg">
+<span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Special Weekly Offer</span>
+<h1 class="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-tight mb-6">You Think,<br/><span class="gradient-text">We Create.</span></h1>
+<p class="text-lg text-slate-600 dark:text-slate-300 mb-8">Premium custom printing for your brand. High-quality materials, fast turnaround, and stunning results.</p>
+<a class="gradient-bg text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform inline-flex items-center gap-2 shadow-xl shadow-primary/20 w-max" href="#product-detail">
+                                Shop All Products <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<img alt="Hero Printing Product" class="absolute right-0 bottom-0 h-4/5 w-1/2 object-cover mix-blend-multiply opacity-80 hidden lg:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiWPMhLbMSgDMMRkxLkCqnKVHfTU7DpkEuAKNmTEQG20wSyJfNxhTn0PrxtHrm1MAFzYmcrIQzRqJXa_Ude688xVbQG5YLenhC9opg5SsMLAhcZ_l0x8pScJtbwDtyhd1CoCYUgwmsjHGfF0LXkdwC3j3TOPLmecIpu4l_-4Y_UURECXZotoU4naQkLRvUgkkX33ESzteRyAuERva9qsvxuB9F1URCYIZzSfzxNIHtDxFHaEI7SIF7BPnICLDeXL7kE9r9YkeF92g"/>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-3 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-[2.5rem] border border-primary/10 flex-1 brand-glow">
+<h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+<span class="w-1.5 h-6 gradient-bg rounded-full"></span>
+                            Top Categories
+                        </h3>
+<div class="grid grid-cols-2 gap-4">
+<a class="text-center group block" href="#category-business-cards">
+<div class="bg-primary/10 dark:bg-slate-800 p-4 rounded-2xl group-hover:bg-primary/15 transition-colors mb-2 border border-primary/10">
+<span class="material-symbols-outlined text-3xl text-primary">badge</span>
+</div>
+<p class="text-xs font-bold text-slate-600">Business Cards</p>
+</a>
+<a class="text-center group block" href="#category-boxes">
+<div class="bg-primary/10 dark:bg-slate-800 p-4 rounded-2xl group-hover:bg-primary/15 transition-colors mb-2 border border-primary/10">
+<span class="material-symbols-outlined text-3xl text-primary">inventory_2</span>
+</div>
+<p class="text-xs font-bold text-slate-600">Boxes</p>
+</a>
+<a class="text-center group block" href="#category-labels">
+<div class="bg-primary/10 dark:bg-slate-800 p-4 rounded-2xl group-hover:bg-primary/15 transition-colors mb-2 border border-primary/10">
+<span class="material-symbols-outlined text-3xl text-primary">local_offer</span>
+</div>
+<p class="text-xs font-bold text-slate-600">Labels</p>
+</a>
+<a class="text-center group block" href="#category-merch">
+<div class="bg-primary/10 dark:bg-slate-800 p-4 rounded-2xl group-hover:bg-primary/15 transition-colors mb-2 border border-primary/10">
+<span class="material-symbols-outlined text-3xl text-primary">apparel</span>
+</div>
+<p class="text-xs font-bold text-slate-600">Merch</p>
+</a>
+<a class="text-center group block" href="#category-stamps">
+<div class="bg-primary/10 dark:bg-slate-800 p-4 rounded-2xl group-hover:bg-primary/15 transition-colors mb-2 border border-primary/10">
+<span class="material-symbols-outlined text-3xl text-primary">ink_highlighter</span>
+</div>
+<p class="text-xs font-bold text-slate-600">Stamps</p>
+</a>
+<a class="text-center group block" href="#category-uv-printing">
+<div class="bg-primary/10 dark:bg-slate-800 p-4 rounded-2xl group-hover:bg-primary/15 transition-colors mb-2 border border-primary/10">
+<span class="material-symbols-outlined text-3xl text-primary">layers</span>
+</div>
+<p class="text-xs font-bold text-slate-600">UV Printing</p>
+</a></div>
+<a class="block text-center w-full mt-6 py-3 border-2 border-slate-100 dark:border-slate-700 rounded-xl text-sm font-bold hover:border-primary/30 transition-colors" href="#categories">View All Categories</a>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] flex items-center justify-between group border border-primary/10">
+<div>
+<h4 class="font-bold text-xl mb-1 text-primary">Drinkware</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Personalized mugs &amp; more</p>
+<a class="inline-block bg-white dark:bg-slate-800 text-xs font-bold px-4 py-2 rounded-lg border border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors" href="shop.html">Shop Now</a>
+</div>
+<img alt="Mug" class="w-24 h-24 object-cover rounded-xl shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy4nnHpp1gNZzs7ZIYGYiYCo4JisR6yS9JPA8iLJjD4auXpu0QXhBY02e-QQSUsPNp3MSZNOUdfBzktB6qNFMqTyc8TsJbrt0rzYEDRrw6lRdKxUJYZwkLrVVCLWobDVdZ2MB33eaEOQFIklw5lJ-OO5XufGbO_F0Dz0IZvk_IpYsFPertz9n2qEVjUZrmfsBr8Qpo9redG8io5HM77ftrodIZYUPz9KdUdH7vZXodftafid8gsfGSZt11mRSFDtUJn0uqbJULTlw"/>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] flex items-center justify-between group border border-primary/10">
+<div>
+<h4 class="font-bold text-xl mb-1 text-primary">Merch Matte</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Premium apparel printing</p>
+<a class="inline-block bg-white dark:bg-slate-800 text-xs font-bold px-4 py-2 rounded-lg border border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors" href="shop.html">Shop Now</a>
+</div>
+<img alt="Shirt" class="w-24 h-24 object-cover rounded-xl shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBpLQuR1lQKxU7_MnUpN-kx68q9ALufubFbS1BXT-CLVsFe2YI-O7KAeIJqNp1HMbGhZSwWbuEQrNDn_cyHrZIZiZJ55NQKu4Lt5Irsc92_qQKSNs6SKCFucui_lVpUkeI_2yrvNtj7i1QoA_SiiqR6zVzUDRKVIgwCSsBRnwwtgTxem5teyrfeN7VriuzLxfh2T9cfCYiM8gkGj5k60f2WSo7QaA6oWrty6IcceYhqwYZK2zrapdFF_9Gi4HoNICTwOjEwbNmvaw"/>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] flex items-center justify-between group border border-primary/10">
+<div>
+<h4 class="font-bold text-xl mb-1 text-primary">Launch New</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Business starter kits</p>
+<a class="inline-block bg-white dark:bg-slate-800 text-xs font-bold px-4 py-2 rounded-lg border border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors" href="shop.html">Shop Now</a>
+</div>
+<img alt="Tote Bag" class="w-24 h-24 object-cover rounded-xl shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9yZOWCHK5RIAD4ZTZ7NHwy9pcoY1OYnIUELVf4sx07WFdLOOLd1-_ioocURnIxBCGO54K2RN9Y4BOd1RCHQ6K3mfjik6hm57-K1aRrXkyxQcUXxKjumo7LAn5auZPR19vNl5kaQqz2v3puHI2ovGssLjalWa3WEHvKQU7M0YdqK4b4Txy9NLaObU9Pe32dvHtPl1SJTC5BomJvRpZ0wrRB-wFVoegvI29DaZoTZlUfffLtj_YEUpJNIru0f3EqFJbqCoVKzLA24g"/>
+</div>
+</div>
+</section>
+<section class="container mx-auto px-4 lg:px-8 py-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-3xl font-black gradient-text">Trending Now</h2>
+<a class="text-primary font-bold flex items-center gap-1 hover:translate-x-1 transition-transform" href="#trending">
+                    View All <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+</a>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-6 custom-scrollbar">
+<a class="min-w-[200px] flex-shrink-0 group block" href="#product-detail-tees">
+<div class="bg-white dark:bg-slate-800 rounded-3xl p-4 border border-slate-100 dark:border-slate-700 mb-4 overflow-hidden brand-glow hover:border-primary/20 transition-all">
+<img alt="Shirt" class="w-full h-40 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACdplfjz1sAgV_FGjiU-S29enZITT9jd9UWdChWbC8B5OYZLzORTkR_84znR3fuvvl0qKk5QA91uBSE8lmI8f8J977ovE1a9I28EEWLaGU9hYxbEI6LbUgkzfmF7s6LuKpaoP8BUYAq26Te0Oq7wrX__ROrXndGXnRHQb5ccOEZJUWTWl_GL7xJJY1IoML4Gup7Cd_saAmjc_uHyxQnVLdwkx5N6U7tc8oV_NWe0Lm_0RV1JP4jKkb51iNW3GDnrBRdqnMkJleSdk"/>
+</div>
+<p class="font-bold text-center text-slate-700">Cotton Tees</p>
+</a>
+<a class="min-w-[200px] flex-shrink-0 group block" href="#product-detail-caps">
+<div class="bg-white dark:bg-slate-800 rounded-3xl p-4 border border-slate-100 dark:border-slate-700 mb-4 overflow-hidden brand-glow hover:border-secondary/20 transition-all">
+<img alt="Cap" class="w-full h-40 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiZWEbcqCYuhXDSN0Q2tg_mc8mL927v9FTC_GYisIfm-ZydWJKqd221Hpy7Yb0y1mmyBI7MQjWQ4lFfWOY85fXbjgnXF2poFbYRz8QN0LdZ945fKovi2_GyVSzsCbALv1TECjliAANYqHN5BeSU-4cDplXGc30X17LLwu0ttsAy3Y4Bhj5b2FiYaaSKye--Y87D5S-JHXOT_yCWeQses78hKkvFehDNnYLPD1kGUY_c1tOnI2a_x4cbhIxYyKc0VT8mZq44aidAH8"/>
+</div>
+<p class="font-bold text-center text-slate-700">Snapback Caps</p>
+</a>
+<a class="min-w-[200px] flex-shrink-0 group block" href="#product-detail-mugs">
+<div class="bg-white dark:bg-slate-800 rounded-3xl p-4 border border-slate-100 dark:border-slate-700 mb-4 overflow-hidden brand-glow hover:border-primary/20 transition-all">
+<img alt="Mug" class="w-full h-40 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkroxQaU60o3jJb1IO0KQOifQlr38oyu5vkxD4gnwzneLwx7ev_yOSlWyRbHx0vhRd8e5vZzmjzaI3GWOsrPcxQj6SRIliTXdit6ohLt6aDnAjesTF3zLKLAmmNPeHxryJ_W1nbbNfs4Tc-csbiJJ2BbvFUTQl9ttmg2EtXxLoHV6Ac8i7fXvhOsFyIrTt5UWXqsET-51DmmaKwgj-WrbaJD-P6kyvbgpKNJSe2Mb7fuJQyAKVaoPUnQMDBpbfESZMOjj_yWki3HA"/>
+</div>
+<p class="font-bold text-center text-slate-700">Ceramic Mugs</p>
+</a>
+<a class="min-w-[200px] flex-shrink-0 group block" href="#product-detail-boxes">
+<div class="bg-white dark:bg-slate-800 rounded-3xl p-4 border border-slate-100 dark:border-slate-700 mb-4 overflow-hidden brand-glow hover:border-secondary/20 transition-all">
+<img alt="Packaging" class="w-full h-40 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrn3rgN8Kud01moMqdVPToQmJuheeExqxq5STWiMg9SlDKAuIZxTZDHlex78GcEkNmaGNnIMCifVtO_TetM3oMQBgOo8eJ38zYMArFpb-tKPWBPyj4sBEVwu7Sdtng69rbcugNufBxsCpQW4ThALGnri1SxjuFWcnPNvNDt49ocHZmCDmMQ_VLjStgkgdzo7VQk3SFQ4fcXotHnuZuTIe11cS2I1PfiOotDF3l5BYk9eOeXX6M2HmYwj_OUoyCMA_yUFNBOrWGSa4"/>
+</div>
+<p class="font-bold text-center text-slate-700">Corporate Boxes</p>
+</a>
+<a class="min-w-[200px] flex-shrink-0 group block" href="#product-detail-envelopes">
+<div class="bg-white dark:bg-slate-800 rounded-3xl p-4 border border-slate-100 dark:border-slate-700 mb-4 overflow-hidden brand-glow hover:border-primary/20 transition-all">
+<img alt="Envelopes" class="w-full h-40 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgCzcWtwUpa7HNNzfDZYs5wqi3ONGLxJF-cAR01QpQTh0V18LmhvWnqByPP6LvboqYcReoWILPWFLlvAHfHaRlJSw84fEEbNzzWFmJmO0urTx49ypLDD9bviiMwpwVPApsN3yJBG-watXuV3lUOGpABNINKC8HdDASuVJfJ7FlSPWQyqd1lsNQX4kHbX_85oy1uwFbAjTAG4TYpRjS2g9mVzDtFtJz8gfCJMozGneRddLV_UQnrSkf41RI-pZuI8Pi3YiBolbReTU"/>
+</div>
+<p class="font-bold text-center text-slate-700">Luxury Envelopes</p>
+</a>
+</div>
+</section>
+<section class="container mx-auto px-4 lg:px-8 py-6">
+<div class="gradient-bg rounded-[2.5rem] p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-2xl shadow-primary/30">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white blur-[120px] opacity-20"></div>
+<div class="relative z-10 text-center lg:text-left">
+<span class="text-white/80 font-bold uppercase tracking-widest text-sm mb-2 block">Exclusive Offer</span>
+<h3 class="text-3xl lg:text-5xl font-black text-white mb-4">Apply Today And Get <span class="text-white underline decoration-orange-200">10% OFF</span> for corporate orders</h3>
+<p class="text-white/70 font-medium">Bulk printing solutions for offices and events.</p>
+</div>
+<a class="inline-block relative z-10 bg-white text-primary px-10 py-4 rounded-full font-extrabold whitespace-nowrap hover:bg-slate-900 hover:text-white transition-all transform hover:scale-105" href="#corporate-deals">Explore This Deal</a>
+</div>
+</section>
+<section class="container mx-auto px-4 lg:px-8 py-16">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-black mb-6 text-slate-900">For our business customers</h2>
+<div class="flex flex-wrap justify-center gap-4 text-sm font-bold">
+<span class="px-5 py-2.5 bg-primary/10 text-primary rounded-full flex items-center gap-2 border border-primary/10 shadow-sm"><span class="material-symbols-outlined text-sm font-bold">check_circle</span> Quick Delivery</span>
+<span class="px-5 py-2.5 bg-primary/10 text-primary rounded-full flex items-center gap-2 border border-primary/10 shadow-sm"><span class="material-symbols-outlined text-sm font-bold">check_circle</span> Fully Customizable</span>
+<span class="px-5 py-2.5 bg-primary/10 text-primary rounded-full flex items-center gap-2 border border-primary/10 shadow-sm"><span class="material-symbols-outlined text-sm font-bold">check_circle</span> Best Prices</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="gradient-bg p-1 rounded-[2.5rem] shadow-xl shadow-primary/20">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-[2.4rem] h-full text-center flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-40 h-40 gradient-bg blur-[80px] opacity-10"></div>
+<p class="text-primary font-bold mb-4 uppercase tracking-tighter">Countdown Is On</p>
+<h3 class="text-3xl font-black mb-8 leading-tight">Save on Your Favorite <span class="gradient-text">Prints</span></h3>
+<div class="flex gap-4 mb-8">
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span class="text-3xl font-black text-primary">09</span><p class="text-[10px] uppercase font-bold text-slate-500">Days</p></div>
+<span class="text-3xl font-black text-slate-300 flex items-center">:</span>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span class="text-3xl font-black text-primary">02</span><p class="text-[10px] uppercase font-bold text-slate-500">Hours</p></div>
+<span class="text-3xl font-black text-slate-300 flex items-center">:</span>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span class="text-3xl font-black text-primary">38</span><p class="text-[10px] uppercase font-bold text-slate-500">Mins</p></div>
+</div>
+<a class="inline-block gradient-bg text-white px-8 py-3 rounded-full font-bold w-full hover:scale-105 transition-transform shadow-lg shadow-primary/20" href="#sale">Shop The Sale</a>
+<img alt="Stationery" class="mt-8 rounded-2xl w-full h-48 object-cover border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4cksaYfbJxzlxiiDr8uYIsSAtaFbcOpwMT_36DvY0HXjEUdq5DR244dTBJr8KcuxjBbkduGCJo8UE2f09aHungeMf1G0cYlodoE0jiRVgmTDldyoHNEM5XN6J6Tmru9AF3C_zKCTyglYBv9yxex-OLEFQs58JTgknw2jw9f6ElUtOb2YVCcXkTOsZSI04-YLavj7nfi7ldcmZwoBRBO5u7P0N7iDDhWe53oD_neW-gVcwX7nWw2b2iBKfe2QMb8ZY5cgrOSo6r98"/>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4">
+<a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow-blue hover:border-secondary/30 transition-all block group text-center" href="#product-detail-pens">
+<div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
+<img alt="Pens" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMcNnNSeo5N63VMZLUG4dImxEjxTj9rP7wgbJN5u09SlUyQdAMg84s8hT8tZnvMnLJjg_tABNVm1tR4fl8rRya5DiG_gzYcNHEYB1l7Ww7yPmQuhOWOhf3b1HxWRbxW8ke5g_lxlHVyUCzsS8FxpWQEFRfE-y5hd6KIbr0Y465a7mogwFu0bqNn8wlJdN0aUrTqouUrb3ehfn0OCn6FjFK8qNd4T0dec8NlgD5y6lLpUSI6Oh9DXgRYOaSPdX9eFEuHsbezL-iBdg"/>
+</div>
+<p class="text-sm font-bold text-slate-700">Custom Pens</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow hover:border-primary/30 transition-all block group text-center" href="#product-detail-calendars">
+<div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
+<img alt="Calendar" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApZy8GwT1Du1XmYIvsJWBaXf9QdQQHwqdKwfbIXUzR4ag2ss1HffdGUfmiwAOwEruJyVDrr-nEzKLIWEdEtGA0mm5J0pSm2A-3kQRnNPbsVH0ctwldXFYU5eV36-BseaAqg9o8Kxfll7wEGOmQ8V4pwvw3VWrXuvvxqXelIZGH6Fc3pgO6x5eDW8ZMU46Wn2GU_iKWvhBQcZHDXGTgnKHG3smK5LcRjXutMF5wYvtyQrkXR_ofaGD0YCYCEDeXsru7iHe7TyafHvM"/>
+</div>
+<p class="text-sm font-bold text-slate-700">Calendars</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow-blue hover:border-secondary/30 transition-all block group text-center" href="#product-detail-journals">
+<div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
+<img alt="Notebook" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK8-ftSTVc8VyuQFGwg-mOsEZJtAkbPl-26EzvOiHCmIk8sABVLZpPcdMrzZiMA69TZkLxCHx-RkfdLHi9CDGsQXtKERzuoHtk4-fXQxaoBe7wycujmgwJIW1DN4ryFoXgS1TiWvoiaj8BLU3e1Ev2YQcdQ3HAdPAfoOTxlyPPjzEzo7Q47Rgyr9clnOtpdzru9x714XjGRidnpZudQhdtutqo5LssRT3WtGDVF6XGet0qcCMq-VlTiUGnJQOyK_kRaZuNTh64IQU"/>
+</div>
+<p class="text-sm font-bold text-slate-700">Journals</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow hover:border-primary/30 transition-all block group text-center" href="#product-detail-booklets">
+<div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
+<img alt="Booklet" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA62LBhoFWsp4T5XGXoarXf-GKmr1Au7s7FZmtP5Ab7eR2sXL_BwvSyaM5rT1YY84R-0REx-2sC2X-2Z2zS56BIZxv_GkqEsEH3y7NhgN5EW2JmDYiQB7l4sQVL9-hu5kIs-9EgQF3lh5Sk4vYwy83_MXj0jAO3mWB_94WWnKSBNBvLOwN1px9VgKYTiMQpLlfLpwMBXr2zCELpIxEHDRLHLUODVUMRCYMXIEgwJ7sy1NrdvATLlbBnqlGcwD1yKNK0ajT3Bvtp0ao"/>
+</div>
+<p class="text-sm font-bold text-slate-700">Booklets</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow-blue hover:border-secondary/30 transition-all block group text-center" href="#product-detail-wallets">
+<div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
+<img alt="Wallet" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrlbSU4atrdujFp1qfmLoPF4-32onyzXabx7eLwp16je973XdvSCt5sQHJFmkbtc6Nt7mw84McaKuCPx3aiIDkFMiCDVpvmo5F4vfIiSvvnp2gD6MieIGLkTgoB4d-4AZ9KcxxOGbdZLgw-u5s0olUC8mygGHegOncpn0q1AUOF9Bt78I-WUdXTrEuSaADHztEsFhM-kI8RlB3zQmuZGCsqso70K1FWPozG76Ix846v5gxB2CvHHdl3hqjqxMXdzGBhgVI6H8u4V8"/>
+</div>
+<p class="text-sm font-bold text-slate-700">Gift Wallets</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow hover:border-primary/30 transition-all block group text-center" href="#product-detail-cards">
+<div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
+<img alt="Cards" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_eZK7s1ZmnLmib1wOIepmQCdpXtSFn7aSUfzjtSCU5VNojI5hbhYi5Gn1F05W7ObtH3Mq1lXCnmWbf93JXKxfk7mL--VdLlOm_xhsd78ensgpT98MQIXYEjdGLECPBwywgoyIH3WXCBCGN0I-zWkbVTUbuSpIrM_UJ4yVsQUxebYaeT-5H9ygu_CB3RWF5BJf23--xL0ldM2mEAui4UlozBV7im26yal-f7pq3P1UtgX6kKZmazrAVfIVn2IghyXLdZsIPwXzR44"/>
+</div>
+<p class="text-sm font-bold text-slate-700">Business Cards</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow-blue hover:border-secondary/30 transition-all block group text-center" href="#product-detail-usb">
+<div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
+<img alt="USB" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5Hl2ab-KvLIVmM4glRkr74gTpOPj6uCytoNNu9WqQn7U39yTA7HLKcq1R3dvbgjhVX4c0p75QimxrmMVK8sGr8F0HIp2_np-l5AughjQ2a1q61foGM_AOlCA8i1vjysQMlUraraAKwhYXZD_E0Tyii4-PO8pTnjPo_2efbuHzNkrnmD2_i_Vx0SuTGOxuXkIOfqhDrIiJhimU9wwewrw8r1hlEWUZLMpXr7UVq9-ABXgtS1TQvPO8s15HH766Jwm91pt1AD7JkrQ"/>
+</div>
+<p class="text-sm font-bold text-slate-700">USB Flash</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow hover:border-primary/30 transition-all block group text-center" href="#product-detail-keychains">
+<div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
+<img alt="Keychain" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMtmKXa5wtsKoEACZnJcnk2te8WOHqVqh8Qx6ryMhm79Cis74blIb0Kkn73BDcXh-p1LeQcRfuD2jPr8b-aUYPUTMrg8RNs-Sr2mrvF3-serMTtAlQ9JoDCAnCAWmb3N7vr-xC4NQpchA9_yLloGF1sQA3laOa9t7y7u5CSVOBprA0qGia12MNuavpoDL_5Rxei_G0WvsJg1mvBX3iD_sjPpstZEESLWzSguPkMkAdDGkL67vKGBSCAMyAGQWYYdQsH8zZ8FbjBOw"/>
+</div>
+<p class="text-sm font-bold text-slate-700">Keychains</p>
+</a>
+</div>
+</div>
+</section>
+<section class="bg-background-alt py-20 my-16">
+<div class="container mx-auto px-4 lg:px-8">
+<h2 class="text-4xl font-black text-center mb-16 gradient-text">Packaging Solutions</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white dark:bg-slate-800 p-8 rounded-[2rem] border-b-4 border-primary group hover:-translate-y-2 transition-all shadow-xl shadow-primary/10 flex flex-col text-center">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase self-center">Fresh Everyday</span>
+<img alt="Corrugated" class="w-full h-48 object-contain my-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq4RMOOvspr7kcrTXYMN0vLoobszAimMW7OiguDBciqVSD5eHpIYD5uPm8NDQGX6syvPGVrbIA53y0QQTb1irQ3uF1hLVFzvYBzemtyDKGLddc78ToU1KamFHtXf2h7OV4sKuzSodMYHndMkeo5Zfeb2NwcCCgya8nKS4590DWgDTOzPnzoxaTqUUO5M1bQGN9k91CO14ZAaqBJMwg4pxngABWr5IqwzY-BrhtZgZ8vkj18Pyubu1nK81d3yP_9M7LsAMgMQm_QRw"/>
+<h4 class="text-xl font-extrabold mb-4 text-slate-800">Corrugated Box</h4>
+<a class="w-full py-3 bg-primary text-white rounded-xl font-bold hover:bg-slate-900 transition-colors block mt-auto" href="#product-detail-corrugated">Shop Now</a>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-[2rem] border-b-4 border-primary group hover:-translate-y-2 transition-all shadow-xl shadow-primary/10 flex flex-col text-center">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase self-center">Hot This Week</span>
+<img alt="Magnet" class="w-full h-48 object-contain my-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2LenKv5DTWjTVSkYcYeB4LCMibGnSUSoUrXDRUc0aXMnX3lVITS2PLe9_zjGr9XgsdnH3pkzEnePJJjM90x3szx0BMhyt8H9pvuycS5T-9KMjnlVyhW7kUJVFrKF1wNX1kiez05JJUQOzyonAIHNWXSCH8dnY01eEAfnfdm7DkiYd-7opXCo30DE0Csnf3vhhy8fgQFzMmLxF1qb554NYOpqyw7Bo5CAmwLiF7ViD4ZI20OhI_ttR6onchn7imG8e-A-gSbyaBJA"/>
+<h4 class="text-xl font-extrabold mb-4 text-slate-800">Magnet Box</h4>
+<a class="w-full py-3 bg-primary text-white rounded-xl font-bold hover:bg-slate-900 transition-colors block mt-auto" href="#product-detail-magnet-box">Shop Now</a>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-[2rem] border-b-4 border-primary group hover:-translate-y-2 transition-all shadow-xl shadow-primary/10 flex flex-col text-center">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase self-center">Hand-Picked</span>
+<img alt="Bag" class="w-full h-48 object-contain my-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3cg_RWmASMZXKyy2NIvGDaO_LvPVGhIfFjiPTYie-_jc8tX27WH0ez2ftXi6macTAYxlG5r8UxmK_YypeOMIzl7YQz960Xev38w3tbdhWGK_TE3vN5VgLr_6hETkixbUgctrhZbsQyN56i-jlX8MS9AVLtsPR-wZBbGVQ4qaxo5IGwK_9uNEZdFH7l0aKMcYq4AbRyVtJjR7pAaUTW8TWkHVu_iJWfBqUep6H-8B7VeSaBdB88rZ7ZrKuSs2pyUTirT8vcCaLebM"/>
+<h4 class="text-xl font-extrabold mb-4 text-slate-800">Shopping Bags</h4>
+<a class="w-full py-3 bg-primary text-white rounded-xl font-bold hover:bg-slate-900 transition-colors block mt-auto" href="#product-detail-shopping-bags">Shop Now</a>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-[2rem] border-b-4 border-primary group hover:-translate-y-2 transition-all shadow-xl shadow-primary/10 flex flex-col text-center">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase self-center">Just Arrived</span>
+<img alt="Labels" class="w-full h-48 object-contain my-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa5sJmgNiBUD0Gl4JNVD5rsVovZdOTp4EdclDNhN6B-dm4Juil_VWhVAOVRjKLzSMwJBCBqV9rKFnZr3zqQJRwJXt_LcwjuPMkd5yaHICrKByBbT6yn1AkYfx4iu-G__U67eGoIQOE03idgqKUGBSah0QBo8mhv4YKiGsI6PavozIxGKrj9FYoNOGZ5z6rI9QfW3IdPxY1IqQ1EArssHTS7UISU5RWZIR_gib-E5nXTUJ3UFyokeOVmhxHr5wTX8VyVWskuDkXO2U"/>
+<h4 class="text-xl font-extrabold mb-4 text-slate-800">Custom Labels</h4>
+<a class="w-full py-3 bg-primary text-white rounded-xl font-bold hover:bg-slate-900 transition-colors block mt-auto" href="#product-detail-custom-labels">Shop Now</a>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-background-light py-20">
+<div class="container mx-auto px-4 lg:px-8">
+<div class="flex items-center justify-between mb-12">
+<h2 class="text-4xl font-black gradient-text">Elegant Wedding Collection</h2>
+<div class="h-1 flex-1 mx-8 gradient-bg opacity-10 rounded-full hidden md:block"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+<a class="bg-white dark:bg-slate-800 p-4 rounded-3xl border border-primary/10 brand-glow hover:border-primary transition-all block group" href="#product-detail-nikkah">
+<div class="overflow-hidden rounded-2xl mb-4 aspect-square">
+<img alt="Invites" class="h-full w-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMgREYYvCcdVwzryhCFAcqrweJU5K-20YqzTsmr-fd0XvkgkMUID1NiN-gNs1GN_GsTuABkFBd_hOFE5trK1n12-5zu9SumNn_sshuHZhoI1pFHLHE4IJSQzVMbrYsCEdEPP6CIAxuX1-alkWT8sH_EWjgy_XKku756gyfLnv0uwNuT4NjyJqj-vhvGjWwMQ2ie77ityk7BVeUlk0q2YuRrZGkUk24ZMH2NTs1nce04Olb-mzCXrF6buQjOEoY7aiwBc5ohmXttG8"/>
+</div>
+<p class="font-extrabold text-center text-slate-800">Nikkah Nama</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-3xl border border-primary/10 brand-glow hover:border-primary transition-all block group" href="#product-detail-favor">
+<div class="overflow-hidden rounded-2xl mb-4 aspect-square">
+<img alt="Favor" class="h-full w-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGGUH3zHagI9-hviIuRhvGz3RvBItXDFH_n_ovYEKSPAsxGLcXh3k02zav6kkB4AnTzWzndHBNaHp7nX5PlFs57SwOAOIXeAiHhFRYsEj16TbD8cXHn7fKYwU8bKq2Gpn6dT7YUotxckyOewxjJJpuyyoafnKt29C32W44gqx0LNakLTKjnAp8fFqdwPsrGtjyLrATKLTkkZ0C-B45qtC8zqAJlTz2r0WnzetMTYix3Y6-2frN4t1HzYtaA-c1PH5oQw2gCT84SFY"/>
+</div>
+<p class="font-extrabold text-center text-slate-800">Favor Bags</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-3xl border border-primary/10 brand-glow hover:border-primary transition-all block group" href="#product-detail-stamps">
+<div class="overflow-hidden rounded-2xl mb-4 aspect-square">
+<img alt="Stamps" class="h-full w-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKptpVDtQJr3iyvqT8y2jPCOJHjX10z1wzp1CjDHq6yLTynG6BLNZeAfkKlXZ4_D0zUN4C0gQn-WiiCpvhEZMcbMQ-3l4DF-Mykn0AyIzK6xUuwKrKZ-pme5zxmceFJAVqtK6yabpeCu0awgdG2hjLHuzuUzBrgcgtIYdJef9BVdGxi0_GpxOQnP4pBhXKVK4yM3p1a-i0lN8v-XSD4b05SFyIRC-F10LPRidxDT8-gW2oayTNHr_1dcSh1tKOqFMNuyvMvXDP8YM"/>
+</div>
+<p class="font-extrabold text-center text-slate-800">Wax Stamps</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-3xl border border-primary/10 brand-glow hover:border-primary transition-all block group" href="#product-detail-acrylic">
+<div class="overflow-hidden rounded-2xl mb-4 aspect-square">
+<img alt="Acrylic" class="h-full w-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4hnfELQDlhih-2D8QsqkKKIt30HEj44gvAwxRjsLpXusLpCYgJda97i5UgGEg5kS-3ciXJCYLnka25xIEp4Qe4byUWjBs238i136vIhhjjR3DPnAnZ3xlVC8clcszxAyRJhcgM7Yia_73aN1Tj5Oe3-h28L1WvP7hM9O69aRrX0pqJqQjvGwI7YDRvrBUdeMASIvLqe3Yn1L3J8fWJxAtP1lYDFaRsfWSiMR6xhilcnXGUSY8d0FOzkHuDra5B8yLQ9-GPd5065o"/>
+</div>
+<p class="font-extrabold text-center text-slate-800">Acrylic Cards</p>
+</a>
+<a class="bg-white dark:bg-slate-800 p-4 rounded-3xl border border-primary/10 brand-glow hover:border-primary transition-all block group" href="#product-detail-budget">
+<div class="overflow-hidden rounded-2xl mb-4 aspect-square">
+<img alt="Budget" class="h-full w-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMrPrc5mRzlrEAAj4X4lwB0w6MblnYb6bHQC1Q7la0pw42pPu_8WBipCfsyWAeeWxOy3XoooxPvCGKQ-RE97gChJHn27YJvEYKR4vaG-L3JPTsLwa0N-YQedFSN7U9n4hwV_7f_J6oZ4_RO4IjjOHDxB2nuY6l5R1pmyNVcFZGKo6tUa1xPHNR-cCz9qd2USUBxCfv-FsnmaotwVot3Y9cmifNTQK6sW1CYv7Ry0Xpsfmr_KF-GjYnpA4ojav1eLQNpSwAhqRWdTg"/>
+</div>
+<p class="font-extrabold text-center text-slate-800">Budget Cards</p>
+</a>
+</div>
+</div>
+</section>
+<section class="container mx-auto px-4 lg:px-8 py-20">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Testimonials</span>
+<h3 class="text-4xl lg:text-5xl font-black mb-8 leading-tight">"The website is so easy to use and the order placement is super fast and smooth."</h3>
+<p class="text-xl text-slate-600 dark:text-slate-400 mb-8 italic">"I am amazed. My Nikkah invitations look wonderful. I'm glad I managed to find these guys and made my daughter's wedding invitations just as wonderful as I wanted them to be."</p>
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/30">NR</div>
+<div>
+<p class="font-bold text-lg">Nooria Rizwan</p>
+<p class="text-sm text-slate-500 font-medium">Verified Customer</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 relative">
+<div class="rounded-[3.5rem] overflow-hidden shadow-2xl relative">
+<div class="absolute inset-0 border-[12px] border-white/30 rounded-[3.5rem] z-10 pointer-events-none"></div>
+<img alt="Wedding Invite Lifestyle" class="w-full aspect-square object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGf3z_R5qKZ57i6xY5o1Gokyomc9tjwocG_eEgfQbr70_hLvIYavrQjvvFv6pXZEadaUa7AblkpI2996_k5rFfoI6Gdra52eXapUNxO4QrjYtOR07cb3mLuZ0gceltUrZmHm2C1DE_7FzsNLQhA_Akow5I5Adxo7F6uklROlcJbhUY42P83keFvXKtDrdjLwJldcuTtXs6cH4D-XcP_CiQOLePutO6Qq0XmCqNp4kX16rTvW68ng0tyvRcqybWGd9pdFLIrR4oqz4"/>
+</div>
+<div class="absolute -bottom-8 -left-8 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-2xl max-w-xs border border-primary/10 hidden md:block z-20">
+<div class="flex gap-1 text-amber-400 mb-4">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-base font-black text-slate-800">Aqua Promise Design</p>
+<p class="text-sm text-slate-500 mt-2 font-medium">Excellent print quality and heavy card stock.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="container mx-auto px-4 lg:px-8 py-20 border-t border-slate-100">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+<div>
+<h2 class="text-4xl font-black mb-6">Discover more in our FAQs</h2>
+<p class="text-slate-600 dark:text-slate-400 mb-8 text-lg">Shoot our team an email &amp; we'll get back to you ASAP.</p>
+<a class="inline-block gradient-bg text-white px-10 py-4 rounded-full font-bold mb-12 shadow-lg shadow-primary/20" href="#contact">Contact Us</a>
+<div class="space-y-2">
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 flex justify-between items-center cursor-pointer group hover:bg-white transition-all border border-transparent hover:border-primary/10 shadow-sm hover:shadow-md">
+<span class="font-bold text-slate-800 group-hover:text-primary transition-colors">What is your delivery time for orders?</span>
+<span class="material-symbols-outlined text-primary">add_circle</span>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 flex justify-between items-center cursor-pointer group hover:bg-white transition-all border border-transparent hover:border-primary/10 shadow-sm hover:shadow-md">
+<span class="font-bold text-slate-800 group-hover:text-primary transition-colors">How do I pay online for my order?</span>
+<span class="material-symbols-outlined text-primary">add_circle</span>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 flex justify-between items-center cursor-pointer group hover:bg-white transition-all border border-transparent hover:border-primary/10 shadow-sm hover:shadow-md">
+<span class="font-bold text-slate-800 group-hover:text-primary transition-colors">Can I track my order?</span>
+<span class="material-symbols-outlined text-primary">add_circle</span>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-4xl font-black mb-12">Our Corporate Clients</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-10 items-center grayscale opacity-40">
+<img alt="Pepsi" class="h-10 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC60ywDFJRNhB8fuXOUI6SK0EsouaNK20Z8Ed00zPNq5jMWfnKLHQO3_MWlpG1za3KCTChPR4YpQvoR444KbAJX0lQQ2G0KiilthgSPZuY8oLYGbRP_8DnO0_tzAlRFPb7pDIRuitSzcp4oLktXLNPJGjPrkaRHSy0a251pg6_TTjlthF1TbivDMIYHXzWtjh3TV1PpKRpVDLYGqpwsQHofjI6zGpE2wapCDZKMi7Uc0pzMFQlsZKB-__nFOUtXK1wzYVBMwRC14dw"/>
+<img alt="Nestle" class="h-8 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ_qDAOjRCyj1ne2FZhBqSc7I0LoCWdpflJWDzQ9OsnWkWVl-NoAy6cB8Mx_Ie4f2Wn9czYSidD015uara8g3VveCHSJhOcV7EfU3toefVrJ8hi949m10ItNTbWhnu3C03LESYqdWLhjF_5GWvIeJTL7fiEui0xZ_iB4FUIRJuafU26nhpF75yQjaXB5y-2FcKzqxcRpmA6Tm3CxoqB2uuTentJWdOZfwK3TKRauH6CMwXcVddUKlvhxXyS-n1IG7g7G79hap2uPE"/>
+<img alt="Google" class="h-8 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4Lcii17IYtBMhnfCz53J7muXezCitOCRVEJgh5ZqtKPoVsxrLq4Gj0vtlBziNBn_cW8gtKkk09THml9-w6AYj2GKXOmd4fWHFis2GxpQnbaJvaf4eGdhP6DMumi-SnvHWoaULSi7P5T7IRQDZe8_mr6a5GSaeSZtmqJbUWT-xSTUR4ef8yDUMC0gdKO7orOewtF-foeT8m4GRtng5sRoJg_11aWTfOcornrER2IIY33XGNW84atH-7EfPl9QOH908jubNgfUaAY4"/>
+<img alt="Meta" class="h-8 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCmgJRMwyPct-kLKKbUeEFoRacBXE-Npm_wq9ViW50TpUoIBZQ_XBdqThG-SXaQsueSOox072O8AYq--2JjRc9wlQvYSHj6OTMz_N2bqNV9iQzZORZJhO9I1JeGk-wV2-tR7qwh7U27M1H1zsC6_khQ816QWaYyVIOHoZ-J7pvRNWJSHPIdy0Ij5fDgDQ4gAE8oEmmjP6e1qNMUc5LCGfujIjpybC9DDftAZAusz1LNW2Lm3N4IXktGqs80VvUw-TWuhfmBM0SltE"/>
+<img alt="Amazon" class="h-8 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5PUYJrxLVhnLzncs-Mpl_xdTIO0up9ulethlEO1d3pxbJlESwDznEd60saXtfmjnumAAN5FW71V-zMYZtHnRX5ZI35d74xPv3fR6qw-fL-roeN2ZPg6WWOHFWTWU3h5f-UNHno-WCuE6h8RG2sr_FmQ_q_ZW_EehW0qhjQECNz25yrdqBK4rc1SOlfxqED-lu6VOammQrx3P6sKvjwYpFv56kk6JAjXRicWLe7X-QzUn6mIUCukrlPftFwcd8SOIBQ08WcNdw5y8"/>
+<img alt="Samsung" class="h-8 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxdfV3eewRfQqIV8oAadSuFwdmdpxZ5dfhJDb60BEumq2AabbY9fjCF_vr2o_loz0sFCwGRBi5V8YEK9nMhKV4pjh23yrdD6anbfPs42A_lcJ5KZ1QEXxHHSnSBcqXwqDncCdoYbhuB8riTpNwBXMBYPWKeggElPG04ZXxQ3FCKYxHSsSlnqZQSRsZnFhpWJdWnikAhzfbAWHt2REDHiwwmFSzUD7aHnrbofZyjgRRhMsVDY7fEgrhTmvU415CWsnSKwiqIvYKAuM"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
+<div class="flex">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-3 rounded-r-xl"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2024 ZAK Printing. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-xs text-slate-400">Powered by ZAK Core</span>
+</div>
+</div>
+</footer>
+</div>
+<div class="fixed bottom-8 right-8 z-[90]">
+<a class="bg-primary text-white w-16 h-16 rounded-full shadow-2xl shadow-primary/30 hover:scale-110 transition-transform flex items-center justify-center group overflow-hidden" href="#chat"><span class="material-symbols-outlined text-2xl">chat</span><span class="sr-only">Chat with us</span></a>
+</div>
+</body>
+<!-- ZAK V4: Home page wiring -->
+<script src="js/public-shell.js"></script>
+<script src="js/api.js"></script>
+<script src="js/public-ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load featured products into the featured grid
+  try {
+    const data = await apiFetch('/products.php?featured=1');
+    const products = data.products || [];
+    const grid = document.querySelector('[data-section="featured-products"]');
+    if (grid && products.length) {
+      grid.innerHTML = products.slice(0, 6).map(p => {
+        const img = p.image
+          ? `<img src="../uploads/${p.image}" alt="${p.title}" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" />`
+          : `<div class="aspect-square w-full flex items-center justify-center text-slate-400"><span class="material-symbols-outlined text-5xl">inventory_2</span></div>`;
+        return `
+          <article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+            <div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">${img}</div>
+            <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-white">${p.title}</h3>
+            <p class="mt-1 text-sm text-slate-500 line-clamp-2">${p.description || ''}</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-lg font-black text-primary">PKR ${parseFloat(p.price).toLocaleString()}</span>
+              <a href="product-detail.html?id=${p.id}" class="rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-white">View</a>
+            </div>
+          </article>`;
+      }).join('');
+    }
+  } catch(e) { /* keep static content as fallback */ }
+
+  // Load CMS hero content
+  try {
+    const cms = await apiFetch('/cms.php?page=home');
+    const blocks = cms.blocks || [];
+    blocks.forEach(b => {
+      const el = document.querySelector(`[data-cms-block="${b.block_key}"]`);
+      if (el) el.innerHTML = b.content;
+    });
+  } catch(e) { /* static fallback */ }
+});
+</script>
+</html>

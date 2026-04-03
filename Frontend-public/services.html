@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services - ZAK Printing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex min-h-screen flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap gap-6">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-primary" href="home.html">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="shop.html">Shop</a>
+<a class="text-primary text-sm font-bold transition-colors" href="services.html">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+</div>
+<button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="hidden sm:flex items-center justify-center px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
+                        Book an Appointment
+                    </a>
+</div>
+</div>
+</header>
+<main class="flex-1 m-0 p-0">
+<!-- Hero Section -->
+<section class="relative px-6 pt-0 pb-16 overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 dark:bg-primary/10 -z-10"></div>
+<div class="absolute -top-24 -right-24 size-96 bg-primary/10 blur-3xl rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 size-96 bg-primary/10 blur-3xl rounded-full"></div>
+<div class="max-w-4xl mx-auto text-center space-y-6">
+<h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+                        Our Professional <span class="text-primary">Printing Services</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                        High-quality solutions for all your personal and business printing needs, delivered with precision, speed, and premium materials.
+                    </p>
+<div class="flex flex-wrap justify-center gap-4 pt-4">
+<a class="px-8 py-4 bg-primary text-white font-bold rounded-xl shadow-xl shadow-primary/30 hover:shadow-primary/40 transition-all inline-flex items-center justify-center" href="shop.html">View Portfolio</a>
+<a class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition-all inline-flex items-center justify-center" href="contact.html?intent=quote">Request a Quote</a>
+</div>
+</div>
+</section>
+<!-- Services Grid Section -->
+<section class="py-20 px-6 lg:px-20 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Explore Our Expertise</h2>
+<div class="h-1 w-20 bg-primary mt-3 rounded-full"></div>
+</div>
+<div class="flex gap-2">
+<span class="px-4 py-1.5 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-full">16 Specialized Categories</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+<!-- Service Cards -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Office worker using a modern photocopy machine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOuy-CR5rwZTxLVUhfcvRfQ4iRNNs_q4TccrBUQP59oJz_5_aYzKZbwzDeC270GfFFL5E07G7ge58GlvQovcliVqjn4GBjqSShEin9t0r1Te5keYfHfsR3w_DC1Ob3L8DGwbWAA7BJ342cfxYHhqm_6kAIf53pkrpitdcvEsWSIohGAzr_5KaYznw7lCxnLIuBviTTio45Nq2DmR_NcZXFZRrfVcLPfLPg6tLSZ1ZGoFkI1ttQ8eBWCU6J6H0J4R3azHebDV1nAwQ"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Photocopy</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Fast, clear, and high-volume duplication services for all your important documents.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High quality professional office printing documents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB3ueuXlduwauiUd6cm502bIv5OWUVHtBU8_hxqfV8DmzOBMg2ZAN8yRl-yeY4hr3N_zvY-pB15fB8YpTiNz0qaqCGNL4ye-jrI8Ph0HkRzTyVgcjNaeVUqO44wtPrVdB6_q9HRCU7cUdU2t6Z58nn5Z92Rn49hUc3SwntE4XUDLDwPjYiEBR2bGpt34yWQOANTV14etFgLeWkuH2bycliz_cmCVjQG-pNXgzLyHSB_RTTuvtgbitQJzw1Hg7ykR5qX4dBqYe6qPc"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Printing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">High-resolution color and black &amp; white printing on premium paper stocks.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of stacked premium business cards" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBY5Mu8_MH0fFo4zyGt1_8S9B4h__cTV4psYgVeFsMI4MmWn5x-9nPzZmC7wm090ln1rOocZQtiGAqgaUOxQ3eQeD8ORjL1mFuffBabu16fIhjY5Y5tJA9nxDGPLknsryweUuLiIIgejCeFm0DcqNAC4u8Zg3R1Mr1j0C0qAXxaZWBFY__QjGwUjp39TX75YHCdAJTwab7NFPUDL_y3WBELqNK-QJ94d2IFJiinDzoe2E7b3uAe8UOfVJJiLdZwRVm_5kEJUVVU10"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Visiting Card Printing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Professional business cards with luxury finishes like matte, gloss, and spot UV.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Large format industrial flex printing display" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPB7FyEEDMpqmZzVewOXIGywvE5yLWUpgEvpdCRc5TrZwSabNUFjW0nRpEYVMzf1pk6J6mjN82_QxwQ6fJlPud2ma2jDt1AdiRM1ZKbwnIhXYIR1P2NigZiczXwFeKKdfADcxnMgpyJVoGtWG272ChcExfBkSjOJxlLMg1x4tNDBcDy6Ylp4Ec5_RuHZwkP6BsLUJqs-CQDZrQny2B7fWQtNGKCmPI59Q1AcGYz1CCo3RG7s-i039nTDIwXS42MnOvya7fhnPk1eY"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Flex</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Durable, weather-resistant large format flex prints for indoor and outdoor use.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant hanging marketing banners in shop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3qWAobx3ieZwrSSWmJMyhVQfdLfoRKd1j8V-wma7qcceURPApXf62Y03-Day-Pc23lZgdrnFnUAEAot_Bsts6ub8Nit4piGQqTfp4OwQutrnotrdQqzsTV6GJiuYWQ2bwDcdvAwnKJ3yRCXen4tvvyBBUFruMUruLQWCyLgrFV_aLEzo9gkVYuRuRLNIjEfoyAb0o71eTckmCSkqOBMeHLxOnvtCKk-_6IvVcWlfJd4SYCxBX7k6TVDRDdeqW3PwTfNaQwC-CrEg"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Banner Printing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Eye-catching promotional banners that make your brand stand out at any event.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Custom designed round die cut stickers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhF8xT71GRbuI3ZEiHY8YkzSGNIoQVBz6U0MvYDv428gEr_xYsjbQhCFsTiOBuX7eskM3ZDvePMziBwP3EroMGZtJ9rJZWelui5S1MQONExalsFAbD0huqcrVDjWtJUGzBZoObihFvWLdoESHwXwEGZWfZRKBoyEZUZ830_UdVIetcAXJJF5F8b7TW1zr3MHBxsmnbk4yNdV9gigS9J12sbEda5R6AnNuyU8e5ECR-tZBO08xaBtmzSPZVYiXlMNxXO8FsYPVXTXM"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Stickers</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Custom shapes, sizes, and finishes for branding, packaging, or decorative use.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Product labels on glass jars set" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRQJ9ov4YJaok29X5R70O97ZA6p2T76WmCmPN3usniamra5jmChgUJgiAiEVM67BpiDvfq224HK1-ZsgWOoID2u9tj8b4ggkNAWmDjRCxkyOEVaL2GWPItuFQM2UseT-HgRIb1xrJfXaja2CISkmjInFgiNrBVb9rCD0q2I_fwEyxxA38KNcSAOSNNdhaKT5Sy9xS98mg6R3RaDUUn47WLxzOuVzQqfGGUpXjMp1QAIhgKJwpF7uJ0rlzPlzO2_CMVEEbqUdz8oCM"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Labels</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">High-quality product and packaging labels that adhere to any surface perfectly.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Plastic corporate ID card with lanyard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC19aVCxmzJqxtEogobwU350Ij5S3Yrcnfd0Wh0my-PXMmNVgf39CBFrwGSgDs3lpv-8aNs6aCDKJNlcNvvUJBq--cppFvJDswuQxWzFRx6uc0JEMluKs-148sXl7ag7yT_LDZmbvoVSQxNi6265h7ejWb_sKyxBeqf9pt_cujZf3yIIvIzYKmoI_NxCBGllmHOPESg2vjHxLX0u-DXq4fW-BCuRqicJXCQ7TgzRFWyu_Ggi-2_NfBAKp7uwv06Et7LM9V6syssOy8"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">ID Card Printing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Secure, durable, and professional PVC identification cards for organizations.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Screen printed graphic t-shirts stack" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNTM_9-HY903SnRX7jO8ZSlLUHNk2a6AUmfQxXzJxx0an6aFmmrHh5hWF4C9t5rSS6llOMOJocqWXwO1aphl6d8Y96i-nVEIn6wg5Y2X-0Q1DqBCGJmmkmD7jCu41Jbz1r7lgLCkaaQt2zd4VmgslznrRsk7CW5dai9UNSTZext0qzCVbk9TNC9hlwSaNWDrZvVb100GNkxn2PJMON3EUqvwFgwz262n2X3aB8VfB3QIXX4qhqWbWnoPu70jJLKlh2axWZTD5RxWc"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">T-Shirt Printing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Custom apparel branding with screen print, heat transfer, or DTF options.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Elegant leather bound restaurant menu design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoi8mehHZLhneZeMydlzBSrSKXFyMIsXixKBKGGfSHqGCq71rXimBoyK3G8DFrlft-ha2lkxjqrDqEmGpMNy1kwZju0Y7fW7Qfy0NZ1psU6-X6-DtpRFiO-Odza_hP-ohx-VgQBMUtShEK-A_hYqmDuhsmbdzr3lS9nwadGeVqtdTFMcYn0mR5R4Dimj6UQr9HXC1UDJjrAvS8uDK7d8RPyRJkzjEAPLlhe1IQt1-1-TI7ZD4tC1JBMRINTgesVhWlQ6yCbJ72zk4"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Menu Printing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Elegant and practical restaurant menu designs on spill-resistant materials.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Personalized stationery notebooks on wooden desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIKSphY7zDZhYTQie7ClccFLyn_-a-hG-yubKEMMzmL4Xo6A1wjNWUXKt9ebmYuyXZjI4NGdYr06rtWdlvStjpAYWJvmh0dqB2kEKBD7tO4LSQ7V37DPCCRU2v6CbdF1ZI3NGk02n9e8sIACCMvqXOQYAXJk_i4INjCtseP6qlVYKy0BWI8KC7xwSGWEw9IttMs9Mv62fBmuL7-tCG1rm0vO21qWSbM2qe_esK11Hkupb17ijTOHudlBhBTIPy6DiPGlKioRT7F1s"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Diary Printing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Personalized corporate diaries and notebooks with high-quality binding.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Customized rubber ink stamp making process" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwmMPrOi6d9FSv79IixxHm-N_hYuXEknYuM1-rXQO99SJVAAA2tAQaOD58hBts_7rralgWOFAmi5XufZp6nwALw5Bwl615GazpsGYL2V2w8Ld-QfDZYQ0QQoTbUXJ32gQv1H_NylCJ69YcHn30yuP_MK474FLG9IU_POHJkKen3bmM28AeOKVw6QRJ5Qzb_GNpsmSn8Qjy_OZLKjAy2jbYXlZQYMgkuzs0irJwRY6N7mNQz6H_lm7ZhUJICCyd_0N0qYDNErShHE8"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Rubber Stamp Making</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Precision custom rubber stamps for official use, signatures, or logos.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Colorful advertising flyers fanned out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPWKkUe-A-ih8OBc7ouQZ5FL_jgrZAKX0sggW_4ykbM7AemBKVn0YNXcQW-LM7cgqjCFst_-iliRnl90noePBVPI1ETweRwP1BZkJu7bUfRu-7arWP4zI08l8IuxHOsEjt9hc-Cfq0bAYdfV7kCJAnxj05kys33lsxqbXIZvuG82nnmXq_4nVc6i9UX2a8TaheL6AYyqpGJcpKCT3WArJ7wbdASZ3MQfgvTUVz-0ggoQp7_NG9zTWwp_GG2zr2TZeVJ-0-2xRh0Ew"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Flyers</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Vibrant, double-sided marketing flyers that deliver your message effectively.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Tri-fold glossy marketing brochure layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG1k2svdPeApIzL1dX-bJCIS4rYUBy5c3LQwlVn3lVwUqC9wUe2xHqtN1ASdVkM7nIN5sTmcM4I4nRqnRiaLMCXZFDlblP7PRoIxD0HuFL5NYf92anYIAmn1HYkbr1-PnGsC55Y-vG6Ch4gawQYIeW-fsdMFymjT6yfKjReSfzbyzd9YJvY5c_v2Gbdv55Hhq_4UyO4HWSfhAGRMNIlnL1Zoe02mtnB9yxx_kgFc3wlBRqaOPPZ52BIAizbPMbSGUj8qkF30I_0W8"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Brochures</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Detailed informational brochures with multiple folding options and finishes.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Graphic designer working on digital tablet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVvRB97zJ9HL4lI5fTvJzPvHBCXr6ktAi3EN-Iuo67S6lAQ90o4e8yLvuuasMI7bik8JZ755TzUMV1__6A2kyJ9P-2hakfQX4__urEDF_NpFMtBxotClvE5u_6WApI9BO-ebFYAPby-KQkOBMTIj3t1NkcIyTkRV_bZf5IWvLBLpQ1MFF2JTneBQvCQDKC6j4RtcOleG8u2S_2RVp8Kyu3ssap1vXm1EkVQI7Uw3UhiPVB8N9SJKJgO6jlDzVJ_KVj-s7Gv0tIhOo"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Graphic Designing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Creative visual concepts and layouts brought to life by our design experts.</p>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Typesetting and document formatting process" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClQW9cnggywaMPgE_3wEXNzDYhM53y78_GiTaJJUs7suYQvgmF8inyq-Zla8hdxPMLxG0Du2bj7k_O6SF2WHVC901zqNBu8THR41xs6bwAIdsO00igFDfcTfj1gsPyUaqZXRinKeNBt40zFIE9xqo3FW3UNeTtBuXE5NNaXbN2eUzsR7Fx9kdd-VWQHWdBCyQVhHwbTlqA5kLm_az0BaZpUec_Rzy5_0Xz7zJrXZWzh-00wqAF5p-F6yHaoblyLqKieRRDPSjEO0s"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Composing</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">Expert typesetting and formatting for professional document presentation.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Call to Action Section -->
+<section class="py-20 bg-background-light dark:bg-background-dark border-y border-slate-200 dark:border-slate-800">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<div class="inline-flex items-center justify-center size-16 bg-primary/20 text-primary rounded-2xl mb-8">
+<span class="material-symbols-outlined text-4xl">event_available</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-6">Ready to start your project?</h2>
+<p class="text-slate-600 dark:text-slate-400 text-lg mb-10 max-w-xl mx-auto">Our experts are here to help you choose the best materials and finishes for your brand. Let's create something remarkable together.</p>
+<button class="px-10 py-4 bg-primary text-white text-lg font-bold rounded-xl shadow-2xl shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        Book an Appointment Now
+                    </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
+<div class="flex">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-3 rounded-r-xl"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2024 ZAK Printing. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-xs text-slate-400">Powered by ZAK Core</span>
+</div>
+</div>
+</footer>
+</div>
+</body>
+<!-- ZAK V4: Services page wiring -->
+<script src="js/public-shell.js"></script>
+<script src="js/api.js"></script>
+<script src="js/public-ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load CMS content
+  try {
+    const cms = await apiFetch('/cms.php?page=services');
+    (cms.blocks || []).forEach(b => {
+      const el = document.querySelector(`[data-cms-block="${b.block_key}"]`);
+      if (el) el.innerHTML = b.content;
+    });
+  } catch(e) { /* static fallback */ }
+
+  // Load pricing plans
+  try {
+    const data = await apiFetch('/pricing.php');
+    const plans = data.plans || [];
+    const grid = document.querySelector('[data-section="pricing-plans"]');
+    if (grid && plans.length) {
+      grid.innerHTML = plans.map(p => `
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all ${p.is_popular ? 'ring-2 ring-primary' : ''}">
+          ${p.is_popular ? '<span class="inline-block mb-4 px-3 py-1 bg-primary text-white text-xs font-bold rounded-full uppercase">Popular</span>' : ''}
+          <h3 class="text-xl font-bold">${p.name}</h3>
+          <p class="text-3xl font-black text-primary mt-2">PKR ${parseFloat(p.price).toLocaleString()}</p>
+          <p class="text-sm text-slate-500 mt-1">${p.billing_cycle || ''}</p>
+          <ul class="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-400">
+            ${(p.features || '').split('\n').map(f => `<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>${f}</li>`).join('')}
+          </ul>
+          <a href="contact.html?plan=${encodeURIComponent(p.name)}" class="mt-8 block w-full text-center py-3 rounded-xl bg-primary text-white font-bold text-sm">Get Started</a>
+        </div>`).join('');
+    }
+  } catch(e) { /* static fallback */ }
+});
+</script>
+</html>

@@ -1,0 +1,479 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard - Super Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Mobile sidebar toggle -->
+<button id="sidebar-toggle" class="fixed bottom-6 right-6 z-40 lg:hidden p-3 min-h-12 min-w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform" aria-label="Toggle sidebar menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Sidebar backdrop for mobile -->
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50" onclick="document.getElementById('sidebar-overlay').classList.add('hidden'); document.getElementById('sidebar-nav').classList.add('-translate-x-full');"></div>
+<!-- Sidebar Navigation -->
+<aside id="sidebar-nav" class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 font-bold text-lg leading-none">Admin Panel</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Super Admin</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium" href="admin-dash.html">
+<span class="material-symbols-outlined">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="invoice-list.html">
+<span class="material-symbols-outlined">description</span>
+<span>Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="quotation-list.html">
+<span class="material-symbols-outlined">request_quote</span>
+<span>Quotations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="product-inventory.html">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="my-earning.html">
+<span class="material-symbols-outlined">payments</span>
+<span>Earnings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="user-mgmt.html" data-super-only>
+<span class="material-symbols-outlined">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="general-settings.html">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="content studio.html" data-super-only>
+<span class="material-symbols-outlined">brush</span>
+<span>Content Studio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4" href="#" data-logout>
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<div class="text-center">
+<p class="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">v4.0</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Design and Developed by</p>
+<a href="http://theamadeuslab.com" target="_blank" class="text-xs font-semibold text-primary hover:underline">Amadeus Lab</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto">
+<!-- Header -->
+<header class="h-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary" placeholder="Search orders, invoices..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:border-slate-800 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Alex Johnson</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Head of Operations</p>
+</div>
+<img alt="User Profile Avatar" class="size-10 rounded-full bg-slate-200 border-2 border-primary/20" data-alt="Portrait of a smiling professional male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzur_-r05_btcr-dj8VFmtERmKTanH9438F6JGFj9ed6H4h0KNunu3eVPfJP-5E0gzw6YtdQmy4UiYSmm9rAN23JcfLINYfkm7mgKXk4-b3BmRBzSgzNRdjZwaFhPL2VGHiyAS0-q5F7KIC7lygeYHu7iNuhqzZKcaEOL1sNByjoJYczSAz5mD1nP4NxK7dT2UYKYpstBigw62MAxMGtYcK3Hoa0j69pl4bE3WMOx76f3slSIsUQhElWJfZyeBpaEG_mJzNUM2_Lse"/>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Welcome Section -->
+<div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight" data-dashboard-title>Dashboard Overview</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1" data-dashboard-welcome>Welcome back, Alex. Here's what's happening today.</p>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-green-100 dark:bg-green-500/20 text-green-600 rounded-lg">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">Live</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Collected</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1" data-dashboard-stat="collected">PKR 0.00</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-100 dark:bg-orange-500/20 text-orange-600 rounded-lg">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-full" data-dashboard-stat-label="unpaid">Live</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Outstanding Invoices</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1" data-dashboard-stat="unpaid">0</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-100 dark:bg-blue-500/20 text-blue-600 rounded-lg">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Live</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Quotations</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1" data-dashboard-stat="quotations">0</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-100 dark:bg-purple-500/20 text-purple-600 rounded-lg">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-full">Live</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Products</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1" data-dashboard-stat="products">0</p>
+</div>
+</div>
+<!-- Inbox Summary -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<a href="queries.html" class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-primary/30 hover:shadow-md transition-all group">
+<div class="flex items-start justify-between gap-4 mb-4">
+<div class="p-2 bg-rose-100 dark:bg-rose-500/20 text-rose-600 rounded-lg">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<span class="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded-full" data-notification-queries>0 new</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Queries</p>
+<div class="flex items-end justify-between mt-1">
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100" data-notification-queries-total>0</p>
+<span class="text-sm text-slate-400 group-hover:text-primary transition-colors">Open inbox</span>
+</div>
+</a>
+<a href="appointments.html" class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-primary/30 hover:shadow-md transition-all group">
+<div class="flex items-start justify-between gap-4 mb-4">
+<div class="p-2 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 rounded-lg">
+<span class="material-symbols-outlined">event</span>
+</div>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full" data-notification-appointments>0 new</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Appointments</p>
+<div class="flex items-end justify-between mt-1">
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100" data-notification-appointments-total>0</p>
+<span class="text-sm text-slate-400 group-hover:text-primary transition-colors">Manage bookings</span>
+</div>
+</a>
+</div>
+<!-- Charts and Quick Actions -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<div class="xl:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Revenue Performance</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Weekly comparison against target</p>
+</div>
+<select class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm px-3 py-1.5 focus:ring-1 focus:ring-primary">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<div class="h-64 flex flex-col justify-end">
+<div class="flex items-end justify-between h-48 gap-4 px-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative group h-[40%]">
+<div class="absolute inset-x-0 bottom-0 bg-primary/40 rounded-t-lg h-[60%] group-hover:bg-primary transition-all"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative group h-[70%]">
+<div class="absolute inset-x-0 bottom-0 bg-primary/40 rounded-t-lg h-[80%] group-hover:bg-primary transition-all"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative group h-[55%]">
+<div class="absolute inset-x-0 bottom-0 bg-primary/40 rounded-t-lg h-[40%] group-hover:bg-primary transition-all"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative group h-[90%]">
+<div class="absolute inset-x-0 bottom-0 bg-primary/40 rounded-t-lg h-[75%] group-hover:bg-primary transition-all"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative group h-[100%]">
+<div class="absolute inset-x-0 bottom-0 bg-primary/40 rounded-t-lg h-[90%] group-hover:bg-primary transition-all"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative group h-[85%]">
+<div class="absolute inset-x-0 bottom-0 bg-primary/40 rounded-t-lg h-[65%] group-hover:bg-primary transition-all"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative group h-[75%]">
+<div class="absolute inset-x-0 bottom-0 bg-primary/40 rounded-t-lg h-[85%] group-hover:bg-primary transition-all"></div>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-2 text-xs font-bold text-slate-500 dark:text-slate-400">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+<h3 class="font-bold text-slate-900 dark:text-slate-100 mb-6">Quick Actions</h3>
+<div class="space-y-4 flex-1">
+<a href="create-invoice.html" class="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl hover:bg-primary/5 transition-colors group block">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">add_circle</span>
+</div>
+<div class="text-left">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Create Invoice</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Generate new billing</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+</a>
+<a href="product-inventory.html" class="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl hover:bg-primary/5 transition-colors group block">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">post_add</span>
+</div>
+<div class="text-left">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Add Product</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">List new item in catalog</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+</a>
+<a href="quotation-list.html" class="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl hover:bg-primary/5 transition-colors group block">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">event</span>
+</div>
+<div class="text-left">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">New Booking</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Reserve a client slot</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+</a>
+</div>
+<a href="invoice-list.html" class="block mt-6 w-full py-3 text-center text-sm font-semibold text-primary border border-primary/20 rounded-xl hover:bg-primary hover:text-white transition-all">
+                            View All Actions
+                        </a>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Recent Invoices</h3>
+<a href="invoice-list.html" class="text-sm font-semibold text-primary hover:underline">View History</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Invoice ID</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Customer</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Amount</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">#INV-8921</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-xs">JD</div>
+<span class="text-sm text-slate-700 dark:text-slate-300">John Doe</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 24, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">PKR 1,200.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-500/20 text-green-600 text-[10px] font-bold uppercase tracking-wide">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">#INV-8922</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-xs">AS</div>
+<span class="text-sm text-slate-700 dark:text-slate-300">Alice Smith</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 23, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">PKR 850.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-orange-100 dark:bg-orange-500/20 text-orange-600 text-[10px] font-bold uppercase tracking-wide">Pending</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">#INV-8923</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-xs">MB</div>
+<span class="text-sm text-slate-700 dark:text-slate-300">Mark Brown</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 22, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">PKR 2,450.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-red-100 dark:bg-red-500/20 text-red-600 text-[10px] font-bold uppercase tracking-wide">Overdue</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">#INV-8924</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-xs">EL</div>
+<span class="text-sm text-slate-700 dark:text-slate-300">Emma Lawson</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 21, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">PKR 120.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-500/20 text-green-600 text-[10px] font-bold uppercase tracking-wide">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+<!-- ZAK V4: API Wiring -->
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const data = await adminFetch('/dashboard.php');
+
+    const collectedCard = document.querySelector('[data-dashboard-stat="collected"]');
+    const unpaidCard = document.querySelector('[data-dashboard-stat="unpaid"]');
+    const quotationsCard = document.querySelector('[data-dashboard-stat="quotations"]');
+    const productsCard = document.querySelector('[data-dashboard-stat="products"]');
+    const unpaidLabel = document.querySelector('[data-dashboard-stat-label="unpaid"]');
+    const notificationData = await adminFetch('/notifications.php');
+    const counts = notificationData.counts || {};
+    const queriesNew = Number(counts.queries_new || 0);
+    const appointmentsNew = Number(counts.appointments_new || 0);
+    const queriesTotal = Number(counts.queries_total || 0);
+    const appointmentsTotal = Number(counts.appointments_total || 0);
+
+    const queriesBadge = document.querySelector('[data-notification-queries]');
+    const appointmentsBadge = document.querySelector('[data-notification-appointments]');
+    const queriesTotalEl = document.querySelector('[data-notification-queries-total]');
+    const appointmentsTotalEl = document.querySelector('[data-notification-appointments-total]');
+
+    if (queriesBadge) queriesBadge.textContent = `${queriesNew} new`;
+    if (appointmentsBadge) appointmentsBadge.textContent = `${appointmentsNew} new`;
+    if (queriesTotalEl) queriesTotalEl.textContent = String(queriesTotal);
+    if (appointmentsTotalEl) appointmentsTotalEl.textContent = String(appointmentsTotal);
+
+    if (collectedCard) collectedCard.textContent = formatPKR(data.invoices?.collected || 0);
+    if (unpaidCard) unpaidCard.textContent = String(data.invoices?.unpaid_count ?? 0);
+    if (quotationsCard) quotationsCard.textContent = String(data.quotation_count ?? 0);
+    if (productsCard) productsCard.textContent = String(data.product_count ?? 0);
+    if (unpaidLabel) unpaidLabel.textContent = `${data.invoices?.total ?? 0} total`;
+
+    // Update welcome text with admin name
+    const welcome = document.querySelector('[data-dashboard-title]');
+    if (welcome) welcome.textContent = 'Dashboard Overview';
+    const sub = document.querySelector('[data-dashboard-welcome]');
+    if (sub) sub.textContent = 'Welcome back, ' + (window.adminUser?.name || 'Admin') + '. ' + formatPKR(data.month_revenue || 0) + ' collected this month.';
+
+    // Recent invoices table
+    const tbody = document.querySelector('tbody');
+    if (tbody && data.recent_invoices?.length) {
+      tbody.innerHTML = data.recent_invoices.map(inv => {
+        const initials = (inv.client_name || 'NA').split(' ').slice(0,2).map(w => w[0].toUpperCase()).join('');
+        return `
+          <tr>
+            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">${inv.invoice_no}</td>
+            <td class="px-6 py-4">
+              <div class="flex items-center gap-3">
+                <div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-xs">${initials}</div>
+                <span class="text-sm text-slate-700 dark:text-slate-300">${inv.client_name}</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">${formatDate(inv.created_at)}</td>
+            <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">${formatPKR(inv.amount_paid || 0)}</td>
+            <td class="px-6 py-4">${statusBadge(inv.status)}</td>
+            <td class="px-6 py-4 text-right">
+              <a href="invoice-view.html?id=${inv.id}" class="text-slate-400 hover:text-primary">
+                <span class="material-symbols-outlined text-lg">visibility</span>
+              </a>
+            </td>
+          </tr>`;
+      }).join('');
+    } else if (tbody) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" class="px-6 py-12 text-center text-slate-400">No recent invoices available.</td>
+        </tr>
+      `;
+    }
+  } catch (e) {
+    console.error('Dashboard load error:', e);
+    showAdminToast('Failed to load dashboard data', 'error');
+  }
+});
+</script>
+<script src="js/sidebar-controller.js" defer></script></body></html>
+

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shop - ZAK Printing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        display: ["Public Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex min-h-screen flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap gap-6">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-primary" href="home.html">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
+<a class="text-primary text-sm font-bold transition-colors" href="shop.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<a class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors" href="user-login.html" aria-label="Account">
+<span class="material-symbols-outlined">person</span>
+</a>
+<a class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative" href="checkout.html" aria-label="Shopping cart">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</a>
+</div>
+<a class="hidden sm:flex items-center justify-center px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
+            Appointment
+          </a>
+<button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
+<nav id="mobile-nav" class="hidden lg:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
+<div class="p-4 space-y-2">
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+<a class="block px-4 py-3 text-primary font-bold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
+<hr class="my-2 border-slate-200 dark:border-slate-800">
+<a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="appointment.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
+</div>
+</nav>
+<script>
+document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+  const menu = document.getElementById('mobile-menu');
+  const nav = document.getElementById('mobile-nav');
+  const isHidden = menu.classList.contains('hidden');
+  if (isHidden) {
+    menu.classList.remove('hidden');
+    nav.classList.remove('hidden');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    menu.classList.add('hidden');
+    nav.classList.add('hidden');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+<main class="flex-1 m-0 p-0">
+<section class="relative mt-0 overflow-hidden px-6 pt-0 pb-20 lg:px-20">
+<div class="absolute inset-0 bg-primary/5 -z-10"></div>
+<div class="absolute -top-10 right-0 size-80 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="absolute -bottom-10 left-0 size-80 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="max-w-7xl mx-auto">
+<div class="max-w-4xl space-y-6">
+<span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-primary">Product Catalog</span>
+<h1 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white md:text-6xl leading-[1.05]">Premium print products for businesses, events, and retail-ready branding.</h1>
+<p class="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Browse frequently ordered items, compare finishing styles, and shortlist what you need before requesting a quote from the team.</p>
+</div>
+</div>
+</section>
+<section class="px-4 sm:px-6 pb-20 lg:px-20">
+<div class="max-w-7xl mx-auto grid gap-6 sm:gap-8 lg:grid-cols-[280px_1fr] xl:grid-cols-[290px_1fr]">
+<aside id="filters-panel" class="hidden sm:block">
+<div class="space-y-6">
+<div class="flex items-center justify-between sm:hidden mb-4">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Filters</h2>
+<button onclick="document.getElementById('filters-panel').classList.toggle('hidden')" class="p-2 lg:hidden text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="rounded-[1.5rem] border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<h2 class="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+                            Filters
+                        </h2>
+<div class="mt-6 space-y-6">
+<div>
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Categories</p>
+<div class="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-400">
+<label class="flex items-center gap-3"><input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Business Cards</label>
+<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Flyers &amp; Brochures</label>
+<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Packaging &amp; Boxes</label>
+<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Promotional Items</label>
+</div>
+</div>
+<div>
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Finishes</p>
+<div class="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-400">
+<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Matte Lamination</label>
+<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Gloss UV</label>
+<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Foil Stamping</label>
+<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Spot UV</label>
+</div>
+</div>
+<div>
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Turnaround</p>
+<div class="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-400">
+<label class="flex items-center gap-3"><input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Standard</label>
+<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Rush Production</label>
+</div>
+</div>
+</div>
+</div>
+<button id="mobile-filter-toggle" class="sm:hidden w-full py-3 px-4 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">filter_list</span>
+Show Filters
+</button>
+</aside>
+<div>
+<div class="mb-8">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Products</h2>
+<p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Popular items ordered by small businesses, agencies, and event planners.</p>
+</div>
+<div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" id="products-grid-fallback">
+<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
+<img alt="Luxury business card print samples" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7YgLrcnWbT1abNo0OBaGiQ6P-LcDJJtDvzBTIXhV-Oj1qb-d00Mr1ls4_HmGJ0zgcY3KyxF4sEowomO63vPO9QJUxaXQfO_B6PiXkQzg39jRmrhIM8wMa2QwqYxh0YfrZnE0ajA_7RtqWhOLVy4uqwvYTm11vS_cZY6d2n8Npr7mVY2xaNiSohVrTQ8SeNuuNawddEwVU82T0N7ID5Yi0j0n_E8ttBGt79kWy6iVgWn5Is6h3E25XehJr4fdbI85sA40vP1KXb5g"/>
+</div>
+<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Business Cards</h3>
+<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Thick stock, premium finishes, and short-run or bulk ordering for teams and solo founders.</p>
+<div class="mt-5 flex items-center justify-between">
+<div>
+<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
+<p class="text-xl font-black text-primary">Rs. 1,500</p>
+</div>
+<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=1">View Options</a>
+</div>
+</article>
+<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
+<img alt="Folded brochures and flyers on a display table" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPWKkUe-A-ih8OBc7ouQZ5FL_jgrZAKX0sggW_4ykbM7AemBKVn0YNXcQW-LM7cgqjCFst_-iliRnl90noePBVPI1ETweRwP1BZkJu7bUfRu-7arWP4zI08l8IuxHOsEjt9hc-Cfq0bAYdfV7kCJAnxj05kys33lsxqbXIZvuG82nnmXq_4nVc6i9UX2a8TaheL6AYyqpGJcpKCT3WArJ7wbdASZ3MQfgvTUVz-0ggoQp7_NG9zTWwp_GG2zr2TZeVJ-0-2xRh0Ew"/>
+</div>
+<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Flyers &amp; Brochures</h3>
+<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Campaign handouts, folded brochures, menu inserts, and event collateral with sharp color output.</p>
+<div class="mt-5 flex items-center justify-between">
+<div>
+<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
+<p class="text-xl font-black text-primary">Rs. 2,200</p>
+</div>
+<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=2">View Options</a>
+</div>
+</article>
+<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
+<img alt="Custom rigid packaging and magnet boxes" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2LenKv5DTWjTVSkYcYeB4LCMibGnSUSoUrXDRUc0aXMnX3lVITS2PLe9_zjGr9XgsdnH3pkzEnePJJjM90x3szx0BMhyt8H9pvuycS5T-9KMjnlVyhW7kUJVFrKF1wNX1kiez05JJUQOzyonAIHNWXSCH8dnY01eEAfnfdm7DkiYd-7opXCo30DE0Csnf3vhhy8fgQFzMmLxF1qb554NYOpqyw7Bo5CAmwLiF7ViD4ZI20OhI_ttR6onchn7imG8e-A-gSbyaBJA"/>
+</div>
+<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Rigid Packaging</h3>
+<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Custom box production for product launches, gifting, retail shelves, and promotional kits.</p>
+<div class="mt-5 flex items-center justify-between">
+<div>
+<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
+<p class="text-xl font-black text-primary">Rs. 4,800</p>
+</div>
+<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=3">View Options</a>
+</div>
+</article>
+<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
+<img alt="Vinyl sticker sheets with branded die cuts" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE6VgKfeVgFw0AYpoixYdHWBzidrBrNKEELxQVmcuj-kYKESDrtkKB6Qnj-O_UKDm1gM0UhFXwEDMBR34v-JRzFodQlDIROIG82R9g8Kl6dtEf1aRqBe9stF1SkkaAuYFVV8mSfQ4LZMPGxK7rPQxyq0PhMQgRpc-U7nCcXCZKt3ucp1OCb0wFduH4FRkjD_tBY7f8PeNGNTc5FFvOfrsJzKVJ5pstNY1gV121SxvqSAuxPakVURFlD9Wxpw2iA_SmATR6fWhEfsk"/>
+</div>
+<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Vinyl Stickers</h3>
+<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Weather-resistant labels and branded stickers for packaging, storefronts, and merch drops.</p>
+<div class="mt-5 flex items-center justify-between">
+<div>
+<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
+<p class="text-xl font-black text-primary">Rs. 950</p>
+</div>
+<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=4">View Options</a>
+</div>
+</article>
+<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
+<img alt="Presentation folders and branded office stationery" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0NVCBCMeokLF2C62sERb-J8LveeGkMWFF7VZLaaC3uqGIbK79sE3SZaiSUk8f-einPAqIGjmgJBl8yMitjOnpqgZq34CntMEpw17eZUWM44Ji3tNu-nsEj2BnqMEe8oHz998Teq8P9ESoV6z7RbMBUxj8z2Y_3ABdHbYSqxKI5mfP1fXJrmk4PZ1vHb3Fc1IATsJQbCmSQ7GyAXBpEpsKXRQCcjBXJDHamis4j5gA3W5ir4YNo8ULA5a_zU7pYuUnFwmOjDB02ZM"/>
+</div>
+<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Presentation Folders</h3>
+<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Client-ready folders, proposal packs, and sales materials designed to look polished in meetings.</p>
+<div class="mt-5 flex items-center justify-between">
+<div>
+<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
+<p class="text-xl font-black text-primary">Rs. 3,600</p>
+</div>
+<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=5">View Options</a>
+</div>
+</article>
+<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
+<img alt="Customized mugs and branded promotional drinkware" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy4nnHpp1gNZzs7ZIYGYiYCo4JisR6yS9JPA8iLJjD4auXpu0QXhBY02e-QQSUsPNp3MSZNOUdfBzktB6qNFMqTyc8TsJbrt0rzYEDRrw6lRdKxUJYZwkLrVVCLWobDVdZ2MB33eaEOQFIklw5lJ-OO5XufGbO_F0Dz0IZvk_IpYsFPertz9n2qEVjUZrmfsBr8Qpo9redG8io5HM77ftrodIZYUPz9KdUdH7vZXodftafid8gsfGSZt11mRSFDtUJn0uqbJULTlw"/>
+</div>
+<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Promotional Drinkware</h3>
+<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Mugs and branded giveaways suitable for internal kits, exhibitions, and company gifting.</p>
+<div class="mt-5 flex items-center justify-between">
+<div>
+<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
+<p class="text-xl font-black text-primary">Rs. 1,900</p>
+</div>
+<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=6">View Options</a>
+</div>
+</article>
+</div>
+<div class="mt-10 flex flex-wrap items-center justify-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">1</button>
+<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-sm font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">2</button>
+<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-sm font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">3</button>
+<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="border-y border-slate-200 bg-white py-20 dark:border-slate-800 dark:bg-slate-950">
+<div class="max-w-5xl mx-auto px-6 text-center">
+<div class="inline-flex size-16 items-center justify-center rounded-2xl bg-primary/20 text-primary mb-8">
+<span class="material-symbols-outlined text-4xl">inventory_2</span>
+</div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white md:text-4xl">Ordering for a team, event, or product launch?</h2>
+<p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Send us your quantity, size, and finish requirements and we will build out the most practical production option for your budget and timeline.</p>
+<a class="mt-10 inline-flex items-center justify-center rounded-xl bg-primary px-10 py-4 text-lg font-bold text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.02]" href="contact.html">Get a Custom Quote</a>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
+<div class="flex">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-3 rounded-r-xl"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2024 ZAK Printing. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-xs text-slate-400">Powered by ZAK Core</span>
+</div>
+</div>
+</footer>
+</div>
+</body>
+<!-- ZAK V4: Shop product wiring -->
+<script src="js/public-shell.js"></script>
+<script src="js/api.js"></script>
+<script src="js/public-ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const grid = document.querySelector('.grid.gap-6.sm\\:grid-cols-2.xl\\:grid-cols-3');
+  if (!grid) return;
+
+  const initialFallbackCards = '';
+  const searchInput = document.querySelector('header input[placeholder*="Search"]');
+  const sortButtons = Array.from(document.querySelectorAll('button')).filter((button) => {
+    const text = button.textContent.trim();
+    return text === 'Most Popular' || text === 'Newest' || text === 'High Volume';
+  });
+
+  const filtersCard = Array.from(document.querySelectorAll('aside > div')).find((card) => {
+    const heading = card.querySelector('h2');
+    return heading && heading.textContent.includes('Filters');
+  });
+
+  const categoryHeading = filtersCard
+    ? Array.from(filtersCard.querySelectorAll('p')).find((el) => el.textContent.trim() === 'Categories')
+    : null;
+  const categoryContainer = categoryHeading ? categoryHeading.nextElementSibling : null;
+
+  const finishesHeading = filtersCard
+    ? Array.from(filtersCard.querySelectorAll('p')).find((el) => el.textContent.trim() === 'Finishes')
+    : null;
+  const finishesContainer = finishesHeading ? finishesHeading.nextElementSibling : null;
+
+  const turnaroundHeading = filtersCard
+    ? Array.from(filtersCard.querySelectorAll('p')).find((el) => el.textContent.trim() === 'Turnaround')
+    : null;
+  const turnaroundContainer = turnaroundHeading ? turnaroundHeading.nextElementSibling : null;
+
+  const state = {
+    products: [],
+    query: '',
+    category: 'all',
+    sort: 'popular',
+    featuredOnly: false,
+    priceBand: 'all',
+  };
+
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function normalizePrice(value) {
+    const num = parseFloat(value);
+    return Number.isFinite(num) ? num : 0;
+  }
+
+  function resolveProductImagePath(imageValue) {
+    const value = String(imageValue || '').trim();
+    if (!value) return '';
+    if (value.startsWith('http://') || value.startsWith('https://')) return value;
+    if (value.startsWith('/')) return '..' + value;
+    if (value.startsWith('storage/') || value.startsWith('uploads/')) return '../' + value;
+    return '../uploads/' + encodeURIComponent(value);
+  }
+
+  function getCategory(product) {
+    const title = (product.title || '').toLowerCase();
+    if (title.includes('card')) return 'Business Cards';
+    if (title.includes('flyer') || title.includes('brochure')) return 'Flyers & Brochures';
+    if (title.includes('box') || title.includes('package') || title.includes('packaging')) return 'Packaging & Boxes';
+    if (title.includes('sticker') || title.includes('promo') || title.includes('mug') || title.includes('drinkware')) return 'Promotional Items';
+    return 'Other';
+  }
+
+  function getVisibleProducts() {
+    let visible = state.products.filter((product) => {
+      const category = getCategory(product);
+      const title = (product.title || '').toLowerCase();
+      const description = (product.description || '').toLowerCase();
+      const haystack = `${title} ${description}`;
+      const price = normalizePrice(product.price);
+
+      if (state.query && !haystack.includes(state.query)) return false;
+      if (state.category !== 'all' && category !== state.category) return false;
+      if (state.featuredOnly && !Number(product.is_featured)) return false;
+      if (state.priceBand === 'under-2000' && !(price < 2000)) return false;
+      if (state.priceBand === '2000-5000' && !(price >= 2000 && price <= 5000)) return false;
+      if (state.priceBand === '5000-plus' && !(price > 5000)) return false;
+      return true;
+    });
+
+    if (state.sort === 'newest') {
+      visible = visible.sort((a, b) => Number(b.id) - Number(a.id));
+    } else if (state.sort === 'price-desc') {
+      visible = visible.sort((a, b) => normalizePrice(b.price) - normalizePrice(a.price));
+    } else {
+      visible = visible.sort((a, b) => Number(b.is_featured) - Number(a.is_featured) || Number(b.id) - Number(a.id));
+    }
+
+    return visible;
+  }
+
+  function renderProductGrid() {
+    const visibleProducts = getVisibleProducts();
+    if (!visibleProducts.length) {
+      grid.innerHTML = '<p class="text-slate-500 col-span-3 text-center py-10 font-medium">No products match your filters yet.</p>';
+      return;
+    }
+
+    grid.innerHTML = visibleProducts.map((product) => {
+      const imageSrc = resolveProductImagePath(product.image);
+      const imageHtml = product.image
+        ? `<img src="${imageSrc}" alt="${escapeHtml(product.title)}" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" />`
+        : '<div class="aspect-square w-full flex items-center justify-center text-slate-400"><span class="material-symbols-outlined text-5xl">inventory_2</span></div>';
+
+      const price = normalizePrice(product.price).toLocaleString();
+      const featuredTag = Number(product.is_featured)
+        ? '<span class="inline-flex rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-primary">Featured</span>'
+        : '';
+
+      return `
+        <article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+          <div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">${imageHtml}</div>
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">${escapeHtml(product.title)}</h3>
+            ${featuredTag}
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400 line-clamp-2">${escapeHtml(product.description || '')}</p>
+          <div class="mt-5 flex items-center justify-between gap-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
+              <p class="text-xl font-black text-primary">PKR ${price}</p>
+            </div>
+            <a href="product-detail.html?id=${encodeURIComponent(product.id)}" class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary/90 transition-colors">View Options</a>
+          </div>
+        </article>`;
+    }).join('');
+  }
+
+  function renderCategoriesFilter() {
+    if (!categoryContainer) return;
+
+    const counts = state.products.reduce((acc, product) => {
+      const category = getCategory(product);
+      acc[category] = (acc[category] || 0) + 1;
+      return acc;
+    }, {});
+
+    const orderedCategories = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+    const allCount = state.products.length;
+
+    categoryContainer.innerHTML = [
+      { key: 'all', label: 'All Products', count: allCount },
+      ...orderedCategories.map((key) => ({ key, label: key, count: counts[key] })),
+    ].map((item) => `
+      <label class="flex items-center justify-between gap-3 cursor-pointer">
+        <span class="flex items-center gap-3">
+          <input type="radio" name="category-filter" value="${escapeHtml(item.key)}" class="border-slate-300 text-primary focus:ring-primary" ${state.category === item.key ? 'checked' : ''} />
+          <span>${escapeHtml(item.label)}</span>
+        </span>
+        <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-500 dark:bg-slate-800 dark:text-slate-300">${item.count}</span>
+      </label>
+    `).join('');
+
+    categoryContainer.querySelectorAll('input[name="category-filter"]').forEach((input) => {
+      input.addEventListener('change', () => {
+        state.category = input.value;
+        renderProductGrid();
+        updateUrlState();
+      });
+    });
+  }
+
+  function renderSecondaryFilters() {
+    if (finishesHeading) finishesHeading.textContent = 'Featured';
+    if (finishesContainer) {
+      finishesContainer.innerHTML = `
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input id="featured-only-filter" type="checkbox" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.featuredOnly ? 'checked' : ''} />
+          <span>Show featured items only</span>
+        </label>
+      `;
+      const featuredOnlyInput = finishesContainer.querySelector('#featured-only-filter');
+      if (featuredOnlyInput) {
+        featuredOnlyInput.addEventListener('change', () => {
+          state.featuredOnly = featuredOnlyInput.checked;
+          renderProductGrid();
+          updateUrlState();
+        });
+      }
+    }
+
+    if (turnaroundHeading) turnaroundHeading.textContent = 'Budget';
+    if (turnaroundContainer) {
+      turnaroundContainer.innerHTML = `
+        <label class="flex items-center gap-3"><input type="radio" name="budget-filter" value="all" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.priceBand === 'all' ? 'checked' : ''}/>All budgets</label>
+        <label class="flex items-center gap-3"><input type="radio" name="budget-filter" value="under-2000" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.priceBand === 'under-2000' ? 'checked' : ''}/>Under PKR 2,000</label>
+        <label class="flex items-center gap-3"><input type="radio" name="budget-filter" value="2000-5000" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.priceBand === '2000-5000' ? 'checked' : ''}/>PKR 2,000 to 5,000</label>
+        <label class="flex items-center gap-3"><input type="radio" name="budget-filter" value="5000-plus" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.priceBand === '5000-plus' ? 'checked' : ''}/>Above PKR 5,000</label>
+      `;
+      turnaroundContainer.querySelectorAll('input[name="budget-filter"]').forEach((input) => {
+        input.addEventListener('change', () => {
+          state.priceBand = input.value;
+          renderProductGrid();
+          updateUrlState();
+        });
+      });
+    }
+  }
+
+  function updateSortButtons() {
+    if (!sortButtons.length) return;
+
+    const labels = [
+      { key: 'popular', text: 'Most Popular' },
+      { key: 'newest', text: 'Newest' },
+      { key: 'price-desc', text: 'Price: High to Low' },
+    ];
+
+    sortButtons.forEach((button, index) => {
+      const config = labels[index];
+      if (!config) return;
+
+      button.textContent = config.text;
+      button.type = 'button';
+      const isActive = state.sort === config.key;
+
+      button.classList.toggle('bg-primary', isActive);
+      button.classList.toggle('text-white', isActive);
+      button.classList.toggle('border', !isActive);
+      button.classList.toggle('border-slate-200', !isActive);
+      button.classList.toggle('bg-white', !isActive);
+      button.classList.toggle('text-slate-700', !isActive);
+
+      button.addEventListener('click', () => {
+        state.sort = config.key;
+        updateSortButtons();
+        renderProductGrid();
+        updateUrlState();
+      });
+    });
+  }
+
+  function updateUrlState() {
+    const params = new URLSearchParams();
+    if (state.query) params.set('search', state.query);
+    if (state.category !== 'all') params.set('category', state.category);
+    if (state.sort !== 'popular') params.set('sort', state.sort);
+    if (state.featuredOnly) params.set('featured', '1');
+    if (state.priceBand !== 'all') params.set('price', state.priceBand);
+    const newUrl = params.toString() ? `?${params.toString()}` : '';
+    window.history.replaceState(null, '', newUrl || window.location.pathname);
+  }
+
+  function readUrlState() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('search')) state.query = params.get('search').trim().toLowerCase();
+    if (params.has('category')) state.category = params.get('category');
+    if (params.has('sort')) state.sort = params.get('sort');
+    if (params.has('featured')) state.featuredOnly = true;
+    if (params.has('price')) state.priceBand = params.get('price');
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      state.query = searchInput.value.trim().toLowerCase();
+      renderProductGrid();
+      updateUrlState();
+    });
+  }
+
+  grid.innerHTML = Array(6).fill(`
+    <article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 animate-pulse">
+      <div class="aspect-square rounded-[1.25rem] bg-slate-200 dark:bg-slate-700 w-full mb-4"></div>
+      <div class="h-5 bg-slate-200 dark:bg-slate-700 rounded w-3/4 mb-2"></div>
+      <div class="h-3 bg-slate-200 dark:bg-slate-700 rounded w-full mb-1"></div>
+      <div class="h-3 bg-slate-200 dark:bg-slate-700 rounded w-5/6 mb-5"></div>
+      <div class="flex justify-between"><div class="h-6 w-20 bg-slate-200 dark:bg-slate-700 rounded"></div><div class="h-8 w-24 bg-slate-200 dark:bg-slate-700 rounded-xl"></div></div>
+    </article>`).join('');
+
+  try {
+    const data = await apiFetch('/products.php');
+    const products = Array.isArray(data.products) ? data.products : [];
+
+    if (!products.length) {
+      grid.innerHTML = '<p class="text-slate-500 col-span-3 text-center py-10 font-medium">No products available at the moment.</p>';
+      return;
+    }
+
+    state.products = products;
+    readUrlState();
+    renderCategoriesFilter();
+    renderSecondaryFilters();
+    updateSortButtons();
+    renderProductGrid();
+  } catch (err) {
+    console.warn('Products load error:', err);
+    if (initialFallbackCards) {
+      grid.innerHTML = initialFallbackCards;
+      return;
+    }
+    grid.innerHTML = `
+      <div class="col-span-3 rounded-2xl border border-rose-200 bg-rose-50 p-6 text-center dark:border-rose-900/60 dark:bg-rose-950/30">
+        <p class="font-semibold text-rose-700 dark:text-rose-300">Unable to load products right now.</p>
+        <p class="mt-1 text-sm text-rose-600/90 dark:text-rose-300/80">Please refresh the page. If this keeps happening, check API response from /api/products.php.</p>
+      </div>
+    `;
+  }
+});
+</script>
+</html>
+<script>
+// Mobile filter toggle
+document.getElementById('mobile-filter-toggle').addEventListener('click', function() {
+  const panel = document.getElementById('filters-panel');
+  const isHidden = panel.classList.contains('hidden');
+  if (isHidden) {
+    panel.classList.remove('hidden');
+    this.textContent = 'Hide Filters';
+    this.innerHTML = '<span class="material-symbols-outlined">unfold_less</span>Hide Filters';
+  } else {
+    panel.classList.add('hidden');
+    this.textContent = 'Show Filters';
+    this.innerHTML = '<span class="material-symbols-outlined">filter_list</span>Show Filters';
+  }
+});
+</script>

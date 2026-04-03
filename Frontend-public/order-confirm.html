@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZAK Printing - Order Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f97316",
+                        "brand-pink": "#fb923c",
+                        "brand-blue": "#ea580c",
+                        "background-light": "#fffaf8",
+                        "background-dark": "#110a05",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .brand-gradient {
+                background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+            }
+            .brand-gradient-hover:hover {
+                background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            }
+            .brand-gradient-text {
+                background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .brand-soft-bg {
+                background: linear-gradient(135deg, rgba(249, 115, 22, 0.03) 0%, rgba(251, 146, 60, 0.03) 100%);
+            }
+            .nav-link-active {
+                @apply text-primary relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-primary;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap gap-6">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-primary" href="home.html">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="shop.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+</div>
+<button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="hidden sm:flex items-center justify-center px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
+                        Book an Appointment
+                    </a>
+</div>
+</div>
+</header>
+<main class="flex-grow brand-soft-bg">
+<section class="pt-20 pb-12 px-4 text-center">
+<div class="relative inline-block mb-8">
+<div class="absolute inset-0 brand-gradient rounded-full blur-2xl opacity-20 scale-150"></div>
+<div class="relative inline-flex items-center justify-center size-28 bg-white dark:bg-slate-900 rounded-full shadow-2xl border-4 border-white dark:border-slate-800">
+<span class="material-symbols-outlined text-6xl brand-gradient-text font-bold">check_circle</span>
+</div>
+</div>
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">Order Confirmed!</h1>
+<p class="text-lg font-bold brand-gradient-text uppercase tracking-[0.3em] mb-4">Thank you for choosing ZAK Printing</p>
+<p class="mt-4 text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
+            Your vision is now in our hands. We've sent a detailed summary to your email. Our production specialists will begin reviewing your design shortly.
+        </p>
+</section>
+<section class="max-w-4xl mx-auto px-4 mb-16">
+<div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm rounded-2xl border border-white dark:border-slate-800 p-8 md:p-10 shadow-xl shadow-slate-200/50 dark:shadow-none">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="space-y-4">
+<div>
+<h3 class="text-xs font-extrabold uppercase tracking-[0.2em] text-slate-400 mb-1">Order Identifier</h3>
+<p class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">#ZAK-98214-X</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/50 px-4 py-2 rounded-full w-fit">
+<span class="material-symbols-outlined text-primary">event_available</span>
+<span class="text-sm font-bold">Estimated Arrival: <span class="text-primary italic">Oct 24, 2023</span></span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-6 w-full md:w-auto">
+<button class="flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary text-primary font-black rounded-xl hover:bg-primary hover:text-white transition-all duration-300 w-full md:w-auto uppercase text-xs tracking-widest" data-print-confirmation="true" type="button">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Print Confirmation
+                    </button>
+<div class="size-24 rounded-xl overflow-hidden border-2 border-slate-100 dark:border-slate-800 shadow-inner hidden sm:block">
+<img alt="Preview" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqq3rb0hnEF2AYVHKneEF198g5YitGPNPv5sqQUmSHMw-eNxjgsrMt2GCYo1IjSurwQSSmW56JxyS2pZvDj8Ai546M0cgMgQ5vW6bGetftC1eofYmNxFthT_4Xk5grddkZvt9OSsvUWQVRY4CcWNGp_K1t9uHWUG_IfAmPLZr0SKByVAjY-NHM1iTRoqGpqYY1UqUEIGPdDoAncGRfwqPTSqXzWWXkK7arrqyi58bvT3LsXjsS42_f9AxxMPBziLOjETFf2yzy_NY"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-6xl mx-auto px-4 mb-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-slate-900/40 p-8 rounded-2xl border border-slate-100 dark:border-slate-800/50 hover:shadow-lg transition-all group">
+<div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-primary font-bold">draw</span>
+</div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Artwork Approval</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Our design experts review your files for resolution, bleed, and color accuracy. Expect an update in 2-4 hours.</p>
+</div>
+<div class="bg-white dark:bg-slate-900/40 p-8 rounded-2xl border border-slate-100 dark:border-slate-800/50 hover:shadow-lg transition-all group">
+<div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-primary font-bold">print</span>
+</div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Printing Phase</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Once the artwork is green-lit, your order hits our industrial-grade press for premium finish and durability.</p>
+</div>
+<div class="bg-white dark:bg-slate-900/40 p-8 rounded-2xl border border-slate-100 dark:border-slate-800/50 hover:shadow-lg transition-all group">
+<div class="size-14 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-slate-700 dark:text-slate-300 font-bold">local_shipping</span>
+</div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Priority Shipping</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">We carefully pack each order with protective materials and dispatch it via our premium courier partners.</p>
+</div>
+</div>
+</section>
+<section class="pb-24 text-center px-4">
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<a class="brand-gradient text-white px-12 py-5 rounded-full text-lg font-black shadow-2xl shadow-primary/40 hover:scale-[1.05] active:scale-95 transition-all brand-gradient-hover uppercase tracking-widest inline-flex items-center justify-center" href="user-my-order.html">
+            Track Your Order in Dashboard
+    </a>
+<a class="brand-gradient text-white px-12 py-5 rounded-full text-lg font-black shadow-2xl shadow-primary/40 hover:scale-[1.05] active:scale-95 transition-all brand-gradient-hover uppercase tracking-widest inline-flex items-center justify-center" href="shop.html">
+            Continue Shopping
+    </a>
+</div>
+<div class="mt-10 flex items-center justify-center gap-2 text-slate-500">
+<span class="text-sm">Questions about your order?</span>
+<a class="text-primary font-bold hover:underline decoration-2 underline-offset-4" href="contact.html?intent=order-support">Contact Specialist</a>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
+<div class="flex">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-3 rounded-r-xl"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2024 ZAK Printing. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-xs text-slate-400">Powered by ZAK Core</span>
+</div>
+</div>
+</footer>
+</body>
+<!-- ZAK V4: Order confirm wiring -->
+<script src="js/public-shell.js"></script>
+<script src="js/api.js"></script>
+<script src="js/public-ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const orderId = urlParams.get('id');
+
+  // Update order identifier text
+  const orderIdEl = document.querySelector('.text-3xl.font-black.text-slate-900');
+  if (orderIdEl && orderId) {
+    orderIdEl.textContent = '#ZAK-' + String(orderId).padStart(5,'0');
+  }
+
+  // Wire buttons
+  const printBtn = document.querySelector('[data-print-confirmation="true"]');
+  if (printBtn) printBtn.addEventListener('click', () => window.print());
+
+  const btns = document.querySelectorAll('button.brand-gradient');
+  if (btns[0]) btns[0].addEventListener('click', () => window.location.href = 'user-my-order.html');
+  if (btns[1]) btns[1].addEventListener('click', () => window.location.href = 'shop.html');
+});
+</script>
+</html>

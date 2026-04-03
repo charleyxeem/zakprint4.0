@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Create Invoice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#1337ec",
+          "background-light": "#f6f6f8",
+          "background-dark": "#101322"
+        },
+        fontFamily: { display: ["Inter"] }
+      }
+    }
+  };
+</script>
+<style>
+  body { font-family: Inter, sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-screen overflow-hidden">
+<!-- Mobile sidebar toggle -->
+<button id="sidebar-toggle" class="fixed bottom-6 right-6 z-40 lg:hidden p-3 min-h-12 min-w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform" aria-label="Toggle sidebar menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Sidebar backdrop for mobile -->
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50" onclick="document.getElementById('sidebar-overlay').classList.add('hidden'); document.getElementById('sidebar-nav').classList.add('-translate-x-full');"></div>
+<!-- Sidebar Navigation -->
+<aside id="sidebar-nav" class="w-72 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto">
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="size-10 rounded-lg bg-primary text-white flex items-center justify-center"><span class="material-symbols-outlined">dashboard</span></div>
+        <div>
+          <h1 class="text-lg font-bold leading-none">Admin Panel</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Super Admin</p>
+        </div>
+      </div>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="admin-dash.html"><span class="material-symbols-outlined">grid_view</span><span>Dashboard</span></a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium" href="invoice-list.html"><span class="material-symbols-outlined">description</span><span>Invoices</span></a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="quotation-list.html"><span class="material-symbols-outlined">request_quote</span><span>Quotations</span></a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="product-inventory.html"><span class="material-symbols-outlined">inventory_2</span><span>Products</span></a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="my-earning.html"><span class="material-symbols-outlined">payments</span><span>Earnings</span></a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="user-mgmt.html" data-super-only><span class="material-symbols-outlined">group</span><span>Users</span></a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="general-settings.html"><span class="material-symbols-outlined">settings</span><span>Settings</span></a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 mt-4" href="#" data-logout><span class="material-symbols-outlined">logout</span><span>Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="flex-1 flex flex-col min-w-0 bg-background-light overflow-y-auto">
+    <header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-10 flex items-center justify-between sticky top-0 z-10 shrink-0">
+      <div class="flex items-center gap-2 text-sm">
+        <span class="text-slate-400">Invoices</span><span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span><span class="font-semibold">Create Invoice</span>
+      </div>
+      <button type="button" data-action="save-invoice" class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20">
+        <span class="material-symbols-outlined text-sm">save</span>
+        Save Invoice
+      </button>
+    </header>
+
+    <main class="max-w-[1440px] mx-auto w-full px-4 lg:px-10 py-6">
+      <form id="invoiceForm" class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <section class="xl:col-span-2 space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <h2 class="md:col-span-2 text-lg font-bold">Client Details</h2>
+            <label class="md:col-span-2"><span class="text-sm font-semibold">Client Name</span><input name="client_name" class="mt-1 w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" type="text"/></label>
+            <label><span class="text-sm font-semibold">Company</span><input name="client_company" class="mt-1 w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" type="text"/></label>
+            <label><span class="text-sm font-semibold">Phone</span><input name="client_phone" class="mt-1 w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" type="text"/></label>
+            <label><span class="text-sm font-semibold">Email</span><input name="client_email" class="mt-1 w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" type="email"/></label>
+            <label><span class="text-sm font-semibold">Due Date</span><input name="due_date" class="mt-1 w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" type="date"/></label>
+            <label><span class="text-sm font-semibold">Tax Percent</span><input name="tax_percent" value="0" step="0.01" class="mt-1 w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" type="number"/></label>
+            <label class="flex items-center gap-2"><input name="include_tax" type="checkbox" class="rounded text-primary"/><span class="text-sm font-semibold">Include tax</span></label>
+            <label class="flex items-center gap-2"><input name="auto_tax" type="checkbox" class="rounded text-primary" checked/><span class="text-sm font-semibold">Auto apply tax % to items</span></label>
+            <label class="md:col-span-2"><span class="text-sm font-semibold">Notes</span><textarea name="notes" rows="4" class="mt-1 w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800"></textarea></label>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+            <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <h3 class="font-bold">Line Items</h3>
+              <button type="button" data-action="add-item-row" class="text-primary text-sm font-bold">Add Item</button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead class="bg-slate-50 dark:bg-slate-800/50">
+                  <tr>
+                    <th class="px-4 py-3 text-xs font-bold">Product / Description</th>
+                    <th class="px-4 py-3 text-xs font-bold w-24">Qty</th>
+                    <th class="px-4 py-3 text-xs font-bold w-32">Price</th>
+                    <th class="px-4 py-3 text-xs font-bold w-24">Tax</th>
+                    <th class="px-4 py-3 text-xs font-bold w-32 text-right">Amount</th>
+                    <th class="px-4 py-3 w-10"></th>
+                  </tr>
+                </thead>
+                <tbody data-items-body class="divide-y divide-slate-100 dark:divide-slate-800"></tbody>
+              </table>
+            </div>
+            <div class="p-4 bg-slate-50 dark:bg-slate-800/20 border-t border-slate-100 dark:border-slate-800">
+              <button type="button" data-action="add-item-row" class="font-bold text-sm text-slate-600 dark:text-slate-400 hover:text-primary">Add Another Item</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Summary</h3>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm"><span class="text-slate-500">Subtotal</span><span data-summary="subtotal" class="font-semibold">PKR 0.00</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-500">Tax</span><span data-summary="tax" class="font-semibold">PKR 0.00</span></div>
+              <div class="h-px bg-slate-100 dark:bg-slate-800"></div>
+              <div class="flex justify-between items-center"><span class="font-semibold">Total</span><span class="text-2xl font-black" data-summary="total">PKR 0.00</span></div>
+            </div>
+            <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-black text-sm hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20">Create Invoice</button>
+          </div>
+        </aside>
+      </form>
+    </main>
+  </main>
+</div>
+
+<script src="js/sidebar-controller.js" defer></script>
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const editId = new URLSearchParams(window.location.search).get('edit');
+  const form = document.getElementById('invoiceForm');
+  const itemsBody = document.querySelector('[data-items-body]');
+  const addItemButtons = document.querySelectorAll('[data-action="add-item-row"]');
+  const summarySubtotal = document.querySelector('[data-summary="subtotal"]');
+  const summaryTax = document.querySelector('[data-summary="tax"]');
+  const summaryTotal = document.querySelector('[data-summary="total"]');
+  const saveDraftButton = document.querySelector('[data-action="save-invoice"]');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const includeTaxInput = form.querySelector('[name="include_tax"]');
+  const autoTaxInput = form.querySelector('[name="auto_tax"]');
+  const taxPercentInput = form.querySelector('[name="tax_percent"]');
+
+  let products = [];
+  const productById = new Map();
+
+  const money = (value) => 'PKR ' + (Number(value) || 0).toLocaleString('ur-PK', { minimumFractionDigits: 2 });
+  const num = (value) => Number(String(value ?? '').replace(/[^0-9.-]/g, '')) || 0;
+  const escapeHtml = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  const includeTax = () => !!includeTaxInput.checked;
+  const autoTax = () => includeTax() && !!autoTaxInput.checked;
+  const globalTaxPct = () => Number(taxPercentInput.value || 0);
+
+  const productOptions = (selectedId = '') => {
+    const selected = String(selectedId || '');
+    const list = products.map((p) => {
+      const id = String(p.id);
+      const selectedAttr = id === selected ? ' selected' : '';
+      const priceLabel = Number(p.price || 0).toFixed(2);
+      return `<option value="${escapeHtml(id)}"${selectedAttr}>${escapeHtml(p.title)} - PKR ${priceLabel}</option>`;
+    }).join('');
+    return `<option value="">Manual item</option>${list}`;
+  };
+
+  const loadProducts = async () => {
+    try {
+      let data = await adminFetch('/products.php?status=active');
+      let list = Array.isArray(data.products) ? data.products : [];
+      if (!list.length) {
+        data = await adminFetch('/products.php');
+        list = Array.isArray(data.products) ? data.products.filter((p) => (p.status || '').toLowerCase() !== 'draft') : [];
+      }
+      products = list;
+      productById.clear();
+      products.forEach((p) => productById.set(String(p.id), p));
+    } catch (err) {
+      products = [];
+      productById.clear();
+    }
+  };
+
+  const createRow = (item = {}) => {
+    const tr = document.createElement('tr');
+    tr.dataset.itemRow = 'true';
+    const defaultTax = autoTax() ? globalTaxPct() : 0;
+    const rowTax = Number(item.tax_percent ?? defaultTax);
+    const selectedProduct = item.product_id ?? '';
+    tr.innerHTML = `
+      <td class="px-4 py-4">
+        <select data-item-field="product_id" class="w-full mb-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded p-1.5 text-sm">${productOptions(selectedProduct)}</select>
+        <input data-item-field="description" type="text" class="w-full bg-transparent border-0 focus:ring-0 p-0 text-sm" value="${escapeHtml(item.description || '')}" placeholder="Description"/>
+      </td>
+      <td class="px-4 py-4"><input data-item-field="quantity" type="number" min="1" step="1" class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded p-1.5 text-sm" value="${item.quantity ?? 1}"/></td>
+      <td class="px-4 py-4"><input data-item-field="price" type="text" class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded p-1.5 text-sm" value="${item.price ?? 0}"/></td>
+      <td class="px-4 py-4"><input data-item-field="tax_percent" type="number" min="0" step="0.01" class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded p-1.5 text-sm" value="${rowTax}" ${includeTax() ? '' : 'disabled'}/></td>
+      <td class="px-4 py-4 text-right font-bold" data-item-total>PKR 0.00</td>
+      <td class="px-4 py-4 text-center"><button type="button" data-action="remove-item-row" class="text-slate-300 hover:text-red-500"><span class="material-symbols-outlined text-lg">delete</span></button></td>`;
+    return tr;
+  };
+
+  const applyAutoTaxToRows = () => {
+    itemsBody.querySelectorAll('[data-item-row]').forEach((row) => {
+      const taxInput = row.querySelector('[data-item-field="tax_percent"]');
+      taxInput.disabled = !includeTax();
+      if (autoTax()) {
+        taxInput.value = String(globalTaxPct());
+      }
+    });
+  };
+
+  const applyProductToRow = (row, productId) => {
+    const product = productById.get(String(productId || ''));
+    if (!product) return;
+    const descInput = row.querySelector('[data-item-field="description"]');
+    const priceInput = row.querySelector('[data-item-field="price"]');
+    descInput.value = product.title || '';
+    priceInput.value = Number(product.price || 0).toFixed(2);
+    if (autoTax()) {
+      row.querySelector('[data-item-field="tax_percent"]').value = String(globalTaxPct());
+    }
+  };
+
+  const recalc = () => {
+    let subtotal = 0;
+    let tax = 0;
+    itemsBody.querySelectorAll('[data-item-row]').forEach((row) => {
+      const qty = Number(row.querySelector('[data-item-field="quantity"]').value || 0);
+      const price = num(row.querySelector('[data-item-field="price"]').value);
+      const pct = Number(row.querySelector('[data-item-field="tax_percent"]').value || 0);
+      const line = qty * price;
+      subtotal += line;
+      if (includeTax()) tax += line * (pct / 100);
+      row.querySelector('[data-item-total]').textContent = money(line);
+    });
+    summarySubtotal.textContent = money(subtotal);
+    summaryTax.textContent = money(tax);
+    summaryTotal.textContent = money(subtotal + tax);
+  };
+
+  const getItems = () => Array.from(itemsBody.querySelectorAll('[data-item-row]')).map((row) => ({
+    product_id: row.querySelector('[data-item-field="product_id"]').value ? Number(row.querySelector('[data-item-field="product_id"]').value) : null,
+    description: row.querySelector('[data-item-field="description"]').value.trim(),
+    quantity: Number(row.querySelector('[data-item-field="quantity"]').value || 0),
+    price: num(row.querySelector('[data-item-field="price"]').value),
+    tax_percent: includeTax() ? Number(row.querySelector('[data-item-field="tax_percent"]').value || 0) : 0
+  })).filter(i => i.description || i.quantity || i.price);
+
+  const renderItems = (items) => {
+    itemsBody.innerHTML = '';
+    (items.length ? items : [{}, {}]).forEach(item => itemsBody.appendChild(createRow(item)));
+    applyAutoTaxToRows();
+    recalc();
+  };
+
+  addItemButtons.forEach((btn) => btn.addEventListener('click', () => {
+    itemsBody.appendChild(createRow());
+    applyAutoTaxToRows();
+    recalc();
+  }));
+
+  itemsBody.addEventListener('input', (e) => {
+    if (e.target.matches('[data-item-field]')) recalc();
+  });
+
+  itemsBody.addEventListener('change', (e) => {
+    if (e.target.matches('[data-item-field="product_id"]')) {
+      applyProductToRow(e.target.closest('[data-item-row]'), e.target.value);
+      recalc();
+    }
+  });
+
+  itemsBody.addEventListener('click', (e) => {
+    const removeBtn = e.target.closest('[data-action="remove-item-row"]');
+    if (!removeBtn) return;
+    const row = removeBtn.closest('[data-item-row]');
+    if (row && itemsBody.querySelectorAll('[data-item-row]').length > 1) {
+      row.remove();
+      recalc();
+    }
+  });
+
+  saveDraftButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    submitButton.click();
+  });
+
+  includeTaxInput.addEventListener('change', () => {
+    applyAutoTaxToRows();
+    recalc();
+  });
+  autoTaxInput.addEventListener('change', () => {
+    applyAutoTaxToRows();
+    recalc();
+  });
+  taxPercentInput.addEventListener('input', () => {
+    if (autoTax()) {
+      applyAutoTaxToRows();
+      recalc();
+    }
+  });
+
+  await loadProducts();
+
+  if (!editId) {
+    try {
+      const settingsRes = await adminFetch('/settings.php?type=general');
+      const defaults = settingsRes.settings || {};
+      const notesInput = form.querySelector('[name="notes"]');
+      if (notesInput && !notesInput.value && defaults.invoice_special_notes) {
+        notesInput.value = defaults.invoice_special_notes;
+      }
+    } catch (e) {
+      console.warn('Could not load invoice default notes.', e);
+    }
+  }
+
+  if (editId) {
+    try {
+      const data = await adminFetch(`/invoices.php?id=${editId}`);
+      const inv = data.invoice || {};
+      for (const input of form.querySelectorAll('[name]')) {
+        if (input.name === 'include_tax') input.checked = !!inv.include_tax;
+        else if (input.name === 'auto_tax') input.checked = true;
+        else if (inv[input.name] !== undefined) input.value = inv[input.name] ?? '';
+      }
+      renderItems(inv.items || []);
+    } catch (e) {
+      showAdminToast('Could not load invoice for editing.', 'error');
+      renderItems([]);
+    }
+  } else {
+    renderItems([]);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const payload = {
+      client_name: form.querySelector('[name="client_name"]').value.trim(),
+      client_company: form.querySelector('[name="client_company"]').value.trim(),
+      client_phone: form.querySelector('[name="client_phone"]').value.trim(),
+      client_email: form.querySelector('[name="client_email"]').value.trim(),
+      due_date: form.querySelector('[name="due_date"]').value || '',
+      notes: form.querySelector('[name="notes"]').value || '',
+      include_tax: includeTax() ? 1 : 0,
+      tax_percent: Number(form.querySelector('[name="tax_percent"]').value || 0),
+      items: getItems()
+    };
+
+    if (!payload.client_name) return showAdminToast('Client name is required.', 'error');
+    if (!payload.items.length) return showAdminToast('Add at least one invoice item.', 'error');
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Saving...';
+    try {
+      if (editId) {
+        await adminFetch(`/invoices.php?id=${editId}`, { method: 'PATCH', data: payload });
+        showAdminToast('Invoice updated!', 'success');
+        setTimeout(() => { window.location.href = `invoice-view.html?id=${editId}`; }, 600);
+      } else {
+        const res = await adminFetch('/invoices.php', { method: 'POST', data: payload });
+        const id = res.invoice_id || res.id;
+        showAdminToast('Invoice created!', 'success');
+        setTimeout(() => { window.location.href = `invoice-view.html?id=${id}`; }, 600);
+      }
+    } catch (err) {
+      showAdminToast(err.message || 'Save failed.', 'error');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = editId ? 'Update Invoice' : 'Create Invoice';
+    }
+  });
+});
+</script>
+<script>
+// Mobile sidebar toggle
+document.getElementById('sidebar-toggle').addEventListener('click', function() {
+  const overlay = document.getElementById('sidebar-overlay');
+  const nav = document.getElementById('sidebar-nav');
+  const isHidden = overlay.classList.contains('hidden');
+  if (isHidden) {
+    overlay.classList.remove('hidden');
+    nav.classList.remove('-translate-x-full');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    overlay.classList.add('hidden');
+    nav.classList.add('-translate-x-full');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+<script src="js/sidebar-controller.js" defer></script>
+</body>
+</html>

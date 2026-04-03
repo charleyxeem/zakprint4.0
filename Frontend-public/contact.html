@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - ZAK Printing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        display: ["Public Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex min-h-screen flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap gap-6">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-primary" href="home.html">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="shop.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+<a class="text-primary text-sm font-bold transition-colors" href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+<a class="hidden sm:flex items-center justify-center px-3 sm:px-5 py-2 sm:py-2.5 bg-primary text-white text-xs sm:text-sm font-bold rounded-lg sm:rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
+Appointment
+</a>
+<button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
+<nav id="mobile-nav" class="hidden lg:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
+<div class="p-4 space-y-2">
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
+<a class="block px-4 py-3 text-primary font-bold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
+<a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="appointment.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
+</div>
+</nav>
+<main class="flex-1">
+<section class="relative overflow-hidden px-6 py-20 lg:px-20">
+<div class="absolute inset-0 bg-primary/5 -z-10"></div>
+<div class="absolute -right-20 top-0 size-80 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="absolute -left-20 bottom-0 size-80 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="max-w-7xl mx-auto grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+<div class="space-y-6">
+<span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-primary">Contact ZAK Printing</span>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-[-0.01em] text-slate-900 dark:text-white leading-tight">Talk to us about your next print job, packaging run, or branded merchandise order.</h1>
+<p class="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Share your quantity, timeline, size, and finish requirements. We will guide you toward the most practical material and production route.</p>
+<div class="grid gap-3 max-w-2xl">
+<div class="rounded-[999px] border border-slate-200 bg-white px-6 py-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+<div class="flex items-start gap-3">
+<span class="inline-flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary"><span class="material-symbols-outlined text-lg">call</span></span>
+<div>
+<p class="text-[11px] font-bold uppercase tracking-[0.16em] text-primary">Call</p>
+<a class="inline-block text-sm font-bold text-slate-900 hover:text-primary dark:text-white" href="tel:03096554946">0309 6554946</a>
+</div>
+</div>
+</div>
+<div class="rounded-[999px] border border-slate-200 bg-white px-6 py-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+<div class="flex items-start gap-3">
+<span class="inline-flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary"><span class="material-symbols-outlined text-lg">mail</span></span>
+<div>
+<p class="text-[11px] font-bold uppercase tracking-[0.16em] text-primary">Email</p>
+<a class="inline-block text-sm font-bold text-slate-900 hover:text-primary dark:text-white" href="mailto:sales@zakprint.com">sales@zakprint.com</a>
+</div>
+</div>
+</div>
+<div class="rounded-[999px] border border-slate-200 bg-white px-6 py-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+<div class="flex items-start gap-3">
+<span class="inline-flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary"><span class="material-symbols-outlined text-lg">location_on</span></span>
+<div>
+<p class="text-[11px] font-bold uppercase tracking-[0.16em] text-primary">Visit</p>
+<p class="text-xs font-semibold leading-relaxed text-slate-900 dark:text-white">Office No. 59-Bassment, Shan Arcade, Commercial Area Garden Town, Lahore, 54600</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-5">
+<div class="rounded-[2rem] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<lottie-player
+src="https://lottie.host/94d3d521-5239-4f37-90b8-867a6a749683/0ZTSgSzUGB.lottie"
+background="transparent"
+speed="1"
+style="width: 100%; height: 170px;"
+loop
+autoplay>
+</lottie-player>
+</div>
+<div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Why clients contact us first</h2>
+<ul class="mt-6 space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary">check_circle</span><span>Material and finish recommendations before production starts.</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary">check_circle</span><span>Support for corporate, retail, event, and personal print jobs.</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary">check_circle</span><span>Clear turnaround guidance for urgent and scheduled delivery work.</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary">check_circle</span><span>One team for design adjustments, proofs, production, and dispatch.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="px-6 pb-20 lg:px-20" id="contact-form">
+<div class="max-w-7xl mx-auto grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+<div class="space-y-6">
+<div class="rounded-[1.5rem] border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Visit or Call</h2>
+<div class="mt-6 space-y-5 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex gap-4">
+<span class="inline-flex size-11 items-center justify-center rounded-2xl bg-primary/10 text-primary"><span class="material-symbols-outlined">location_on</span></span>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Address</p>
+<p class="leading-relaxed">Office No. 59-Bassment, Shan Arcade, Commercial Area Garden Town, Lahore, 54600</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="inline-flex size-11 items-center justify-center rounded-2xl bg-primary/10 text-primary"><span class="material-symbols-outlined">schedule</span></span>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Hours</p>
+<p>Monday to Saturday, 9:30 AM to 5:30 PM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="inline-flex size-11 items-center justify-center rounded-2xl bg-primary/10 text-primary"><span class="material-symbols-outlined">call</span></span>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Phone</p>
+<p><a class="font-semibold text-slate-900 hover:text-primary dark:text-white" href="tel:03096554946">0309 6554946</a> (WhatsApp and direct calling support during business hours)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-[1.5rem] border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Need help deciding what to order?</h3>
+<p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Send your project details and we will help you choose sizing, stock, finishing, and quantity before you commit.</p>
+<div class="mt-6 grid gap-3 sm:grid-cols-2">
+<span class="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">Business Cards</span>
+<span class="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">Packaging</span>
+<span class="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">Labels</span>
+<span class="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">Corporate Kits</span>
+</div>
+</div>
+</div>
+<div class="rounded-[1.75rem] border border-slate-200 bg-white p-8 shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="flex items-center justify-between gap-6 flex-wrap">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Request a Quote</h2>
+<p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Fill out the form and include as much detail as you have.</p>
+</div>
+<span class="rounded-full bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Fast Response</span>
+</div>
+<form class="mt-8 grid gap-5 md:grid-cols-2" id="contactQueryForm" novalidate>
+<label class="block">
+<span class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">Full Name</span>
+<input class="w-full rounded-xl border-none bg-slate-100 px-4 py-3 text-sm focus:ring-2 focus:ring-primary dark:bg-slate-800" name="name" placeholder="Your name" required type="text"/>
+</label>
+<label class="block">
+<span class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">Phone Number</span>
+<input class="w-full rounded-xl border-none bg-slate-100 px-4 py-3 text-sm focus:ring-2 focus:ring-primary dark:bg-slate-800" name="phone" placeholder="0309 6554946" required type="tel"/>
+</label>
+<label class="block">
+<span class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">Email</span>
+<input class="w-full rounded-xl border-none bg-slate-100 px-4 py-3 text-sm focus:ring-2 focus:ring-primary dark:bg-slate-800" name="email" placeholder="you@example.com" required type="email"/>
+</label>
+<label class="block">
+<span class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">Service Type</span>
+<select class="w-full rounded-xl border-none bg-slate-100 px-4 py-3 text-sm focus:ring-2 focus:ring-primary dark:bg-slate-800" name="service" required>
+<option>Business Cards</option>
+<option>Packaging</option>
+<option>Labels</option>
+<option>Large Format</option>
+<option>Promotional Items</option>
+</select>
+</label>
+<label class="block md:col-span-2">
+<span class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">Project Details</span>
+<textarea class="min-h-40 w-full rounded-xl border-none bg-slate-100 px-4 py-3 text-sm focus:ring-2 focus:ring-primary dark:bg-slate-800" name="message" placeholder="Tell us quantity, dimensions, preferred finish, deadline, and anything else we should know." required></textarea>
+</label>
+<label class="block md:col-span-2">
+<span class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">Timeline</span>
+<div class="grid gap-3 sm:grid-cols-3">
+<label class="flex items-center gap-3 rounded-xl bg-slate-100 px-4 py-3 text-sm dark:bg-slate-800"><input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="radio" name="timeline" value="Standard"/>Standard</label>
+<label class="flex items-center gap-3 rounded-xl bg-slate-100 px-4 py-3 text-sm dark:bg-slate-800"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="radio" name="timeline" value="Urgent"/>Urgent</label>
+<label class="flex items-center gap-3 rounded-xl bg-slate-100 px-4 py-3 text-sm dark:bg-slate-800"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="radio" name="timeline" value="Need Advice"/>Need Advice</label>
+</div>
+</label>
+<div class="md:col-span-2 flex flex-wrap items-center justify-between gap-4 pt-2">
+<p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400">By submitting, you are asking our team to contact you about this printing request.</p>
+<button class="rounded-xl bg-primary px-8 py-3 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:scale-[1.02]" type="submit">Send Inquiry</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class="border-y border-slate-200 bg-white py-20 dark:border-slate-800 dark:bg-slate-950" id="faq">
+<div class="max-w-7xl mx-auto px-6 lg:px-20 grid gap-8 lg:grid-cols-2">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Common Questions</h2>
+<p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">A few of the questions clients usually ask before placing an order.</p>
+</div>
+<div class="space-y-3">
+<div class="rounded-2xl border border-slate-200 bg-background-light p-5 dark:border-slate-800 dark:bg-background-dark">
+<p class="font-bold text-slate-900 dark:text-white">Can I send artwork later?</p>
+<p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Yes. You can start with the product requirement and share artwork once size, stock, and finishing have been finalized.</p>
+</div>
+<div class="rounded-2xl border border-slate-200 bg-background-light p-5 dark:border-slate-800 dark:bg-background-dark">
+<p class="font-bold text-slate-900 dark:text-white">Do you handle urgent jobs?</p>
+<p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Yes, depending on quantity and finishing requirements. Mention your deadline in the form so we can advise accurately.</p>
+</div>
+<div class="rounded-2xl border border-slate-200 bg-background-light p-5 dark:border-slate-800 dark:bg-background-dark">
+<p class="font-bold text-slate-900 dark:text-white">Can I request samples?</p>
+<p class="mt-2 text-sm text-slate-600 dark:text-slate-400">For many jobs, yes. Sample availability depends on the product category and whether the finish is standard or custom.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
+<div class="flex">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-3 rounded-r-xl"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2024 ZAK Printing. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-xs text-slate-400">Powered by ZAK Core</span>
+</div>
+</div>
+</footer>
+</div>
+</body>
+<!-- ZAK V4: Contact form wiring -->
+<script src="js/public-shell.js"></script>
+<script src="js/api.js"></script>
+<script src="js/public-ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactQueryForm');
+  if (!form) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const emailInput = form.querySelector('input[type="email"]');
+  const serviceSelect = form.querySelector('select');
+  const messageBox = form.querySelector('textarea');
+  const intent = params.get('intent');
+  const plan = params.get('plan');
+  const product = params.get('product');
+  const email = params.get('email');
+
+  if (emailInput && email) {
+    emailInput.value = email;
+  }
+
+  if (serviceSelect && plan) {
+    serviceSelect.value = plan;
+  }
+
+  if (messageBox) {
+    const notes = [];
+    if (intent) notes.push('Intent: ' + intent.replace(/-/g, ' '));
+    if (plan) notes.push('Plan: ' + plan);
+    if (product) notes.push('Product: ' + product);
+    if (notes.length && !messageBox.value.trim()) {
+      messageBox.value = notes.join('\n');
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const inputs  = form.querySelectorAll('input, textarea, select, button');
+    const name    = form.querySelector('input[name="name"]')?.value.trim();
+    const phone   = form.querySelector('input[name="phone"]')?.value.trim();
+    const email   = form.querySelector('input[name="email"]')?.value.trim();
+    const service = form.querySelector('select[name="service"]')?.value.trim();
+    const message = form.querySelector('textarea[name="message"]')?.value.trim();
+    const timeline = form.querySelector('input[name="timeline"]:checked')?.value || 'Standard';
+    const btn     = form.querySelector('button[type="submit"]');
+
+    if (!name || !phone || !email || !message) {
+      showToast('Please fill Name, Phone, Email and Project Details.', 'error');
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      showToast('Please enter a valid email address.', 'error');
+      return;
+    }
+
+    const normalizedPhone = phone.replace(/\s+/g, '');
+    if (normalizedPhone.length < 10) {
+      showToast('Please enter a valid phone number.', 'error');
+      return;
+    }
+
+    const subject = service ? `${service} - ${timeline}` : `General Inquiry - ${timeline}`;
+    const composedMessage = `${message}\n\nTimeline: ${timeline}`;
+
+    btn.textContent = 'Sending...';
+    btn.disabled    = true;
+    inputs.forEach(i => i.disabled = true);
+
+    try {
+      await apiFetch('/contact.php', {
+        method: 'POST',
+        data: { name, phone, email, subject, message: composedMessage }
+      });
+      showToast('Query sent to our team. You will see a response shortly.', 'success');
+      form.reset();
+      const defaultTimeline = form.querySelector('input[name="timeline"][value="Standard"]');
+      if (defaultTimeline) defaultTimeline.checked = true;
+    } catch (err) {
+      showToast(err.message || 'Failed to send. Please try again.', 'error');
+    } finally {
+      btn.textContent = 'Send Inquiry';
+      btn.disabled    = false;
+      inputs.forEach(i => i.disabled = false);
+    }
+  });
+});
+</script>
+<script>
+document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+  const menu = document.getElementById('mobile-menu');
+  const nav = document.getElementById('mobile-nav');
+  const isHidden = menu.classList.contains('hidden');
+  if (isHidden) {
+    menu.classList.remove('hidden');
+    nav.classList.remove('hidden');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    menu.classList.add('hidden');
+    nav.classList.add('hidden');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+</html>

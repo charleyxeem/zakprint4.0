@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management - Admin Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen">
+<!-- Mobile sidebar toggle -->
+<button id="sidebar-toggle" class="fixed bottom-6 right-6 z-40 lg:hidden p-3 min-h-12 min-w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform" aria-label="Toggle sidebar menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Sidebar backdrop for mobile -->
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50" onclick="document.getElementById('sidebar-overlay').classList.add('hidden'); document.getElementById('sidebar-nav').classList.add('-translate-x-full');"></div>
+<!-- Sidebar Navigation -->
+<aside id="sidebar-nav" class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 font-bold text-lg leading-none">Admin Panel</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Super Admin</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="admin-dash.html">
+<span class="material-symbols-outlined">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="invoice-list.html">
+<span class="material-symbols-outlined">description</span>
+<span>Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="quotation-list.html">
+<span class="material-symbols-outlined">request_quote</span>
+<span>Quotations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="product-inventory.html">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="my-earning.html">
+<span class="material-symbols-outlined">payments</span>
+<span>Earnings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium" href="user-mgmt.html" data-super-only>
+<span class="material-symbols-outlined">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="general-settings.html">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="content studio.html" data-super-only>
+<span class="material-symbols-outlined">brush</span>
+<span>Content Studio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4" href="#" data-logout>
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<div class="text-center">
+<p class="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">v4.0</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Design and Developed by</p>
+<a href="http://theamadeuslab.com" target="_blank" class="text-xs font-semibold text-primary hover:underline">Amadeus Lab</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Header -->
+<header class="flex items-center justify-between p-8">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">User Management</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Manage and monitor platform access and roles</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:ring-4 hover:ring-primary/20 transition-all">
+<span class="material-symbols-outlined">add</span>
+                Add New User
+            </button>
+</header>
+<!-- KPI Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 px-8 mb-8">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Users</p>
+<div class="flex items-end justify-between mt-2">
+<p class="text-3xl font-black text-slate-900 dark:text-slate-100">1,284</p>
+<span class="flex items-center text-emerald-600 dark:text-emerald-400 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        12%
+                    </span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Active Admins</p>
+<div class="flex items-end justify-between mt-2">
+<p class="text-3xl font-black text-slate-900 dark:text-slate-100">42</p>
+<span class="flex items-center text-emerald-600 dark:text-emerald-400 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        2%
+                    </span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Pending Invites</p>
+<div class="flex items-end justify-between mt-2">
+<p class="text-3xl font-black text-slate-900 dark:text-slate-100">15</p>
+<span class="text-slate-400 dark:text-slate-500 text-sm font-bold">0%</span>
+</div>
+</div>
+</section>
+<!-- Search and Filters -->
+<section class="px-8 mb-6">
+<div class="flex flex-wrap gap-4 items-center bg-white dark:bg-slate-900 p-4 rounded-xl border border-primary/10 shadow-sm">
+<div class="relative flex-1 min-w-[300px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary/20 text-sm placeholder:text-slate-500 dark:placeholder:text-slate-400" placeholder="Search users by name or email..." type="text"/>
+</div>
+<div class="flex gap-2">
+<select class="text-sm bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary/20 px-4 py-2 font-medium">
+<option value="">All Roles</option>
+<option value="super_admin">Super Admin</option>
+<option value="admin">Admin</option>
+<option value="developer">Developer</option>
+</select>
+<select class="text-sm bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary/20 px-4 py-2 font-medium">
+<option value="">All Status</option>
+<option value="active">Active</option>
+<option value="inactive">Inactive</option>
+</select>
+<button class="bg-primary/5 text-primary p-2 rounded-lg hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+</section>
+<!-- User Table -->
+<section class="px-8 flex-1 overflow-auto">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-primary/10 shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-primary/5 bg-slate-50/50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Name</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Email</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Role</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Last Login</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/[0.02] transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="User profile avatar image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhpwndoWsarrLCn64HRmnsuEqYSxN3dHtsKnszezL65nkwL0Rtsf9ZsfcJV8wGVWQlZBDdSEz-RExROJRmQr9oBvNbiGtLxG8WQMO4WeQ4MPrJeRoHrQOEbdLp74DG6YvRrINcuMVU3n7j8jwTyXPzNyTA65mmwi3OI4B6-lpCHtQtfrW7qXbBhnMfWtiva51ShR5Tn4oylgX3P1r2_M-M_7HiGAa3Lc6v8pqgLnBHFnIrF6rUjUiOBa4whPT8E_HlUFCTWCyGJims"/>
+</div>
+<span class="font-bold text-slate-900 dark:text-slate-100">Alex Rivers</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">alex.rivers@enterprise.com</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold">SUPER ADMIN</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">2 mins ago</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Reset Password">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</button>
+<button class="p-1.5 text-slate-200 cursor-not-allowed" disabled="" title="Self-delete blocked">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/[0.02] transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="Female user professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfsmRbLBoo7mLna0itCnJ02sDmIiMJ0NWQ7U0X0PV7oYc2-CX-GMpQO2EVvjE9Mteu37oRwbXwufcjdA92dER0ggY8VGkPTCW87E40v2dWqTVyqM9m0HElEQ1OdMg-o0hL3n91VpnO1LqrU38hKAkgwR6OZDpVIj4oPRHbU8qAsDagkpX2SXgW3ItLqsSbNttZitKcpE-mujxYxhXEwHaZCgWDnThp8D0US-aX-qTJdMF9XTOloj9acirGWOu8dxKgSgD_k2YXi6P0"/>
+</div>
+<span class="font-bold text-slate-900 dark:text-slate-100">Sarah Jenkins</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">s.jenkins@devteam.io</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold">DEVELOPER</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">5 hours ago</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/[0.02] transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="Male developer user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt2GRlSrvFFo8aQQU4gxMOEbf46M7xCBePQ_9eMDrSDmEIfyPa6AEEdkG2udF1WzoiKvPDz7A2SpchwgF4XpmiqXkwiW2iBkmpr_faVCkzLZCfyDB0xOhjD1OBc0DlpUjQZ0fwEieDmUJtf13ndZ-jQWocJGYAzhUV55lFcMXcIIy9iK11fgLJKS-VQZJTwNbAh1ZrUDfes_o9qZOgJrnGxIF6R4G8uew33J7-bRkSqyt1IewwT6l5kZTYC1Utoy62TZQj6vsn9mtT"/>
+</div>
+<span class="font-bold text-slate-900 dark:text-slate-100">Michael Chen</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">m.chen@sysadmin.net</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold">ADMIN</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                    Inactive
+                                </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">3 days ago</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="flex items-center justify-between px-6 py-4 bg-slate-50/50 dark:bg-slate-800/50 border-t border-primary/5">
+<p class="text-sm text-slate-500">Showing <span class="font-bold text-slate-900 dark:text-slate-100">1</span> to <span class="font-bold text-slate-900 dark:text-slate-100">10</span> of <span class="font-bold text-slate-900 dark:text-slate-100">1,284</span> users</p>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-primary/10 text-slate-400 hover:bg-white dark:hover:bg-slate-900 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all text-sm font-medium">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all text-sm font-medium">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-slate-400">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all text-sm font-medium">128</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-primary/10 text-slate-400 hover:bg-white dark:hover:bg-slate-900 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Footer (Minimalist) -->
+<footer class="p-8 mt-auto">
+<div class="flex items-center justify-between text-xs text-slate-400">
+<p>Â© 2024 Admin Console. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="admin-dash.html">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="admin-dash.html">Terms of Service</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<script src="js/sidebar-controller.js" defer></script></body>
+<!-- ZAK V4: User management wiring (super_admin only) -->
+<script src="js/admin-api.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const tbody = document.querySelector('tbody');
+  if (!tbody) return;
+
+  async function loadUsers(search = '') {
+    try {
+      const url = '/users.php' + (search ? '?search=' + encodeURIComponent(search) : '');
+      const data = await adminFetch(url);
+      const users = data.users || [];
+      if (!users.length) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400">No users found.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = users.map(u => `
+        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30">
+          <td class="p-4 text-sm font-medium">${u.name}</td>
+          <td class="p-4 text-sm text-slate-500">${u.email}</td>
+          <td class="p-4 text-sm">${u.phone || 'â€”'}</td>
+          <td class="p-4">${statusBadge(u.role)}</td>
+          <td class="p-4 text-sm text-slate-500">${formatDate(u.created_at)}</td>
+          <td class="p-4 text-right">
+            <button onclick="deleteUser(${u.id})" class="p-1.5 hover:bg-red-50 rounded-lg text-slate-400 hover:text-red-500">
+              <span class="material-symbols-outlined text-lg">delete</span>
+            </button>
+          </td>
+        </tr>`).join('');
+    } catch(e) { showAdminToast('Failed to load users', 'error'); }
+  }
+
+  window.deleteUser = async (id) => {
+    if (!confirm('Delete this user?')) return;
+    try {
+      await adminFetch(`/users.php?id=${id}`, { method: 'DELETE' });
+      showAdminToast('User deleted', 'success');
+      loadUsers();
+    } catch(e) { showAdminToast(e.message || 'Delete failed', 'error'); }
+  };
+
+  loadUsers();
+
+  const searchInput = document.querySelector('input[type="search"], input[placeholder*="Search"]');
+  if (searchInput) {
+    let timer;
+    searchInput.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => loadUsers(searchInput.value), 400); });
+  }
+});
+</script>
+<script>
+// Mobile sidebar toggle
+document.getElementById('sidebar-toggle').addEventListener('click', function() {
+  const overlay = document.getElementById('sidebar-overlay');
+  const nav = document.getElementById('sidebar-nav');
+  const isHidden = overlay.classList.contains('hidden');
+  if (isHidden) {
+    overlay.classList.remove('hidden');
+    nav.classList.remove('-translate-x-full');
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    overlay.classList.add('hidden');
+    nav.classList.add('-translate-x-full');
+    this.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+<script src="js/sidebar-controller.js" defer></script>
+</html>
+

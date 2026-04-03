@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us - ZAK Printing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        display: ["Public Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex min-h-screen flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap gap-6">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-primary" href="home.html">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="shop.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
+<a class="text-primary text-sm font-bold transition-colors" href="about.html">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+</div>
+<button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="hidden sm:flex items-center justify-center px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
+                        Book an Appointment
+                    </a>
+</div>
+</div>
+</header>
+<div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
+<nav id="mobile-nav" class="hidden lg:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
+<div class="p-4 space-y-2">
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
+<a class="block px-4 py-3 text-primary font-bold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
+<a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="appointment.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
+</div>
+</nav>
+<main class="flex-1">
+<section class="relative overflow-hidden px-6 py-20 lg:px-20">
+<div class="absolute inset-0 bg-primary/5 -z-10"></div>
+<div class="absolute -right-20 top-0 size-72 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="absolute -left-20 bottom-0 size-72 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="max-w-7xl mx-auto grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+<div class="space-y-6">
+<span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-primary">About ZAK Printing</span>
+<h1 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-5xl leading-[1.1]">Built on trust, driven by craft, and committed to helping every brand print with confidence.</h1>
+<p class="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Since 2016, ZAK Printing has been serving clients in both digital and offset printing with dependable quality, practical guidance, and on-time delivery for every size of project.</p>
+<p class="max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">For us, printing is not just output. It is responsibility. Every color match, cut line, finish, and delivery timeline reflects our promise to protect your brand image and earn your long-term trust.</p>
+<div class="flex flex-wrap gap-4 pt-2">
+<a class="rounded-xl bg-primary px-8 py-4 text-sm font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-[1.02]" href="shop.html">Explore Products</a>
+<a class="rounded-xl border border-slate-200 bg-white px-8 py-4 text-sm font-bold text-slate-900 transition-all hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white" href="contact.html">Talk to Our Team</a>
+</div>
+</div>
+<div class="relative">
+<div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] bg-primary/10"></div>
+<img alt="Printing team reviewing premium print samples" class="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWLZ2sSjPxbAGgBXYBF_PCZSTEMXE6JO4PAXhuI94KJXQHqobltqsjFZvqiS2J1Leo_-3j1q48uiIAmt4fSgJDj0Is--GFaGgJiPQEfkaNomG-EVSjzIMxJIE7jwOek7kwsIN8ldDRj_Jc81wGvRrcs3H28jA6gi_DPhjs9BMFsLqgjfzqyIB_43pdtHHY1HlcIVeQp-ckE7TCpuCqSTWI92OZQwzfsXMHRB8za7ZuT4Nzg9fb1SdsPnK6dhTF56N6DknlOWzmwkw"/>
+</div>
+</div>
+</section>
+<section class="px-6 py-20 lg:px-20 bg-white/70 dark:bg-slate-950/50 border-y border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+<div class="space-y-5">
+<span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-primary">How We Work</span>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white">A disciplined process focused on quality assurance and client satisfaction.</h2>
+<p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Our team follows a structured production workflow so every project moves with clarity, accountability, and measurable quality checks at each stage.</p>
+<p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">From brief to dispatch, we keep communication transparent and quality consistent so clients can scale orders confidently with fewer revisions and faster approvals.</p>
+</div>
+<div class="grid gap-4 sm:grid-cols-2">
+<article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:col-span-2">
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-primary">01 Discovery & Briefing</p>
+<p class="mt-2 text-sm font-semibold text-slate-900 dark:text-white">We understand product purpose, quantity, timeline, and budget before production starts.</p>
+</article>
+<article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-primary">02 Design & Preflight</p>
+<p class="mt-2 text-sm font-semibold text-slate-900 dark:text-white">Artwork, bleed, color mode, and layout checks are validated to prevent costly errors.</p>
+</article>
+<article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-primary">03 Proof Approval</p>
+<p class="mt-2 text-sm font-semibold text-slate-900 dark:text-white">We share clear proofs and only move forward after client confirmation.</p>
+</article>
+<article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-primary">04 Production QA</p>
+<p class="mt-2 text-sm font-semibold text-slate-900 dark:text-white">Digital/offset runs are monitored for color consistency, trimming precision, and finish quality.</p>
+</article>
+<article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-primary">05 Dispatch & Support</p>
+<p class="mt-2 text-sm font-semibold text-slate-900 dark:text-white">Final checks, safe packing, and follow-up support ensure satisfaction after delivery too.</p>
+</article>
+<article class="rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:col-span-2">
+<p class="text-xs font-bold uppercase tracking-[0.16em] text-primary">Result</p>
+<p class="mt-2 text-sm font-bold text-slate-900 dark:text-white">High-end quality assurance, predictable workflow, and repeat client satisfaction on every order cycle.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="px-6 py-20 lg:px-20">
+<div class="max-w-7xl mx-auto">
+<div class="flex items-end justify-between gap-6 mb-12 flex-wrap">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Leadership Team</h2>
+<div class="mt-3 h-1 w-20 rounded-full bg-primary"></div>
+</div>
+<p class="max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-400">Experienced operators, designers, and production planners working as one team to turn ideas into premium print that performs in the real world.</p>
+</div>
+<div class="grid gap-8 lg:grid-cols-3">
+<article class="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<img alt="Kashif Malik - Chief Executive Officer" class="mb-6 aspect-[4/5] w-full rounded-[1.25rem] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWLZ2sSjPxbAGgBXYBF_PCZSTEMXE6JO4PAXhuI94KJXQHqobltqsjFZvqiS2J1Leo_-3j1q48uiIAmt4fSgJDj0Is--GFaGgJiPQEfkaNomG-EVSjzIMxJIE7jwOek7kwsIN8ldDRj_Jc81wGvRrcs3H28jA6gi_DPhjs9BMFsLqgjfzqyIB_43pdtHHY1HlcIVeQp-ckE7TCpuCqSTWI92OZQwzfsXMHRB8za7ZuT4Nzg9fb1SdsPnK6dhTF56N6DknlOWzmwkw"/>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Kashif Yaqoob</h3>
+<p class="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-primary">Chief Executive Officer</p>
+<p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Kashif leads the long-term direction of ZAK Printing with a clear mission: deliver dependable quality, honest timelines, and lasting client partnerships on every project.</p>
+</article>
+<article class="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<img alt="Asif Malik - Director of Operations" class="mb-6 aspect-[4/5] w-full rounded-[1.25rem] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVRxDaWTD4TpjLXoRvEny2bkAcL9TxpuLeSBh-BXwcuzZg1GdhVy8AFXVLC3mfACV4TpCBWSj8GvhV0s7F27DR-18cZz2dQZyMHliHcVYfc6hoJs7OZy7B20OAWpp67RqrizAedAOh_Ep-rQWxNwVSZRS7iHhB9iUFiSACcl32GzO6pbJYW-58UHBt83GL_kFnpcHgPmuCwknIVUjsc7OZbVU20qgsCfrGOSHu_anx_lRcqKh0aaucj40C_npz3bmod9Hu2te2U9g"/>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Asif Yaqoob</h3>
+<p class="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-primary">Director of Operations</p>
+<p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Asif oversees scheduling, materials, and production flow, ensuring every job stays precise from proofing to final dispatch.</p>
+</article>
+<article class="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+<img alt="Zafar Malik - Creative Director" class="mb-6 aspect-[4/5] w-full rounded-[1.25rem] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEHKHirp8etcUE_sS9MMEXG_DwhY-JQrCFTUBzWkW5aK5NSNYcFMgub6vWOnJoswsH8FOIn1Hkg_m22beGvm8YSMBwrkMFxU9s3BuONCVIOnL-1gNA9Uksz2X3EtNbDOZ5I_0FODWlzDxZ-TY9zaSXbL-RVjWq-KspWDN12TalB-ULBcXv_ekP5SWEEiHzEUnoS1vB_Rh2JzgAowbVwzTdch_ma90r4cu1hZkoM2AicPI2ypU4W_80c1-phGqtfPpuq8TwAmZqbxs"/>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Zafar Yaqoob</h3>
+<p class="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-primary">Creative Director</p>
+<p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Zafar shapes layout systems and production-friendly design decisions that help clients move faster without compromising brand impact.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="bg-white py-20 dark:bg-slate-950">
+<div class="max-w-7xl mx-auto px-6 lg:px-20 grid gap-8 lg:grid-cols-3">
+<article class="rounded-[1.5rem] border border-slate-200 p-8 dark:border-slate-800">
+<span class="inline-flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">workspace_premium</span>
+</span>
+<h2 class="mt-6 text-2xl font-bold text-slate-900 dark:text-white">Who We Are</h2>
+<p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">We are a hands-on print partner helping businesses, events, and families bring ideas to life through clear process, consistent quality, and detail-focused production.</p>
+</article>
+<article class="rounded-[1.5rem] border border-slate-200 p-8 dark:border-slate-800">
+<span class="inline-flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">history_edu</span>
+</span>
+<h2 class="mt-6 text-2xl font-bold text-slate-900 dark:text-white">Our Story</h2>
+<p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Since 2016, we have steadily grown from core print jobs into complete digital and offset printing support, including finishing, packaging, and large-format requirements.</p>
+</article>
+<article class="rounded-[1.5rem] border border-slate-200 p-8 dark:border-slate-800">
+<span class="inline-flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">handshake</span>
+</span>
+<h2 class="mt-6 text-2xl font-bold text-slate-900 dark:text-white">Our Promise</h2>
+<p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">We treat every order with equal care. Whether it is one sample box or a full campaign rollout, we promise clean output, clear communication, and confidence at every step.</p>
+</article>
+</div>
+</section>
+<section class="px-6 py-20 lg:px-20">
+<div class="max-w-7xl mx-auto grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+<div class="rounded-[1.5rem] bg-primary p-8 text-white shadow-2xl shadow-primary/20">
+<p class="text-sm font-semibold uppercase tracking-[0.16em] text-white/70">Years in Print</p>
+<p class="mt-6 text-5xl font-black">10+</p>
+<p class="mt-3 text-sm leading-relaxed text-white/80">Serving clients since 2016 with reliable execution across commercial, personal, and event-based print needs.</p>
+</div>
+<div class="rounded-[1.5rem] border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
+<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Print Expertise</p>
+<p class="mt-6 text-5xl font-black text-slate-900 dark:text-white">2X</p>
+<p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Strong capability across both digital and offset printing, matched to your timeline, quantity, and finish goals.</p>
+</div>
+<div class="rounded-[1.5rem] border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
+<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Client Focus</p>
+<p class="mt-6 text-5xl font-black text-slate-900 dark:text-white">1:1</p>
+<p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Direct guidance on artwork prep, finishing suggestions, and production planning before print starts.</p>
+</div>
+<div class="rounded-[1.5rem] border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
+<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Delivery Mindset</p>
+<p class="mt-6 text-5xl font-black text-slate-900 dark:text-white">Fast</p>
+<p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Urgent timelines, recurring business orders, and proof-to-print coordination handled in one workflow.</p>
+</div>
+</div>
+</section>
+<section class="border-y border-slate-200 bg-background-light py-20 dark:border-slate-800 dark:bg-background-dark">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<div class="inline-flex size-16 items-center justify-center rounded-2xl bg-primary/20 text-primary mb-8">
+<span class="material-symbols-outlined text-4xl">groups</span>
+</div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white md:text-4xl">Need a printing partner you can trust for the next 10 years of your brand growth?</h2>
+<p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Talk to our team about digital and offset printing, packaging, branding kits, event collateral, signage, and complete production support.</p>
+<a class="mt-10 inline-flex items-center justify-center rounded-xl bg-primary px-10 py-4 text-lg font-bold text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.02]" href="contact.html">Book an Appointment Now</a>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
+<div class="flex">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-3 rounded-r-xl"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2024 ZAK Printing. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-xs text-slate-400">Powered by ZAK Core</span>
+</div>
+</div>
+</footer>
+</div>
+</body>
+<!-- ZAK V4: About page wiring -->
+<script src="js/public-shell.js"></script>
+<script src="js/api.js"></script>
+<script src="js/public-ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const cms = await apiFetch('/cms.php?page=about');
+    (cms.blocks || []).forEach(b => {
+      const el = document.querySelector(`[data-cms-block="${b.block_key}"]`);
+      if (el) el.innerHTML = b.content;
+    });
+  } catch(e) { /* static fallback */ }
+});
+document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+  const menu = document.getElementById('mobile-menu');
+  const nav = document.getElementById('mobile-nav');
+  menu.classList.toggle('hidden');
+  nav.classList.toggle('hidden');
+});
+</script>
+</html>
