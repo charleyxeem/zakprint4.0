@@ -16,5 +16,9 @@ RewriteRule ^ - [L]
 # Route /api/* requests — let Apache find the PHP file
 RewriteRule ^api/(.+)$ api/$1 [L,QSA,NC]
 
+# Short-URL rewrite: /pagename.html -> Frontend-public/pagename.html
+# This allows cleaner URLs like /home.html instead of /Frontend-public/home.html
+RewriteRule ^(home|shop|services|about|contact|blog|appointment|product-detail|checkout|order-confirm|user-login|user-dash|user-my-order|user-my-settings)\.html$ Frontend-public/$1.html [L,QSA]
+
 # Fallback to app entry point
 RewriteRule . index.php [L]
