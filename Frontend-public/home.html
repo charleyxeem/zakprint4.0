@@ -198,9 +198,9 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 <main class="flex-1 m-0 p-0">
 <section class="relative mt-0 px-6 pt-0 pb-20 lg:px-20">
 <div class="max-w-7xl mx-auto">
-<div class="grid grid-cols-12 gap-6 items-start content-start">
-<div class="col-span-12 lg:col-span-9">
-<div class="hero-gradient m-0 rounded-[2.5rem] p-5 lg:p-8 relative overflow-hidden flex items-start border border-white/50">
+<div class="grid grid-cols-12 gap-6 lg:items-stretch">
+<div class="col-span-12 lg:col-span-9 flex">
+<div class="hero-gradient m-0 rounded-[2.5rem] p-5 lg:p-8 relative overflow-hidden flex items-center border border-white/50 h-full min-h-[34rem]">
 <div class="relative z-10 max-w-lg">
 <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Special Weekly Offer</span>
 <h1 class="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-tight mb-6">You Think,<br/><span class="gradient-text">We Create.</span></h1>
@@ -364,11 +364,11 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 <p class="text-primary font-bold mb-4 uppercase tracking-tighter">Countdown Is On</p>
 <h3 class="text-3xl font-black mb-8 leading-tight">Save on Your Favorite <span class="gradient-text">Prints</span></h3>
 <div class="flex gap-4 mb-8">
-<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-hours" class="text-3xl font-black text-primary countdown-digit" aria-live="polite" aria-label="hours remaining">00</span><p class="text-[10px] uppercase font-bold text-slate-500">Hours</p></div>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-hours" class="text-3xl font-black text-primary countdown-digit">--</span><p class="text-[10px] uppercase font-bold text-slate-500">Hours</p></div>
 <span class="text-3xl font-black text-slate-300 flex items-center">:</span>
-<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-mins" class="text-3xl font-black text-primary countdown-digit" aria-live="polite" aria-label="minutes remaining">00</span><p class="text-[10px] uppercase font-bold text-slate-500">Mins</p></div>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-mins" class="text-3xl font-black text-primary countdown-digit">--</span><p class="text-[10px] uppercase font-bold text-slate-500">Mins</p></div>
 <span class="text-3xl font-black text-slate-300 flex items-center">:</span>
-<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-secs" class="text-3xl font-black text-primary countdown-digit" aria-live="polite" aria-label="seconds remaining">00</span><p class="text-[10px] uppercase font-bold text-slate-500">Secs</p></div>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border border-slate-100"><span id="cd-secs" class="text-3xl font-black text-primary countdown-digit">--</span><p class="text-[10px] uppercase font-bold text-slate-500">Secs</p></div>
 </div>
 <a class="inline-block gradient-bg text-white px-8 py-3 rounded-full font-bold w-full hover:scale-105 transition-transform shadow-lg shadow-primary/20" href="#sale">Shop The Sale</a>
 <img alt="Stationery" class="mt-8 rounded-2xl w-full h-48 object-cover border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4cksaYfbJxzlxiiDr8uYIsSAtaFbcOpwMT_36DvY0HXjEUdq5DR244dTBJr8KcuxjBbkduGCJo8UE2f09aHungeMf1G0cYlodoE0jiRVgmTDldyoHNEM5XN6J6Tmru9AF3C_zKCTyglYBv9yxex-OLEFQs58JTgknw2jw9f6ElUtOb2YVCcXkTOsZSI04-YLavj7nfi7ldcmZwoBRBO5u7P0N7iDDhWe53oD_neW-gVcwX7nWw2b2iBKfe2QMb8ZY5cgrOSo6r98"/>
@@ -799,21 +799,16 @@ document.querySelectorAll('h2.gradient-text, h2.font-black').forEach(el => {
 
 // ─── Live Countdown Timer ─────────────────────────────────────────────────
 (function() {
-  const SALE_KEY = 'ZAK_HOME_SALE_END';
-
-  /** Returns a random sale duration in milliseconds between 4 and 23 hours */
-  function randomSaleDurationMs() {
-    return (Math.floor(Math.random() * 19) + 4) * 3600 * 1000
-         + Math.floor(Math.random() * 60) * 60 * 1000
-         + Math.floor(Math.random() * 60) * 1000;
-  }
-
+  const SALE_KEY = 'zak_sale_end';
   let endTime = parseInt(localStorage.getItem(SALE_KEY) || '0', 10);
   const now = Date.now();
 
   // Generate new end time if expired or first visit (random 4–23 hours)
   if (!endTime || endTime <= now) {
-    endTime = now + randomSaleDurationMs();
+    const randMs = (Math.floor(Math.random() * 19) + 4) * 3600 * 1000
+                 + Math.floor(Math.random() * 60) * 60 * 1000
+                 + Math.floor(Math.random() * 60) * 1000;
+    endTime = now + randMs;
     localStorage.setItem(SALE_KEY, endTime.toString());
   }
 
@@ -827,7 +822,7 @@ document.querySelectorAll('h2.gradient-text, h2.font-black').forEach(el => {
     const cur = el.textContent;
     if (cur !== newVal) {
       el.classList.remove('flip');
-      void el.offsetWidth; // Force DOM reflow to reset the flip animation before applying it again
+      void el.offsetWidth; // reflow to restart animation
       el.classList.add('flip');
       el.textContent = newVal;
     }
@@ -846,7 +841,10 @@ document.querySelectorAll('h2.gradient-text, h2.font-black').forEach(el => {
 
     if (remaining <= 0) {
       // Reset with a new random window when sale ends
-      endTime = Date.now() + randomSaleDurationMs();
+      const randMs = (Math.floor(Math.random() * 19) + 4) * 3600 * 1000
+                   + Math.floor(Math.random() * 60) * 60 * 1000
+                   + Math.floor(Math.random() * 60) * 1000;
+      endTime = Date.now() + randMs;
       localStorage.setItem(SALE_KEY, endTime.toString());
     }
   }
