@@ -36,29 +36,40 @@
         .brand-gradient {
             background: #ec5b13;
         }
+        .action-btn {
+          transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+        .action-btn:hover {
+          transform: translateY(-1px);
+        }
+        .action-btn:active {
+          transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
 <header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 lg:px-20 py-3">
 <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
 <div class="flex items-center gap-4 sm:gap-8 flex-1">
-<a class="flex items-center gap-2 sm:gap-3 text-primary flex-shrink-0" href="home.html">
+<a class="flex items-center gap-2 sm:gap-3 text-primary flex-shrink-0" href="/zakprintingV4/home">
 <div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
-<span class="material-symbols-outlined">print</span>
+<svg aria-hidden="true" class="h-4.5 w-4.5 fill-current" viewBox="0 0 24 24">
+<path d="M7 7V4h10v3H7Zm10 2H7a4 4 0 0 0-4 4v4h3v3h12v-3h3v-4a4 4 0 0 0-4-4Zm-2 9H9v-4h6v4Zm2-7.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/>
+</svg>
 </div>
 <h2 class="hidden sm:block text-slate-900 dark:text-slate-100 text-lg sm:text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
 </a>
 <nav class="hidden lg:flex items-center gap-4 xl:gap-8">
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="shop.html">Shop</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="/zakprintingV4/home">Home</a>
+<a class="text-primary text-sm font-bold transition-colors" href="/zakprintingV4/shop">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="/zakprintingV4/services">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="/zakprintingV4/about">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="/zakprintingV4/contact">Contact</a>
 </nav>
 </div>
-<div class="hidden sm:flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg sm:rounded-xl px-2 sm:px-3 py-1 sm:py-1.5 border border-transparent focus-within:border-primary transition-all flex-1 max-w-xs">
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
 <span class="material-symbols-outlined text-slate-400 text-lg">search</span>
-<input class="bg-transparent border-none focus:ring-0 text-sm w-24 sm:w-full placeholder:text-slate-400" placeholder="Search..." type="text"/>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search..." type="text"/>
 </div>
 <div class="flex items-center gap-1 sm:gap-2">
 <button class="p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg sm:rounded-xl transition-colors" aria-label="Account">
@@ -69,9 +80,9 @@
 <span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
 </button>
 </div>
-<a class="hidden md:flex items-center justify-center px-3 sm:px-5 py-2 sm:py-2.5 bg-primary text-white text-xs sm:text-sm font-bold rounded-lg sm:rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
-                        Appointment
-                    </a>
+<a class="hidden sm:flex items-center justify-center px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="/zakprintingV4/appointment">
+  Appointment
+</a>
 <button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
 <span class="material-symbols-outlined">menu</span>
 </button>
@@ -80,13 +91,13 @@
 <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
 <nav id="mobile-nav" class="hidden lg:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
 <div class="p-4 space-y-2">
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="/zakprintingV4/home" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+<a class="block px-4 py-3 text-primary font-bold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="/zakprintingV4/shop" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="/zakprintingV4/services" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="/zakprintingV4/about" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
+<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="/zakprintingV4/contact" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
 <hr class="my-2 border-slate-200 dark:border-slate-800">
-<a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="appointment.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
+<a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="/zakprintingV4/appointment" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
 </div>
 </nav>
 <script>
@@ -107,12 +118,12 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 </script>
 </header>
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-<nav class="flex mb-8 text-xs font-medium uppercase tracking-wider text-slate-500 gap-2">
-<a class="hover:text-primary transition-colors" href="home.html">Home</a>
+<nav class="mb-8 flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-wider text-slate-500">
+<a class="hover:text-primary transition-colors" href="/zakprintingV4/home">Home</a>
 <span>/</span>
 <span class="text-slate-500">Packaging</span>
 <span>/</span>
-<span class="text-slate-900 dark:text-slate-100">Custom Luxury Corrugated Boxes</span>
+<span class="break-words text-slate-900 dark:text-slate-100">Custom Luxury Corrugated Boxes</span>
 </nav>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
 <div class="lg:col-span-7">
@@ -141,7 +152,7 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 </div>
 <div class="lg:col-span-5 flex flex-col gap-8">
 <div>
-<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2 leading-tight">Custom Luxury Corrugated Boxes</h2>
+<h2 class="mb-2 text-2xl font-extrabold leading-tight text-slate-900 dark:text-white sm:text-3xl">Custom Luxury Corrugated Boxes</h2>
 <div class="flex items-center gap-2 mb-4">
 <div class="flex text-amber-400">
 <span class="material-symbols-outlined fill-current">star</span>
@@ -166,14 +177,14 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 </div>
 <div class="space-y-3">
 <label class="block text-sm font-bold text-primary uppercase tracking-wide">Material Type</label>
-<div class="grid grid-cols-3 gap-3">
-<button class="px-4 py-3 rounded-lg border-2 border-primary bg-primary/10 text-slate-900 dark:text-white font-bold text-sm transition-all">
+<div class="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
+<button class="rounded-lg border-2 border-primary bg-primary/10 px-4 py-2.5 text-sm font-bold text-slate-900 transition-all dark:text-white">
                             Premium Matte
                         </button>
-<button class="px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium">
+<button class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-medium transition-all hover:border-primary hover:bg-primary/5 dark:border-slate-700">
                             High Gloss
                         </button>
-<button class="px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium">
+<button class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-medium transition-all hover:border-primary hover:bg-primary/5 dark:border-slate-700">
                             Natural Kraft
                         </button>
 </div>
@@ -186,7 +197,11 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 <div class="flex gap-4">
 <input class="w-32 rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:ring-primary" type="number" value="100"/>
 <div class="flex-1 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center px-4 gap-2 text-xs font-medium text-slate-500">
-<span class="material-symbols-outlined text-sm">info</span>
+<svg aria-hidden="true" class="h-4 w-4 flex-shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
+<circle cx="12" cy="8.5" fill="currentColor" r="1.1"></circle>
+<path d="M12 11.2V16" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+</svg>
                             Bulk pricing applied automatically
                         </div>
 </div>
@@ -205,29 +220,46 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 </div>
 </div>
 </div>
-<div class="price-calculator-gradient border border-primary/20 p-6 rounded-xl space-y-4">
-<div class="flex justify-between items-center">
-<span class="text-slate-600 dark:text-slate-400 font-medium">Unit Price</span>
-<span class="text-lg font-bold text-slate-900 dark:text-white">$3.25</span>
+<div class="price-calculator-gradient border border-primary/20 p-6 rounded-xl space-y-5">
+<div class="space-y-2">
+<p class="text-xs font-bold uppercase tracking-[0.18em] text-primary">Pricing on Request</p>
+<h3 class="text-xl font-black text-slate-900 dark:text-white">Request a custom quote for this product</h3>
+<p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Select your options and quantities, then send us the details so we can confirm the right production setup and pricing.</p>
 </div>
-<div class="flex justify-between items-center">
-<span class="text-slate-600 dark:text-slate-400 font-medium">Est. Subtotal</span>
-<span class="text-2xl font-black text-primary">$325.00</span>
+<div class="grid gap-3 sm:grid-cols-2">
+<a id="detail-request-quote" class="action-btn inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white shadow-sm shadow-primary/20 hover:bg-primary/90" href="contact.html?intent=quote">
+<svg aria-hidden="true" class="h-4 w-4" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 4.8h10.5a2 2 0 0 1 2 2V15a2 2 0 0 1-2 2H9l-4 2.2V6.8a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path>
+<path d="M8 9h7M8 12.5h5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+</svg>
+        Request a Quote
+      </a>
+<a id="detail-whatsapp" class="action-btn inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-700 hover:border-primary/40 hover:bg-primary/5 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-primary/40 dark:hover:bg-primary/10" href="https://wa.me/923096554946" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" class="h-4 w-4" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 11.9c0 4.5-3.8 8.1-8.4 8.1-1.4 0-2.8-.3-4-.9L4 20l.9-3.4c-.8-1.3-1.3-2.9-1.3-4.7C3.6 7.4 7.4 3.8 12 3.8c4.6 0 8 3.6 8 8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path>
+<path d="M8.7 10.3h.1M12 10.3h.1M15.3 10.3h.1" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+        Discuss on WhatsApp
+      </a>
 </div>
 <div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-slate-500 font-medium">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">local_shipping</span> Est. Delivery: Oct 24 - 27</span>
-<span>Ship to: 90210</span>
+<span class="flex items-center gap-1.5"><svg aria-hidden="true" class="h-3.5 w-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7.5h11v8H3z" stroke="currentColor" stroke-width="1.8"></path><path d="M14 10h3.2l2.3 2.4V15H14z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><circle cx="7" cy="17" fill="currentColor" r="1.6"></circle><circle cx="17" cy="17" fill="currentColor" r="1.6"></circle></svg> Est. Delivery: 5-7 business days</span>
+<span>Custom production</span>
 </div>
 </div>
-<div class="flex flex-col sm:flex-row gap-4">
-<a class="flex-1 flex items-center justify-center gap-2 px-8 py-4 border-2 font-bold rounded-xl hover:bg-secondary-pink/5 transition-all uppercase text-sm tracking-widest" href="contact.html?intent=artwork">
-<span class="material-symbols-outlined">upload_file</span>
+<div class="grid gap-3 sm:grid-cols-3 sm:gap-4">
+<a class="action-btn inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 text-xs font-semibold text-slate-700 sm:text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 hover:border-primary/40 hover:bg-primary/5 dark:hover:border-primary/40 dark:hover:bg-primary/10" href="contact?intent=artwork">
+<svg aria-hidden="true" class="h-4 w-4" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 15V5m0 0-3 3m3-3 3 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path><path d="M5 14.5V17a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
                     Upload Artwork
                 </a>
-<a class="flex-1 flex items-center justify-center gap-2 px-8 py-4 primary-btn-gradient text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all uppercase text-sm tracking-widest" href="checkout.html">
-<span class="material-symbols-outlined">shopping_cart_checkout</span>
-                    Proceed to Checkout
+<a id="detail-request-quote-secondary" class="action-btn primary-btn-gradient inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs font-semibold text-white shadow-sm shadow-primary/20 sm:text-sm hover:shadow-md hover:shadow-primary/25" href="contact.html?intent=quote">
+<svg aria-hidden="true" class="h-4 w-4" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 4.8h10.5a2 2 0 0 1 2 2V15a2 2 0 0 1-2 2H9l-4 2.2V6.8a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M8 9h7M8 12.5h5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+          Request a Quote
                 </a>
+<a id="detail-whatsapp-secondary" class="action-btn inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 text-xs font-semibold text-slate-700 sm:text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 hover:border-primary/40 hover:bg-primary/5 dark:hover:border-primary/40 dark:hover:bg-primary/10" href="https://wa.me/923096554946" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" class="h-4 w-4" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11.9c0 4.5-3.8 8.1-8.4 8.1-1.4 0-2.8-.3-4-.9L4 20l.9-3.4c-.8-1.3-1.3-2.9-1.3-4.7C3.6 7.4 7.4 3.8 12 3.8c4.6 0 8 3.6 8 8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M8.7 10.3h.1M12 10.3h.1M15.3 10.3h.1" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+          Discuss on WhatsApp
+        </a>
 </div>
 </div>
 </div>
@@ -327,24 +359,24 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
 <div class="flex gap-4">
 <a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
-<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
-<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact"><span class="material-symbols-outlined text-xl">location_on</span></a>
 </div>
 </div>
 <div>
 <h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
 <ul class="space-y-4">
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home">Home</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop">Shop</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services">Services</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about">About</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact">Contact</a></li>
 </ul>
 </div>
 <div>
 <h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
 <ul class="space-y-4">
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact">Contact Us</a></li>
 <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
 <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
 <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
@@ -368,9 +400,9 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 </footer>
 </body>
 <!-- ZAK V4: Product detail wiring -->
-<script src="js/public-shell.js"></script>
-<script src="js/api.js"></script>
-<script src="js/public-ui.js"></script>
+<script src="Frontend-public/js/public-shell.js?v=20260420b"></script>
+<script src="Frontend-public/js/api.js"></script>
+<script src="Frontend-public/js/public-ui.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const id = new URLSearchParams(window.location.search).get('id');
@@ -396,16 +428,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const quantityInput = document.querySelector('input[type="number"]');
     const finishInputs = Array.from(document.querySelectorAll('.space-y-6 input[type="checkbox"]'));
 
-    const priceCard = document.querySelector('.price-calculator-gradient');
-    const unitPriceEl = priceCard
-      ? Array.from(priceCard.querySelectorAll('.flex.justify-between.items-center')).find((row) => row.textContent.includes('Unit Price'))?.querySelector('span:last-child')
-      : null;
-    const subtotalEl = priceCard
-      ? Array.from(priceCard.querySelectorAll('.flex.justify-between.items-center')).find((row) => row.textContent.includes('Est. Subtotal'))?.querySelector('span:last-child')
-      : null;
-
+    const quoteLink = document.getElementById('detail-request-quote');
+    const quoteLinkSecondary = document.getElementById('detail-request-quote-secondary');
+    const whatsappLink = document.getElementById('detail-whatsapp');
+    const whatsappLinkSecondary = document.getElementById('detail-whatsapp-secondary');
     const uploadLink = Array.from(document.querySelectorAll('a')).find((a) => a.textContent.includes('Upload Artwork'));
-    const checkoutLink = Array.from(document.querySelectorAll('a')).find((a) => a.textContent.includes('Proceed to Checkout'));
 
     function resolveProductImagePath(imageValue) {
       const value = String(imageValue || '').trim();
@@ -416,7 +443,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return '../uploads/' + encodeURIComponent(value);
     }
 
-    document.title = `${p.title} — ZAK Printing`;
+    document.title = `${p.title} - ZAK Printing`;
     if (breadcrumbCurrent) breadcrumbCurrent.textContent = p.title;
     if (titleEl) titleEl.textContent = p.title;
     if (descriptionEl) descriptionEl.textContent = p.description || 'Premium production quality with custom finishes and reliable turnaround.';
@@ -456,8 +483,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
 
-    const basePrice = Number.parseFloat(p.price) || 0;
-    const materialFactors = [1, 1.08, 0.95];
     let selectedMaterial = 0;
 
     function formatPkr(value) {
@@ -478,31 +503,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
-    function calculatePricing() {
+    function getSelectedOptions() {
       const qty = Math.max(parseInt(quantityInput?.value || '1', 10) || 1, 1);
-      const finishCount = finishInputs.filter((input) => input.checked).length;
-      const finishFactor = 1 + finishCount * 0.08;
-      const materialFactor = materialFactors[selectedMaterial] || 1;
-
-      let discount = 1;
-      if (qty >= 500) discount = 0.85;
-      else if (qty >= 250) discount = 0.9;
-      else if (qty >= 100) discount = 0.95;
-
-      const unit = Math.max(basePrice * materialFactor * finishFactor * discount, 0);
-      return { qty, unit, subtotal: unit * qty };
-    }
-
-    function updatePricingUi() {
-      const pricing = calculatePricing();
-      if (unitPriceEl) unitPriceEl.textContent = formatPkr(pricing.unit);
-      if (subtotalEl) subtotalEl.textContent = formatPkr(pricing.subtotal);
-      return pricing;
-    }
-
-    function updateCheckoutLink() {
-      if (!checkoutLink) return;
-      const pricing = updatePricingUi();
       const selectedFinishes = finishInputs
         .filter((input) => input.checked)
         .map((input) => input.closest('label')?.textContent?.trim() || '')
@@ -510,14 +512,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         .join(',');
 
       const selectedMaterialText = materialButtons[selectedMaterial]?.textContent?.trim() || 'Standard';
-      const params = new URLSearchParams({
-        product_id: String(p.id),
-        product_title: p.title,
-        qty: String(pricing.qty),
+      return {
+        quantity: qty,
+        size: document.querySelector('select')?.value || '',
         material: selectedMaterialText,
-      });
-      if (selectedFinishes) params.set('finishes', selectedFinishes);
-      checkoutLink.href = `checkout.html?${params.toString()}`;
+        finishes: selectedFinishes ? selectedFinishes.split(',').map((item) => item.trim()).filter(Boolean) : [],
+      };
+    }
+
+    function updateActionLinks() {
+      const options = getSelectedOptions();
+      const quoteUrl = window.buildQuoteUrl ? window.buildQuoteUrl(p, options) : `contact.html?intent=quote&product_id=${encodeURIComponent(p.id)}&product=${encodeURIComponent(p.title || '')}`;
+      const whatsappUrl = window.buildWhatsAppUrl ? window.buildWhatsAppUrl(p, options) : `https://wa.me/923096554946?text=${encodeURIComponent(`Hi ZAK Printing, I want to discuss ${p.title || 'this product'}. Please share a quote.`)}`;
+
+      if (quoteLink) quoteLink.href = quoteUrl;
+      if (quoteLinkSecondary) quoteLinkSecondary.href = quoteUrl;
+      if (whatsappLink) whatsappLink.href = whatsappUrl;
+      if (whatsappLinkSecondary) whatsappLinkSecondary.href = whatsappUrl;
     }
 
     if (uploadLink) {
@@ -528,22 +539,22 @@ document.addEventListener('DOMContentLoaded', async () => {
       button.type = 'button';
       button.addEventListener('click', () => {
         selectMaterial(index);
-        updateCheckoutLink();
+        updateActionLinks();
       });
     });
 
-    finishInputs.forEach((input) => input.addEventListener('change', updateCheckoutLink));
+      finishInputs.forEach((input) => input.addEventListener('change', updateActionLinks));
 
     if (quantityInput) {
       quantityInput.min = '1';
       quantityInput.addEventListener('input', () => {
         if (!quantityInput.value || Number(quantityInput.value) < 1) quantityInput.value = '1';
-        updateCheckoutLink();
+          updateActionLinks();
       });
     }
 
     selectMaterial(0);
-    updateCheckoutLink();
+      updateActionLinks();
   } catch (e) {
     console.warn('Product detail error:', e);
     showToast('Unable to load product details', 'error');

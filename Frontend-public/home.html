@@ -200,7 +200,7 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 <div class="max-w-7xl mx-auto">
 <div class="grid grid-cols-12 gap-6 lg:items-stretch">
 <div class="col-span-12 lg:col-span-9 flex">
-<div class="hero-gradient m-0 rounded-[2.5rem] p-5 lg:p-8 relative overflow-hidden flex items-center border border-white/50 h-full min-h-[34rem]">
+<div class="hero-gradient m-0 rounded-[2.5rem] p-5 lg:p-8 relative overflow-hidden flex items-center border border-white/50 h-full">
 <div class="relative z-10 max-w-lg">
 <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Special Weekly Offer</span>
 <h1 class="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-tight mb-6">You Think,<br/><span class="gradient-text">We Create.</span></h1>
@@ -374,7 +374,12 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
 <img alt="Stationery" class="mt-8 rounded-2xl w-full h-48 object-cover border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4cksaYfbJxzlxiiDr8uYIsSAtaFbcOpwMT_36DvY0HXjEUdq5DR244dTBJr8KcuxjBbkduGCJo8UE2f09aHungeMf1G0cYlodoE0jiRVgmTDldyoHNEM5XN6J6Tmru9AF3C_zKCTyglYBv9yxex-OLEFQs58JTgknw2jw9f6ElUtOb2YVCcXkTOsZSI04-YLavj7nfi7ldcmZwoBRBO5u7P0N7iDDhWe53oD_neW-gVcwX7nWw2b2iBKfe2QMb8ZY5cgrOSo6r98"/>
 </div>
 </div>
-<div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div id="biz-products-grid" class="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Products loaded dynamically by JavaScript -->
+</div>
+
+<!-- Static fallback products -->
+<div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4" style="display: none;">
 <a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 brand-glow-blue hover:border-secondary/30 transition-all block group text-center" href="#product-detail-pens">
 <div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center bg-slate-50">
 <img alt="Pens" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMcNnNSeo5N63VMZLUG4dImxEjxTj9rP7wgbJN5u09SlUyQdAMg84s8hT8tZnvMnLJjg_tABNVm1tR4fl8rRya5DiG_gzYcNHEYB1l7Ww7yPmQuhOWOhf3b1HxWRbxW8ke5g_lxlHVyUCzsS8FxpWQEFRfE-y5hd6KIbr0Y465a7mogwFu0bqNn8wlJdN0aUrTqouUrb3ehfn0OCn6FjFK8qNd4T0dec8NlgD5y6lLpUSI6Oh9DXgRYOaSPdX9eFEuHsbezL-iBdg"/>
@@ -653,6 +658,25 @@ document.addEventListener('DOMContentLoaded', async () => {
       }).join('');
     }
   } catch(e) { /* keep static content as fallback */ }
+
+  // Load business products dynamically
+  try {
+    const data = await apiFetch('/products.php?limit=8');
+    const products = data.products || [];
+    const grid = document.querySelector('#biz-products-grid');
+    if (grid && products.length) {
+      grid.innerHTML = products.slice(0, 8).map(p => `
+        <a class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 hover:border-primary/30 transition-all block group text-center" href="product-detail.html?id=${p.id}">
+          <div class="overflow-hidden rounded-xl mb-3 h-24 flex items-center justify-center bg-slate-50">
+            ${p.image 
+              ? `<img alt="${p.title}" class="h-20 w-full object-contain group-hover:scale-110 transition-transform" src="../uploads/${p.image}" />` 
+              : `<span class="material-symbols-outlined text-4xl text-slate-400">inventory_2</span>`}
+          </div>
+          <p class="text-sm font-bold text-slate-700 line-clamp-2">${p.title}</p>
+        </a>
+      `).join('');
+    }
+  } catch(e) { /* keep fallback static content */ }
 
   // Load CMS hero content
   try {

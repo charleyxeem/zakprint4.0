@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * api/admin/dashboard.php
  * Returns stats scoped by role:
@@ -28,13 +30,21 @@ $stmt2->execute($params);
 $unpaid = $stmt2->fetchColumn();
 
 // Quotations
-$qWhere = $scope ? 'WHERE tenant_id = 1 AND created_at IS NOT NULL' : ''; // quotations have no created_by
-if ($scope) {
-    // admin: show their own quotations count would need a join — approximate
-    $qWhere = '';
+$qCount = 0;
+if (isSuperAdmin()) {
+    $stmt3 = $pdo->query('SELECT COUNT(*) as total FROM quotations');
+    $qCount = (int)$stmt3->fetchColumn();
+} elseif ($scope) {
+    $hasCreatedByColumn = (int)$pdo
+        ->query("SELECT COUNT(*) FROM information_schema.columns WHERE table_schema = DATABASE() AND table_name = 'quotations' AND column_name = 'created_by'")
+        ->fetchColumn() > 0;
+
+    if ($hasCreatedByColumn) {
+        $qStmt = $pdo->prepare('SELECT COUNT(*) as total FROM quotations WHERE created_by = ?');
+        $qStmt->execute([(int)$scope]);
+        $qCount = (int)$qStmt->fetchColumn();
+    }
 }
-$stmt3 = $pdo->query("SELECT COUNT(*) as total FROM quotations");
-$qCount = isSuperAdmin() ? $stmt3->fetchColumn() : 0;
 
 // Monthly revenue (current month for admin, all for super)
 $monthWhere = $scope ? 'WHERE created_by = ? AND MONTH(created_at) = MONTH(NOW()) AND YEAR(created_at) = YEAR(NOW())'

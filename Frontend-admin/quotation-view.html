@@ -27,8 +27,8 @@
     </script>
 <title>Quotation Detail - Admin Dashboard</title>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
-<div class="relative flex min-h-screen w-full flex-col">
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex">
+<div class="relative flex min-h-screen w-full min-w-0 flex-1 flex-col">
 <!-- Top Navigation -->
 <header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 sticky top-0 z-50">
 <div class="flex items-center gap-8">
@@ -150,9 +150,9 @@
 <p class="text-sm text-slate-500">Monthly hosting and maintenance for production nodes.</p>
 </td>
 <td class="py-6 text-center">3</td>
-<td class="py-6 text-right">$1,200.00</td>
+<td class="py-6 text-right">PKR 1,200.00</td>
 <td class="py-6 text-right">10%</td>
-<td class="py-6 text-right font-bold">$3,960.00</td>
+<td class="py-6 text-right font-bold">PKR 3,960.00</td>
 </tr>
 <tr>
 <td class="py-6">
@@ -160,9 +160,9 @@
 <p class="text-sm text-slate-500">Quarterly SOC2 compliance report and vulnerability scan.</p>
 </td>
 <td class="py-6 text-center">1</td>
-<td class="py-6 text-right">$2,500.00</td>
+<td class="py-6 text-right">PKR 2,500.00</td>
 <td class="py-6 text-right">0%</td>
-<td class="py-6 text-right font-bold">$2,500.00</td>
+<td class="py-6 text-right font-bold">PKR 2,500.00</td>
 </tr>
 <tr>
 <td class="py-6">
@@ -170,9 +170,9 @@
 <p class="text-sm text-slate-500">Tier 2 Support with 99.9% uptime SLA.</p>
 </td>
 <td class="py-6 text-center">12</td>
-<td class="py-6 text-right">$150.00</td>
+<td class="py-6 text-right">PKR 150.00</td>
 <td class="py-6 text-right">10%</td>
-<td class="py-6 text-right font-bold">$1,980.00</td>
+<td class="py-6 text-right font-bold">PKR 1,980.00</td>
 </tr>
 </tbody>
 </table>
@@ -182,15 +182,15 @@
 <div class="w-full md:w-80 space-y-3">
 <div class="flex justify-between text-slate-500 dark:text-slate-400">
 <span>Subtotal</span>
-<span class="font-medium">$7,900.00</span>
+<span class="font-medium">PKR 7,900.00</span>
 </div>
 <div class="flex justify-between text-slate-500 dark:text-slate-400">
 <span>Estimated Tax (10%)</span>
-<span class="font-medium">$540.00</span>
+<span class="font-medium">PKR 540.00</span>
 </div>
 <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between">
 <span class="text-lg font-bold">Grand Total</span>
-<span class="text-lg font-extrabold text-primary">$8,440.00</span>
+<span class="text-lg font-extrabold text-primary">PKR 8,440.00</span>
 </div>
 </div>
 </div>
@@ -223,7 +223,7 @@
 </div>
 <div class="pb-6">
 <p class="text-sm font-bold">Quote Created</p>
-<p class="text-xs text-slate-500">Oct 24, 2023 Â· 09:12 AM</p>
+<p class="text-xs text-slate-500">Oct 24, 2023 - 09:12 AM</p>
 <p class="text-xs text-slate-400 mt-1">By Michael Chen (Admin)</p>
 </div>
 </div>
@@ -234,7 +234,7 @@
 </div>
 <div class="pb-6">
 <p class="text-sm font-bold">Sent to Client</p>
-<p class="text-xs text-slate-500">Oct 24, 2023 Â· 10:45 AM</p>
+<p class="text-xs text-slate-500">Oct 24, 2023 - 10:45 AM</p>
 <p class="text-xs text-slate-400 mt-1">To: accounts@acme-corp.com</p>
 </div>
 </div>
@@ -244,7 +244,7 @@
 </div>
 <div>
 <p class="text-sm font-bold">Viewed by Client</p>
-<p class="text-xs text-slate-500">Oct 25, 2023 Â· 02:20 PM</p>
+<p class="text-xs text-slate-500">Oct 25, 2023 - 02:20 PM</p>
 <p class="text-xs text-slate-400 mt-1">From New York, US (IP: 192.168.1.1)</p>
 </div>
 </div>
@@ -311,7 +311,7 @@
 </main>
 </div>
 <div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50"></div>
-<script src="js/sidebar-controller.js" defer></script>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('sidebar-toggle');
@@ -325,31 +325,312 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.add('hidden');
   });
 });
-</script></body>
+</script>
 <!-- ZAK V4: Quotation view wiring -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const id = new URLSearchParams(window.location.search).get('id');
-  if (!id) return;
+  const root = document.querySelector('main .max-w-7xl');
+
+  const escapeHtml = (value) => String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+  const money = (value) => formatPKR(Number(value) || 0);
+  const projectBase = (() => {
+    const path = window.location.pathname || '';
+    const lower = path.toLowerCase();
+    const frontIdx = lower.indexOf('/frontend-admin/');
+    if (frontIdx !== -1) {
+      return path.slice(0, frontIdx);
+    }
+    return typeof ADMIN_BASE_PREFIX === 'string' ? ADMIN_BASE_PREFIX : '';
+  })();
+
+  const resolveAssetPath = (value) => {
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+    if (/^(?:https?:|data:|blob:)/i.test(raw)) return raw;
+
+    const normalized = raw.replace(/\\/g, '/');
+    if (normalized.startsWith('/uploads/')) return `${projectBase}${normalized}`;
+    if (normalized.startsWith('uploads/')) return `${projectBase}/${normalized}`;
+    if (normalized.startsWith('/')) return `${projectBase}${normalized}`;
+    return `${projectBase}/${normalized}`;
+  };
+
+  const statusClass = (status) => {
+    const normalized = String(status || 'draft').toLowerCase();
+    if (normalized === 'approved' || normalized === 'accepted') {
+      return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700/40';
+    }
+    if (normalized === 'rejected' || normalized === 'cancelled') {
+      return 'bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-700/40';
+    }
+    if (normalized === 'pending') {
+      return 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-700/40';
+    }
+    return 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/40';
+  };
+
+  const renderError = (message) => {
+    if (!root) return;
+    root.innerHTML = `
+      <div class="py-8">
+        <div class="rounded-xl border border-rose-200 dark:border-rose-800/50 bg-rose-50 dark:bg-rose-900/20 p-6">
+          <h1 class="text-xl font-extrabold text-rose-700 dark:text-rose-300">Quotation Unavailable</h1>
+          <p class="mt-2 text-sm text-rose-600 dark:text-rose-300">${escapeHtml(message)}</p>
+          <a href="quotation-list.html" class="inline-flex mt-4 px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold">Back to Quotation List</a>
+        </div>
+      </div>`;
+  };
+
+  const renderQuotation = (q) => {
+    if (!root) return;
+    const items = Array.isArray(q.items) ? q.items : [];
+    const subtotal = items.reduce((sum, item) => {
+      const qty = Number(item.quantity ?? 0);
+      const price = Number(item.price ?? 0);
+      return sum + (Number(item.line_total ?? qty * price) || 0);
+    }, 0);
+    const totalTax = items.reduce((sum, item) => {
+      const qty = Number(item.quantity ?? 0);
+      const price = Number(item.price ?? 0);
+      const base = Number(item.line_total ?? qty * price) || 0;
+      if (item.tax_amount !== undefined && item.tax_amount !== null && item.tax_amount !== '') {
+        return sum + (Number(item.tax_amount) || 0);
+      }
+      const taxPercent = Number(item.tax_percent ?? q.tax_percent ?? 0);
+      return sum + (base * taxPercent / 100);
+    }, 0);
+    const total = Number(q.total ?? subtotal);
+    const quoteNo = q.quotation_no || `QT-${id}`;
+    const clientName = q.client_name || q.customer_name || 'Unknown Client';
+    const createdAt = q.created_at ? formatDate(q.created_at) : '-';
+    const normalizedStatus = String(q.status || 'draft').toLowerCase();
+    const statusLabel = normalizedStatus.charAt(0).toUpperCase() + normalizedStatus.slice(1);
+    const companyName = String(q.company_name || 'ZAK Printing').trim();
+    const logoPath = resolveAssetPath(q.logo_path || q.logo_url || '');
+    const taxId = String(q.tax_number || q.gst_no || q.ntn_no || '').trim();
+    const accountNo = String(q.account_number || '').trim();
+    const iban = String(q.iban || '').trim();
+    const paymentMethods = String(q.payment_methods || '').trim();
+    const quotationNotes = String(q.quotation_special_notes || q.terms || '').trim();
+    const companyInfoLines = [q.address, q.bp_phone, q.bp_email].filter(Boolean);
+    const clientInfoLines = [q.client_company, q.client_phone, q.client_email].filter(Boolean);
+
+    const itemRows = items.length
+      ? items.map((item) => {
+          const qty = Number(item.quantity ?? 0);
+          const price = Number(item.price ?? 0);
+          const taxPercent = Number(item.tax_percent ?? 0);
+          const lineTotal = Number(item.line_total ?? qty * price);
+          return `
+            <tr class="border-b border-slate-100 dark:border-slate-800">
+              <td class="py-4 pr-4 align-top">
+                <p class="text-[12px] font-semibold leading-[1.45] text-slate-900 dark:text-slate-100 break-words">${escapeHtml(item.description || 'Item')}</p>
+              </td>
+              <td class="py-4 text-center align-top text-[12px] whitespace-nowrap">${qty}</td>
+              <td class="py-4 text-right align-top text-[12px] whitespace-nowrap">${money(price)}</td>
+              <td class="py-4 text-right align-top text-[12px] whitespace-nowrap">${taxPercent ? `${taxPercent}%` : '0%'}</td>
+              <td class="py-4 text-right align-top text-[12px] font-bold whitespace-nowrap">${money(lineTotal)}</td>
+            </tr>`;
+        }).join('')
+      : '<tr><td colspan="5" class="py-6 text-center text-sm text-slate-500">No quotation items found.</td></tr>';
+
+    root.innerHTML = `
+      <div class="flex flex-col gap-6 py-6">
+        <nav class="flex text-sm font-medium text-slate-500 dark:text-slate-400 gap-2 items-center">
+          <a class="hover:text-primary" href="admin-dash.html">Billing</a>
+          <span class="material-symbols-outlined text-xs">chevron_right</span>
+          <a class="hover:text-primary" href="quotation-list.html">Quotations</a>
+          <span class="material-symbols-outlined text-xs">chevron_right</span>
+          <span class="text-slate-900 dark:text-slate-200">${escapeHtml(quoteNo)}</span>
+        </nav>
+
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div class="flex items-center gap-4 flex-wrap">
+            <h1 class="text-3xl font-black tracking-tight">Quote #${escapeHtml(quoteNo)}</h1>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${statusClass(normalizedStatus)}">${escapeHtml(statusLabel)}</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 lg:justify-end">
+            <button id="quote-edit" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 transition-colors">
+              <span class="material-symbols-outlined text-lg">edit</span> Edit Quote
+            </button>
+            <button id="quote-pdf" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 transition-colors">
+              <span class="material-symbols-outlined text-lg">picture_as_pdf</span> PDF
+            </button>
+            <button id="quote-share" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 transition-colors">
+              <span class="material-symbols-outlined text-lg">share</span> Share
+            </button>
+            <button id="quote-convert" class="flex items-center gap-2 px-6 py-2 rounded-lg bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-shadow shadow-lg shadow-primary/20">
+              <span class="material-symbols-outlined text-lg">transform</span> Convert to Invoice
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-2">
+          <div class="lg:col-span-8">
+            <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-8">
+              <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_220px] lg:items-start">
+                <div>
+                  ${logoPath ? `<img src="${escapeHtml(logoPath)}" alt="Brand Logo" class="h-10 w-auto object-contain mb-2" onerror="this.remove();"/>` : ''}
+                  <h3 class="text-[18px] font-bold leading-tight">${escapeHtml(companyName)}</h3>
+                  <div class="mt-2 space-y-1 text-[13px] leading-[1.45] text-slate-500 dark:text-slate-400">
+                    ${companyInfoLines.length ? companyInfoLines.map((line) => `<p>${escapeHtml(line)}</p>`).join('') : '<p>Quotation generated from admin panel</p>'}
+                  </div>
+                </div>
+                <div>
+                  <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-widest mb-2">Bill To</p>
+                  <h4 class="text-[13px] font-bold leading-[1.45]">${escapeHtml(clientName)}</h4>
+                  ${clientInfoLines.length ? `<div class="mt-1 space-y-1 text-[13px] leading-[1.45] text-slate-500 dark:text-slate-400">${clientInfoLines.map((line) => `<p>${escapeHtml(line)}</p>`).join('')}</div>` : ''}
+                </div>
+                <div class="lg:text-right">
+                  <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-widest mb-2">Document</p>
+                  <div class="space-y-1 text-[13px] leading-[1.45] text-slate-600 dark:text-slate-300">
+                    <p><span class="font-semibold">Date Issued:</span> ${escapeHtml(createdAt)}</p>
+                    <p><span class="font-semibold">Quote No:</span> ${escapeHtml(quoteNo)}</p>
+                    <p><span class="font-semibold">Status:</span> ${escapeHtml(statusLabel)}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="overflow-x-auto mt-8">
+                <table class="w-full table-fixed text-left">
+                  <colgroup>
+                    <col class="w-[44%]">
+                    <col class="w-[12%]">
+                    <col class="w-[16%]">
+                    <col class="w-[12%]">
+                    <col class="w-[16%]">
+                  </colgroup>
+                  <thead>
+                    <tr class="border-b-2 border-slate-100 dark:border-slate-800">
+                      <th class="py-3 pr-4 font-bold text-[12px] text-slate-500 uppercase">Item</th>
+                      <th class="py-3 font-bold text-[12px] text-slate-500 uppercase text-center whitespace-nowrap">Qty</th>
+                      <th class="py-3 font-bold text-[12px] text-slate-500 uppercase text-right whitespace-nowrap">Price</th>
+                      <th class="py-3 font-bold text-[12px] text-slate-500 uppercase text-right whitespace-nowrap">Tax</th>
+                      <th class="py-3 font-bold text-[12px] text-slate-500 uppercase text-right whitespace-nowrap">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>${itemRows}</tbody>
+                </table>
+              </div>
+
+              <div class="flex justify-end mt-8">
+                <div class="w-full md:w-80 space-y-2">
+                  <div class="flex justify-between text-[13.5px] text-slate-500 dark:text-slate-400">
+                    <span>Subtotal</span>
+                    <span class="font-medium">${money(subtotal)}</span>
+                  </div>
+                  <div class="flex justify-between text-[13.5px] text-slate-500 dark:text-slate-400">
+                    <span>Total Tax</span>
+                    <span class="font-medium">${money(totalTax)}</span>
+                  </div>
+                  <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between text-[14px]">
+                    <span class="font-bold">Grand Total</span>
+                    <span class="font-extrabold text-primary">${money(total)}</span>
+                  </div>
+                </div>
+              </div>
+
+              ${(taxId || accountNo || iban || paymentMethods || quotationNotes) ? `
+              <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                ${(taxId || accountNo || iban || paymentMethods) ? `
+                <div class="p-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 text-[13px] leading-[1.5] text-slate-600 dark:text-slate-300 space-y-2">
+                  <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Bank Account Info</p>
+                  ${taxId ? `<p><span class="font-semibold">Tax ID:</span> ${escapeHtml(taxId)}</p>` : ''}
+                  ${accountNo ? `<p><span class="font-semibold">Account #:</span> ${escapeHtml(accountNo)}</p>` : ''}
+                  ${iban ? `<p><span class="font-semibold">IBAN:</span> ${escapeHtml(iban)}</p>` : ''}
+                  ${paymentMethods ? `<p class="whitespace-pre-line">${escapeHtml(paymentMethods)}</p>` : ''}
+                </div>` : ''}
+
+                ${quotationNotes ? `
+                <div class="p-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/20">
+                  <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Quotation Notes</p>
+                  <p class="text-[13px] leading-[1.5] text-slate-600 dark:text-slate-300 whitespace-pre-line">${escapeHtml(quotationNotes)}</p>
+                </div>` : ''}
+              </div>` : ''}
+            </div>
+          </div>
+
+          <div class="lg:col-span-4">
+            <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-6">
+              <h3 class="font-bold text-lg mb-4">Quote Activity</h3>
+              <div class="space-y-3">
+                <p class="text-sm font-medium">Quote Created</p>
+                <p class="text-xs text-slate-500">${escapeHtml(createdAt)}</p>
+                <p class="text-sm font-medium mt-4">Current Status</p>
+                <p class="text-xs text-slate-500">${escapeHtml(statusLabel)}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+    const editBtn = document.getElementById('quote-edit');
+    if (editBtn) editBtn.addEventListener('click', () => {
+      window.location.href = `create-quotation.html?edit=${encodeURIComponent(id)}`;
+    });
+
+    const pdfBtn = document.getElementById('quote-pdf');
+    if (pdfBtn) pdfBtn.addEventListener('click', () => {
+      window.open(adminApiBase() + `/pdf.php?type=quotation&id=${encodeURIComponent(id)}`, '_blank');
+    });
+
+    const shareBtn = document.getElementById('quote-share');
+    if (shareBtn) shareBtn.addEventListener('click', async () => {
+      const shareUrl = window.location.href;
+      try {
+        if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(shareUrl);
+        showAdminToast('Quotation link copied', 'success');
+      } catch (_) {
+        prompt('Copy quotation link:', shareUrl);
+      }
+    });
+
+    const convertBtn = document.getElementById('quote-convert');
+    if (convertBtn) convertBtn.addEventListener('click', () => {
+      window.location.href = `create-invoice.html?fromQuotation=${encodeURIComponent(id)}`;
+    });
+  };
+
+  if (!id) {
+    renderError('Quotation ID is missing in URL. Open from the quotation list.');
+    showAdminToast('Missing quotation ID', 'error');
+    return;
+  }
+
   try {
     const data = await adminFetch(`/quotations.php?id=${id}`);
     const q = data.quotation;
-    if (!q) return;
-    document.querySelectorAll('[data-field]').forEach(el => {
-      const f = el.dataset.field;
-      if (q[f] !== undefined) {
-        if (f === 'status') el.innerHTML = statusBadge(q[f]);
-        else if (f.includes('total') || f.includes('amount')) el.textContent = formatPKR(q[f]);
-        else if (f.includes('_at') || f.includes('_date')) el.textContent = formatDate(q[f]);
-        else el.textContent = q[f];
-      }
-    });
-    const h = document.querySelector('h1,h2.text-2xl');
-    if (h && !h.dataset.field) h.textContent = q.quotation_no;
-  } catch(e) { showAdminToast('Failed to load quotation', 'error'); }
+    if (!q) {
+      renderError('Quotation not found for this ID.');
+      showAdminToast('Quotation not found', 'error');
+      return;
+    }
+    renderQuotation(q);
+  } catch(e) {
+    renderError('Failed to load quotation from server. Please retry.');
+    showAdminToast('Failed to load quotation', 'error');
+    console.error(e);
+  }
 });
+
+function adminApiBase() {
+  const loc = window.location;
+  const pathParts = loc.pathname.split('/');
+  const projectIdx = pathParts.findIndex(p => p.toLowerCase().includes('zakprinting'));
+  const basePath = projectIdx >= 0 ? '/' + pathParts.slice(1, projectIdx + 1).join('/') : '';
+  return loc.origin + basePath + '/api/admin';
+}
 </script>
+</body>
 </html>
+
 

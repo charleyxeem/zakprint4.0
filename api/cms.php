@@ -14,7 +14,7 @@ $page = clean($_GET['page'] ?? 'home');
 
 // 1. CMS blocks (for home/structured pages)
 $stmt = $pdo->prepare(
-    'SELECT b.block_key, b.title, b.content_html, b.image_path
+    'SELECT b.id, b.block_key, b.title, b.content_html, b.image_path
      FROM cms_blocks b
      JOIN cms_pages p ON p.id = b.page_id
      WHERE p.slug = ? AND p.is_active = 1
@@ -26,6 +26,7 @@ $blocks = $stmt->fetchAll();
 // Key blocks by block_key for easy frontend access
 $blocksKeyed = [];
 foreach ($blocks as $b) {
+    $b['content'] = $b['content_html'];
     $blocksKeyed[$b['block_key']] = $b;
 }
 

@@ -67,7 +67,9 @@ if ($attachPdf && $id > 0) {
         $filename = ucfirst($type) . '-' . preg_replace('/[^A-Za-z0-9_\-]/', '', $docNo) . '.pdf';
         
         // Use the PDF endpoint via HTTP to get the binary
-        $pdfUrl = 'http://localhost' . (dirname($_SERVER['SCRIPT_NAME'], 2) ?: '') . '/admin/pdf.php?type=' . urlencode($type) . '&id=' . $id;
+        $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        $host   = $_SERVER['HTTP_HOST'] ?? 'localhost';
+        $pdfUrl = $scheme . '://' . $host . (dirname($_SERVER['SCRIPT_NAME'], 2) ?: '') . '/admin/pdf.php?type=' . urlencode($type) . '&id=' . $id;
         
         $ctx = stream_context_create(['http' => [
             'header' => 'Cookie: ' . ($_SERVER['HTTP_COOKIE'] ?? '') . "\r\n",

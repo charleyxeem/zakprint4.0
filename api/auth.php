@@ -53,8 +53,8 @@ if ($method === 'POST') {
         'name'     => $user['name'],
         'role'     => $user['role'],
         'redirect' => in_array($user['role'], ['admin','super_admin','developer'])
-                        ? '../Frontend-admin/admin-dash.html'
-                        : 'user-dash.html',
+                        ? 'admin/dashboard'
+                        : 'user-dash',
     ]);
 }
 

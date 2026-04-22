@@ -441,23 +441,31 @@
 </main>
 </div>
 </div>
-<script src="js/sidebar-controller.js" defer></script>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
 <!-- ZAK V4: My earnings wiring -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
+  const currencyFields = ['today_revenue', 'week_revenue', 'monthly_revenue', 'net_profit'];
+
+  const setField = (field, value) => {
+    document.querySelectorAll(`[data-field="${field}"]`).forEach((el) => {
+      el.textContent = currencyFields.includes(field) ? formatPKR(value) : String(value ?? '0');
+    });
+  };
+
+  const setZeroState = () => {
+    currencyFields.forEach((field) => setField(field, 0));
+    const tbody = document.querySelector('tbody');
+    if (tbody) {
+      tbody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-slate-400">No earnings data yet.</td></tr>`;
+    }
+  };
+
   try {
     const data = await adminFetch('/finance.php?action=earnings');
     const earnings = data.earnings || {};
-
-    const currencyFields = ['today_revenue', 'week_revenue', 'monthly_revenue', 'net_profit'];
-
-    const setField = (field, value) => {
-      document.querySelectorAll(`[data-field="${field}"]`).forEach((el) => {
-        el.textContent = currencyFields.includes(field) ? formatPKR(value) : String(value ?? '0');
-      });
-    };
 
     if (Array.isArray(earnings)) {
       const totals = earnings.reduce((acc, row) => {
@@ -507,7 +515,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (tbody) {
       tbody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-slate-400">No earnings data yet.</td></tr>`;
     }
-  } catch(e) { showAdminToast('Failed to load earnings', 'error'); console.warn(e); }
+  } catch(e) {
+    setZeroState();
+    showAdminToast('Failed to load earnings', 'error');
+    console.warn(e);
+  }
 });
 </script>
 <script>
@@ -515,7 +527,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.getElementById('sidebar-toggle').addEventListener('click', function() {
   const overlay = document.getElementById('sidebar-overlay');
   const nav = document.getElementById('sidebar-nav');
-  const isHidden = overlay.classList.contains('hidden');
+  const isHidden = nav.classList.contains('-translate-x-full');
   if (isHidden) {
     overlay.classList.remove('hidden');
     nav.classList.remove('-translate-x-full');
@@ -527,7 +539,7 @@ document.getElementById('sidebar-toggle').addEventListener('click', function() {
   }
 });
 </script>
-<script src="js/sidebar-controller.js" defer></script>
 </body>
 </html>
+
 

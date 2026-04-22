@@ -84,9 +84,13 @@
 <span class="material-symbols-outlined">settings</span>
 <span>Settings</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="content studio.html" data-super-only>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="/zakprintingV4/Frontend-admin/visual-page-builder.html" data-super-only>
+<span class="material-symbols-outlined">edit_note</span>
+<span>Visual Page Builder</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="/zakprintingV4/Frontend-admin/content%20studio.html" data-super-only title="Advanced block editor (technical)">
 <span class="material-symbols-outlined">brush</span>
-<span>Content Studio</span>
+<span>Content Studio (Legacy)</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4" href="#" data-logout>
 <span class="material-symbols-outlined">logout</span>
@@ -113,20 +117,50 @@
 </div>
 </div>
 <div class="flex items-center gap-4">
-<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative" data-header-notifications type="button" aria-label="Open notifications">
 <span class="material-symbols-outlined">notifications</span>
 <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
 </button>
-<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" data-header-chat type="button" aria-label="Open support chat">
 <span class="material-symbols-outlined">chat_bubble</span>
 </button>
-<div class="h-8 w-[1px] bg-slate-200 dark:border-slate-800 mx-2"></div>
-<div class="flex items-center gap-3">
-<div class="text-right hidden sm:block">
-<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Alex Johnson</p>
-<p class="text-xs text-slate-500 dark:text-slate-400">Head of Operations</p>
+<div class="hidden absolute right-28 top-12 w-72 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg z-30" data-notification-menu>
+<div class="px-4 py-3 border-b border-slate-200 dark:border-slate-700">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Notifications</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Quick access to admin inbox items</p>
 </div>
+<a href="queries.html" class="flex items-center justify-between gap-3 px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" data-notification-queries-link>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">mail</span><span>Contact Queries</span></span>
+<span class="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full" data-notification-queries-menu>0 new</span>
+</a>
+<a href="appointments.html" class="flex items-center justify-between gap-3 px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" data-notification-appointments-link>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">event</span><span>Appointments</span></span>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full" data-notification-appointments-menu>0 new</span>
+</a>
+</div>
+<div class="h-8 w-[1px] bg-slate-200 dark:border-slate-800 mx-2"></div>
+<div class="flex items-center gap-3 relative">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100" data-admin-name>Alex Johnson</p>
+<p class="text-xs text-slate-500 dark:text-slate-400" data-admin-role>Head of Operations</p>
+</div>
+<button class="rounded-full focus:outline-none focus:ring-2 focus:ring-primary/40" data-profile-toggle type="button" aria-haspopup="true" aria-expanded="false" aria-label="Open profile menu">
 <img alt="User Profile Avatar" class="size-10 rounded-full bg-slate-200 border-2 border-primary/20" data-alt="Portrait of a smiling professional male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzur_-r05_btcr-dj8VFmtERmKTanH9438F6JGFj9ed6H4h0KNunu3eVPfJP-5E0gzw6YtdQmy4UiYSmm9rAN23JcfLINYfkm7mgKXk4-b3BmRBzSgzNRdjZwaFhPL2VGHiyAS0-q5F7KIC7lygeYHu7iNuhqzZKcaEOL1sNByjoJYczSAz5mD1nP4NxK7dT2UYKYpstBigw62MAxMGtYcK3Hoa0j69pl4bE3WMOx76f3slSIsUQhElWJfZyeBpaEG_mJzNUM2_Lse"/>
+</button>
+<div class="hidden absolute right-0 top-14 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg z-30" data-profile-menu>
+<div class="px-4 py-3 border-b border-slate-200 dark:border-slate-700">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100" data-admin-name>Alex Johnson</p>
+<p class="text-xs text-slate-500 dark:text-slate-400" data-admin-role>Head of Operations</p>
+</div>
+<a href="general-settings.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" data-profile-settings>
+<span class="material-symbols-outlined text-base">settings</span>
+<span>Profile Settings</span>
+</a>
+<a href="#" class="flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20" data-profile-logout>
+<span class="material-symbols-outlined text-base">logout</span>
+<span>Logout</span>
+</a>
+</div>
 </div>
 </div>
 </header>
@@ -334,7 +368,7 @@
 <span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-500/20 text-green-600 text-[10px] font-bold uppercase tracking-wide">Paid</span>
 </td>
 <td class="px-6 py-4 text-right">
-<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+<a href="invoice-view.html?id=8921" class="text-slate-400 hover:text-primary" aria-label="View invoice INV-8921"><span class="material-symbols-outlined text-lg">visibility</span></a>
 </td>
 </tr>
 <tr>
@@ -351,7 +385,7 @@
 <span class="px-2 py-1 rounded-full bg-orange-100 dark:bg-orange-500/20 text-orange-600 text-[10px] font-bold uppercase tracking-wide">Pending</span>
 </td>
 <td class="px-6 py-4 text-right">
-<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+<a href="invoice-view.html?id=8922" class="text-slate-400 hover:text-primary" aria-label="View invoice INV-8922"><span class="material-symbols-outlined text-lg">visibility</span></a>
 </td>
 </tr>
 <tr>
@@ -368,7 +402,7 @@
 <span class="px-2 py-1 rounded-full bg-red-100 dark:bg-red-500/20 text-red-600 text-[10px] font-bold uppercase tracking-wide">Overdue</span>
 </td>
 <td class="px-6 py-4 text-right">
-<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+<a href="invoice-view.html?id=8923" class="text-slate-400 hover:text-primary" aria-label="View invoice INV-8923"><span class="material-symbols-outlined text-lg">visibility</span></a>
 </td>
 </tr>
 <tr>
@@ -385,7 +419,7 @@
 <span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-500/20 text-green-600 text-[10px] font-bold uppercase tracking-wide">Paid</span>
 </td>
 <td class="px-6 py-4 text-right">
-<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+<a href="invoice-view.html?id=8924" class="text-slate-400 hover:text-primary" aria-label="View invoice INV-8924"><span class="material-symbols-outlined text-lg">visibility</span></a>
 </td>
 </tr>
 </tbody>
@@ -397,11 +431,105 @@
 </div>
 
 <!-- ZAK V4: API Wiring -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   try {
+    const notificationBtn = document.querySelector('[data-header-notifications]');
+    const chatBtn = document.querySelector('[data-header-chat]');
+    const notificationMenu = document.querySelector('[data-notification-menu]');
+    const notificationQueriesLink = document.querySelector('[data-notification-queries-link]');
+    const notificationAppointmentsLink = document.querySelector('[data-notification-appointments-link]');
+    const profileToggle = document.querySelector('[data-profile-toggle]');
+    const profileMenu = document.querySelector('[data-profile-menu]');
+    const profileLogout = document.querySelector('[data-profile-logout]');
+    const profileSettings = document.querySelector('[data-profile-settings]');
+
+    if (profileSettings && typeof adminRouteUrl === 'function') {
+      profileSettings.href = adminRouteUrl('general-settings.html');
+    }
+
+    if (notificationQueriesLink && typeof adminRouteUrl === 'function') {
+      notificationQueriesLink.href = adminRouteUrl('queries.html');
+    }
+
+    if (notificationAppointmentsLink && typeof adminRouteUrl === 'function') {
+      notificationAppointmentsLink.href = adminRouteUrl('appointments.html');
+    }
+
+    if (notificationBtn) {
+      notificationBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        if (!notificationMenu) {
+          if (typeof adminRouteUrl === 'function') {
+            window.location.href = adminRouteUrl('queries.html');
+            return;
+          }
+          window.location.href = 'queries.html';
+          return;
+        }
+
+        const opening = notificationMenu.classList.contains('hidden');
+        notificationMenu.classList.toggle('hidden');
+        notificationBtn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      });
+    }
+
+    if (chatBtn) {
+      chatBtn.addEventListener('click', () => {
+        showAdminToast('Opening Contact Queries...', 'info');
+        if (typeof adminRouteUrl === 'function') {
+          setTimeout(() => {
+            window.location.href = adminRouteUrl('queries.html');
+          }, 600);
+          return;
+        }
+        window.location.href = 'queries.html';
+      });
+    }
+
+    if (profileToggle && profileMenu) {
+      profileToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const opening = profileMenu.classList.contains('hidden');
+        profileMenu.classList.toggle('hidden');
+        profileToggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', (event) => {
+        if (profileMenu.classList.contains('hidden')) return;
+        if (profileMenu.contains(event.target) || profileToggle.contains(event.target)) return;
+        profileMenu.classList.add('hidden');
+        profileToggle.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    if (notificationMenu) {
+      document.addEventListener('click', (event) => {
+        if (notificationMenu.classList.contains('hidden')) return;
+        if (notificationMenu.contains(event.target) || (notificationBtn && notificationBtn.contains(event.target))) return;
+        notificationMenu.classList.add('hidden');
+        if (notificationBtn) notificationBtn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    if (profileLogout) {
+      profileLogout.addEventListener('click', async (event) => {
+        event.preventDefault();
+        try {
+          await adminFetch('/auth.php', { method: 'DELETE' });
+        } catch (logoutErr) {
+          console.warn('Profile menu logout failed:', logoutErr);
+        }
+        if (typeof adminRouteUrl === 'function') {
+          window.location.href = adminRouteUrl('/admin/login');
+          return;
+        }
+        window.location.href = 'admin-login.html';
+      });
+    }
+
     const data = await adminFetch('/dashboard.php');
 
     const collectedCard = document.querySelector('[data-dashboard-stat="collected"]');
@@ -418,13 +546,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const queriesBadge = document.querySelector('[data-notification-queries]');
     const appointmentsBadge = document.querySelector('[data-notification-appointments]');
+    const queriesMenuBadge = document.querySelector('[data-notification-queries-menu]');
+    const appointmentsMenuBadge = document.querySelector('[data-notification-appointments-menu]');
     const queriesTotalEl = document.querySelector('[data-notification-queries-total]');
     const appointmentsTotalEl = document.querySelector('[data-notification-appointments-total]');
 
     if (queriesBadge) queriesBadge.textContent = `${queriesNew} new`;
     if (appointmentsBadge) appointmentsBadge.textContent = `${appointmentsNew} new`;
+    if (queriesMenuBadge) queriesMenuBadge.textContent = `${queriesNew} new`;
+    if (appointmentsMenuBadge) appointmentsMenuBadge.textContent = `${appointmentsNew} new`;
     if (queriesTotalEl) queriesTotalEl.textContent = String(queriesTotal);
     if (appointmentsTotalEl) appointmentsTotalEl.textContent = String(appointmentsTotal);
+
+    if (typeof updateAdminNotificationUI === 'function') {
+      updateAdminNotificationUI();
+    }
 
     if (collectedCard) collectedCard.textContent = formatPKR(data.invoices?.collected || 0);
     if (unpaidCard) unpaidCard.textContent = String(data.invoices?.unpaid_count ?? 0);
@@ -475,5 +611,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 </script>
-<script src="js/sidebar-controller.js" defer></script></body></html>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script></body></html>
+
 

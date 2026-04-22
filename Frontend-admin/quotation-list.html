@@ -260,7 +260,7 @@
 </td>
 <td class="px-6 py-4 text-sm text-slate-600">Oct 12, 2023</td>
 <td class="px-6 py-4 text-sm text-slate-600">Nov 12, 2023</td>
-<td class="px-6 py-4 text-sm font-semibold text-slate-900">$12,450.00</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900">PKR 12,450.00</td>
 <td class="px-6 py-4">
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Sent</span>
 </td>
@@ -285,7 +285,7 @@
 </td>
 <td class="px-6 py-4 text-sm text-slate-600">Oct 10, 2023</td>
 <td class="px-6 py-4 text-sm text-slate-600">Nov 10, 2023</td>
-<td class="px-6 py-4 text-sm font-semibold text-slate-900">$8,200.00</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900">PKR 8,200.00</td>
 <td class="px-6 py-4">
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Converted</span>
 </td>
@@ -309,7 +309,7 @@
 </td>
 <td class="px-6 py-4 text-sm text-slate-600">Sep 15, 2023</td>
 <td class="px-6 py-4 text-sm text-slate-600">Oct 15, 2023</td>
-<td class="px-6 py-4 text-sm font-semibold text-slate-900">$2,340.00</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900">PKR 2,340.00</td>
 <td class="px-6 py-4">
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800">Expired</span>
 </td>
@@ -332,7 +332,7 @@
 </td>
 <td class="px-6 py-4 text-sm text-slate-600">Oct 14, 2023</td>
 <td class="px-6 py-4 text-sm text-slate-600">Nov 14, 2023</td>
-<td class="px-6 py-4 text-sm font-semibold text-slate-900">$550.00</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900">PKR 550.00</td>
 <td class="px-6 py-4">
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">Draft</span>
 </td>
@@ -361,10 +361,10 @@
 </div>
 </main>
 </div>
-<script src="js/sidebar-controller.js" defer></script></body>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script></body>
 <!-- ZAK V4: Quotation list wiring -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const tbody = document.querySelector('tbody');
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       tbody.innerHTML = qs.map(q => `
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30">
           <td class="p-4 text-sm font-medium">${q.quotation_no}</td>
-          <td class="p-4 text-sm">${q.client_name || 'â€”'}</td>
+          <td class="p-4 text-sm">${q.client_name || '-'}</td>
           <td class="p-4 text-sm text-slate-500">${formatDate(q.created_at)}</td>
           <td class="p-4 text-sm font-bold">${formatPKR(q.total || 0)}</td>
           <td class="p-4">${statusBadge(q.status)}</td>
@@ -426,6 +426,7 @@ document.getElementById('sidebar-toggle').addEventListener('click', function() {
   }
 });
 </script>
-<script src="js/sidebar-controller.js" defer></script>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
 </html>
+
 

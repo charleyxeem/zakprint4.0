@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Page Builder - Content Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#ec5b13",
+            secondary: "#f97316",
+            "background-light": "#f8f6f6",
+            "background-alt": "#fff4ec",
+            "background-dark": "#221610",
+          },
+          fontFamily: {
+            display: ["Public Sans", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px",
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+  <style>
+    html, body {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .flex-container {
+      display: flex;
+      height: calc(100vh - 64px);
+      overflow: hidden;
+    }
+
+    .toolbar {
+      width: 280px;
+      border-right: 1px solid #e5e7eb;
+      background: #fff;
+      overflow-y: auto;
+    }
+
+    .canvas-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .canvas {
+      flex: 1;
+      overflow-y: auto;
+      background: #f9fafb;
+      padding: 2rem 0;
+    }
+
+    .canvas-content {
+      max-width: 100%;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .editable-block {
+      position: relative;
+      padding: 1.5rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .editable-block:hover {
+      border-color: #ec5b13;
+      background: #fff9f6;
+    }
+
+    .editable-block.selected {
+      border-color: #ec5b13;
+      background: #fff9f6;
+      box-shadow: inset 0 0 0 2px #ec5b13;
+    }
+
+    .editable-block.dragging {
+      opacity: 0.5;
+      background: #f0f0f0;
+    }
+
+    .block-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ec5b13;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .editable-block:hover .block-overlay {
+      opacity: 1;
+    }
+
+    .drag-handle {
+      cursor: grab;
+    }
+
+    .drag-handle:active {
+      cursor: grabbing;
+    }
+
+    .toolbar-section {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 1rem;
+    }
+
+    .toolbar-section:last-child {
+      border-bottom: none;
+    }
+
+    .toolbar-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-slate-900;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .block-button {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      background: white;
+      cursor: pointer;
+      font-size: 0.875rem;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .block-button:hover {
+      border-color: #ec5b13;
+      background: #fff9f6;
+    }
+
+    .properties-panel {
+      width: 300px;
+      border-left: 1px solid #e5e7eb;
+      background: white;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+
+    .property-group {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .property-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: #1f2937;
+    }
+
+    .property-input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-family: monospace;
+    }
+
+    .property-input:focus {
+      outline: none;
+      border-color: #ec5b13;
+      box-shadow: 0 0 0 3px rgba(236,91,19,0.1);
+    }
+
+    textarea.property-input {
+      resize: vertical;
+      min-height: 80px;
+      font-family: monospace;
+    }
+
+    .color-picker {
+      width: 100%;
+      height: 40px;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      cursor: pointer;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .btn-action {
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: #ec5b13;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #d94d0f;
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #1f2937;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .btn-danger:hover {
+      background: #fecaca;
+    }
+
+    .text-editor {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .ck-editor__main {
+      max-height: 300px;
+    }
+
+    .image-preview {
+      width: 100%;
+      max-height: 150px;
+      object-fit: cover;
+      border-radius: 0.375rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 50;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: flex-end;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #9ca3af;
+    }
+
+    .empty-state-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #10b981;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 0.375rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 100;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .dark-mode body {
+      background: #1f2937;
+      color: #f3f4f6;
+    }
+
+    .dark-mode .toolbar,
+    .dark-mode .properties-panel {
+      background: #111827;
+      border-color: #374151;
+    }
+
+    .dark-mode .canvas-content {
+      background: #1f2937;
+      color: #f3f4f6;
+    }
+
+    .dark-mode .editable-block {
+      background: #111827;
+    }
+
+    .dark-mode .editable-block:hover {
+      background: #1f2937;
+    }
+
+    .dark-mode .block-button,
+    .dark-mode .property-input,
+    .dark-mode .modal-content {
+      background: #111827;
+      color: #f3f4f6;
+      border-color: #374151;
+    }
+
+    h1 { font-size: 2rem; line-height: 1.2; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; line-height: 1.3; margin-bottom: 0.75rem; margin-top: 1.5rem; }
+    h3 { font-size: 1.25rem; line-height: 1.4; margin-bottom: 0.5rem; margin-top: 1rem; }
+    p { margin-bottom: 0.75rem; line-height: 1.6; }
+    
+    blockquote {
+      border-left: 4px solid #ec5b13;
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: #6b7280;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #ec5b13 0%, #f17a48 100%);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-section h1 {
+      color: white;
+    }
+
+    .hero-section p {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #ec5b13;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #d94d0f;
+    }
+
+    .image-block {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .image-block img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1rem;
+      background: #f9fafb;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-answer {
+      padding: 1rem;
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-background-light">
+  <header class="h-16 flex items-center justify-between px-6 border-b border-slate-200 bg-white flex-shrink-0 shadow-sm">
+    <div class="flex items-center gap-4">
+      <a href="/zakprintingV4/Frontend-admin/admin-dash.html" class="text-slate-500 hover:text-slate-900" title="Back to Dashboard">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+      <h1 class="text-xl font-bold flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary">edit_note</span>
+        Visual Page Builder
+      </h1>
+      <div class="ml-4 text-sm text-slate-500">
+        <span id="page-title">Select a page</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="btn-preview-toggle" class="btn-action btn-secondary" title="Preview">
+        <span class="material-symbols-outlined">preview</span>
+        <span>Preview</span>
+      </button>
+      <button id="btn-save" class="btn-action btn-primary" title="Save Changes">
+        <span class="material-symbols-outlined">save</span>
+        <span>Save</span>
+      </button>
+      <button id="btn-publish" class="btn-action btn-primary" style="background: #059669;" title="Publish Page">
+        <span class="material-symbols-outlined">publish</span>
+        <span>Publish</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex-container">
+    <!-- Left Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar-section">
+        <div class="toolbar-title">
+          <span class="material-symbols-outlined">pages</span>
+          Pages
+        </div>
+        <div id="pages-list" class="space-y-2">
+          <div class="empty-state-icon" style="font-size: 2rem;">📄</div>
+          <p style="font-size: 0.875rem; text-slate-500;">Loading pages...</p>
+        </div>
+      </div>
+
+      <div class="toolbar-section">
+        <div class="toolbar-title">
+          <span class="material-symbols-outlined">add_box</span>
+          Add Block
+        </div>
+        <button class="block-button" data-block-type="text">
+          <span class="material-symbols-outlined" style="font-size: 1.25rem;">text_fields</span>
+          Text
+        </button>
+        <button class="block-button" data-block-type="hero">
+          <span class="material-symbols-outlined" style="font-size: 1.25rem;">image</span>
+          Hero Section
+        </button>
+        <button class="block-button" data-block-type="image">
+          <span class="material-symbols-outlined" style="font-size: 1.25rem;">crop_original</span>
+          Image
+        </button>
+        <button class="block-button" data-block-type="gallery">
+          <span class="material-symbols-outlined" style="font-size: 1.25rem;">photo_library</span>
+          Gallery
+        </button>
+        <button class="block-button" data-block-type="faq">
+          <span class="material-symbols-outlined" style="font-size: 1.25rem;">help</span>
+          FAQ
+        </button>
+        <button class="block-button" data-block-type="cta">
+          <span class="material-symbols-outlined" style="font-size: 1.25rem;">call_to_action</span>
+          Call to Action
+        </button>
+      </div>
+    </div>
+
+    <!-- Canvas/Preview Area -->
+    <div class="canvas-wrapper">
+      <div class="canvas" id="canvas">
+        <div class="canvas-content" id="canvas-content" style="min-height: 100%;">
+          <div class="empty-state">
+            <div class="empty-state-icon">📄</div>
+            <h3>Select a page to start editing</h3>
+            <p style="margin-top: 0.5rem;">Choose a page from the list on the left</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Properties Panel -->
+    <div class="properties-panel" id="properties-panel">
+      <div style="text-align: center; color: #9ca3af; padding: 2rem 0;">
+        <span class="material-symbols-outlined" style="font-size: 2rem; opacity: 0.5;">tune</span>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">Click a block to edit</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Upload Modal -->
+  <div class="modal" id="image-upload-modal">
+    <div class="modal-content">
+      <div class="modal-title">Upload Image</div>
+      <div style="margin-bottom: 1.5rem;">
+        <label class="property-label">Image URL</label>
+        <input type="url" id="image-url-input" class="property-input" placeholder="https://example.com/image.jpg">
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <label class="property-label">Alt Text</label>
+        <input type="text" id="image-alt-input" class="property-input" placeholder="Description of image">
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-action btn-secondary" onclick="closeModal('image-upload-modal')">Cancel</button>
+        <button class="btn-action btn-primary" onclick="confirmImageUpload()">Add Image</button>
+      </div>
+    </div>
+  </div>
+  <input type="file" id="hidden-image-upload-input" accept="image/*" style="display:none;">
+
+  <!-- Scripts -->
+  <script src="js/admin-api.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script>
+    window.REQUIRED_ROLE = "super_admin";
+
+    const VB = {
+      state: {
+        pages: [],
+        currentPage: null,
+        currentPageData: null,
+        blocks: [],
+        selectedBlock: null,
+        dirty: false,
+        uploadTarget: null
+      },
+
+      pageIcons: {
+        home: "home",
+        shop: "storefront",
+        services: "build",
+        about: "info",
+        contact: "mail",
+        blog: "article",
+        faq: "help",
+        portfolio: "photo_library",
+        "privacy-policy": "lock",
+        terms: "gavel",
+        "shipping-info": "local_shipping"
+      },
+
+      async init() {
+        // admin-auth.js already handles authentication,
+        // so we just need to load pages and bind events
+        await this.loadPages();
+        this.bindGlobalEvents();
+      },
+
+      async loadPages() {
+        try {
+          const res = await adminFetch("/cms.php?pages=1");
+          this.state.pages = res.pages || [];
+          this.renderPages();
+        } catch (error) {
+          console.error("Failed to load pages:", error);
+          showToast("Failed to load pages", "error");
+        }
+      },
+
+      renderPages() {
+        const list = document.getElementById("pages-list");
+        list.innerHTML = (this.state.pages || [])
+          .map(p => {
+            const icon = this.pageIcons[p.slug] || "note";
+            const status = Number(p.is_active) ? "Live" : "Draft";
+            return `
+              <button class="block w-full text-left p-2.5 rounded-lg border border-slate-200 hover:border-primary hover:bg-orange-50 transition-all"
+                      data-page-id="${p.id}" data-page-slug="${p.slug}">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-slate-500">${icon}</span>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm truncate">${p.title}</p>
+                    <p class="text-xs text-slate-500">${p.slug}</p>
+                  </div>
+                  <span class="text-xs px-1.5 py-0.5 rounded-full ${
+                    Number(p.is_active) ? "bg-green-100 text-green-700" : "bg-slate-100 text-slate-600"
+                  }">${status}</span>
+                </div>
+              </button>
+            `;
+          })
+          .join("");
+
+        list.querySelectorAll("button").forEach(btn => {
+          btn.addEventListener("click", async () => {
+            const pageId = Number(btn.dataset.pageId);
+            const slug = btn.dataset.pageSlug;
+            await this.selectPage(pageId, slug);
+          });
+        });
+      },
+
+      async selectPage(pageId, pageSlug) {
+        this.state.currentPageData = this.state.pages.find(p => Number(p.id) === Number(pageId)) || {};
+        this.state.currentPage = { id: pageId, slug: pageSlug };
+        
+        document.getElementById("page-title").textContent = pageSlug;
+
+        try {
+          const res = await adminFetch(`/cms.php?page=${encodeURIComponent(pageSlug)}`);
+          this.state.blocks = res.blocks || [];
+          this.renderCanvas();
+          this.state.selectedBlock = null;
+          this.updateProperties();
+        } catch (error) {
+          console.error("Failed to load page content:", error);
+          showToast("Failed to load page content", "error");
+        }
+      },
+
+      renderCanvas() {
+        const canvas = document.getElementById("canvas-content");
+        
+        if (!this.state.blocks || this.state.blocks.length === 0) {
+          canvas.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">✨</div>
+              <h3>No blocks yet</h3>
+              <p style="margin-top: 0.5rem;">Add a block from the left panel to get started</p>
+            </div>
+          `;
+          return;
+        }
+
+        canvas.innerHTML = this.state.blocks
+          .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
+          .map((block, idx) => this.renderBlock(block, idx))
+          .join("");
+
+        this.bindBlockEvents();
+      },
+
+      renderBlock(block, idx) {
+        const type = block.block_type || "text";
+        const isSelected = this.state.selectedBlock?.id === block.id;
+        
+        let content = "";
+        
+        switch (type) {
+          case "hero":
+            content = `
+              <div class="hero-section">
+                ${block.content_html || "<h1>Hero Section</h1>"}
+              </div>
+            `;
+            break;
+          
+          case "image":
+            {
+              const img = this.parseImagePayload(block.content_html || "");
+              content = `
+                <div class="image-block">
+                  <img src="${img.src || 'https://via.placeholder.com/600x400'}" alt="${img.alt || 'Image'}" />
+                  ${img.caption ? `<p style="margin-top: 0.5rem; color: #6b7280; font-size: 0.875rem;">${img.caption}</p>` : ""}
+                </div>
+              `;
+            }
+            break;
+          
+          case "gallery":
+            try {
+              const items = JSON.parse(block.content_html || "[]");
+              content = `
+                <div class="gallery-grid">
+                  ${items.map(item => `
+                    <div class="gallery-item">
+                      <img src="${item.src || 'https://via.placeholder.com/150'}" alt="${item.alt || 'Gallery item'}" />
+                    </div>
+                  `).join("")}
+                </div>
+              `;
+            } catch (e) {
+              content = block.content_html || '<div class="gallery-grid"><div class="gallery-item"><img src="https://via.placeholder.com/150" alt="Gallery" /></div></div>';
+            }
+            break;
+          
+          case "faq":
+            try {
+              const items = JSON.parse(block.content_html || "[]");
+              content = `
+                <div>
+                  ${items.map(item => `
+                    <div class="faq-item">
+                      <div class="faq-question">❓ ${item.q || "Question"}</div>
+                      <div class="faq-answer">${item.a || "Answer"}</div>
+                    </div>
+                  `).join("")}
+                </div>
+              `;
+            } catch (e) {
+              content = block.content_html || '<div class="faq-item"><div class="faq-question">Question</div><div class="faq-answer">Answer</div></div>';
+            }
+            break;
+          
+          case "cta":
+            content = block.content_html || '<div class="cta-button">Call to Action</div>';
+            break;
+          
+          default:
+            content = block.content_html || "<p>Text block</p>";
+        }
+
+        return `
+          <div class="editable-block ${isSelected ? "selected" : ""}" data-block-id="${block.id}" data-block-index="${idx}">
+            <div class="block-overlay">
+              <span class="drag-handle" style="margin-right: 0.25rem;">⋮⋮</span>
+              ${type.toUpperCase()} • ${block.title || "Block"}
+            </div>
+            <div>${content}</div>
+          </div>
+        `;
+      },
+
+      bindBlockEvents() {
+        document.querySelectorAll(".editable-block").forEach(el => {
+          el.setAttribute("draggable", "true");
+
+          el.querySelectorAll("a").forEach(a => {
+            a.addEventListener("click", (e) => e.preventDefault());
+          });
+
+          el.addEventListener("click", () => {
+            const blockId = Number(el.dataset.blockId);
+            const block = this.state.blocks.find(b => b.id === blockId);
+            if (block) {
+              this.state.selectedBlock = block;
+              this.renderCanvas();
+              this.updateProperties();
+            }
+          });
+
+          // Drag and drop
+          el.addEventListener("dragstart", (e) => {
+            e.dataTransfer.effectAllowed = "move";
+            e.dataTransfer.setData("blockId", el.dataset.blockId);
+          });
+
+          el.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "move";
+            el.classList.add("dragging");
+          });
+
+          el.addEventListener("dragleave", () => {
+            el.classList.remove("dragging");
+          });
+
+          el.addEventListener("drop", async (e) => {
+            e.preventDefault();
+            el.classList.remove("dragging");
+            
+            const draggedId = Number(e.dataTransfer.getData("blockId"));
+            const targetId = Number(el.dataset.blockId);
+            
+            if (draggedId !== targetId) {
+              const draggedIdx = this.state.blocks.findIndex(b => b.id === draggedId);
+              const targetIdx = this.state.blocks.findIndex(b => b.id === targetId);
+              
+              if (draggedIdx > -1 && targetIdx > -1) {
+                [this.state.blocks[draggedIdx], this.state.blocks[targetIdx]] = 
+                [this.state.blocks[targetIdx], this.state.blocks[draggedIdx]];
+                
+                this.state.blocks.forEach((b, i) => b.sort_order = i);
+                await this.saveBlocks();
+                this.renderCanvas();
+              }
+            }
+          });
+        });
+      },
+
+      updateProperties() {
+        const panel = document.getElementById("properties-panel");
+        
+        if (!this.state.selectedBlock) {
+          panel.innerHTML = `
+            <div style="text-align: center; color: #9ca3af; padding: 2rem 0;">
+              <span class="material-symbols-outlined" style="font-size: 2rem; opacity: 0.5;">tune</span>
+              <p style="margin-top: 0.5rem; font-size: 0.875rem;">Click a block to edit</p>
+            </div>
+          `;
+          return;
+        }
+
+        const block = this.state.selectedBlock;
+        const type = block.block_type || "text";
+
+        let propertiesHTML = `
+          <div class="top-bar">
+            <span class="font-semibold">${type.toUpperCase()} Block</span>
+            <button class="btn-action btn-danger" onclick="VB.deleteBlock(${block.id})">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </div>
+
+          <div class="property-group">
+            <label class="property-label">Block Title</label>
+            <input type="text" class="property-input" value="${block.title || ""}" 
+                   onchange="VB.updateBlockProperty('title', this.value)">
+          </div>
+        `;
+
+        if (type === "text" || type === "hero" || type === "cta") {
+          propertiesHTML += `
+            <div class="property-group">
+              <label class="property-label">Content (HTML)</label>
+              <textarea class="property-input" onchange="VB.updateBlockProperty('content_html', this.value)">${block.content_html || ""}</textarea>
+              <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.5rem;">You can use HTML formatting here</p>
+            </div>
+          `;
+        }
+
+        if (type === "image") {
+          const img = this.parseImagePayload(block.content_html || "");
+          propertiesHTML += `
+            <div class="property-group">
+              <label class="property-label">Image Preview</label>
+              <img src="${img.src || 'https://via.placeholder.com/400x300'}" class="image-preview" alt="${img.alt || 'Image'}">
+            </div>
+            <div class="property-group">
+              <label class="property-label">Image URL</label>
+              <input type="url" class="property-input" value="${this.escapeAttr(img.src || "")}" 
+                     onchange="VB.updateImageBlock('src', this.value)">
+              <button class="btn-action btn-secondary" style="margin-top:0.5rem;" onclick="VB.triggerUploadForImageBlock()">
+                <span class="material-symbols-outlined">upload</span>
+                Upload & Replace
+              </button>
+            </div>
+            <div class="property-group">
+              <label class="property-label">Alt Text</label>
+              <input type="text" class="property-input" value="${this.escapeAttr(img.alt || "")}" 
+                     onchange="VB.updateImageBlock('alt', this.value)">
+            </div>
+            <div class="property-group">
+              <label class="property-label">Caption</label>
+              <input type="text" class="property-input" value="${this.escapeAttr(img.caption || "")}" 
+                     onchange="VB.updateImageBlock('caption', this.value)">
+            </div>
+          `;
+        }
+
+        if (type === "gallery") {
+          propertiesHTML += `
+            <div class="property-group">
+              <label class="property-label">Gallery Items (JSON)</label>
+              <textarea class="property-input" onchange="VB.updateBlockProperty('content_html', this.value)">${block.content_html || "[]"}</textarea>
+              <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.5rem;">Format: [{"src":"url","alt":"text","caption":""}]</p>
+            </div>
+          `;
+        }
+
+        if (type === "faq") {
+          propertiesHTML += `
+            <div class="property-group">
+              <label class="property-label">FAQ Items (JSON)</label>
+              <textarea class="property-input" onchange="VB.updateBlockProperty('content_html', this.value)">${block.content_html || "[]"}</textarea>
+              <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.5rem;">Format: [{"q":"Question","a":"Answer"}]</p>
+            </div>
+          `;
+        }
+
+        const inlineImages = this.extractInlineImages(block.content_html || "");
+        if (type !== "image" && inlineImages.length > 0) {
+          propertiesHTML += `
+            <div class="property-group">
+              <label class="property-label">Images & Objects</label>
+              <p style="font-size: 0.75rem; color: #9ca3af; margin-bottom: 0.75rem;">Replace images used inside this block</p>
+              ${inlineImages.map((item, idx) => `
+                <div style="margin-bottom: 0.75rem; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 0.5rem;">
+                  <p style="font-size: 0.75rem; color: #6b7280; margin-bottom: 0.5rem;">Object #${idx + 1}</p>
+                  <input type="url" class="property-input" value="${this.escapeAttr(item.src)}"
+                         onchange="VB.updateInlineImage(${idx}, 'src', this.value)" placeholder="Image URL">
+                  <input type="text" class="property-input" value="${this.escapeAttr(item.alt || "")}" style="margin-top:0.5rem;"
+                         onchange="VB.updateInlineImage(${idx}, 'alt', this.value)" placeholder="Alt text">
+                  <button class="btn-action btn-secondary" style="margin-top:0.5rem;" onclick="VB.triggerUploadInlineImage(${idx})">
+                    <span class="material-symbols-outlined">upload</span>
+                    Upload & Replace
+                  </button>
+                </div>
+              `).join("")}
+            </div>
+          `;
+        }
+
+        panel.innerHTML = propertiesHTML;
+      },
+
+      updateBlockProperty(key, value) {
+        if (this.state.selectedBlock) {
+          this.state.selectedBlock[key] = value;
+          this.state.dirty = true;
+          this.renderCanvas();
+        }
+      },
+
+      updateImageBlock(key, value) {
+        if (this.state.selectedBlock) {
+          const img = this.parseImagePayload(this.state.selectedBlock.content_html || "");
+          img[key] = value;
+          this.state.selectedBlock.content_html = this.serializeImagePayload(img, this.state.selectedBlock.content_html || "");
+          this.state.dirty = true;
+          this.renderCanvas();
+          this.updateProperties();
+        }
+      },
+
+      updateInlineImage(index, key, value) {
+        if (!this.state.selectedBlock) return;
+
+        try {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(this.state.selectedBlock.content_html || "", "text/html");
+          const images = Array.from(doc.querySelectorAll("img"));
+          const img = images[index];
+          if (!img) return;
+
+          if (key === "src") {
+            img.setAttribute("src", value || "");
+          }
+          if (key === "alt") {
+            img.setAttribute("alt", value || "");
+          }
+
+          this.state.selectedBlock.content_html = doc.body.innerHTML;
+          this.state.dirty = true;
+          this.renderCanvas();
+          this.updateProperties();
+        } catch (error) {
+          console.error("Failed to update inline image", error);
+          showToast("Could not update object", "error");
+        }
+      },
+
+      triggerUploadForImageBlock() {
+        if (!this.state.selectedBlock) return;
+        this.state.uploadTarget = { type: "image-block" };
+        const input = document.getElementById("hidden-image-upload-input");
+        if (input) {
+          input.value = "";
+          input.click();
+        }
+      },
+
+      triggerUploadInlineImage(index) {
+        if (!this.state.selectedBlock) return;
+        this.state.uploadTarget = { type: "inline-image", index };
+        const input = document.getElementById("hidden-image-upload-input");
+        if (input) {
+          input.value = "";
+          input.click();
+        }
+      },
+
+      async handleHiddenImageUpload(file) {
+        if (!file || !this.state.uploadTarget) return;
+
+        try {
+          const form = new FormData();
+          form.append("file", file);
+
+          const uploadRes = await adminFetch("/cms.php?action=upload", {
+            method: "POST",
+            data: form,
+          });
+
+          const uploadedUrl = uploadRes?.url || (uploadRes?.file_path ? `/${uploadRes.file_path}` : "");
+          if (!uploadedUrl) {
+            showToast("Upload failed", "error");
+            return;
+          }
+
+          if (this.state.uploadTarget.type === "image-block") {
+            this.updateImageBlock("src", uploadedUrl);
+          } else if (this.state.uploadTarget.type === "inline-image") {
+            this.updateInlineImage(this.state.uploadTarget.index, "src", uploadedUrl);
+          }
+
+          showToast("Image uploaded and replaced", "success");
+        } catch (error) {
+          console.error("Upload failed", error);
+          showToast("Upload failed", "error");
+        } finally {
+          this.state.uploadTarget = null;
+        }
+      },
+
+      parseImagePayload(rawContent) {
+        const raw = String(rawContent || "").trim();
+        if (!raw) {
+          return { src: "", alt: "", caption: "", __format: "json" };
+        }
+
+        try {
+          const parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+            return {
+              src: parsed.src || parsed.url || "",
+              alt: parsed.alt || "",
+              caption: parsed.caption || "",
+              __format: "json"
+            };
+          }
+        } catch (e) {
+          // Continue to non-JSON parsing.
+        }
+
+        if (/^https?:\/\//i.test(raw)) {
+          return { src: raw, alt: "", caption: "", __format: "url" };
+        }
+
+        try {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(raw, "text/html");
+          const img = doc.querySelector("img");
+          if (img) {
+            return {
+              src: img.getAttribute("src") || "",
+              alt: img.getAttribute("alt") || "",
+              caption: (doc.querySelector("figcaption")?.textContent || "").trim(),
+              __format: "html"
+            };
+          }
+        } catch (e) {
+          // Fall through.
+        }
+
+        return { src: "", alt: "", caption: "", __format: "json" };
+      },
+
+      serializeImagePayload(imagePayload, originalContent) {
+        const format = this.parseImagePayload(originalContent).__format || "json";
+        const clean = {
+          src: imagePayload.src || "",
+          alt: imagePayload.alt || "",
+          caption: imagePayload.caption || ""
+        };
+
+        if (format === "url") {
+          return clean.src;
+        }
+
+        if (format === "html") {
+          return `
+            <figure class="image-block">
+              <img src="${this.escapeHtml(clean.src)}" alt="${this.escapeHtml(clean.alt)}" />
+              ${clean.caption ? `<figcaption>${this.escapeHtml(clean.caption)}</figcaption>` : ""}
+            </figure>
+          `.trim();
+        }
+
+        return JSON.stringify(clean);
+      },
+
+      extractInlineImages(content) {
+        if (!content || typeof content !== "string" || !content.includes("<img")) {
+          return [];
+        }
+
+        try {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(content, "text/html");
+          return Array.from(doc.querySelectorAll("img")).map(img => ({
+            src: img.getAttribute("src") || "",
+            alt: img.getAttribute("alt") || ""
+          }));
+        } catch (e) {
+          return [];
+        }
+      },
+
+      escapeAttr(value) {
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/"/g, "&quot;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      },
+
+      escapeHtml(value) {
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      },
+
+      async deleteBlock(blockId) {
+        if (!confirm("Delete this block? This cannot be undone.")) return;
+        
+        this.state.blocks = this.state.blocks.filter(b => b.id !== blockId);
+        this.state.selectedBlock = null;
+        this.state.dirty = true;
+        this.renderCanvas();
+        this.updateProperties();
+        await this.saveBlocks();
+      },
+
+      async saveBlocks() {
+        if (!this.state.currentPage) return;
+
+        try {
+          const data = {
+            page_id: this.state.currentPage.id,
+            blocks: this.state.blocks
+          };
+
+          const res = await adminFetch("/cms.php", { 
+            method: "POST", 
+            data 
+          });
+
+          if (res.success) {
+            this.state.dirty = false;
+            showToast("Changes saved", "success");
+          } else {
+            showToast("Failed to save changes", "error");
+          }
+        } catch (error) {
+          console.error("Save failed:", error);
+          showToast("Save failed", "error");
+        }
+      },
+
+      bindGlobalEvents() {
+        document.getElementById("btn-save").addEventListener("click", () => this.saveBlocks());
+
+        const hiddenUploader = document.getElementById("hidden-image-upload-input");
+        if (hiddenUploader) {
+          hiddenUploader.addEventListener("change", async (e) => {
+            const file = e.target.files && e.target.files[0] ? e.target.files[0] : null;
+            if (file) {
+              await this.handleHiddenImageUpload(file);
+            }
+          });
+        }
+        
+        document.getElementById("btn-publish").addEventListener("click", async () => {
+          if (!this.state.currentPage) return;
+          try {
+            const res = await adminFetch("/cms.php", {
+              method: "POST",
+              data: {
+                page_id: this.state.currentPage.id,
+                publish: true,
+                blocks: this.state.blocks
+              }
+            });
+            if (res.success) showToast("Page published!", "success");
+          } catch (e) {
+            showToast("Publish failed", "error");
+          }
+        });
+
+        // Add block buttons
+        document.querySelectorAll(".block-button").forEach(btn => {
+          btn.addEventListener("click", async () => {
+            if (!this.state.currentPage) {
+              showToast("Please select a page first", "error");
+              return;
+            }
+
+            const type = btn.dataset.blockType;
+            const newBlock = {
+              id: Math.floor(Math.random() * 10000),
+              page_id: this.state.currentPage.id,
+              block_key: `${type}-${Date.now()}`,
+              title: type.charAt(0).toUpperCase() + type.slice(1),
+              block_type: type,
+              content_html: this.getDefaultContent(type),
+              sort_order: this.state.blocks.length
+            };
+
+            this.state.blocks.push(newBlock);
+            this.state.selectedBlock = newBlock;
+            this.state.dirty = true;
+            this.renderCanvas();
+            this.updateProperties();
+            await this.saveBlocks();
+          });
+        });
+      },
+
+      getDefaultContent(type) {
+        switch (type) {
+          case "hero":
+            return "<h1>Your Headline Here</h1><p>Add your description text here</p>";
+          case "text":
+            return "<p>Click to edit this text...</p>";
+          case "image":
+            return JSON.stringify({
+              src: "https://via.placeholder.com/600x400",
+              alt: "Image",
+              caption: ""
+            });
+          case "gallery":
+            return JSON.stringify([
+              { src: "https://via.placeholder.com/150", alt: "Image 1", caption: "" },
+              { src: "https://via.placeholder.com/150", alt: "Image 2", caption: "" }
+            ]);
+          case "faq":
+            return JSON.stringify([
+              { q: "First Question?", a: "Answer goes here..." },
+              { q: "Second Question?", a: "Answer goes here..." }
+            ]);
+          case "cta":
+            return '<div><h3>Ready to get started?</h3><a href="../Frontend-public/contact.html" class="cta-button">Click Here</a></div>';
+          default:
+            return "";
+        }
+      }
+    };
+
+    function showToast(message, type = "info") {
+      const toast = document.createElement("div");
+      toast.className = `toast`;
+      toast.textContent = message;
+      toast.style.background = type === "error" ? "#ef4444" : type === "success" ? "#10b981" : "#3b82f6";
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove("show");
+    }
+
+    // Initialize
+    document.addEventListener("DOMContentLoaded", () => VB.init());
+  </script>
+</body>
+</html>

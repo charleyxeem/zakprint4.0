@@ -8,10 +8,35 @@
  *   after api.js is loaded.
  */
 (async () => {
+  function getBasePrefix() {
+    const path = window.location.pathname || '/';
+    const publicIdx = path.toLowerCase().indexOf('/frontend-public/');
+    if (publicIdx !== -1) {
+      return path.slice(0, publicIdx) || '';
+    }
+
+    const marker = /\/(home|shop|services|about|contact|blog|appointment|product-detail|checkout|order-confirm|user-login|user-dash|user-my-order|user-my-settings)(?:\.html)?(?:\/|$)/i;
+    const match = path.match(marker);
+    if (match && typeof match.index === 'number') {
+      return path.slice(0, match.index) || '';
+    }
+
+    const htmlMarker = /\.html(?:\/|$)/i;
+    const htmlMatch = path.match(htmlMarker);
+    if (htmlMatch && typeof htmlMatch.index === 'number') {
+      return path.slice(0, htmlMatch.index) || '';
+    }
+
+    return '';
+  }
+
+  const BASE_PREFIX = getBasePrefix();
+  const withBase = (route) => `${BASE_PREFIX}${route}`;
+
   const session = await getSession();
 
   if (!session.authenticated) {
-    window.location.href = 'user-login.html?redirect=' + encodeURIComponent(window.location.pathname);
+    window.location.href = withBase('/user-login') + '?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
     return;
   }
 
@@ -33,7 +58,7 @@
   if (logoutBtn) {
     logoutBtn.addEventListener('click', async () => {
       await apiFetch('/auth.php', { method: 'DELETE' });
-      window.location.href = 'user-login.html';
+      window.location.href = withBase('/user-login');
     });
   }
 })();

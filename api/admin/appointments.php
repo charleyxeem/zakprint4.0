@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * api/admin/appointments.php
  * Admin appointments inbox.
@@ -13,15 +15,17 @@ requireAdmin();
 
 $method = $_SERVER['REQUEST_METHOD'];
 $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
+$allowedStatuses = ['pending', 'confirmed', 'cancelled'];
 
 if ($method === 'GET') {
-    $limit = min((int)($_GET['limit'] ?? 50), 200);
-    $offset = (int)($_GET['offset'] ?? 0);
-    $status = clean($_GET['status'] ?? '');
+    $limit = min(max((int)($_GET['limit'] ?? 50), 1), 200);
+    $offset = max((int)($_GET['offset'] ?? 0), 0);
+    $status = queryString('status');
 
     $where = [];
     $params = [];
     if ($status !== '') {
+        $status = requireOneOf($status, $allowedStatuses, 'status');
         $where[] = 'status = ?';
         $params[] = $status;
     }
@@ -42,11 +46,7 @@ if ($method === 'PATCH') {
     if (!$id) err('Appointment id required.');
 
     $body = getBody();
-    $status = clean($body['status'] ?? '');
-    $allowed = ['pending', 'confirmed', 'cancelled'];
-    if (!in_array($status, $allowed, true)) {
-        err('Invalid status.');
-    }
+    $status = requireOneOf(bodyString($body, 'status'), $allowedStatuses, 'status');
 
     $stmt = $pdo->prepare('UPDATE appointments SET status = ? WHERE id = ?');
     $stmt->execute([$status, $id]);

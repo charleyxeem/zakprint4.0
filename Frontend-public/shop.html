@@ -5,86 +5,266 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Shop - ZAK Printing</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#ec5b13",
-                        "background-light": "#f8f6f6",
-                        "background-dark": "#221610",
-                    },
-                    fontFamily: {
-                        display: ["Public Sans", "sans-serif"],
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.25rem",
-                        lg: "0.5rem",
-                        xl: "0.75rem",
-                        full: "9999px",
-                    },
-                },
-            },
-        };
-    </script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#ec5b13",
+          "background-light": "#f8f6f6",
+          "background-dark": "#221610",
+        },
+        fontFamily: {
+          display: ["Public Sans", "sans-serif"],
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          full: "9999px",
+        },
+      },
+    },
+  };
+</script>
 </head>
 <body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
 <div class="layout-container flex min-h-screen flex-col">
+
+<!-- HEADER -->
 <header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-3">
-<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap gap-6">
-<div class="flex items-center gap-8">
-<a class="flex items-center gap-3 text-primary" href="home.html">
-<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
-<span class="material-symbols-outlined">print</span>
-</div>
-<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
-</a>
-<nav class="hidden lg:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
-<a class="text-primary text-sm font-bold transition-colors" href="shop.html">Shop</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
-</nav>
-</div>
-<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
-<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
-<input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search..." type="text"/>
-</div>
-<div class="flex items-center gap-2">
-<a class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors" href="user-login.html" aria-label="Account">
-<span class="material-symbols-outlined">person</span>
-</a>
-<a class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative" href="checkout.html" aria-label="Shopping cart">
-<span class="material-symbols-outlined">shopping_cart</span>
-<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
-</a>
-</div>
-<a class="hidden sm:flex items-center justify-center px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
-            Appointment
-          </a>
-<button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
+  <div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap gap-6">
+    <div class="flex items-center gap-8">
+      <a class="flex items-center gap-3 text-primary" href="home.html">
+        <div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+          <svg aria-hidden="true" class="h-4.5 w-4.5 fill-current" viewBox="0 0 24 24">
+            <path d="M7 7V4h10v3H7Zm10 2H7a4 4 0 0 0-4 4v4h3v3h12v-3h3v-4a4 4 0 0 0-4-4Zm-2 9H9v-4h6v4Zm2-7.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/>
+          </svg>
+        </div>
+        <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
+        <a class="text-primary text-sm font-bold transition-colors" href="shop.html">Shop</a>
+        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
+        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1.5 border border-transparent focus-within:border-primary transition-all">
+      <span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+      <input id="header-search" class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search..." type="text"/>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors" aria-label="Account" onclick="window.location.href='user-login.html'">
+        <span class="material-symbols-outlined">person</span>
+      </button>
+      <button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative" aria-label="Shopping cart" onclick="window.location.href='checkout.html'">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+      </button>
+    </div>
+    <a class="hidden sm:flex items-center justify-center px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" href="appointment.html">
+      Appointment
+    </a>
+    <button id="mobile-menu-toggle" class="lg:hidden p-2.5 min-h-10 min-w-10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" aria-label="Menu" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
 </header>
+
+<!-- MOBILE MENU OVERLAY -->
 <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
 <nav id="mobile-nav" class="hidden lg:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
-<div class="p-4 space-y-2">
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
-<a class="block px-4 py-3 text-primary font-bold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
-<hr class="my-2 border-slate-200 dark:border-slate-800">
-<a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="appointment.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
-</div>
+  <div class="p-4 space-y-2">
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+    <a class="block px-4 py-3 text-primary font-bold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
+    <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="contact.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Contact</a>
+    <hr class="my-2 border-slate-200 dark:border-slate-800">
+    <a class="block px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 text-center transition-colors" href="appointment.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Book Appointment</a>
+  </div>
 </nav>
+
+<main class="flex-1 m-0 p-0">
+
+  <!-- HERO SECTION -->
+  <section class="relative overflow-hidden px-6 pt-10 pb-16 lg:px-20">
+    <div class="absolute inset-0 bg-primary/5 -z-10"></div>
+    <div class="absolute -top-10 right-0 size-80 rounded-full bg-primary/10 blur-3xl -z-10"></div>
+    <div class="absolute -bottom-10 left-0 size-80 rounded-full bg-primary/10 blur-3xl -z-10"></div>
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-4xl space-y-5">
+        <span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-primary">Product Catalog</span>
+        <h1 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white md:text-5xl leading-[1.08]">Premium print products for businesses, events, and retail-ready branding.</h1>
+        <p class="max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">Browse our full product catalog. Compare finishing styles and request a quote from the team.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SHOP LAYOUT -->
+  <section class="px-4 sm:px-6 pb-20 lg:px-20">
+    <div class="max-w-7xl mx-auto grid gap-6 sm:gap-8 lg:grid-cols-[260px_1fr] xl:grid-cols-[280px_1fr]">
+
+      <!-- SIDEBAR FILTERS -->
+      <aside id="filters-panel" class="hidden sm:block space-y-4">
+
+        <!-- Mobile close bar (only visible inside slide-in) -->
+        <div class="flex items-center justify-between sm:hidden mb-2">
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white">Filters</h2>
+          <button id="filters-close-btn" class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" aria-label="Close filters">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <!-- Filter card -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <h2 class="flex items-center gap-2 text-base font-bold text-slate-900 dark:text-white">
+            <span class="material-symbols-outlined text-primary text-xl">filter_list</span>
+            Filters
+          </h2>
+
+          <div class="mt-5 space-y-6">
+            <!-- Categories -->
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Categories</p>
+              <div id="category-list" class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <p class="text-xs text-slate-400 animate-pulse">Loading…</p>
+              </div>
+            </div>
+
+            <hr class="border-slate-100 dark:border-slate-800">
+
+            <!-- Featured Items -->
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Featured Items</p>
+              <div id="featured-filter" class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <p class="text-xs text-slate-400 animate-pulse">Loading…</p>
+              </div>
+            </div>
+
+            <hr class="border-slate-100 dark:border-slate-800">
+
+            <!-- Budget -->
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Budget</p>
+              <div id="budget-filter" class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <p class="text-xs text-slate-400 animate-pulse">Loading…</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- PRODUCTS COLUMN -->
+      <div>
+        <!-- Toolbar: count + sort -->
+        <div class="mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Products</h2>
+            <p id="product-count-text" class="mt-0.5 text-sm text-slate-500 dark:text-slate-400">Loading products…</p>
+          </div>
+          <!-- Sort bar -->
+          <div id="sort-bar" class="flex items-center gap-2 flex-wrap">
+            <button type="button" data-sort="popular" class="sort-btn px-3 py-2 rounded-lg text-sm font-semibold border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 transition-colors">Most Popular</button>
+            <button type="button" data-sort="newest" class="sort-btn px-3 py-2 rounded-lg text-sm font-semibold border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 transition-colors">Newest</button>
+            <button type="button" data-sort="price-asc" class="sort-btn px-3 py-2 rounded-lg text-sm font-semibold border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 transition-colors">Price: Low–High</button>
+            <button type="button" data-sort="price-desc" class="sort-btn px-3 py-2 rounded-lg text-sm font-semibold border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 transition-colors">Price: High–Low</button>
+          </div>
+        </div>
+
+        <!-- Mobile: show filters button -->
+        <button id="mobile-filter-toggle" class="sm:hidden mb-5 w-full py-2.5 px-4 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-semibold rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors flex items-center justify-center gap-2 text-sm">
+          <span class="material-symbols-outlined text-base">filter_list</span>
+          Show Filters
+        </button>
+
+        <!-- Product grid -->
+        <div class="grid auto-rows-fr gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" id="products-grid"></div>
+
+        <!-- Pagination -->
+        <div id="shop-pagination" class="mt-8 flex flex-wrap items-center justify-center gap-2"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="border-y border-slate-200 bg-white py-20 dark:border-slate-800 dark:bg-slate-950">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <div class="inline-flex size-16 items-center justify-center rounded-2xl bg-primary/20 text-primary mb-8">
+        <span class="material-symbols-outlined text-4xl">inventory_2</span>
+      </div>
+      <h2 class="text-3xl font-black text-slate-900 dark:text-white md:text-4xl">Ordering for a team, event, or product launch?</h2>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Send us your quantity, size, and finish requirements and we will build out the most practical production option for your budget and timeline.</p>
+      <a class="mt-10 inline-flex items-center justify-center rounded-xl bg-primary px-10 py-4 text-lg font-bold text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.02]" href="contact.html">Get a Custom Quote</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div class="space-y-6">
+      <div class="flex items-center gap-3 text-primary">
+        <div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+          <span class="material-symbols-outlined">print</span>
+        </div>
+        <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
+      </div>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
+      <div class="flex gap-4">
+        <a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
+        <a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html" aria-label="Email us"><span class="material-symbols-outlined text-xl">mail</span></a>
+        <a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html" aria-label="Find us"><span class="material-symbols-outlined text-xl">location_on</span></a>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+      <ul class="space-y-4">
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
+      <ul class="space-y-4">
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html#faq">FAQ</a></li>
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html#privacy-policy">Privacy Policy</a></li>
+        <li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html#shipping-info">Shipping Info</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
+      <div class="flex">
+        <input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email address" type="email" aria-label="Email address for newsletter"/>
+        <button class="bg-primary text-white p-3 rounded-r-xl hover:bg-primary/90 transition-colors" aria-label="Subscribe"><span class="material-symbols-outlined">send</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2025 ZAK Printing. All rights reserved.</p>
+    <div class="flex gap-6">
+      <span class="text-xs text-slate-400">Powered by ZAK Core</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- end layout-container -->
+
+<!-- JS: mobile menu toggle -->
 <script>
-document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+document.getElementById('mobile-menu-toggle').addEventListener('click', function () {
   const menu = document.getElementById('mobile-menu');
   const nav = document.getElementById('mobile-nav');
   const isHidden = menu.classList.contains('hidden');
@@ -99,283 +279,72 @@ document.getElementById('mobile-menu-toggle').addEventListener('click', function
   }
 });
 </script>
-<main class="flex-1 m-0 p-0">
-<section class="relative mt-0 overflow-hidden px-6 pt-0 pb-20 lg:px-20">
-<div class="absolute inset-0 bg-primary/5 -z-10"></div>
-<div class="absolute -top-10 right-0 size-80 rounded-full bg-primary/10 blur-3xl"></div>
-<div class="absolute -bottom-10 left-0 size-80 rounded-full bg-primary/10 blur-3xl"></div>
-<div class="max-w-7xl mx-auto">
-<div class="max-w-4xl space-y-6">
-<span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-primary">Product Catalog</span>
-<h1 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white md:text-6xl leading-[1.05]">Premium print products for businesses, events, and retail-ready branding.</h1>
-<p class="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Browse frequently ordered items, compare finishing styles, and shortlist what you need before requesting a quote from the team.</p>
-</div>
-</div>
-</section>
-<section class="px-4 sm:px-6 pb-20 lg:px-20">
-<div class="max-w-7xl mx-auto grid gap-6 sm:gap-8 lg:grid-cols-[280px_1fr] xl:grid-cols-[290px_1fr]">
-<aside id="filters-panel" class="hidden sm:block">
-<div class="space-y-6">
-<div class="flex items-center justify-between sm:hidden mb-4">
-<h2 class="text-lg font-bold text-slate-900 dark:text-white">Filters</h2>
-<button onclick="document.getElementById('filters-panel').classList.toggle('hidden')" class="p-2 lg:hidden text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<div class="rounded-[1.5rem] border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-<h2 class="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
-<span class="material-symbols-outlined text-primary">filter_list</span>
-                            Filters
-                        </h2>
-<div class="mt-6 space-y-6">
-<div>
-<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Categories</p>
-<div class="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-400">
-<label class="flex items-center gap-3"><input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Business Cards</label>
-<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Flyers &amp; Brochures</label>
-<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Packaging &amp; Boxes</label>
-<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Promotional Items</label>
-</div>
-</div>
-<div>
-<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Finishes</p>
-<div class="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-400">
-<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Matte Lamination</label>
-<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Gloss UV</label>
-<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Foil Stamping</label>
-<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Spot UV</label>
-</div>
-</div>
-<div>
-<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Turnaround</p>
-<div class="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-400">
-<label class="flex items-center gap-3"><input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Standard</label>
-<label class="flex items-center gap-3"><input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>Rush Production</label>
-</div>
-</div>
-</div>
-</div>
-<button id="mobile-filter-toggle" class="sm:hidden w-full py-3 px-4 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
-<span class="material-symbols-outlined">filter_list</span>
-Show Filters
-</button>
-</aside>
-<div>
-<div class="mb-8">
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Products</h2>
-<p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Popular items ordered by small businesses, agencies, and event planners.</p>
-</div>
-<div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" id="products-grid-fallback">
-<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
-<img alt="Luxury business card print samples" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7YgLrcnWbT1abNo0OBaGiQ6P-LcDJJtDvzBTIXhV-Oj1qb-d00Mr1ls4_HmGJ0zgcY3KyxF4sEowomO63vPO9QJUxaXQfO_B6PiXkQzg39jRmrhIM8wMa2QwqYxh0YfrZnE0ajA_7RtqWhOLVy4uqwvYTm11vS_cZY6d2n8Npr7mVY2xaNiSohVrTQ8SeNuuNawddEwVU82T0N7ID5Yi0j0n_E8ttBGt79kWy6iVgWn5Is6h3E25XehJr4fdbI85sA40vP1KXb5g"/>
-</div>
-<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Business Cards</h3>
-<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Thick stock, premium finishes, and short-run or bulk ordering for teams and solo founders.</p>
-<div class="mt-5 flex items-center justify-between">
-<div>
-<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
-<p class="text-xl font-black text-primary">Rs. 1,500</p>
-</div>
-<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=1">View Options</a>
-</div>
-</article>
-<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
-<img alt="Folded brochures and flyers on a display table" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPWKkUe-A-ih8OBc7ouQZ5FL_jgrZAKX0sggW_4ykbM7AemBKVn0YNXcQW-LM7cgqjCFst_-iliRnl90noePBVPI1ETweRwP1BZkJu7bUfRu-7arWP4zI08l8IuxHOsEjt9hc-Cfq0bAYdfV7kCJAnxj05kys33lsxqbXIZvuG82nnmXq_4nVc6i9UX2a8TaheL6AYyqpGJcpKCT3WArJ7wbdASZ3MQfgvTUVz-0ggoQp7_NG9zTWwp_GG2zr2TZeVJ-0-2xRh0Ew"/>
-</div>
-<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Flyers &amp; Brochures</h3>
-<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Campaign handouts, folded brochures, menu inserts, and event collateral with sharp color output.</p>
-<div class="mt-5 flex items-center justify-between">
-<div>
-<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
-<p class="text-xl font-black text-primary">Rs. 2,200</p>
-</div>
-<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=2">View Options</a>
-</div>
-</article>
-<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
-<img alt="Custom rigid packaging and magnet boxes" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2LenKv5DTWjTVSkYcYeB4LCMibGnSUSoUrXDRUc0aXMnX3lVITS2PLe9_zjGr9XgsdnH3pkzEnePJJjM90x3szx0BMhyt8H9pvuycS5T-9KMjnlVyhW7kUJVFrKF1wNX1kiez05JJUQOzyonAIHNWXSCH8dnY01eEAfnfdm7DkiYd-7opXCo30DE0Csnf3vhhy8fgQFzMmLxF1qb554NYOpqyw7Bo5CAmwLiF7ViD4ZI20OhI_ttR6onchn7imG8e-A-gSbyaBJA"/>
-</div>
-<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Rigid Packaging</h3>
-<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Custom box production for product launches, gifting, retail shelves, and promotional kits.</p>
-<div class="mt-5 flex items-center justify-between">
-<div>
-<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
-<p class="text-xl font-black text-primary">Rs. 4,800</p>
-</div>
-<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=3">View Options</a>
-</div>
-</article>
-<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
-<img alt="Vinyl sticker sheets with branded die cuts" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE6VgKfeVgFw0AYpoixYdHWBzidrBrNKEELxQVmcuj-kYKESDrtkKB6Qnj-O_UKDm1gM0UhFXwEDMBR34v-JRzFodQlDIROIG82R9g8Kl6dtEf1aRqBe9stF1SkkaAuYFVV8mSfQ4LZMPGxK7rPQxyq0PhMQgRpc-U7nCcXCZKt3ucp1OCb0wFduH4FRkjD_tBY7f8PeNGNTc5FFvOfrsJzKVJ5pstNY1gV121SxvqSAuxPakVURFlD9Wxpw2iA_SmATR6fWhEfsk"/>
-</div>
-<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Vinyl Stickers</h3>
-<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Weather-resistant labels and branded stickers for packaging, storefronts, and merch drops.</p>
-<div class="mt-5 flex items-center justify-between">
-<div>
-<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
-<p class="text-xl font-black text-primary">Rs. 950</p>
-</div>
-<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=4">View Options</a>
-</div>
-</article>
-<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
-<img alt="Presentation folders and branded office stationery" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0NVCBCMeokLF2C62sERb-J8LveeGkMWFF7VZLaaC3uqGIbK79sE3SZaiSUk8f-einPAqIGjmgJBl8yMitjOnpqgZq34CntMEpw17eZUWM44Ji3tNu-nsEj2BnqMEe8oHz998Teq8P9ESoV6z7RbMBUxj8z2Y_3ABdHbYSqxKI5mfP1fXJrmk4PZ1vHb3Fc1IATsJQbCmSQ7GyAXBpEpsKXRQCcjBXJDHamis4j5gA3W5ir4YNo8ULA5a_zU7pYuUnFwmOjDB02ZM"/>
-</div>
-<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Presentation Folders</h3>
-<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Client-ready folders, proposal packs, and sales materials designed to look polished in meetings.</p>
-<div class="mt-5 flex items-center justify-between">
-<div>
-<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
-<p class="text-xl font-black text-primary">Rs. 3,600</p>
-</div>
-<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=5">View Options</a>
-</div>
-</article>
-<article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-<div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">
-<img alt="Customized mugs and branded promotional drinkware" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy4nnHpp1gNZzs7ZIYGYiYCo4JisR6yS9JPA8iLJjD4auXpu0QXhBY02e-QQSUsPNp3MSZNOUdfBzktB6qNFMqTyc8TsJbrt0rzYEDRrw6lRdKxUJYZwkLrVVCLWobDVdZ2MB33eaEOQFIklw5lJ-OO5XufGbO_F0Dz0IZvk_IpYsFPertz9n2qEVjUZrmfsBr8Qpo9redG8io5HM77ftrodIZYUPz9KdUdH7vZXodftafid8gsfGSZt11mRSFDtUJn0uqbJULTlw"/>
-</div>
-<h3 class="mt-5 text-xl font-bold text-slate-900 dark:text-white">Promotional Drinkware</h3>
-<p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Mugs and branded giveaways suitable for internal kits, exhibitions, and company gifting.</p>
-<div class="mt-5 flex items-center justify-between">
-<div>
-<p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
-<p class="text-xl font-black text-primary">Rs. 1,900</p>
-</div>
-<a class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white" href="product-detail.html?id=6">View Options</a>
-</div>
-</article>
-</div>
-<div class="mt-10 flex flex-wrap items-center justify-center gap-2">
-<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
-<span class="material-symbols-outlined text-lg">chevron_left</span>
-</button>
-<button class="flex size-10 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">1</button>
-<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-sm font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">2</button>
-<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-sm font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">3</button>
-<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
-<span class="material-symbols-outlined text-lg">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</section>
-<section class="border-y border-slate-200 bg-white py-20 dark:border-slate-800 dark:bg-slate-950">
-<div class="max-w-5xl mx-auto px-6 text-center">
-<div class="inline-flex size-16 items-center justify-center rounded-2xl bg-primary/20 text-primary mb-8">
-<span class="material-symbols-outlined text-4xl">inventory_2</span>
-</div>
-<h2 class="text-3xl font-black text-slate-900 dark:text-white md:text-4xl">Ordering for a team, event, or product launch?</h2>
-<p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Send us your quantity, size, and finish requirements and we will build out the most practical production option for your budget and timeline.</p>
-<a class="mt-10 inline-flex items-center justify-center rounded-xl bg-primary px-10 py-4 text-lg font-bold text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.02]" href="contact.html">Get a Custom Quote</a>
-</div>
-</section>
-</main>
-<footer class="bg-white dark:bg-slate-950 px-6 lg:px-20 py-16 border-t border-slate-200 dark:border-slate-800">
-<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-<div class="space-y-6">
-<div class="flex items-center gap-3 text-primary">
-<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
-<span class="material-symbols-outlined">print</span>
-</div>
-<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">ZAK Printing</h2>
-</div>
-<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your one-stop destination for all premium printing needs. Quality, precision, and excellence in every single print.</p>
-<div class="flex gap-4">
-<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#" aria-label="Share this page"><span class="material-symbols-outlined text-xl">share</span></a>
-<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">mail</span></a>
-<a class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="contact.html"><span class="material-symbols-outlined text-xl">location_on</span></a>
-</div>
-</div>
-<div>
-<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
-<ul class="space-y-4">
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="home.html">Home</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="shop.html">Shop</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="services.html">Services</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="about.html">About</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-slate-900 dark:text-white font-bold mb-6">Customer Support</h4>
-<ul class="space-y-4">
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="contact.html">Contact Us</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#faq">FAQ</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
-<li><a class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#shipping-info">Shipping Info</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-slate-900 dark:text-white font-bold mb-6">Newsletter</h4>
-<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Subscribe to get special offers and updates.</p>
-<div class="flex">
-<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-l-xl focus:ring-1 focus:ring-primary text-sm px-4" placeholder="Email" type="email"/>
-<button class="bg-primary text-white p-3 rounded-r-xl"><span class="material-symbols-outlined">send</span></button>
-</div>
-</div>
-</div>
-<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-<p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2024 ZAK Printing. All rights reserved.</p>
-<div class="flex gap-6">
-<span class="text-xs text-slate-400">Powered by ZAK Core</span>
-</div>
-</div>
-</footer>
-</div>
-</body>
-<!-- ZAK V4: Shop product wiring -->
-<script src="js/public-shell.js"></script>
-<script src="js/api.js"></script>
-<script src="js/public-ui.js"></script>
+
+<!-- JS: mobile filter panel toggle -->
+<script>
+(function () {
+  const toggle = document.getElementById('mobile-filter-toggle');
+  const panel = document.getElementById('filters-panel');
+  const closeBtn = document.getElementById('filters-close-btn');
+
+  function openPanel() {
+    panel.classList.remove('hidden');
+    // On mobile, slide in from left as fixed panel
+    if (window.innerWidth < 640) {
+      panel.style.cssText = 'display:block;position:fixed;top:0;left:0;width:min(320px,90vw);height:100vh;z-index:50;overflow-y:auto;background:var(--tw-bg-opacity,white);padding:1.25rem;box-shadow:4px 0 24px rgba(0,0,0,0.15);';
+    }
+    toggle.innerHTML = '<span class="material-symbols-outlined text-base">close</span> Hide Filters';
+  }
+
+  function closePanel() {
+    if (window.innerWidth < 640) {
+      panel.style.cssText = '';
+      panel.classList.add('hidden');
+    }
+    toggle.innerHTML = '<span class="material-symbols-outlined text-base">filter_list</span> Show Filters';
+  }
+
+  toggle.addEventListener('click', function () {
+    const isHidden = panel.classList.contains('hidden') || (window.innerWidth < 640 && panel.style.display === '');
+    if (isHidden) openPanel(); else closePanel();
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
+})();
+</script>
+
+<!-- JS: shop scripts -->
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-  const grid = document.querySelector('.grid.gap-6.sm\\:grid-cols-2.xl\\:grid-cols-3');
+  const grid = document.getElementById('products-grid');
+  const pagination = document.getElementById('shop-pagination');
+  const productCountText = document.getElementById('product-count-text');
+  const headerSearch = document.getElementById('header-search');
+  const categoryList = document.getElementById('category-list');
+  const featuredFilter = document.getElementById('featured-filter');
+  const budgetFilter = document.getElementById('budget-filter');
+  const sortBar = document.getElementById('sort-bar');
+
   if (!grid) return;
 
-  const initialFallbackCards = '';
-  const searchInput = document.querySelector('header input[placeholder*="Search"]');
-  const sortButtons = Array.from(document.querySelectorAll('button')).filter((button) => {
-    const text = button.textContent.trim();
-    return text === 'Most Popular' || text === 'Newest' || text === 'High Volume';
-  });
-
-  const filtersCard = Array.from(document.querySelectorAll('aside > div')).find((card) => {
-    const heading = card.querySelector('h2');
-    return heading && heading.textContent.includes('Filters');
-  });
-
-  const categoryHeading = filtersCard
-    ? Array.from(filtersCard.querySelectorAll('p')).find((el) => el.textContent.trim() === 'Categories')
-    : null;
-  const categoryContainer = categoryHeading ? categoryHeading.nextElementSibling : null;
-
-  const finishesHeading = filtersCard
-    ? Array.from(filtersCard.querySelectorAll('p')).find((el) => el.textContent.trim() === 'Finishes')
-    : null;
-  const finishesContainer = finishesHeading ? finishesHeading.nextElementSibling : null;
-
-  const turnaroundHeading = filtersCard
-    ? Array.from(filtersCard.querySelectorAll('p')).find((el) => el.textContent.trim() === 'Turnaround')
-    : null;
-  const turnaroundContainer = turnaroundHeading ? turnaroundHeading.nextElementSibling : null;
-
+  // ── State ──────────────────────────────────────────────────────────────────
   const state = {
     products: [],
+    categories: [],
     query: '',
     category: 'all',
     sort: 'popular',
     featuredOnly: false,
     priceBand: 'all',
+    page: 1,
+    perPage: 12,
+    totalPages: 1,
+    totalItems: 0,
   };
 
-  function escapeHtml(value) {
-    return String(value || '')
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  function escapeHtml(v) {
+    return String(v || '')
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
@@ -383,279 +352,588 @@ document.addEventListener('DOMContentLoaded', async () => {
       .replace(/'/g, '&#39;');
   }
 
-  function normalizePrice(value) {
+  function formatPkr(value) {
     const num = parseFloat(value);
-    return Number.isFinite(num) ? num : 0;
+    if (!Number.isFinite(num)) return '—';
+    return 'PKR ' + new Intl.NumberFormat('en-PK').format(Math.round(num));
   }
 
-  function resolveProductImagePath(imageValue) {
-    const value = String(imageValue || '').trim();
-    if (!value) return '';
-    if (value.startsWith('http://') || value.startsWith('https://')) return value;
-    if (value.startsWith('/')) return '..' + value;
-    if (value.startsWith('storage/') || value.startsWith('uploads/')) return '../' + value;
-    return '../uploads/' + encodeURIComponent(value);
-  }
-
-  function getCategory(product) {
-    const title = (product.title || '').toLowerCase();
-    if (title.includes('card')) return 'Business Cards';
-    if (title.includes('flyer') || title.includes('brochure')) return 'Flyers & Brochures';
-    if (title.includes('box') || title.includes('package') || title.includes('packaging')) return 'Packaging & Boxes';
-    if (title.includes('sticker') || title.includes('promo') || title.includes('mug') || title.includes('drinkware')) return 'Promotional Items';
-    return 'Other';
-  }
-
-  function getVisibleProducts() {
-    let visible = state.products.filter((product) => {
-      const category = getCategory(product);
-      const title = (product.title || '').toLowerCase();
-      const description = (product.description || '').toLowerCase();
-      const haystack = `${title} ${description}`;
-      const price = normalizePrice(product.price);
-
-      if (state.query && !haystack.includes(state.query)) return false;
-      if (state.category !== 'all' && category !== state.category) return false;
-      if (state.featuredOnly && !Number(product.is_featured)) return false;
-      if (state.priceBand === 'under-2000' && !(price < 2000)) return false;
-      if (state.priceBand === '2000-5000' && !(price >= 2000 && price <= 5000)) return false;
-      if (state.priceBand === '5000-plus' && !(price > 5000)) return false;
-      return true;
-    });
-
-    if (state.sort === 'newest') {
-      visible = visible.sort((a, b) => Number(b.id) - Number(a.id));
-    } else if (state.sort === 'price-desc') {
-      visible = visible.sort((a, b) => normalizePrice(b.price) - normalizePrice(a.price));
-    } else {
-      visible = visible.sort((a, b) => Number(b.is_featured) - Number(a.is_featured) || Number(b.id) - Number(a.id));
+  function getBasePrefix() {
+    const path = window.location.pathname || '/';
+    const frontIdx = path.toLowerCase().indexOf('/frontend-public/');
+    if (frontIdx !== -1) {
+      return path.slice(0, frontIdx) || '';
     }
 
-    return visible;
+    const marker = /\/(home|shop|services|about|contact|blog|appointment|product-detail|checkout|order-confirm|user-login|user-dash|user-my-order|user-my-settings|faq|portfolio|privacy-policy|terms|shipping-info)(?:\/|$)/i;
+    const match = path.match(marker);
+    if (match && typeof match.index === 'number') {
+      return path.slice(0, match.index) || '';
+    }
+
+    return '';
   }
 
-  function renderProductGrid() {
-    const visibleProducts = getVisibleProducts();
-    if (!visibleProducts.length) {
-      grid.innerHTML = '<p class="text-slate-500 col-span-3 text-center py-10 font-medium">No products match your filters yet.</p>';
+  function ensureApiFetch() {
+    if (typeof window.apiFetch === 'function') {
       return;
     }
 
-    grid.innerHTML = visibleProducts.map((product) => {
-      const imageSrc = resolveProductImagePath(product.image);
-      const imageHtml = product.image
-        ? `<img src="${imageSrc}" alt="${escapeHtml(product.title)}" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" />`
-        : '<div class="aspect-square w-full flex items-center justify-center text-slate-400"><span class="material-symbols-outlined text-5xl">inventory_2</span></div>';
+    const apiBase = getBasePrefix() + '/api';
+    window.apiFetch = async function(path, options = {}) {
+      const { method = 'GET', data = null, ...rest } = options;
+      const fetchOpts = {
+        method,
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        ...rest,
+      };
 
-      const price = normalizePrice(product.price).toLocaleString();
-      const featuredTag = Number(product.is_featured)
-        ? '<span class="inline-flex rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-primary">Featured</span>'
-        : '';
+      if (data && method !== 'GET') {
+        fetchOpts.body = JSON.stringify(data);
+      }
 
-      return `
-        <article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-          <div class="overflow-hidden rounded-[1.25rem] bg-slate-100 dark:bg-slate-800">${imageHtml}</div>
-          <div class="mt-4 flex items-center justify-between gap-3">
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">${escapeHtml(product.title)}</h3>
-            ${featuredTag}
-          </div>
-          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400 line-clamp-2">${escapeHtml(product.description || '')}</p>
-          <div class="mt-5 flex items-center justify-between gap-4">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Starting at</p>
-              <p class="text-xl font-black text-primary">PKR ${price}</p>
-            </div>
-            <a href="product-detail.html?id=${encodeURIComponent(product.id)}" class="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary/90 transition-colors">View Options</a>
-          </div>
-        </article>`;
-    }).join('');
+      const response = await fetch(apiBase + path, fetchOpts);
+      const json = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(json.error || `HTTP ${response.status}`);
+      }
+      return json;
+    };
   }
 
+  ensureApiFetch();
+
+  function publicRoutePath(routeName) {
+    const routeMap = {
+      home: '/home',
+      shop: '/shop',
+      services: '/services',
+      about: '/about',
+      contact: '/contact',
+      blog: '/blog',
+      appointment: '/appointment',
+      'product-detail': '/product-detail',
+      checkout: '/checkout',
+      'order-confirm': '/order-confirm',
+      'user-login': '/user-login',
+      'user-dash': '/user-dash',
+      'user-my-order': '/user-my-order',
+      'user-my-settings': '/user-my-settings',
+      faq: '/faq',
+      portfolio: '/portfolio',
+      'privacy-policy': '/privacy-policy',
+      terms: '/terms',
+      'shipping-info': '/shipping-info',
+    };
+
+    return routeMap[routeName] || '/home';
+  }
+
+  function buildPublicUrl(routeName, params = {}) {
+    const basePrefix = getBasePrefix();
+    const path = basePrefix + publicRoutePath(routeName);
+    const search = new URLSearchParams();
+
+    Object.entries(params).forEach(([k, v]) => {
+      if (v === null || v === undefined || v === '') return;
+      search.set(k, String(v));
+    });
+
+    const q = search.toString();
+    return q ? `${path}?${q}` : path;
+  }
+
+  function cleanProductDescription(value) {
+    const text = String(value || '').replace(/\s+/g, ' ').trim();
+    if (!text) return '';
+    if (/^Imported from refactored_products\.csv\./i.test(text)) {
+      return 'Multiple configurable options are available for this product. Open details to select the right specification.';
+    }
+    return text;
+  }
+
+  function resolveImagePath(imageValue) {
+    const v = String(imageValue || '').trim();
+    if (!v) return '';
+    const basePrefix = getBasePrefix();
+    if (v.startsWith('http://') || v.startsWith('https://')) return v;
+    if (v.startsWith('/')) {
+      if (basePrefix && v.startsWith(basePrefix + '/')) return v;
+      return `${basePrefix}${v}`;
+    }
+    if (v.startsWith('storage/') || v.startsWith('uploads/')) return `${basePrefix}/${v}`;
+    return `${basePrefix}/uploads/${encodeURIComponent(v)}`;
+  }
+
+  function parseVariationValues(value) {
+    return String(value || '')
+      .split(/[\r\n,|]+/)
+      .map(s => s.trim())
+      .filter(Boolean)
+      .filter((s, i, a) => a.indexOf(s) === i);
+  }
+
+  function titleFromSlug(value) {
+    const normalized = String(value || '').replace(/[-_]+/g, ' ').trim();
+    if (!normalized) return '';
+    return normalized
+      .split(/\s+/)
+      .map((word) => word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : '')
+      .join(' ');
+  }
+
+  // ── Variation chips (display only) ─────────────────────────────────────────
+  function renderVariationChips(product) {
+    const finishes = Array.isArray(product.finish_options)
+      ? product.finish_options
+      : (Array.isArray(product.colors_list) ? product.colors_list : parseVariationValues(product.colors));
+    const sizes = Array.isArray(product.size_options)
+      ? product.size_options
+      : (Array.isArray(product.sizes) ? product.sizes : parseVariationValues(product.sizes || product.dimensions));
+    const materials = Array.isArray(product.material_options)
+      ? product.material_options
+      : parseVariationValues(product.materials || '');
+    const weight = String(product.weight || '').trim();
+    const variantCount = Number(product.variant_count || product.variants_count || 0);
+    const chips = [];
+
+    if (sizes.length) {
+      chips.push(`
+        <div class="space-y-1.5">
+          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Sizes</p>
+          <div class="flex flex-wrap gap-1">
+            ${sizes.slice(0, 4).map(s => `
+              <span class="inline-flex items-center rounded-full border border-slate-200 bg-white px-2 py-0.5 text-[11px] font-semibold text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">${escapeHtml(s)}</span>`).join('')}
+            ${sizes.length > 4 ? `<span class="text-[11px] text-slate-400 self-center">+${sizes.length - 4} more</span>` : ''}
+          </div>
+        </div>`);
+    }
+
+    if (materials.length) {
+      chips.push(`
+        <div class="space-y-1.5">
+          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Material</p>
+          <div class="flex flex-wrap gap-1">
+            ${materials.slice(0, 3).map(m => `
+              <span class="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[11px] font-semibold text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">${escapeHtml(m)}</span>`).join('')}
+            ${materials.length > 3 ? `<span class="text-[11px] text-slate-400 self-center">+${materials.length - 3} more</span>` : ''}
+          </div>
+        </div>`);
+    }
+
+    if (finishes.length) {
+      chips.push(`
+        <div class="space-y-1.5">
+          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Finishes</p>
+          <div class="flex flex-wrap gap-1">
+            ${finishes.slice(0, 4).map(f => `
+              <span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[11px] font-semibold text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                <span class="size-2 rounded-full bg-primary/60 flex-shrink-0"></span>${escapeHtml(f)}
+              </span>`).join('')}
+            ${finishes.length > 4 ? `<span class="text-[11px] text-slate-400 self-center">+${finishes.length - 4} more</span>` : ''}
+          </div>
+        </div>`);
+    }
+
+    if (weight) {
+      chips.push(`
+        <div class="space-y-1.5">
+          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Weight</p>
+          <span class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">${escapeHtml(weight)}</span>
+        </div>`);
+    }
+
+    if (variantCount > 0) {
+      chips.push(`
+        <div class="space-y-1.5">
+          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Options</p>
+          <span class="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">${variantCount} variant${variantCount === 1 ? '' : 's'}</span>
+        </div>`);
+    }
+
+    if (!chips.length) return '';
+    return `<div class="mt-3 max-h-36 overflow-y-auto pr-1 grid grid-cols-1 gap-2.5 rounded-xl bg-slate-50 p-3 dark:bg-slate-950/40">${chips.join('')}</div>`;
+  }
+
+  // ── Product card ───────────────────────────────────────────────────────────
+  function buildProductCard(product) {
+    const imageSrc = resolveImagePath(product.image);
+    const detailUrl = buildPublicUrl('product-detail', { id: product.id });
+    const quoteUrl = buildPublicUrl('contact', {
+      intent: 'quote',
+      product_id: product.id,
+      product: product.title || '',
+      handle: product.category_slug || product.category || '',
+    });
+    const whatsappUrl = window.buildWhatsAppUrl
+      ? window.buildWhatsAppUrl(product)
+      : `https://wa.me/923096554946?text=${encodeURIComponent(`Hi ZAK Printing, I want to discuss ${product.title || 'this product'}. Please share a quote.`)}`;
+    const categoryLabel = String(product.category_label || '').trim() || titleFromSlug(product.category || '');
+    const cleanDescription = cleanProductDescription(product.description);
+
+    const priceHtml = (() => {
+      const base = parseFloat(product.price);
+      const sale = parseFloat(product.sale_price);
+      if (Number.isFinite(sale) && sale < base) {
+        return `<div class="mt-2 flex items-baseline gap-2 flex-wrap">
+          <span class="text-base font-black text-primary">${escapeHtml(formatPkr(sale))}</span>
+          <span class="text-xs font-semibold text-slate-400 line-through">${escapeHtml(formatPkr(base))}</span>
+          <span class="text-[10px] font-bold uppercase tracking-wide text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full dark:bg-green-900/30 dark:text-green-400">Sale</span>
+        </div>`;
+      }
+      if (Number.isFinite(base) && base > 0) {
+        return `<div class="mt-2"><span class="text-base font-black text-primary">${escapeHtml(formatPkr(base))}</span></div>`;
+      }
+      return `<div class="mt-2"><span class="text-sm font-semibold text-slate-400">Contact for price</span></div>`;
+    })();
+
+    const featuredTag = Number(product.is_featured)
+      ? '<span class="inline-flex rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-primary flex-shrink-0">Featured</span>'
+      : '';
+
+    const imageHtml = product.image
+      ? `<img
+            src="${imageSrc}"
+            alt="${escapeHtml(product.title)}"
+            class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          />
+          <div style="display:none" class="aspect-square w-full items-center justify-center text-slate-300 dark:text-slate-600">
+            <span class="material-symbols-outlined text-5xl">inventory_2</span>
+          </div>`
+      : `<div class="aspect-square w-full flex items-center justify-center text-slate-300 dark:text-slate-600">
+           <span class="material-symbols-outlined text-5xl">inventory_2</span>
+         </div>`;
+
+    const variationChips = renderVariationChips(product);
+
+    const compactDescription = cleanDescription
+      ? (cleanDescription.length > 150 ? `${cleanDescription.slice(0, 147).trimEnd()}...` : cleanDescription)
+      : '';
+
+    return `
+      <article class="group relative flex h-full flex-col rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
+        <!-- Clickable image + title area -->
+        <a href="${detailUrl}" class="block flex-1" aria-label="View ${escapeHtml(product.title || 'product')}">
+          <div class="overflow-hidden bg-slate-100 dark:bg-slate-800">${imageHtml}</div>
+          <div class="flex h-full flex-col p-4">
+            <div class="flex items-start justify-between gap-2">
+              <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug group-hover:text-primary transition-colors line-clamp-2 min-h-[2.75rem]">${escapeHtml(product.title)}</h3>
+              ${featuredTag}
+            </div>
+            ${categoryLabel ? `<p class="mt-1 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">${escapeHtml(categoryLabel)}</p>` : ''}
+            ${priceHtml}
+            ${compactDescription ? `<p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 min-h-[2.75rem]">${escapeHtml(compactDescription)}</p>` : '<div class="mt-2 min-h-[2.75rem]"></div>'}
+            ${variationChips}
+          </div>
+        </a>
+        <!-- CTA buttons -->
+        <div class="mt-auto px-4 pb-4 pt-2 flex flex-wrap items-center gap-2">
+          <a href="${detailUrl}"
+             class="flex-1 min-w-[132px] inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 py-2.5 text-sm font-bold text-white hover:bg-primary/90 transition-colors"
+             aria-label="View details for ${escapeHtml(product.title || 'product')}">
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+            View Details
+          </a>
+          <a href="${quoteUrl}"
+             class="flex-1 min-w-[132px] inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-bold text-slate-700 hover:border-primary/40 hover:text-primary transition-colors dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+             onclick="event.stopPropagation()"
+             aria-label="Request a quote for ${escapeHtml(product.title || 'product')}">
+            <span class="material-symbols-outlined text-sm">request_quote</span>
+            Get Quote
+          </a>
+          <a href="${whatsappUrl}"
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex min-h-10 min-w-10 items-center justify-center rounded-xl border border-[#25D366]/40 bg-[#25D366]/10 px-2.5 py-2.5 text-[#128C7E] hover:bg-[#25D366]/20 transition-colors dark:text-[#7BFFB1]"
+             onclick="event.stopPropagation()"
+             aria-label="WhatsApp about ${escapeHtml(product.title || 'product')}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
+              <path d="M19.05 4.94A9.94 9.94 0 0 0 12.06 2C6.55 2 2.06 6.49 2.06 12c0 1.76.46 3.48 1.34 5L2 22l5.15-1.35A9.92 9.92 0 0 0 12.06 22C17.57 22 22.06 17.51 22.06 12c0-2.65-1.03-5.14-3.01-7.06ZM12.06 20.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.06.8.82-2.98-.2-.31A8.19 8.19 0 0 1 3.86 12c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.79 2.39A8.13 8.13 0 0 1 20.26 12c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.14c-.25-.13-1.48-.73-1.71-.81-.23-.09-.4-.13-.57.12-.17.25-.65.81-.79.98-.15.17-.29.19-.54.06a6.66 6.66 0 0 1-1.96-1.21 7.41 7.41 0 0 1-1.37-1.71c-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.44-.07-.13-.57-1.38-.78-1.89-.21-.5-.42-.43-.57-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09s.9 2.42 1.03 2.58c.13.17 1.77 2.7 4.29 3.79.6.26 1.06.42 1.43.54.6.19 1.14.16 1.57.1.48-.07 1.48-.6 1.69-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/>
+            </svg>
+          </a>
+        </div>
+      </article>`;
+  }
+
+  // ── Render grid ────────────────────────────────────────────────────────────
+  function renderProductGrid() {
+    if (!state.products.length) {
+      grid.innerHTML = '<p class="text-slate-500 col-span-3 text-center py-14 font-medium">No products match your filters.</p>';
+      if (pagination) pagination.innerHTML = '';
+      if (productCountText) productCountText.textContent = 'No products found.';
+      return;
+    }
+
+    if (productCountText) {
+      const start = (state.page - 1) * state.perPage + 1;
+      const end = Math.min(state.page * state.perPage, state.totalItems);
+      productCountText.textContent = state.totalItems > state.perPage
+        ? `Showing ${start}–${end} of ${state.totalItems} products`
+        : `${state.totalItems} product${state.totalItems !== 1 ? 's' : ''}`;
+    }
+
+    grid.innerHTML = state.products.map(buildProductCard).join('');
+    renderPagination();
+  }
+
+  // ── Categories filter ──────────────────────────────────────────────────────
   function renderCategoriesFilter() {
-    if (!categoryContainer) return;
+    if (!categoryList) return;
 
-    const counts = state.products.reduce((acc, product) => {
-      const category = getCategory(product);
-      acc[category] = (acc[category] || 0) + 1;
-      return acc;
-    }, {});
+    const items = [
+      { key: 'all', label: 'All Products', count: state.totalItems },
+      ...state.categories.map(c => ({ key: c.slug, label: c.name, count: c.count })),
+    ];
 
-    const orderedCategories = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
-    const allCount = state.products.length;
-
-    categoryContainer.innerHTML = [
-      { key: 'all', label: 'All Products', count: allCount },
-      ...orderedCategories.map((key) => ({ key, label: key, count: counts[key] })),
-    ].map((item) => `
-      <label class="flex items-center justify-between gap-3 cursor-pointer">
-        <span class="flex items-center gap-3">
-          <input type="radio" name="category-filter" value="${escapeHtml(item.key)}" class="border-slate-300 text-primary focus:ring-primary" ${state.category === item.key ? 'checked' : ''} />
-          <span>${escapeHtml(item.label)}</span>
+    categoryList.innerHTML = items.map(item => `
+      <label class="flex items-center justify-between gap-2 cursor-pointer group">
+        <span class="flex items-center gap-2">
+          <input type="radio" name="category-filter" value="${escapeHtml(item.key)}"
+            class="border-slate-300 text-primary focus:ring-primary focus:ring-offset-0"
+            ${state.category === item.key ? 'checked' : ''} />
+          <span class="text-sm group-hover:text-primary transition-colors">${escapeHtml(item.label)}</span>
         </span>
-        <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-500 dark:bg-slate-800 dark:text-slate-300">${item.count}</span>
-      </label>
-    `).join('');
+        <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-500 dark:bg-slate-800 dark:text-slate-300 flex-shrink-0">${item.count}</span>
+      </label>`).join('');
 
-    categoryContainer.querySelectorAll('input[name="category-filter"]').forEach((input) => {
+    categoryList.querySelectorAll('input[name="category-filter"]').forEach(input => {
       input.addEventListener('change', () => {
         state.category = input.value;
-        renderProductGrid();
+        state.page = 1;
+        fetchProducts();
         updateUrlState();
       });
     });
   }
 
+  // ── Secondary filters ──────────────────────────────────────────────────────
   function renderSecondaryFilters() {
-    if (finishesHeading) finishesHeading.textContent = 'Featured';
-    if (finishesContainer) {
-      finishesContainer.innerHTML = `
-        <label class="flex items-center gap-3 cursor-pointer">
-          <input id="featured-only-filter" type="checkbox" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.featuredOnly ? 'checked' : ''} />
-          <span>Show featured items only</span>
-        </label>
-      `;
-      const featuredOnlyInput = finishesContainer.querySelector('#featured-only-filter');
-      if (featuredOnlyInput) {
-        featuredOnlyInput.addEventListener('change', () => {
-          state.featuredOnly = featuredOnlyInput.checked;
-          renderProductGrid();
+    if (featuredFilter) {
+      featuredFilter.innerHTML = `
+        <label class="flex items-center gap-2 cursor-pointer group">
+          <input id="featured-only-filter" type="checkbox"
+            class="rounded border-slate-300 text-primary focus:ring-primary focus:ring-offset-0"
+            ${state.featuredOnly ? 'checked' : ''} />
+          <span class="text-sm group-hover:text-primary transition-colors">Featured items only</span>
+        </label>`;
+      const cb = featuredFilter.querySelector('#featured-only-filter');
+      if (cb) {
+        cb.addEventListener('change', () => {
+          state.featuredOnly = cb.checked;
+          state.page = 1;
+          fetchProducts();
           updateUrlState();
         });
       }
     }
 
-    if (turnaroundHeading) turnaroundHeading.textContent = 'Budget';
-    if (turnaroundContainer) {
-      turnaroundContainer.innerHTML = `
-        <label class="flex items-center gap-3"><input type="radio" name="budget-filter" value="all" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.priceBand === 'all' ? 'checked' : ''}/>All budgets</label>
-        <label class="flex items-center gap-3"><input type="radio" name="budget-filter" value="under-2000" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.priceBand === 'under-2000' ? 'checked' : ''}/>Under PKR 2,000</label>
-        <label class="flex items-center gap-3"><input type="radio" name="budget-filter" value="2000-5000" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.priceBand === '2000-5000' ? 'checked' : ''}/>PKR 2,000 to 5,000</label>
-        <label class="flex items-center gap-3"><input type="radio" name="budget-filter" value="5000-plus" class="rounded border-slate-300 text-primary focus:ring-primary" ${state.priceBand === '5000-plus' ? 'checked' : ''}/>Above PKR 5,000</label>
-      `;
-      turnaroundContainer.querySelectorAll('input[name="budget-filter"]').forEach((input) => {
+    if (budgetFilter) {
+      const bands = [
+        { value: 'all', label: 'All budgets' },
+        { value: 'under-2000', label: 'Under PKR 2,000' },
+        { value: '2000-5000', label: 'PKR 2,000 – 5,000' },
+        { value: '5000-plus', label: 'Above PKR 5,000' },
+      ];
+      budgetFilter.innerHTML = bands.map(b => `
+        <label class="flex items-center gap-2 cursor-pointer group">
+          <input type="radio" name="budget-filter" value="${b.value}"
+            class="border-slate-300 text-primary focus:ring-primary focus:ring-offset-0"
+            ${state.priceBand === b.value ? 'checked' : ''} />
+          <span class="text-sm group-hover:text-primary transition-colors">${b.label}</span>
+        </label>`).join('');
+      budgetFilter.querySelectorAll('input[name="budget-filter"]').forEach(input => {
         input.addEventListener('change', () => {
           state.priceBand = input.value;
-          renderProductGrid();
+          state.page = 1;
+          fetchProducts();
           updateUrlState();
         });
       });
     }
   }
 
+  // ── Sort bar ───────────────────────────────────────────────────────────────
   function updateSortButtons() {
-    if (!sortButtons.length) return;
+    if (!sortBar) return;
+    sortBar.querySelectorAll('[data-sort]').forEach(btn => {
+      const isActive = btn.dataset.sort === state.sort;
+      btn.classList.toggle('bg-primary', isActive);
+      btn.classList.toggle('text-white', isActive);
+      btn.classList.toggle('border-primary', isActive);
+      btn.classList.toggle('border-slate-200', !isActive);
+      btn.classList.toggle('bg-white', !isActive);
+      btn.classList.toggle('text-slate-700', !isActive);
+      btn.classList.toggle('dark:bg-slate-900', !isActive);
+      btn.classList.toggle('dark:text-slate-300', !isActive);
+      btn.classList.toggle('dark:border-slate-700', !isActive);
+    });
+  }
 
-    const labels = [
-      { key: 'popular', text: 'Most Popular' },
-      { key: 'newest', text: 'Newest' },
-      { key: 'price-desc', text: 'Price: High to Low' },
-    ];
-
-    sortButtons.forEach((button, index) => {
-      const config = labels[index];
-      if (!config) return;
-
-      button.textContent = config.text;
-      button.type = 'button';
-      const isActive = state.sort === config.key;
-
-      button.classList.toggle('bg-primary', isActive);
-      button.classList.toggle('text-white', isActive);
-      button.classList.toggle('border', !isActive);
-      button.classList.toggle('border-slate-200', !isActive);
-      button.classList.toggle('bg-white', !isActive);
-      button.classList.toggle('text-slate-700', !isActive);
-
-      button.addEventListener('click', () => {
-        state.sort = config.key;
+  if (sortBar) {
+    sortBar.querySelectorAll('[data-sort]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.sort = btn.dataset.sort;
+        state.page = 1;
         updateSortButtons();
-        renderProductGrid();
+        fetchProducts();
         updateUrlState();
       });
     });
   }
 
-  function updateUrlState() {
-    const params = new URLSearchParams();
-    if (state.query) params.set('search', state.query);
-    if (state.category !== 'all') params.set('category', state.category);
-    if (state.sort !== 'popular') params.set('sort', state.sort);
-    if (state.featuredOnly) params.set('featured', '1');
-    if (state.priceBand !== 'all') params.set('price', state.priceBand);
-    const newUrl = params.toString() ? `?${params.toString()}` : '';
-    window.history.replaceState(null, '', newUrl || window.location.pathname);
-  }
+  // ── Pagination ─────────────────────────────────────────────────────────────
+  function renderPagination() {
+    if (!pagination) return;
+    if (state.totalPages <= 1) { pagination.innerHTML = ''; return; }
 
-  function readUrlState() {
-    const params = new URLSearchParams(window.location.search);
-    if (params.has('search')) state.query = params.get('search').trim().toLowerCase();
-    if (params.has('category')) state.category = params.get('category');
-    if (params.has('sort')) state.sort = params.get('sort');
-    if (params.has('featured')) state.featuredOnly = true;
-    if (params.has('price')) state.priceBand = params.get('price');
-  }
+    const prevDisabled = state.page <= 1;
+    const nextDisabled = state.page >= state.totalPages;
+    const start = Math.max(1, state.page - 2);
+    const end = Math.min(state.totalPages, state.page + 2);
+    const pages = [];
+    for (let p = start; p <= end; p++) pages.push(p);
 
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      state.query = searchInput.value.trim().toLowerCase();
-      renderProductGrid();
-      updateUrlState();
+    pagination.innerHTML = `
+      <button type="button" data-page="${state.page - 1}" ${prevDisabled ? 'disabled' : ''}
+        class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 hover:border-primary/40 transition-colors">
+        <span class="material-symbols-outlined text-lg">chevron_left</span>
+      </button>
+      ${pages.map(p => `
+        <button type="button" data-page="${p}"
+          class="flex size-10 items-center justify-center rounded-lg text-sm font-bold transition-colors ${p === state.page ? 'bg-primary text-white border border-primary' : 'border border-slate-200 bg-white text-slate-700 hover:border-primary/40 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300'}">
+          ${p}
+        </button>`).join('')}
+      <button type="button" data-page="${state.page + 1}" ${nextDisabled ? 'disabled' : ''}
+        class="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 hover:border-primary/40 transition-colors">
+        <span class="material-symbols-outlined text-lg">chevron_right</span>
+      </button>`;
+
+    pagination.querySelectorAll('button[data-page]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = Number(btn.dataset.page);
+        if (!target || target === state.page || target < 1 || target > state.totalPages) return;
+        state.page = target;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        fetchProducts();
+        updateUrlState();
+      });
     });
   }
 
-  grid.innerHTML = Array(6).fill(`
-    <article class="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 animate-pulse">
-      <div class="aspect-square rounded-[1.25rem] bg-slate-200 dark:bg-slate-700 w-full mb-4"></div>
-      <div class="h-5 bg-slate-200 dark:bg-slate-700 rounded w-3/4 mb-2"></div>
-      <div class="h-3 bg-slate-200 dark:bg-slate-700 rounded w-full mb-1"></div>
-      <div class="h-3 bg-slate-200 dark:bg-slate-700 rounded w-5/6 mb-5"></div>
-      <div class="flex justify-between"><div class="h-6 w-20 bg-slate-200 dark:bg-slate-700 rounded"></div><div class="h-8 w-24 bg-slate-200 dark:bg-slate-700 rounded-xl"></div></div>
-    </article>`).join('');
-
-  try {
-    const data = await apiFetch('/products.php');
-    const products = Array.isArray(data.products) ? data.products : [];
-
-    if (!products.length) {
-      grid.innerHTML = '<p class="text-slate-500 col-span-3 text-center py-10 font-medium">No products available at the moment.</p>';
-      return;
-    }
-
-    state.products = products;
-    readUrlState();
-    renderCategoriesFilter();
-    renderSecondaryFilters();
-    updateSortButtons();
-    renderProductGrid();
-  } catch (err) {
-    console.warn('Products load error:', err);
-    if (initialFallbackCards) {
-      grid.innerHTML = initialFallbackCards;
-      return;
-    }
-    grid.innerHTML = `
-      <div class="col-span-3 rounded-2xl border border-rose-200 bg-rose-50 p-6 text-center dark:border-rose-900/60 dark:bg-rose-950/30">
-        <p class="font-semibold text-rose-700 dark:text-rose-300">Unable to load products right now.</p>
-        <p class="mt-1 text-sm text-rose-600/90 dark:text-rose-300/80">Please refresh the page. If this keeps happening, check API response from /api/products.php.</p>
-      </div>
-    `;
+  // ── API query builder ──────────────────────────────────────────────────────
+  function buildApiQuery() {
+    const p = new URLSearchParams();
+    p.set('page', String(state.page));
+    p.set('per_page', String(state.perPage));
+    p.set('sort', state.sort);
+    if (state.query) p.set('q', state.query);
+    if (state.category !== 'all') p.set('category', state.category);
+    if (state.featuredOnly) p.set('featured', '1');
+    if (state.priceBand === 'under-2000') p.set('max_price', '1999.99');
+    if (state.priceBand === '2000-5000') { p.set('min_price', '2000'); p.set('max_price', '5000'); }
+    if (state.priceBand === '5000-plus') p.set('min_price', '5000.01');
+    return p.toString();
   }
+
+  // ── URL state ──────────────────────────────────────────────────────────────
+  function updateUrlState() {
+    const p = new URLSearchParams();
+    if (state.query) p.set('search', state.query);
+    if (state.category !== 'all') p.set('category', state.category);
+    if (state.sort !== 'popular') p.set('sort', state.sort);
+    if (state.featuredOnly) p.set('featured', '1');
+    if (state.priceBand !== 'all') p.set('price', state.priceBand);
+    if (state.page > 1) p.set('page', String(state.page));
+    const newUrl = p.toString() ? `?${p.toString()}` : window.location.pathname;
+    window.history.replaceState(null, '', newUrl);
+  }
+
+  function readUrlState() {
+    const p = new URLSearchParams(window.location.search);
+    if (p.has('search')) { state.query = p.get('search').trim(); }
+    if (p.has('category')) state.category = p.get('category');
+    if (p.has('sort')) state.sort = p.get('sort');
+    if (p.has('featured')) state.featuredOnly = true;
+    if (p.has('price')) state.priceBand = p.get('price');
+    if (p.has('page')) state.page = Math.max(1, Number(p.get('page')) || 1);
+  }
+
+  // ── Search wiring ──────────────────────────────────────────────────────────
+  let searchTimer = null;
+  if (headerSearch) {
+    headerSearch.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        state.query = headerSearch.value.trim();
+        state.page = 1;
+        fetchProducts();
+        updateUrlState();
+      }, 300);
+    });
+  }
+
+  // ── Skeleton loader ────────────────────────────────────────────────────────
+  function showSkeleton() {
+    grid.innerHTML = Array(6).fill(`
+      <article class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 animate-pulse overflow-hidden">
+        <div class="aspect-square bg-slate-200 dark:bg-slate-700 w-full"></div>
+        <div class="p-4 space-y-3">
+          <div class="h-4 bg-slate-200 dark:bg-slate-700 rounded w-3/4"></div>
+          <div class="h-3 bg-slate-200 dark:bg-slate-700 rounded w-1/3"></div>
+          <div class="h-3 bg-slate-200 dark:bg-slate-700 rounded w-full"></div>
+          <div class="h-3 bg-slate-200 dark:bg-slate-700 rounded w-5/6"></div>
+          <div class="flex gap-2 pt-2">
+            <div class="h-9 bg-slate-200 dark:bg-slate-700 rounded-xl flex-1"></div>
+            <div class="h-9 bg-slate-200 dark:bg-slate-700 rounded-xl flex-1"></div>
+            <div class="h-9 w-9 bg-slate-200 dark:bg-slate-700 rounded-xl flex-shrink-0"></div>
+          </div>
+        </div>
+      </article>`).join('');
+    if (productCountText) productCountText.textContent = 'Loading products…';
+  }
+
+  // ── Fetch products ─────────────────────────────────────────────────────────
+  async function fetchProducts() {
+    showSkeleton();
+    try {
+      const data = await apiFetch(`/products.php?${buildApiQuery()}`);
+
+      state.products = Array.isArray(data.products) ? data.products : [];
+      state.categories = Array.isArray(data.categories) ? data.categories : [];
+
+      const pg = data.pagination || {};
+      state.totalItems = Number(pg.total || state.products.length || 0);
+      state.totalPages = Math.max(1, Number(pg.total_pages || 1));
+      state.page = Math.min(state.page, state.totalPages);
+
+      renderCategoriesFilter();
+      renderSecondaryFilters();
+      updateSortButtons();
+      renderProductGrid();
+    } catch (err) {
+      console.warn('Products load error:', err);
+      grid.innerHTML = `
+        <div class="col-span-3 rounded-2xl border border-rose-200 bg-rose-50 p-8 text-center dark:border-rose-900/60 dark:bg-rose-950/30">
+          <span class="material-symbols-outlined text-3xl text-rose-400 mb-3 block">error_outline</span>
+          <p class="font-semibold text-rose-700 dark:text-rose-300">Unable to load products right now.</p>
+          <p class="mt-1 text-sm text-rose-600/80 dark:text-rose-300/70">Please check your connection and try refreshing the page.</p>
+          <button onclick="window._shopFetch && window._shopFetch()" class="mt-4 px-4 py-2 bg-rose-600 text-white rounded-lg text-sm font-semibold hover:bg-rose-700 transition-colors">Try Again</button>
+        </div>`;
+      if (pagination) pagination.innerHTML = '';
+      if (productCountText) productCountText.textContent = '';
+    }
+  }
+
+  window._shopFetch = fetchProducts;
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+  readUrlState();
+  if (headerSearch && state.query) headerSearch.value = state.query;
+  updateSortButtons();
+  await fetchProducts();
 });
 </script>
+
+</body>
 </html>
-<script>
-// Mobile filter toggle
-document.getElementById('mobile-filter-toggle').addEventListener('click', function() {
-  const panel = document.getElementById('filters-panel');
-  const isHidden = panel.classList.contains('hidden');
-  if (isHidden) {
-    panel.classList.remove('hidden');
-    this.textContent = 'Hide Filters';
-    this.innerHTML = '<span class="material-symbols-outlined">unfold_less</span>Hide Filters';
-  } else {
-    panel.classList.add('hidden');
-    this.textContent = 'Show Filters';
-    this.innerHTML = '<span class="material-symbols-outlined">filter_list</span>Show Filters';
-  }
-});
-</script>

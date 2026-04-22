@@ -309,7 +309,7 @@
 <!-- Footer Footer (Minimalist) -->
 <footer class="p-8 mt-auto">
 <div class="flex items-center justify-between text-xs text-slate-400">
-<p>Â© 2024 Admin Console. All rights reserved.</p>
+<p>(c) 2024 Admin Console. All rights reserved.</p>
 <div class="flex gap-4">
 <a class="hover:text-primary transition-colors" href="admin-dash.html">Privacy Policy</a>
 <a class="hover:text-primary transition-colors" href="admin-dash.html">Terms of Service</a>
@@ -318,10 +318,10 @@
 </footer>
 </main>
 </div>
-<script src="js/sidebar-controller.js" defer></script></body>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script></body>
 <!-- ZAK V4: User management wiring (super_admin only) -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const tbody = document.querySelector('tbody');
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30">
           <td class="p-4 text-sm font-medium">${u.name}</td>
           <td class="p-4 text-sm text-slate-500">${u.email}</td>
-          <td class="p-4 text-sm">${u.phone || 'â€”'}</td>
+          <td class="p-4 text-sm">${u.phone || '-'}</td>
           <td class="p-4">${statusBadge(u.role)}</td>
           <td class="p-4 text-sm text-slate-500">${formatDate(u.created_at)}</td>
           <td class="p-4 text-right">
@@ -387,6 +387,7 @@ document.getElementById('sidebar-toggle').addEventListener('click', function() {
   }
 });
 </script>
-<script src="js/sidebar-controller.js" defer></script>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
 </html>
+
 

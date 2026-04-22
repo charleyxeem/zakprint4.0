@@ -125,6 +125,8 @@
 <div class="border-b border-slate-200 dark:border-slate-800 mb-8">
 <div class="flex gap-8">
 <a class="pb-4 text-sm font-bold border-b-2 border-primary text-primary transition-all" href="general-settings.html">General</a>
+<a class="pb-4 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 border-b-2 border-transparent transition-all" href="billing-settings.html?doc=invoice">Invoice Settings</a>
+<a class="pb-4 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 border-b-2 border-transparent transition-all" href="billing-settings.html?doc=quotation">Quotation Settings</a>
 <a class="pb-4 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 border-b-2 border-transparent transition-all" href="smtp-config.html">SMTP Configuration</a>
 <a class="pb-4 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 border-b-2 border-transparent transition-all" href="whatsapp-config.html">WhatsApp Config</a>
 <a class="pb-4 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 border-b-2 border-transparent transition-all" href="security.html">Security</a>
@@ -159,6 +161,10 @@
 <label class="block text-sm font-medium mb-2">Tax Number</label>
 <input name="tax_number" class="w-full px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary/20 outline-none transition-all" type="text" value=""/>
 </div>
+<div>
+<label class="block text-sm font-medium mb-2">IBAN</label>
+<input name="iban" class="w-full px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary/20 outline-none transition-all" type="text" value=""/>
+</div>
 <div class="col-span-2">
 <label class="block text-sm font-medium mb-2">Company Address</label>
 <textarea name="address" class="w-full px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary/20 outline-none transition-all" rows="3"></textarea>
@@ -167,6 +173,7 @@
 <label class="block text-sm font-medium mb-2">Company Logo URL</label>
 <input name="logo_url" class="w-full px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary/20 outline-none transition-all" type="text" value="" placeholder="https://example.com/logo.png"/>
 </div>
+<input id="brand-asset-input" type="file" accept="image/*" class="hidden"/>
 </div>
 </section>
 <!-- Document Defaults Section -->
@@ -196,13 +203,13 @@
 <div>
 <p class="text-sm font-medium mb-3">Company Logo</p>
 <div class="flex items-start gap-4">
-<div class="w-32 h-32 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center overflow-hidden">
-<div class="bg-primary/20 size-16 rounded-full flex items-center justify-center text-primary">
+<div id="company-logo-preview" class="w-32 h-32 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center overflow-hidden">
+<div id="company-logo-preview-icon" class="bg-primary/20 size-16 rounded-full flex items-center justify-center text-primary">
 <span class="material-symbols-outlined text-4xl">image</span>
 </div>
 </div>
 <div class="flex flex-col gap-2">
-<button type="button" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold hover:bg-slate-50 transition-colors">Change Logo</button>
+<button id="change-logo-button" type="button" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold hover:bg-slate-50 transition-colors">Change Logo</button>
 <p class="text-xs text-slate-500">JPG, PNG or SVG. Max 2MB.</p>
 </div>
 </div>
@@ -210,11 +217,11 @@
 <div>
 <p class="text-sm font-medium mb-3">Favicon</p>
 <div class="flex items-start gap-4">
-<div class="w-16 h-16 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center">
+<div id="company-icon-preview" class="w-16 h-16 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center">
 <span class="material-symbols-outlined text-2xl text-slate-400">tab</span>
 </div>
 <div class="flex flex-col gap-2">
-<button type="button" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold hover:bg-slate-50 transition-colors">Change Icon</button>
+<button id="change-icon-button" type="button" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold hover:bg-slate-50 transition-colors">Change Icon</button>
 <p class="text-xs text-slate-500">Square PNG, 32x32px recommended.</p>
 </div>
 </div>
@@ -247,10 +254,7 @@
 <div>
 <label class="block text-sm font-medium mb-2">Currency</label>
 <select name="currency" class="w-full px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary/20 outline-none appearance-none cursor-pointer">
-<option value="USD">USD ($) - US Dollar</option>
-<option value="EUR">EUR (€) - Euro</option>
-<option value="GBP">GBP (£) - British Pound</option>
-<option value="PKR">PKR (Rs) - Pakistan Rupee</option>
+<option value="PKR" selected>PKR - Pakistan Rupee</option>
 </select>
 </div>
 </div>
@@ -264,10 +268,10 @@
 </div>
 </main>
 </div>
-<script src="js/sidebar-controller.js" defer></script></body>
+</body>
 <!-- ZAK V4: General settings wiring (super_admin only) -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   try {
@@ -283,6 +287,72 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const form = document.querySelector('#settings-form');
   if (!form) return;
+
+  const brandAssetInput = document.getElementById('brand-asset-input');
+  const logoPreview = document.getElementById('company-logo-preview');
+  const iconPreview = document.getElementById('company-icon-preview');
+  const logoButton = document.getElementById('change-logo-button');
+  const iconButton = document.getElementById('change-icon-button');
+
+  const applyPreview = (preview, url) => {
+    if (!preview || !url) return;
+    preview.style.backgroundImage = `url("${url}")`;
+    preview.style.backgroundSize = 'contain';
+    preview.style.backgroundRepeat = 'no-repeat';
+    preview.style.backgroundPosition = 'center';
+    preview.innerHTML = '';
+  };
+
+  const syncPreviews = (url) => {
+    applyPreview(logoPreview, url);
+    applyPreview(iconPreview, url);
+  };
+
+  const uploadBrandAsset = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch('../api/admin/settings.php?action=upload&type=general', {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    });
+    const payload = await response.json();
+    if (!response.ok || payload.success === false) {
+      throw new Error(payload.message || 'Upload failed.');
+    }
+
+    const url = payload.url || (payload.file_path ? `/${payload.file_path}` : '');
+    if (!url) {
+      throw new Error('Upload succeeded but no URL was returned.');
+    }
+
+    const logoInput = document.querySelector('[name="logo_url"]');
+    if (logoInput) logoInput.value = url;
+    syncPreviews(url);
+    showAdminToast('Brand asset uploaded successfully.', 'success');
+  };
+
+  if (logoButton && brandAssetInput) {
+    logoButton.addEventListener('click', () => brandAssetInput.click());
+  }
+
+  if (iconButton && brandAssetInput) {
+    iconButton.addEventListener('click', () => brandAssetInput.click());
+  }
+
+  if (brandAssetInput) {
+    brandAssetInput.addEventListener('change', async () => {
+      const file = brandAssetInput.files && brandAssetInput.files[0];
+      if (!file) return;
+      brandAssetInput.value = '';
+      try {
+        await uploadBrandAsset(file);
+      } catch (err) {
+        showAdminToast(err.message || 'Upload failed.', 'error');
+      }
+    });
+  }
   
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -305,25 +375,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       btn.disabled = false;
     }
   });
-});
-</script>
-<script>
-// Mobile sidebar toggle
-document.getElementById('sidebar-toggle').addEventListener('click', function() {
-  const overlay = document.getElementById('sidebar-overlay');
-  const nav = document.getElementById('sidebar-nav');
-  const isHidden = overlay.classList.contains('hidden');
-  if (isHidden) {
-    overlay.classList.remove('hidden');
-    nav.classList.remove('-translate-x-full');
-    this.setAttribute('aria-expanded', 'true');
-  } else {
-    overlay.classList.add('hidden');
-    nav.classList.add('-translate-x-full');
-    this.setAttribute('aria-expanded', 'false');
+
+  const logoUrl = document.querySelector('[name="logo_url"]')?.value?.trim();
+  if (logoUrl) {
+    syncPreviews(logoUrl);
   }
 });
 </script>
-<script src="js/sidebar-controller.js" defer></script>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
 </html>
+
 

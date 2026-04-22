@@ -64,58 +64,79 @@ $action = $_GET['action'] ?? ($_GET['earnings'] ?? false ? 'earnings' : 'ledger'
 
 // ── Ledger ─────────────────────────────────────────────────────────────────
 if ($action === 'ledger' || isset($_GET['ledger'])) {
-    $where  = $scope ? ['owner_user_id = ?'] : [];
-    $params = $scope ? [$scope] : [];
+    try {
+        $where  = $scope ? ['owner_user_id = ?'] : [];
+        $params = $scope ? [$scope] : [];
 
-    if (isset($_GET['direction'])) {
-        $where[]  = 'direction = ?';
-        $params[] = $_GET['direction'];
+        if (isset($_GET['direction'])) {
+            $where[]  = 'direction = ?';
+            $params[] = $_GET['direction'];
+        }
+        $whereStr = $where ? 'WHERE ' . implode(' AND ', $where) : '';
+
+        $stmt = $pdo->prepare(
+            "SELECT id, direction, amount, description, source_type, invoice_id, created_at
+             FROM finance_cash_entries $whereStr ORDER BY created_at DESC LIMIT 200"
+        );
+        $stmt->execute($params);
+        $entries = $stmt->fetchAll();
+
+        // Totals
+        $inStmt  = $pdo->prepare("SELECT COALESCE(SUM(amount),0) FROM finance_cash_entries WHERE direction='in'" . ($scope ? ' AND owner_user_id = ?' : ''));
+        $outStmt = $pdo->prepare("SELECT COALESCE(SUM(amount),0) FROM finance_cash_entries WHERE direction='out'" . ($scope ? ' AND owner_user_id = ?' : ''));
+        $inStmt->execute($scope ? [$scope] : []);
+        $outStmt->execute($scope ? [$scope] : []);
+
+        respond([
+            'entries'  => $entries,
+            'total_in' => (float)$inStmt->fetchColumn(),
+            'total_out' => (float)$outStmt->fetchColumn(),
+        ]);
+    } catch (Throwable $e) {
+        respond([
+            'entries' => [],
+            'total_in' => 0,
+            'total_out' => 0,
+        ]);
     }
-    $whereStr = $where ? 'WHERE ' . implode(' AND ', $where) : '';
-
-    $stmt = $pdo->prepare(
-        "SELECT id, direction, amount, description, source_type, invoice_id, created_at
-         FROM finance_cash_entries $whereStr ORDER BY created_at DESC LIMIT 200"
-    );
-    $stmt->execute($params);
-    $entries = $stmt->fetchAll();
-
-    // Totals
-    $inStmt  = $pdo->prepare("SELECT COALESCE(SUM(amount),0) FROM finance_cash_entries WHERE direction='in'" . ($scope ? ' AND owner_user_id = ?' : ''));
-    $outStmt = $pdo->prepare("SELECT COALESCE(SUM(amount),0) FROM finance_cash_entries WHERE direction='out'" . ($scope ? ' AND owner_user_id = ?' : ''));
-    $inStmt->execute($scope ? [$scope] : []);
-    $outStmt->execute($scope ? [$scope] : []);
-
-    respond([
-        'entries'  => $entries,
-        'total_in' => (float)$inStmt->fetchColumn(),
-        'total_out' => (float)$outStmt->fetchColumn(),
-    ]);
 }
 
 // ── Earnings ───────────────────────────────────────────────────────────────
 if ($action === 'earnings' || isset($_GET['earnings'])) {
-    if (isSuperAdmin()) {
-        // Per-user breakdown
-        $stmt = $pdo->query(
-            "SELECT u.name as user_name, u.id as user_id,
-                    COUNT(i.id) as invoice_count,
-                    COALESCE(SUM(i.total),0) as total_revenue,
-                    COALESCE(SUM(i.amount_paid),0) as total_collected
-             FROM users u LEFT JOIN invoices i ON i.created_by = u.id
-             WHERE u.role IN ('admin','super_admin')
-             GROUP BY u.id ORDER BY total_revenue DESC"
-        );
-        respond(['earnings' => $stmt->fetchAll()]);
-    } else {
-        // Own earnings only
-        $stmt = $pdo->prepare(
-            "SELECT COUNT(id) as invoice_count, COALESCE(SUM(total),0) as total_revenue,
-                    COALESCE(SUM(amount_paid),0) as total_collected
-             FROM invoices WHERE created_by = ?"
-        );
-        $stmt->execute([$scope]);
-        respond(['earnings' => $stmt->fetch()]);
+    try {
+        if (isSuperAdmin()) {
+            // Per-user breakdown
+            $stmt = $pdo->query(
+                "SELECT u.name as user_name, u.id as user_id,
+                        COUNT(i.id) as invoice_count,
+                        COALESCE(SUM(i.total),0) as total_revenue,
+                        COALESCE(SUM(i.amount_paid),0) as total_collected
+                 FROM users u LEFT JOIN invoices i ON i.created_by = u.id
+                 WHERE u.role IN ('admin','super_admin')
+                 GROUP BY u.id ORDER BY total_revenue DESC"
+            );
+            respond(['earnings' => $stmt->fetchAll()]);
+        } else {
+            // Own earnings only
+            $stmt = $pdo->prepare(
+                "SELECT COUNT(id) as invoice_count, COALESCE(SUM(total),0) as total_revenue,
+                        COALESCE(SUM(amount_paid),0) as total_collected
+                 FROM invoices WHERE created_by = ?"
+            );
+            $stmt->execute([$scope]);
+            $row = $stmt->fetch();
+            respond(['earnings' => $row ?: ['invoice_count' => 0, 'total_revenue' => 0, 'total_collected' => 0]]);
+        }
+    } catch (Throwable $e) {
+        if (isSuperAdmin()) {
+            respond(['earnings' => []]);
+        }
+
+        respond(['earnings' => [
+            'invoice_count' => 0,
+            'total_revenue' => 0,
+            'total_collected' => 0,
+        ]]);
     }
 }
 

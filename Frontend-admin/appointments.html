@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -69,7 +69,7 @@
       </div>
       <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <p class="text-xs font-semibold uppercase tracking-wider text-primary">Latest Service</p>
-        <p class="text-lg font-bold mt-2 truncate" id="appointments-latest-service">—</p>
+        <p class="text-lg font-bold mt-2 truncate" id="appointments-latest-service">&mdash;</p>
       </div>
     </div>
 
@@ -102,9 +102,9 @@
   </main>
 </div>
 
-<script src="js/sidebar-controller.js" defer></script>
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 function statusSelect(id, status) {
   const options = ['pending', 'confirmed', 'cancelled'];
@@ -133,10 +133,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       tbody.innerHTML = rows.map(r => `
         <tr class="border-t border-slate-100 dark:border-slate-800 align-top">
           <td class="p-4"><input type="checkbox" class="appointment-row-check rounded border-slate-300" value="${r.id}"></td>
-          <td class="p-4 text-sm font-semibold">${r.name || '—'}</td>
-          <td class="p-4 text-sm">${r.phone || '—'}</td>
-          <td class="p-4 text-sm">${r.service || '—'}</td>
-          <td class="p-4 text-sm">${r.preferred_date || '—'}</td>
+          <td class="p-4 text-sm font-semibold">${r.name || '&mdash;'}</td>
+          <td class="p-4 text-sm">${r.phone || '&mdash;'}</td>
+          <td class="p-4 text-sm">${r.service || '&mdash;'}</td>
+          <td class="p-4 text-sm">${r.preferred_date || '&mdash;'}</td>
           <td class="p-4 text-sm text-slate-600 max-w-[280px]">${r.message || ''}</td>
           <td class="p-4 text-sm">${statusBadge(r.status || 'pending')}</td>
           <td class="p-4 text-sm">${statusSelect(r.id, r.status || 'pending')}</td>
@@ -204,5 +204,5 @@ document.getElementById('sidebar-toggle').addEventListener('click', function() {
   }
 });
 </script>
-<script src="js/sidebar-controller.js" defer></script>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
 </body></html>

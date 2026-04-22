@@ -1,0 +1,430 @@
+Product_Handle,Product_Title,Royalty_Level,Sub_Product_Type,Size,Paper_Type,Paper_Grammage,Lamination_or_Color,Specialty
+business-cards,Business Cards,Standard,300 Gsm Single Side,"3.2"" x 1.9""",,,Shine,
+business-cards,Business Cards,Standard,300 Gsm Single Side,"3.2"" x 1.9""",,,Matte,
+business-cards,Business Cards,,300 Gsm Front 4 color + single color back,"3.2"" x 1.9""",,,Shine,
+business-cards,Business Cards,,300 Gsm Front 4 color + single color back,"3.2"" x 1.9""",,,Matte,
+business-cards,Business Cards,UV CARD,350 Gsm Single Side Round Corner,"3.2"" x 1.9""",,,Spot UV,
+business-cards,Business Cards,UV CARD,350 Gsm Single Side Round Corner,"3.2"" x 1.9""",,,Matte UV,
+business-cards,Business Cards,,350 Gsm Double Side Round Corner,"3.2"" x 1.9""",,,Spot UV,
+business-cards,Business Cards,,350 Gsm Double Side Round Corner,"3.2"" x 1.9""",,,Matte UV,
+business-cards,Business Cards,Foil Card,350 Gsm Foil + UV Card Single Side,"3.2"" x 1.9""",,,Golden Foil + UV Matte,
+business-cards,Business Cards,Foil Card,350 Gsm Foil + UV Card Single Side,"3.2"" x 1.9""",,,Golden foil  + Spot UV,
+business-cards,Business Cards,Foil Card,350 Gsm Foil + UV Card Single Side,"3.2"" x 1.9""",,,Silver Foil + Spot UV,
+business-cards,Business Cards,Foil Card,350 Gsm Foil + UV Card Single Side,"3.2"" x 1.9""",,,Silver Foil + Matte UV,
+business-cards,Business Cards,Custom Shape Card,700 Gsm Custom Shaped Card,"3.5"" x 2""",,,Spot UV,
+business-cards,Business Cards,Custom Shape Card,700 Gsm Custom Shaped Card,"3.5"" x 2""",,,Matte UV,
+business-cards,Business Cards,Premium,700 Gsm Double Side Round Corner,"3.25"" x 1.9""",,,Matte UV,
+business-cards,Business Cards,,700 Gsm Double Side ATM Card Size,"3.4"" x 2""",,,Spot UV,
+business-cards,Business Cards,,700 Gsm Double Side ATM Card Size,"3.4"" x 2""",,,Matte UV,
+business-cards,Business Cards,,700 Gsm Foil Card Double Side,"3.25"" x 1.9""",,,Golden Foil + UV Matte,
+business-cards,Business Cards,,700 Gsm Foil Card Double Side,"3.25"" x 1.9""",,,Golden foil  + Spot UV,
+business-cards,Business Cards,,700 Gsm Foil Card Double Side,"3.25"" x 1.9""",,,Silver Foil + Spot UV,
+business-cards,Business Cards,,700 Gsm Foil Card Double Side,"3.25"" x 1.9""",,,Silver Foil + Matte UV,
+business-cards,Business Cards,PVC Card,0.76 MM PVC CARD Round Corner,"3.4"" x 2""",,,Heat Transfer,
+business-cards,Business Cards,PVC Card,0.76 MM PVC CARD Round Corner,"3.4"" x 2""",,,UV FLAT BED,
+business-cards,Business Cards,Mettalic Card,24 Gauge Metal Card,"3.5"" x 2""",,,Black,
+business-cards,Business Cards,Mettalic Card,24 Gauge Metal Card,"3.5"" x 2""",,,Silver,
+business-cards,Business Cards,Mettalic Card,24 Gauge Metal Card,"3.5"" x 2""",,,Golden,
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Plain Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Plain Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Plain Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Plain Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Art Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Art Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Art Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Art Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Matter Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Matter Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Matter Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Matter Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Kraft Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Kraft Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Kraft Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,Standard,C5 Envelope,"9"" x 6.4""""",Kraft Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Plain Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Plain Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Plain Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Plain Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Art Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Art Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Art Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Art Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Matter Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Matter Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Matter Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Matter Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Kraft Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Kraft Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Kraft Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,,A4 Envelopes,"9"" x 12.8""",Kraft Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Plain Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Plain Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Plain Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Plain Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Art Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Art Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Art Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Art Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Matter Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Matter Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Matter Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Matter Paper,150 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Kraft Paper,90 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Kraft Paper,113 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Kraft Paper,125 gsm,,Windows Yes/NO
+envelopes,Envelopes,,Legal Envelopes,"9.5"" x 15""",Kraft Paper,150 gsm,,Windows Yes/NO
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,68 Gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,68 Gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,68 Gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,90 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,90 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,90 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,113 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,113 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,113 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,125 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,125 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,125 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,150 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,150 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Local,150 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,68 Gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,68 Gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,68 Gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,90 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,90 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,90 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,113 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,113 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,113 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,125 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,125 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,125 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,150 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,150 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,150 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,68 Gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,68 Gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,68 Gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,90 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,90 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,90 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,113 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,113 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,113 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,125 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,125 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,125 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,150 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,150 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,150 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,68 Gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,68 Gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,68 Gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,90 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,90 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,90 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,113 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,113 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,113 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,125 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,125 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,125 gsm,,Trifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,150 gsm,,MonoFold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,150 gsm,,Bifold
+brochures,Brochures,Standard,A4 Single Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,150 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,68 Gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,68 Gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,68 Gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,90 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,90 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,90 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,113 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,113 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,113 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,125 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,125 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,125 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,150 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,150 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Local,150 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,68 Gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,68 Gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,90 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,90 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,90 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,113 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,113 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,113 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,125 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,125 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,125 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,150 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,150 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Plain Paper,150 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,68 Gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,68 Gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,90 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,90 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,90 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,113 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,113 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,113 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,125 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,125 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,125 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,150 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,150 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Art Paper,150 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,68 Gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,68 Gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,90 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,90 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,90 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,113 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,113 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,113 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,125 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,125 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,125 gsm,,Trifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,150 gsm,,MonoFold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,150 gsm,,Bifold
+brochures,Brochures,,A4 Double Side Brochure/Flyer,"8.25"" x 11.69""",Matte Paper,150 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,68 Gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,68 Gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,68 Gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,90 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,90 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,90 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,113 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,113 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,113 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,125 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,125 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,125 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,150 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,150 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Local,150 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,68 Gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,68 Gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,90 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,90 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,90 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,113 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,113 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,113 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,125 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,125 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,125 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,150 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,150 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Plain Paper,150 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,68 Gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,68 Gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,90 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,90 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,90 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,113 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,113 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,113 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,125 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,125 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,125 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,150 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,150 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Art Paper,150 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,68 Gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,68 Gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,90 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,90 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,90 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,113 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,113 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,113 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,125 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,125 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,125 gsm,,Trifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,150 gsm,,MonoFold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,150 gsm,,Bifold
+brochures,Brochures,,A5 Single Side Brochre/ Flyer,"5.8"" x 8.25""",Matte Paper,150 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,68 Gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,68 Gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,68 Gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,90 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,90 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,90 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,113 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,113 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,113 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,125 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,125 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,125 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,150 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,150 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Local,150 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,68 Gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,68 Gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,90 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,90 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,90 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,113 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,113 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,113 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,125 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,125 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,125 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,150 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,150 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Plain Paper,150 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,68 Gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,68 Gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,90 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,90 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,90 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,113 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,113 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,113 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,125 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,125 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,125 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,150 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,150 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Art Paper,150 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,68 Gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,68 Gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,68 Gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,90 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,90 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,90 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,113 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,113 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,113 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,125 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,125 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,125 gsm,,Trifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,150 gsm,,MonoFold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,150 gsm,,Bifold
+brochures,Brochures,,A5 Double Side Brochure/Flyer,"5.8"" x 8.25""",Matte Paper,150 gsm,,Trifold
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Plain Paper,80,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Plain Paper,90,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Plain Paper,113,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Plain Paper,125,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Plain Paper,150,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Art Paper,80,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Art Paper,90,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Art Paper,113,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Art Paper,125,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Art Paper,150,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Matte Paper,80,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Matte Paper,90,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Matte Paper,113,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Matte Paper,125,,
+letterhead,Letterhead,Standard,A4,"8.25"" x 11.69""",Matte Paper,150,,
+letterhead,Letterhead,Textured,A4,"8.25"" x 11.69""",Cheque,100+,,
+letterhead,Letterhead,Textured,A4,"8.25"" x 11.69""",Lining,100+,,
+panaflex,Panaflex,Standard,China,Custom,Glossy,260 gsm,,
+panaflex,Panaflex,Standard,China,Custom,Glossy,280 gsm,,
+panaflex,Panaflex,Standard,China,Custom,Matte,260 gsm,,
+panaflex,Panaflex,Standard,China,Custom,Matte,280 gsm,,
+panaflex,Panaflex,Premium,Star,Custom,Glossy,310 Gsm,,
+panaflex,Panaflex,Premium,Star,Custom,Glossy,340 Gsm,,
+panaflex,Panaflex,Premium,Star,Custom,Glossy,410 Gsm,,
+panaflex,Panaflex,Premium,Star,Custom,Matte,310 Gsm,,
+panaflex,Panaflex,Premium,Star,Custom,Matte,340 Gsm,,
+panaflex,Panaflex,Premium,Star,Custom,Matte,410 Gsm,,
+standees,Standees,Standard,Panda Standee,2' x 5',GLossy,310 GSm,,
+standees,Standees,Standard,Panda Standee,2' x 5',GLossy,410 Gsm,,
+standees,Standees,Standard,Panda Standee,2' x 5',MAtte,310 GSm,,
+standees,Standees,Standard,Panda Standee,2' x 5',MAtte,410 Gsm,,
+standees,Standees,Premium,Roll up Stand,2.5' x 6',Glossy,340 gsm,,
+standees,Standees,Premium,Roll up Stand,2.5' x 6',Glossy,410 gsm,,
+standees,Standees,Premium,Roll up Stand,2.5' x 6',Matte,340 gsm,,
+standees,Standees,Premium,Roll up Stand,2.5' x 6',Matte,410 gsm,,
+diaries,Diaries,Standard,China Imported Diary,A5,,,,Loop Binding
+diaries,Diaries,Standard,China Imported Diary,A5,,,,Hard Bind
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,70 Gsm,Glossy,Loop Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,70 Gsm,Glossy,Hard Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,70 Gsm,Glossy,Spiral Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,70 Gsm,Shiny,Loop Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,70 Gsm,Shiny,Hard Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,70 Gsm,Shiny,Spiral Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,80 Gsm,Glossy,Loop Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,80 Gsm,Glossy,Hard Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,80 Gsm,Glossy,Spiral Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,80 Gsm,Shiny,Loop Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,80 Gsm,Shiny,Hard Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,Yellow,80 Gsm,Shiny,Spiral Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,70 Gsm,Glossy,Loop Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,70 Gsm,Glossy,Hard Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,70 Gsm,Glossy,Spiral Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,70 Gsm,Shiny,Loop Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,70 Gsm,Shiny,Hard Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,70 Gsm,Shiny,Spiral Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,80 Gsm,Glossy,Loop Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,80 Gsm,Glossy,Hard Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,80 Gsm,Glossy,Spiral Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,80 Gsm,Shiny,Loop Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,80 Gsm,Shiny,Hard Binding
+diaries,Diaries,Premium,Custom Offset Diary,A5,White,80 Gsm,Shiny,Spiral Binding
+t-shirts,T-Shirts,Standard,Polo Shirt (Polyester),Small,,,Black,Half Sleeve
+t-shirts,T-Shirts,Standard,Polo Shirt (Polyester),Small,,,White,Half Sleeve
+t-shirts,T-Shirts,Standard,Polo Shirt (Polyester),Small,,,Blue,Half Sleeve
+t-shirts,T-Shirts,Standard,Polo Shirt (Polyester),Small,,,Yellow + more,Half Sleeve
+t-shirts,T-Shirts,,,Medium,,,Black,Half Sleeve
+t-shirts,T-Shirts,,,Medium,,,White,Half Sleeve
+t-shirts,T-Shirts,,,Medium,,,Blue,Half Sleeve
+t-shirts,T-Shirts,,,Medium,,,Yellow + more,Half Sleeve
+t-shirts,T-Shirts,,,Large,,,Black,Half Sleeve
+t-shirts,T-Shirts,,,Large,,,White,Half Sleeve
+t-shirts,T-Shirts,,,Large,,,Blue,Half Sleeve
+t-shirts,T-Shirts,,,Large,,,Yellow + more,Half Sleeve
+t-shirts,T-Shirts,,,XL,,,Black,Half Sleeve
+t-shirts,T-Shirts,,,XL,,,White,Half Sleeve
+t-shirts,T-Shirts,,,XL,,,Blue,Half Sleeve
+t-shirts,T-Shirts,,,XL,,,Yellow + more,Half Sleeve
+t-shirts,T-Shirts,,,XXL,,,Black,Half Sleeve
+t-shirts,T-Shirts,,,XXL,,,White,Half Sleeve
+t-shirts,T-Shirts,,,XXL,,,Blue,Half Sleeve
+t-shirts,T-Shirts,,,XXL,,,Yellow + more,Half Sleeve
+t-shirts,T-Shirts,,Cotton Shirt,Small,,,Black,Round Neck
+t-shirts,T-Shirts,,Cotton Shirt,Small,,,Black,V Neck
+t-shirts,T-Shirts,,Cotton Shirt,Small,,,White,Round Neck
+t-shirts,T-Shirts,,Cotton Shirt,Small,,,White,V Neck
+t-shirts,T-Shirts,,,Medium,,,Black,Round Neck
+t-shirts,T-Shirts,,,Medium,,,Black,V Neck
+t-shirts,T-Shirts,,,Medium,,,White,Round Neck
+t-shirts,T-Shirts,,,Medium,,,White,V Neck
+t-shirts,T-Shirts,,,Large,,,Black,Round Neck
+t-shirts,T-Shirts,,,Large,,,Black,V Neck
+t-shirts,T-Shirts,,,Large,,,White,Round Neck
+t-shirts,T-Shirts,,,Large,,,White,V Neck
+t-shirts,T-Shirts,,,XL,,,Black,Round Neck
+t-shirts,T-Shirts,,,XL,,,Black,V Neck
+t-shirts,T-Shirts,,,XL,,,White,Round Neck
+t-shirts,T-Shirts,,,XL,,,White,V Neck
+t-shirts,T-Shirts,,,XXL,,,Black,Round Neck
+t-shirts,T-Shirts,,,XXL,,,Black,V Neck
+t-shirts,T-Shirts,,,XXL,,,White,Round Neck
+t-shirts,T-Shirts,,,XXL,,,White,V Neck
+mugs,Mugs,Standard,White Mug,11 Oz,,,,China
+mugs,Mugs,Standard,White Mug,11 Oz,,,,Local
+mugs,Mugs,,Color Mug,11 Oz,,,Black,China
+mugs,Mugs,,Color Mug,11 Oz,,,Black,Local
+mugs,Mugs,,Color Mug,11 Oz,,,Yellow,China
+mugs,Mugs,,Color Mug,11 Oz,,,Yellow,Local
+mugs,Mugs,,Color Mug,11 Oz,,,red,China
+mugs,Mugs,,Color Mug,11 Oz,,,red,Local
+mugs,Mugs,,Color Mug,11 Oz,,,orange,China
+mugs,Mugs,,Color Mug,11 Oz,,,orange,Local
+mugs,Mugs,Premium,Patch Mug,11 Oz,,,,
+mugs,Mugs,,Matte Mug Laser engraved,11 oz,,,Black,
+mugs,Mugs,,Matte Mug Laser engraved,11 oz,,,Blue,
+mugs,Mugs,,Matte Mug Laser engraved,11 oz,,,red,

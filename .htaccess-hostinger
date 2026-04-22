@@ -17,5 +17,34 @@ RewriteRule ^ - [L]
 # Public API routes
 RewriteRule ^api/(.+)$ api/$1 [L,QSA,NC]
 
+# Public extensionless routes
+RewriteRule ^(home|shop|services|about|contact|blog|appointment|product-detail|checkout|order-confirm|user-login|user-dash|user-my-order|user-my-settings)/?$ Frontend-public/$1.html [L,QSA,NC]
+
+# Admin extensionless routes
+RewriteRule ^admin/login/?$ Frontend-admin/admin-login.html [L,QSA,NC]
+RewriteRule ^admin/dashboard/?$ Frontend-admin/admin-dash.html [L,QSA,NC]
+RewriteRule ^admin/appointments/?$ Frontend-admin/appointments.html [L,QSA,NC]
+RewriteRule ^admin/billing-settings/?$ Frontend-admin/billing-settings.html [L,QSA,NC]
+RewriteRule ^admin/cash-ledger/?$ Frontend-admin/cash-ledger.html [L,QSA,NC]
+RewriteRule ^admin/content-studio/?$ Frontend-admin/content\ studio.html [L,QSA,NC]
+RewriteRule ^admin/create-invoice/?$ Frontend-admin/create-invoice.html [L,QSA,NC]
+RewriteRule ^admin/create-quotation/?$ Frontend-admin/create-quotation.html [L,QSA,NC]
+RewriteRule ^admin/create-user/?$ Frontend-admin/create-user-modal.html [L,QSA,NC]
+RewriteRule ^admin/settings/?$ Frontend-admin/general-settings.html [L,QSA,NC]
+RewriteRule ^admin/invoices/?$ Frontend-admin/invoice-list.html [L,QSA,NC]
+RewriteRule ^admin/invoice-view/?$ Frontend-admin/invoice-view.html [L,QSA,NC]
+RewriteRule ^admin/earnings/?$ Frontend-admin/my-earning.html [L,QSA,NC]
+RewriteRule ^admin/password-reset/?$ Frontend-admin/password-reset.html [L,QSA,NC]
+RewriteRule ^admin/product-editor/?$ Frontend-admin/product-editor.html [L,QSA,NC]
+RewriteRule ^admin/products/?$ Frontend-admin/product-inventory.html [L,QSA,NC]
+RewriteRule ^admin/queries/?$ Frontend-admin/queries.html [L,QSA,NC]
+RewriteRule ^admin/quotations/?$ Frontend-admin/quotation-list.html [L,QSA,NC]
+RewriteRule ^admin/quotation-view/?$ Frontend-admin/quotation-view.html [L,QSA,NC]
+RewriteRule ^admin/record-payment/?$ Frontend-admin/record-payment-modal.html [L,QSA,NC]
+RewriteRule ^admin/security/?$ Frontend-admin/security.html [L,QSA,NC]
+RewriteRule ^admin/smtp/?$ Frontend-admin/smtp-config.html [L,QSA,NC]
+RewriteRule ^admin/users/?$ Frontend-admin/user-mgmt.html [L,QSA,NC]
+RewriteRule ^admin/whatsapp/?$ Frontend-admin/whatsapp-config.html [L,QSA,NC]
+
 # Fallback to app entry point
 RewriteRule . index.php [L]

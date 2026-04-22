@@ -34,12 +34,14 @@
 <div class="flex items-center gap-8">
 <a class="flex items-center gap-3 text-primary" href="home.html">
 <div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
-<span class="material-symbols-outlined">print</span>
+<svg aria-hidden="true" class="h-4.5 w-4.5 fill-current" viewBox="0 0 24 24">
+<path d="M7 7V4h10v3H7Zm10 2H7a4 4 0 0 0-4 4v4h3v3h12v-3h3v-4a4 4 0 0 0-4-4Zm-2 9H9v-4h6v4Zm2-7.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/>
+</svg>
 </div>
 <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ZAK Printing</h2>
 </a>
 <nav class="hidden lg:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="home.html">Home</a>
+<a class="text-primary text-sm font-bold transition-colors" href="home.html">Home</a>
 <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="shop.html">Shop</a>
 <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="services.html">Services</a>
 <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
@@ -52,10 +54,10 @@
 <input class="bg-transparent border-none focus:ring-0 text-sm w-32 xl:w-48 placeholder:text-slate-400" placeholder="Search products..." type="text"/>
 </div>
 <div class="flex items-center gap-2">
-<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors" aria-label="Account" onclick="window.location.href='user-login.html'">
 <span class="material-symbols-outlined">person</span>
 </button>
-<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors relative" aria-label="Shopping cart" onclick="window.location.href='checkout.html'">
 <span class="material-symbols-outlined">shopping_cart</span>
 <span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
 </button>
@@ -72,7 +74,7 @@
 <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');"></div>
 <nav id="mobile-nav" class="hidden lg:hidden fixed top-16 right-0 w-full sm:w-80 max-w-full bg-background-light dark:bg-background-dark border-l border-slate-200 dark:border-slate-800 shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
 <div class="p-4 space-y-2">
-<a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
+<a class="block px-4 py-3 text-primary font-bold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="home.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Home</a>
 <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="shop.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Shop</a>
 <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="services.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">Services</a>
 <a class="block px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-lg" href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-nav').classList.add('hidden');">About</a>
@@ -209,27 +211,27 @@
 <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Categories</h3>
 <ul class="flex flex-col gap-3">
 <li>
-<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog.html#recent-articles"><span class="text-sm font-medium">Design Tips</span>
+<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog#recent-articles"><span class="text-sm font-medium">Design Tips</span>
 <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs py-1 px-2 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">12</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog.html#recent-articles"><span class="text-sm font-medium">Eco-Friendly Printing</span>
+<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog#recent-articles"><span class="text-sm font-medium">Eco-Friendly Printing</span>
 <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs py-1 px-2 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">8</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog.html#recent-articles"><span class="text-sm font-medium">Corporate Branding</span>
+<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog#recent-articles"><span class="text-sm font-medium">Corporate Branding</span>
 <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs py-1 px-2 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">15</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog.html#recent-articles"><span class="text-sm font-medium">Technical Guides</span>
+<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog#recent-articles"><span class="text-sm font-medium">Technical Guides</span>
 <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs py-1 px-2 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">24</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog.html#recent-articles"><span class="text-sm font-medium">Company News</span>
+<a class="flex items-center justify-between text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors group" href="blog#recent-articles"><span class="text-sm font-medium">Company News</span>
 <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs py-1 px-2 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">6</span>
 </a>
 </li>
@@ -307,9 +309,9 @@
 </footer>
 </body>
 <!-- ZAK V4: Blog wiring -->
-<script src="js/public-shell.js"></script>
-<script src="js/api.js"></script>
-<script src="js/public-ui.js"></script>
+<script src="Frontend-public/js/public-shell.js"></script>
+<script src="Frontend-public/js/api.js"></script>
+<script src="Frontend-public/js/public-ui.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   try {

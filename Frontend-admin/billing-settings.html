@@ -37,6 +37,7 @@
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
 <div class="layout-container flex h-full grow flex-col">
 <!-- Header / TopNavBar -->
+<input id="billing-logo-file-input" type="file" accept="image/*" class="hidden"/>
 <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 lg:px-10">
 <div class="flex items-center gap-8">
 <div class="flex items-center gap-3 text-primary">
@@ -75,8 +76,9 @@
 </div>
 </header>
 <main class="flex flex-1 flex-col lg:flex-row">
+<div id="sidebar-overlay" class="hidden lg:hidden fixed inset-0 z-30 bg-black/50" onclick="document.getElementById('sidebar-overlay').classList.add('hidden'); document.getElementById('sidebar-nav').classList.add('-translate-x-full');"></div>
 <!-- Sidebar Navigation -->
-<aside class="w-full lg:w-72 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 flex flex-col gap-8 hidden lg:flex fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto" id="sidebar-nav">
+<aside class="w-full lg:w-72 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 flex flex-col gap-8 flex fixed lg:relative h-full lg:h-auto z-40 lg:z-auto -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto" id="sidebar-nav">
 <div>
 <h3 class="text-slate-900 dark:text-slate-100 text-base font-bold mb-4">My Profile</h3>
 <nav class="flex flex-col gap-1">
@@ -115,6 +117,10 @@
 <div class="mb-8">
 <h1 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-2">Billing Settings</h1>
 <p class="text-slate-500 dark:text-slate-400">Manage your company branding and details for invoices and quotations.</p>
+<div class="mt-4 inline-flex rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+<a id="doc-tab-invoice" href="billing-settings.html?doc=invoice" class="px-4 py-2 text-sm font-semibold bg-primary text-white">Invoice Settings</a>
+<a id="doc-tab-quotation" href="billing-settings.html?doc=quotation" class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900">Quotation Settings</a>
+</div>
 </div>
 <div class="space-y-8">
 <!-- Business Profile Section -->
@@ -127,19 +133,19 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <label class="flex flex-col gap-2">
 <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Company Name</span>
-<input name="company_name" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="Acme Dynamics Corp"/>
+<input name="company_name" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value=""/>
 </label>
 <label class="flex flex-col gap-2">
 <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Contact Person</span>
-<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="Jonathan Miller"/>
+<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value=""/>
 </label>
 <label class="flex flex-col gap-2">
 <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</span>
-<input name="email" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="email" value="billing@acmedynamics.com"/>
+<input name="email" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="email" value=""/>
 </label>
 <label class="flex flex-col gap-2">
 <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Phone Number</span>
-<input name="phone" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="tel" value="+1 (555) 000-1234"/>
+<input name="phone" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="tel" value=""/>
 </label>
 </div>
 </div>
@@ -153,19 +159,22 @@
 <div class="p-6">
 <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">This logo will appear on all your outgoing invoices and quotes. Recommended size: 400x120px.</p>
 <div class="flex flex-col sm:flex-row items-center gap-6">
-<div class="w-48 h-24 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center border-2 border-dashed border-slate-300 dark:border-slate-700 relative overflow-hidden group">
+<div id="billing-logo-preview" class="w-48 h-24 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center border-2 border-dashed border-slate-300 dark:border-slate-700 relative overflow-hidden group cursor-pointer" onclick="document.getElementById('billing-logo-file-input').click()">
 <span class="material-symbols-outlined text-slate-400 text-4xl group-hover:hidden">image</span>
-<div class="hidden group-hover:flex absolute inset-0 bg-slate-900/40 items-center justify-center cursor-pointer">
+<div class="hidden group-hover:flex absolute inset-0 bg-slate-900/40 items-center justify-center">
 <span class="text-white text-xs font-bold">Replace Logo</span>
-</div>
-<div class="absolute inset-0 flex items-center justify-center p-4">
-<div class="w-full h-full bg-contain bg-center bg-no-repeat opacity-80" data-alt="Corporate logo for billing documents" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCb2oSuAXeMbIMqFVl_ZAzoW6b0Yd7MwjsDbD0uSs6N8dko_OUwUODFGRlOEWr9fqi3d-Sm5jLlelsFXtA-Zj0Et8fnTeZ978t1f9neo1pVZu4nzY5aKTob6VCztJ8C5bofjCVPI8DSAJ2x6G8S9uBNEfXWIDyweBWcpfaK2tkcPrR1rLCFBCR5HXxwfnxuswrtJPZ0soAuu0DZNMfq1rXvMU_UhGds_CJIMSXnK04xcqVPFbVJZLRtoBECzuePRQ29bBD-Kk09KeDK');"></div>
 </div>
 </div>
 <div class="flex flex-col gap-2 w-full sm:w-auto">
-<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/90">Upload New Logo</button>
-<button class="text-slate-500 dark:text-slate-400 px-4 py-2 rounded-lg text-sm font-medium hover:text-red-500 transition-colors">Remove Image</button>
+<button id="billing-logo-upload-button" type="button" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/90">Upload New Logo</button>
+<button type="button" class="text-slate-500 dark:text-slate-400 px-4 py-2 rounded-lg text-sm font-medium hover:text-red-500 transition-colors" onclick="document.querySelector('[name=logo_url]').value=''; document.getElementById('billing-logo-preview').style.backgroundImage=''; document.getElementById('billing-logo-preview').innerHTML='<span class=\'material-symbols-outlined text-slate-400 text-4xl\'>image</span>';">Remove Image</button>
 </div>
+</div>
+<div class="mt-4">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Company Logo URL</span>
+<input name="logo_url" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" placeholder="https://example.com/logo.png" value=""/>
+</label>
 </div>
 </div>
 </div>
@@ -178,17 +187,15 @@
 <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
 <label class="flex flex-col gap-2 md:col-span-2">
 <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Physical Address</span>
-<textarea name="address" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="3">123 Business Way, Tech Park
-Suite 400
-San Francisco, CA 94103</textarea>
+<textarea name="address" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="3"></textarea>
 </label>
 <label class="flex flex-col gap-2">
 <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Tax ID / VAT Registration</span>
-<input name="gst_no" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="VAT-9876543210"/>
+<input name="gst_no" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value=""/>
 </label>
 <label class="flex flex-col gap-2">
 <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Company Registration No.</span>
-<input name="ntn_no" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="REG-11223344"/>
+<input name="ntn_no" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" type="text" value=""/>
 </label>
 </div>
 </div>
@@ -206,12 +213,14 @@ San Francisco, CA 94103</textarea>
 <input name="account_number" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" placeholder="e.g. 987654321" type="text" value=""/>
 </label>
 </div>
+<div class="mb-4">
 <label class="flex flex-col gap-2">
-<textarea name="payment_methods" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" placeholder="e.g. Please wire transfer funds to: Bank Name: First Global Bank, IBAN: US00 1234 5678 9012..." rows="4">Bank: Global Savings Bank
-Account Name: Acme Dynamics Corp
-Account Number: 987654321
-Routing Number: 123456789
-SWIFT: GSBNUS33</textarea>
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">IBAN</span>
+<input name="iban" class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" placeholder="e.g. PK00BANK0000000000000000" type="text" value=""/>
+</label>
+</div>
+<label class="flex flex-col gap-2">
+<textarea name="payment_methods" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" placeholder="e.g. Please wire transfer funds to: Bank Name: First Global Bank, IBAN: US00 1234 5678 9012..." rows="4"></textarea>
 </label>
 </div>
 </div>
@@ -225,19 +234,12 @@ SWIFT: GSBNUS33</textarea>
 <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">These notes will appear at the bottom of every document by default. You can still edit them individually per document.</p>
 <div class="grid grid-cols-1 gap-4 mb-4">
 <label class="flex flex-col gap-2">
-<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Default Invoice Notes</span>
-<textarea name="invoice_special_notes" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="3"></textarea>
-</label>
-<label class="flex flex-col gap-2">
-<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Default Quotation Notes</span>
-<textarea name="quotation_special_notes" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="3"></textarea>
+<span id="document-notes-label" class="text-sm font-semibold text-slate-700 dark:text-slate-300">Default Document Notes</span>
+<textarea name="document_special_notes" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="3"></textarea>
 </label>
 </div>
 <label class="flex flex-col gap-2">
-<textarea name="terms" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="5">Payment is due within 30 days of invoice date. 
-Late payments are subject to a 1.5% monthly interest fee.
-All goods remain the property of Acme Dynamics Corp until fully paid.
-Thank you for your business!</textarea>
+<textarea name="terms" class="form-textarea rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-1 focus:ring-primary" rows="5"></textarea>
 </label>
 </div>
 </div>
@@ -251,70 +253,161 @@ Thank you for your business!</textarea>
 </main>
 </div>
 </div>
-<script src="js/sidebar-controller.js" defer></script></body>
+</body>
 <!-- ZAK V4: Billing settings wiring -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-  const billingKeys = ['company_name', 'address', 'phone', 'email', 'terms', 'payment_methods', 'gst_no', 'ntn_no', 'logo_path'];
-  const invoiceSettingKeys = ['account_number', 'invoice_special_notes', 'quotation_special_notes'];
+  const docType = new URLSearchParams(window.location.search).get('doc') === 'quotation' ? 'quotation' : 'invoice';
+  const isQuotation = docType === 'quotation';
+
+  const h1 = document.querySelector('h1');
+  const subtitle = document.querySelector('.mb-8 > p');
+  const notesLabel = document.getElementById('document-notes-label');
+  const invoiceTab = document.getElementById('doc-tab-invoice');
+  const quotationTab = document.getElementById('doc-tab-quotation');
+
+  if (h1) h1.textContent = isQuotation ? 'Quotation Settings' : 'Invoice Settings';
+  if (subtitle) {
+    subtitle.textContent = isQuotation
+      ? 'Manage branding, terms, notes and payment details used on quotations.'
+      : 'Manage branding, terms, notes and payment details used on invoices.';
+  }
+  if (notesLabel) {
+    notesLabel.textContent = isQuotation ? 'Default Quotation Notes' : 'Default Invoice Notes';
+  }
+
+  const setActive = (el, active) => {
+    if (!el) return;
+    el.className = active
+      ? 'px-4 py-2 text-sm font-semibold bg-primary text-white'
+      : 'px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900';
+  };
+  setActive(invoiceTab, !isQuotation);
+  setActive(quotationTab, isQuotation);
+
+  const getVal = (name) => (document.querySelector(`[name="${name}"]`)?.value || '').trim();
+  const setVal = (name, value) => {
+    const el = document.querySelector(`[name="${name}"]`);
+    if (el && value !== undefined && value !== null) el.value = value;
+  };
+
+  const logoPreview = document.getElementById('billing-logo-preview');
+  const logoUploadButton = document.getElementById('billing-logo-upload-button');
+  const logoFileInput = document.getElementById('billing-logo-file-input');
+
+  const applyPreview = (preview, url) => {
+    if (!preview || !url) return;
+    preview.style.backgroundImage = `url("${url}")`;
+    preview.style.backgroundSize = 'contain';
+    preview.style.backgroundRepeat = 'no-repeat';
+    preview.style.backgroundPosition = 'center';
+    preview.innerHTML = '';
+  };
+
+  const uploadLogo = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch(`../api/admin/settings.php?action=upload&type=${encodeURIComponent(docType)}`, {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    });
+    const payload = await response.json();
+    if (!response.ok || payload.success === false) {
+      throw new Error(payload.message || 'Upload failed.');
+    }
+
+    const url = payload.url || (payload.file_path ? `/${payload.file_path}` : '');
+    if (!url) {
+      throw new Error('Upload succeeded but no URL was returned.');
+    }
+
+    setVal('logo_url', url);
+    applyPreview(logoPreview, url);
+    showAdminToast('Logo uploaded successfully.', 'success');
+  };
+
+  if (logoUploadButton && logoFileInput) {
+    logoUploadButton.addEventListener('click', () => logoFileInput.click());
+  }
+
+  if (logoFileInput) {
+    logoFileInput.addEventListener('change', async () => {
+      const file = logoFileInput.files && logoFileInput.files[0];
+      if (!file) return;
+      logoFileInput.value = '';
+      try {
+        await uploadLogo(file);
+      } catch (err) {
+        showAdminToast(err.message || 'Upload failed.', 'error');
+      }
+    });
+  }
 
   try {
-    const data = await adminFetch('/billing.php?mine=1');
-    const billing = (data.profiles || data.billing_profiles || [])[0] || {};
-    document.querySelectorAll('[name]').forEach(input => {
-      if (billing[input.name] !== undefined) input.value = billing[input.name];
-    });
-    window._billingId = billing.id;
-  } catch(e) { console.warn('billing load error', e); }
+    const settingsData = await adminFetch(`/settings.php?type=${docType}`);
+    const s = settingsData.settings || {};
+    setVal('company_name', s.company_name || '');
+    setVal('email', s.support_email || s.email || '');
+    setVal('phone', s.phone_number || s.phone || '');
+    setVal('address', s.address || '');
+    setVal('logo_url', s.logo_url || s.logo_path || '');
+    setVal('gst_no', s.tax_number || s.gst_no || s.ntn_no || '');
+    setVal('ntn_no', s.tax_number || s.gst_no || s.ntn_no || '');
+    setVal('account_number', s.account_number || '');
+    setVal('iban', s.iban || '');
+    setVal('payment_methods', s.payment_methods || '');
+    setVal('terms', s.terms || '');
+    setVal('document_special_notes', isQuotation ? (s.quotation_special_notes || '') : (s.invoice_special_notes || ''));
 
-  try {
-    const settingsData = await adminFetch('/settings.php?type=invoice');
-    const invoiceSettings = settingsData.settings || {};
-    invoiceSettingKeys.forEach((key) => {
-      const el = document.querySelector(`[name="${key}"]`);
-      if (el && invoiceSettings[key] !== undefined) el.value = invoiceSettings[key];
-    });
+    const logoUrl = (s.logo_url || s.logo_path || '').trim();
+    if (logoUrl) {
+      applyPreview(logoPreview, logoUrl);
+    }
   } catch (e) {
-    console.warn('invoice settings load error', e);
+    console.warn('document settings load error', e);
   }
 
   const saveButton = document.querySelector('[data-action="save-billing"]');
   const discardButton = document.querySelector('[data-action="billing-discard"]');
   if (discardButton) discardButton.addEventListener('click', () => window.location.reload());
   if (!saveButton) return;
-  saveButton.addEventListener('click', async () => {
-    const allData = Object.fromEntries(Array.from(document.querySelectorAll('[name]')).map(input => [input.name, input.value]));
-    const formData = {};
-    billingKeys.forEach((key) => { if (allData[key] !== undefined) formData[key] = allData[key]; });
-    const invoiceSettings = {};
-    invoiceSettingKeys.forEach((key) => { if (allData[key] !== undefined) invoiceSettings[key] = allData[key]; });
 
-    saveButton.textContent = 'Saving...'; saveButton.disabled = true;
+  saveButton.addEventListener('click', async () => {
+    const tax = getVal('gst_no') || getVal('ntn_no');
+    const payload = {
+      company_name: getVal('company_name'),
+      support_email: getVal('email'),
+      phone_number: getVal('phone'),
+      address: getVal('address'),
+      logo_url: getVal('logo_url'),
+      tax_number: tax,
+      account_number: getVal('account_number'),
+      iban: getVal('iban'),
+      payment_methods: getVal('payment_methods'),
+      terms: getVal('terms'),
+      invoice_special_notes: isQuotation ? '' : getVal('document_special_notes'),
+      quotation_special_notes: isQuotation ? getVal('document_special_notes') : ''
+    };
+
+    saveButton.textContent = 'Saving...';
+    saveButton.disabled = true;
     try {
-      if (window._billingId) {
-        await adminFetch(`/billing.php?id=${window._billingId}`, { method: 'PATCH', data: formData });
-      } else {
-        await adminFetch('/billing.php', { method: 'POST', data: formData });
-      }
-      await adminFetch('/settings.php', { method: 'POST', data: { type: 'invoice', settings: invoiceSettings } });
-      showAdminToast('Billing settings saved!', 'success');
-    } catch(err) { showAdminToast(err.message || 'Save failed.', 'error'); }
-    finally { saveButton.textContent = 'Save Settings'; saveButton.disabled = false; }
+      await adminFetch('/settings.php', { method: 'POST', data: { type: docType, settings: payload } });
+      showAdminToast(`${isQuotation ? 'Quotation' : 'Invoice'} settings saved!`, 'success');
+    } catch (err) {
+      showAdminToast(err.message || 'Save failed.', 'error');
+    } finally {
+      saveButton.textContent = 'Save Settings';
+      saveButton.disabled = false;
+    }
   });
 });
 </script>
-<script>
-// Mobile sidebar toggle
-const toggle = document.getElementById('sidebar-toggle');
-if (toggle) {
-  toggle.addEventListener('click', function() {
-    const nav = document.getElementById('sidebar-nav');
-    nav.classList.toggle('-translate-x-full');
-    this.setAttribute('aria-expanded', nav.classList.contains('-translate-x-full') ? 'false' : 'true');
-  });
-}
-</script>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
 </html>
+
 

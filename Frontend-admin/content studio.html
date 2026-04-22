@@ -1,331 +1,660 @@
-﻿<!DOCTYPE html>
-
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Content Studio - Enterprise CMS</title>
+<title>Content Studio - ZAK Printing V4</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#1337ec",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101322",
-                    },
-                    fontFamily: {
-                        "display": ["Inter"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-</head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
-<div class="flex h-screen overflow-hidden">
-<!-- Sidebar Navigation -->
-<aside class="w-72 flex-shrink-0 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-<div class="p-6">
-<div class="flex items-center gap-3 mb-8">
-<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white">
-<span class="material-symbols-outlined">dashboard</span>
-</div>
-<div>
-<h1 class="text-slate-900 dark:text-slate-100 font-bold text-lg leading-none">Admin Panel</h1>
-<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Super Admin</p>
-</div>
-</div>
-<nav class="space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="admin-dash.html">
-<span class="material-symbols-outlined">grid_view</span>
-<span>Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="invoice-list.html">
-<span class="material-symbols-outlined">description</span>
-<span>Invoices</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="quotation-list.html">
-<span class="material-symbols-outlined">request_quote</span>
-<span>Quotations</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="product-inventory.html">
-<span class="material-symbols-outlined">inventory_2</span>
-<span>Products</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="my-earning.html">
-<span class="material-symbols-outlined">payments</span>
-<span>Earnings</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="user-mgmt.html" data-super-only>
-<span class="material-symbols-outlined">group</span>
-<span>Users</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="general-settings.html">
-<span class="material-symbols-outlined">settings</span>
-<span>Settings</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium" href="content studio.html" data-super-only>
-<span class="material-symbols-outlined">brush</span>
-<span>Content Studio</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4" href="#" data-logout>
-<span class="material-symbols-outlined">logout</span>
-<span>Logout</span>
-</a>
-</nav>
-</div>
-<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
-<div class="text-center">
-<p class="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">v4.0</p>
-<p class="text-xs text-slate-500 dark:text-slate-400">Design and Developed by</p>
-<a href="http://theamadeuslab.com" target="_blank" class="text-xs font-semibold text-primary hover:underline">Amadeus Lab</a>
-</div>
-</div>
-</aside>
-<!-- Main Content Area -->
-<main class="flex-1 flex flex-col overflow-hidden">
-<!-- Header -->
-<header class="h-16 flex items-center justify-between px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-<div class="flex items-center gap-6">
-<h2 class="text-xl font-bold flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">auto_awesome_motion</span>
-                        Content Studio
-                    </h2>
-<div class="relative w-64">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl leading-none">search</span>
-<input class="w-full pl-10 pr-4 py-1.5 text-sm bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary/20" placeholder="Search pages or assets..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<div class="flex gap-2">
-<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90">
-<span class="material-symbols-outlined text-lg">cloud_upload</span>
-                            Upload Asset
-                        </button>
-<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700">
-<span class="material-symbols-outlined text-lg">post_add</span>
-                            Create Page
-                        </button>
-</div>
-<div class="h-8 w-px bg-slate-200 dark:border-slate-800 mx-2"></div>
-<div class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden border-2 border-primary/20">
-<img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD26XvOe1dG8BSwIydhY7dv3TN1nAHmla2LCiQlptwqM3uQfzu3gg3ZBkPi6ABCOUCkOVL9Du-vDzn1X7RZ-YGm8FX__Ni0lwbXawT-RxZEuuHC3SGYSYX9aYx8xdvn4AZjhaNkQc4_K5u17ungmW_gzgD6VXjMtv9qOJ0l16ksLiY_eAKPdjCTEJyd2mGRq7Kb9jo6_cwAyGQeUznm2A0H2VmtT0V4_-Ev4qXKEvj9u3aoS1Ve9zVHKrRejH0rig9WCiEurG32hKp-"/>
-</div>
-</div>
-</header>
-<!-- Content Container -->
-<div class="flex-1 overflow-y-auto p-8">
-<!-- Tab Navigation -->
-<div class="mb-8 border-b border-slate-200 dark:border-slate-800 flex gap-8">
-<button class="pb-3 px-1 text-sm font-bold border-b-2 border-primary text-primary flex items-center gap-2">
-<span class="material-symbols-outlined text-lg">description</span>
-                        CMS Pages
-                    </button>
-<button class="pb-3 px-1 text-sm font-medium text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center gap-2">
-<span class="material-symbols-outlined text-lg">image</span>
-                        Media Library
-                    </button>
-</div>
-<!-- Section Title & Filter -->
-<div class="flex items-center justify-between mb-6">
-<div class="flex items-center gap-3">
-<button class="flex items-center gap-2 px-3 py-1.5 text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg font-medium">
-                            All Status <span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-<button class="flex items-center gap-2 px-3 py-1.5 text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg font-medium">
-                            Latest First <span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-</div>
-<span class="text-xs font-medium text-slate-500 uppercase tracking-widest">Showing 12 results</span>
-</div>
-<!-- CMS Pages List -->
-<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm mb-12">
-<table class="w-full text-left">
-<thead>
-<tr class="bg-slate-50 dark:bg-slate-800/50 text-xs font-bold text-slate-500 uppercase">
-<th class="px-6 py-4">Page Title</th>
-<th class="px-6 py-4">Status</th>
-<th class="px-6 py-4">Last Edited</th>
-<th class="px-6 py-4">URL Slug</th>
-<th class="px-6 py-4 text-right">Actions</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-slate-100 dark:divide-slate-800" data-cms="pages-list"></tbody>
-</table>
-</div>
-<div class="mb-12">
-<div class="flex items-center justify-between mb-6">
-<h3 class="text-lg font-bold">Page Blocks</h3>
-<span class="text-xs font-medium text-slate-500 uppercase tracking-widest">Select a page to load blocks</span>
-</div>
-<div data-cms="blocks-container" class="space-y-4">
-<div class="rounded-xl border border-dashed border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 text-sm text-slate-500">
-Choose a page above to view and edit its blocks.
-</div>
-</div>
-</div>
-<!-- Media Library Preview (Split Section) -->
-<div class="flex items-center justify-between mb-6">
-<h3 class="text-lg font-bold">Recent Media Assets</h3>
-<button class="text-sm font-bold text-primary flex items-center gap-1">
-                        View Library <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
-<!-- Upload Dropzone Small -->
-<div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl flex flex-col items-center justify-center p-4 hover:border-primary transition-colors cursor-pointer group bg-white/50 dark:bg-slate-900/50">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-3xl mb-2">add_photo_alternate</span>
-<span class="text-xs font-bold text-slate-500 group-hover:text-primary">Add Asset</span>
-</div>
-<!-- Asset Cards -->
-<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:ring-2 hover:ring-primary/20 transition-all">
-<div class="aspect-square relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Abstract vibrant gradient background asset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcbd6TlqKWlalglK_cVA1veOzPbCesz12vcJaB18d83gKhXvThFCmhzAdTos2Z0W3hcUbR6-UI5tY4aOoVupmZ9WeJyQfs6jcazWrPwe_-z4JLIBt9v6IFnerY76Ev6YxnERNB6mqhOWGYUeJtta1FrVfmfgS6gbbL03sNQvFtvdQ0XQuS5ONT7m5R5Ae-fGtq_SDJIIfmjDCnJXXio6mGh784fKQ3kyL6cfgkjKHoQ4uAwey-4AokcaLsbdkNmUCIzT1vWo6AKC5O"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">link</span></button>
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">download</span></button>
-</div>
-</div>
-<div class="p-3">
-<p class="text-xs font-bold truncate">hero_banner_v2.jpg</p>
-<p class="text-[10px] text-slate-500 mt-1 uppercase font-bold">1200 x 800 â€¢ 2.4MB</p>
-</div>
-</div>
-<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:ring-2 hover:ring-primary/20 transition-all">
-<div class="aspect-square relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Tech themed high quality photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfZWMOFaPUoBsJ6I2fgE074iFwWGts-Amt-GFAoZnZnQsClF21Ch5xMS8UmG93K3ynfmKytN1NFX6342Bf04ZNdBe9NRTL-O0Yd9KVl_nrRqfPcATxJvPCoOi6IoGTklBOSjsz_Uwj97jl0u18zLkMC1bj-xo7IgKBaLHv5iyB_ui3Uz3bhEKlM2afet51KhM6fqFzVRiWsXN9l7aFvAdM1Z40SNGBwZAk5GCGJ4r11YbvzrdxdOk3lcs_0Q_mJZD4mNoGmCigTuWD"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">link</span></button>
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">download</span></button>
-</div>
-</div>
-<div class="p-3">
-<p class="text-xs font-bold truncate">product_shot_04.png</p>
-<p class="text-[10px] text-slate-500 mt-1 uppercase font-bold">1080 x 1080 â€¢ 850KB</p>
-</div>
-</div>
-<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:ring-2 hover:ring-primary/20 transition-all">
-<div class="aspect-square relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Code on a screen background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj2K2UPxPSqp0WQSJI2wIdRghqRqUH8Y5JEZ7t49q6uzzTgjsmhnSffhUo6PZh9FSsXUySO6z1GZLYC9mbZPZcQU5DEz3eAESE7rd-lOgIAl-cJn4H2T_JlosgkoQxKRChbum1-wEpb-1hxumUQYiZe-q24TwxImcISXIvynvJ0sxOkSx10HFxUuzlwlEDxgzmy0gHajgWgf7OXQYNHoPvXDpyTDFrMCrK0eQwfHNiCrwLwhWBRuNP_Dv8J9XDtd-dIW-s1pPQHD_i"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">link</span></button>
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">download</span></button>
-</div>
-</div>
-<div class="p-3">
-<p class="text-xs font-bold truncate">developer_section_bg.webp</p>
-<p class="text-[10px] text-slate-500 mt-1 uppercase font-bold">1920 x 1080 â€¢ 1.1MB</p>
-</div>
-</div>
-<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:ring-2 hover:ring-primary/20 transition-all">
-<div class="aspect-square relative flex items-center justify-center bg-slate-50 dark:bg-slate-800/50">
-<span class="material-symbols-outlined text-4xl text-slate-300">description</span>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">link</span></button>
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">download</span></button>
-</div>
-</div>
-<div class="p-3">
-<p class="text-xs font-bold truncate">privacy_policy_revised.pdf</p>
-<p class="text-[10px] text-slate-500 mt-1 uppercase font-bold">Document â€¢ 42KB</p>
-</div>
-</div>
-<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:ring-2 hover:ring-primary/20 transition-all">
-<div class="aspect-square relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Team collaboration office photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEb7QjRUH-ddWcidgpaKunme8LsUFXpJeSCpb4XPmQH5A-Oai7gx81k4RYlN4KmsVKSxnXyJf6WNmDWQ_75brCZ-NukUdQfbaNqPoEB-NOWQ1K6l4iC-aIuUfWJJ_65x0tg7S4NgLHV13qXRmnzbuGIDj1tq_LzvLHp0GEcLIZGOnJoTTOIOAFidnFkIWBk390C-pbpmyHKJYeXBxbneHgiZg8jO7njdAKBiAXGWaEQIKAzO0oS7qpcYLMTS8ppC98EmAc1gzZCLMH"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">link</span></button>
-<button class="w-8 h-8 rounded-lg bg-white text-slate-900 flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-lg">download</span></button>
-</div>
-</div>
-<div class="p-3">
-<p class="text-xs font-bold truncate">team_culture_01.jpg</p>
-<p class="text-[10px] text-slate-500 mt-1 uppercase font-bold">1200 x 900 â€¢ 3.2MB</p>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-<script src="js/sidebar-controller.js" defer></script></body>
-<!-- ZAK V4: Content Studio wiring -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
-document.addEventListener('DOMContentLoaded', async () => {
-  window._currentCmsPageId = null;
-
-  // Load pages list
-  async function loadPages() {
-    try {
-      const data = await adminFetch('/cms.php?pages=1');
-      const pages = data.pages || [];
-      const pagesList = document.querySelector('[data-cms="pages-list"]');
-      if (pagesList && pages.length) {
-        pagesList.innerHTML = pages.map(p => `
-          <button class="w-full text-left px-4 py-3 rounded-xl hover:bg-primary/10 text-sm font-semibold transition-colors"
-            data-page-id="${p.id}" data-page-slug="${p.slug}" onclick="loadPageBlocks(${p.id}, '${p.slug}')">
-            ${p.title}
-          </button>`).join('');
-      }
-    } catch(e) { console.warn('CMS pages load error', e); }
-  }
-
-  // Load blocks for a page
-  window.loadPageBlocks = async (pageId, slug) => {
-    try {
-      window._currentCmsPageId = pageId;
-      const data = await adminFetch(`/cms.php?page=${slug}`);
-      const blocks = data.blocks || [];
-      const blocksContainer = document.querySelector('[data-cms="blocks-container"]');
-      if (blocksContainer) {
-        blocksContainer.innerHTML = blocks.map(b => `
-          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-4"
-            data-block-id="${b.id}" data-block-key="${b.block_key}">
-            <div class="flex justify-between items-center mb-3">
-              <span class="text-xs font-bold uppercase tracking-widest text-primary">${b.block_key}</span>
-              <button onclick="saveBlock(${b.id})"
-                class="px-4 py-1.5 text-xs font-bold bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
-                Save Block
-              </button>
-            </div>
-            <div contenteditable="true"
-              class="prose dark:prose-invert max-w-none p-4 bg-slate-50 dark:bg-slate-800 rounded-xl focus:ring-2 focus:ring-primary min-h-[80px] outline-none text-sm"
-              data-block-content="${b.id}">${b.content_html || ''}</div>
-          </div>`).join('') || '<p class="text-slate-400 text-center py-10">No blocks for this page yet.</p>';
-      }
-    } catch(e) { showAdminToast('Failed to load blocks', 'error'); }
-  };
-
-  // Save individual block
-  window.saveBlock = async (blockId) => {
-    const contentEl = document.querySelector(`[data-block-content="${blockId}"]`);
-    if (!contentEl) return;
-    try {
-      const wrapper = contentEl.closest('[data-block-key]');
-      await adminFetch(`/cms.php`, {
-        method: 'POST',
-        data: {
-          action: 'block',
-          page_id: window._currentCmsPageId,
-          block_key: wrapper?.dataset.blockKey || '',
-          title: wrapper?.querySelector('span.text-xs')?.textContent || '',
-          content_html: contentEl.innerHTML,
-          image_path: ''
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#1337ec",
+          "background-light": "#f6f6f8",
+          "background-dark": "#101322"
+        },
+        fontFamily: {
+          display: ["Inter"]
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          full: "9999px"
         }
-      });
-      showAdminToast('Block saved!', 'success');
-    } catch(e) { showAdminToast(e.message || 'Save failed', 'error'); }
+      }
+    }
   };
+</script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 h-screen overflow-hidden">
+<div class="flex h-screen flex-col overflow-hidden">
+  <header class="h-16 flex items-center justify-between px-6 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex-shrink-0">
+    <div class="flex items-center gap-4">
+      <a href="admin-dash.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100" title="Back to Dashboard">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+      <h1 class="text-xl font-bold flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary">edit</span>
+        Content Studio
+      </h1>
+      <div id="breadcrumb" class="text-sm text-slate-500 dark:text-slate-400 ml-4 hidden">
+        <span>Pages</span><span class="mx-2">/</span><span id="breadcrumb-page">-</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="btn-nav" class="px-4 py-2 text-sm rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" title="Manage Navigation">
+        <span class="material-symbols-outlined mr-2 inline text-lg align-text-bottom">menu</span>Navigation
+      </button>
+      <button id="btn-settings" class="px-4 py-2 text-sm rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" title="Site Settings">
+        <span class="material-symbols-outlined mr-2 inline text-lg align-text-bottom">settings</span>Settings
+      </button>
+      <button id="btn-save-all" class="px-6 py-2 text-sm font-bold rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+        <span class="material-symbols-outlined mr-2 inline text-lg align-text-bottom">save</span>Save All
+      </button>
+    </div>
+  </header>
 
-  loadPages();
+  <div class="flex flex-1 overflow-hidden gap-4 p-4">
+    <aside class="w-64 flex-shrink-0 overflow-y-auto bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+      <div class="mb-4">
+        <input id="search-pages" type="text" placeholder="Search pages..." class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 focus:ring-1 focus:ring-primary focus:border-transparent"/>
+      </div>
+      <div id="pages-list" class="space-y-2"></div>
+    </aside>
+
+    <main class="flex-1 overflow-y-auto bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+      <div id="canvas-empty" class="text-center py-16 text-slate-500">
+        <span class="material-symbols-outlined text-6xl inline-block mb-4 text-slate-300">dashboard</span>
+        <p>Select a page to begin editing</p>
+      </div>
+      <div id="canvas-content" class="hidden space-y-4">
+        <div id="blocks-list" class="space-y-3"></div>
+        <button id="btn-add-block" class="w-full py-3 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-400 hover:border-primary hover:text-primary transition-colors font-medium">
+          <span class="material-symbols-outlined mr-2 inline">add</span>Add New Block
+        </button>
+      </div>
+    </main>
+
+    <aside class="w-80 flex-shrink-0 overflow-y-auto bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+      <div id="settings-empty" class="text-sm text-slate-500 text-center py-8">
+        <span class="material-symbols-outlined text-4xl inline-block text-slate-300 mb-2">info</span>
+        <p>Select a page to view settings</p>
+      </div>
+      <div id="settings-panel" class="hidden space-y-6">
+        <div>
+          <label class="block text-sm font-bold mb-2">Page Title</label>
+          <input id="setting-title" type="text" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800"/>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Meta Title (SEO)</label>
+          <input id="setting-meta-title" type="text" maxlength="60" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800"/>
+          <p class="text-xs text-slate-400 mt-1">Max 60 characters</p>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Meta Description</label>
+          <textarea id="setting-meta-desc" maxlength="160" rows="4" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800 resize-none"></textarea>
+          <p class="text-xs text-slate-400 mt-1">Max 160 characters</p>
+        </div>
+        <div class="pt-4 border-t border-slate-200 dark:border-slate-700">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input id="setting-active" type="checkbox" class="w-4 h-4 rounded border-slate-300"/>
+            <span class="text-sm font-medium">Published</span>
+          </label>
+        </div>
+        <button id="btn-save-seo" class="w-full py-2 mt-6 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-sm font-bold transition-colors">Save Page Settings</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div id="modal-add-block" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+  <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="sticky top-0 flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <h2 class="text-xl font-bold">Add New Block</h2>
+      <button class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100" onclick="closeModal('modal-add-block')"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="p-6 grid grid-cols-2 gap-4">
+      <button class="block-type-button p-6 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-center" data-type="text"><span class="material-symbols-outlined text-4xl block mb-2 text-slate-600 dark:text-slate-400">text_fields</span><span class="font-bold text-sm">Text Block</span></button>
+      <button class="block-type-button p-6 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-center" data-type="hero"><span class="material-symbols-outlined text-4xl block mb-2 text-slate-600 dark:text-slate-400">image</span><span class="font-bold text-sm">Hero Section</span></button>
+      <button class="block-type-button p-6 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-center" data-type="cta"><span class="material-symbols-outlined text-4xl block mb-2 text-slate-600 dark:text-slate-400">call_to_action</span><span class="font-bold text-sm">Call to Action</span></button>
+      <button class="block-type-button p-6 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-center" data-type="faq"><span class="material-symbols-outlined text-4xl block mb-2 text-slate-600 dark:text-slate-400">help</span><span class="font-bold text-sm">FAQ</span></button>
+      <button class="block-type-button p-6 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-center" data-type="gallery"><span class="material-symbols-outlined text-4xl block mb-2 text-slate-600 dark:text-slate-400">photo_library</span><span class="font-bold text-sm">Gallery</span></button>
+      <button class="block-type-button p-6 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all text-center" data-type="image"><span class="material-symbols-outlined text-4xl block mb-2 text-slate-600 dark:text-slate-400">crop_original</span><span class="font-bold text-sm">Single Image</span></button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-nav" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+  <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="sticky top-0 flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <h2 class="text-xl font-bold">Manage Navigation</h2>
+      <button class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100" onclick="closeModal('modal-nav')"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="p-6">
+      <div id="nav-items-list" class="space-y-3"></div>
+      <button id="btn-save-nav" class="w-full mt-6 py-2 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors">Save Navigation</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-settings" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+  <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="sticky top-0 flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <h2 class="text-xl font-bold">Site Settings</h2>
+      <button class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100" onclick="closeModal('modal-settings')"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="p-6 space-y-4">
+      <div><label class="block text-sm font-bold mb-2">Site Name</label><input id="set-site-name" type="text" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800"/></div>
+      <div><label class="block text-sm font-bold mb-2">Site Tagline</label><input id="set-site-tagline" type="text" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800"/></div>
+      <div><label class="block text-sm font-bold mb-2">Contact Email</label><input id="set-contact-email" type="email" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800"/></div>
+      <div><label class="block text-sm font-bold mb-2">Contact Phone</label><input id="set-contact-phone" type="tel" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800"/></div>
+      <div><label class="block text-sm font-bold mb-2">Facebook URL</label><input id="set-social-facebook" type="url" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800"/></div>
+      <div><label class="block text-sm font-bold mb-2">Instagram URL</label><input id="set-social-instagram" type="url" class="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800"/></div>
+      <button id="btn-save-settings" class="w-full mt-6 py-2 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors">Save Settings</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.REQUIRED_ROLE = "super_admin";
+</script>
+<script src="../Frontend-admin/js/admin-api.js?v=20260409"></script>
+<script src="../Frontend-admin/js/admin-auth.js?v=20260409"></script>
+<script src="../Frontend-admin/js/sidebar-controller.js?v=20260409"></script>
+<script>
+const CS = {
+  state: {
+    pages: [],
+    currentPage: null,
+    currentPageData: null,
+    blocks: [],
+    dirty: new Set()
+  },
+
+  pageIcons: {
+    home: "home",
+    shop: "storefront",
+    services: "build",
+    about: "info",
+    contact: "mail",
+    blog: "article",
+    faq: "help",
+    portfolio: "photo_library",
+    "privacy-policy": "lock",
+    terms: "gavel",
+    "shipping-info": "local_shipping"
+  },
+
+  escape(v) {
+    return String(v ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  },
+
+  parseJsonSafe(text, fallback) {
+    try { return JSON.parse(text || ""); } catch (e) { return fallback; }
+  },
+
+  markDirty() {
+    document.getElementById("btn-save-all").disabled = false;
+  },
+
+  async init() {
+    await this.loadPages();
+    this.bindGlobalEvents();
+  },
+
+  async loadPages() {
+    const res = await adminFetch("/cms.php?pages=1");
+    this.state.pages = res.pages || [];
+    this.renderPages();
+  },
+
+  renderPages() {
+    const list = document.getElementById("pages-list");
+    list.innerHTML = (this.state.pages || []).map((p) => {
+      const active = this.state.currentPage && Number(this.state.currentPage.id) === Number(p.id);
+      return `<button class="page-card w-full text-left p-3 rounded-lg border ${active ? "border-primary bg-primary/5" : "border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-slate-50 dark:hover:bg-slate-800"} transition-all" data-id="${p.id}" data-slug="${this.escape(p.slug)}">` +
+        `<div class="flex items-center gap-3">` +
+        `<span class="material-symbols-outlined text-lg text-slate-500">${this.pageIcons[p.slug] || "note"}</span>` +
+        `<div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">${this.escape(p.title)}</p><p class="text-xs text-slate-500 truncate">${this.escape(p.slug)}</p></div>` +
+        `<span class="text-xs px-2 py-1 rounded-full ${Number(p.is_active) ? "bg-green-100 text-green-700" : "bg-slate-100 text-slate-600"}">${Number(p.is_active) ? "Live" : "Draft"}</span>` +
+        `</div></button>`;
+    }).join("");
+
+    list.querySelectorAll(".page-card").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const id = Number(btn.dataset.id || 0);
+        const slug = btn.dataset.slug || "";
+        await this.selectPage(id, slug);
+      });
+    });
+  },
+
+  async selectPage(pageId, pageSlug) {
+    const page = this.state.pages.find((p) => Number(p.id) === Number(pageId));
+    this.state.currentPage = page || { id: pageId, slug: pageSlug };
+
+    document.getElementById("breadcrumb-page").textContent = pageSlug;
+    document.getElementById("breadcrumb").classList.remove("hidden");
+    document.getElementById("canvas-empty").classList.add("hidden");
+    document.getElementById("canvas-content").classList.remove("hidden");
+    document.getElementById("settings-empty").classList.add("hidden");
+    document.getElementById("settings-panel").classList.remove("hidden");
+
+    this.renderPages();
+
+    const res = await adminFetch(`/cms.php?page=${encodeURIComponent(pageSlug)}`);
+    this.state.blocks = res.blocks || [];
+    this.state.currentPageData = res.page || page || {};
+    this.renderBlocks();
+    this.fillPageSettings();
+    document.getElementById("btn-save-all").disabled = true;
+  },
+
+  blockEditor(block) {
+    const type = block.block_type || "text";
+
+    if (["text", "hero", "cta", "team", "testimonial"].includes(type)) {
+      return `<textarea class="block-content w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800 font-mono" rows="7">${this.escape(block.content_html || "")}</textarea><p class="text-xs text-slate-400 mt-1">HTML supported</p>`;
+    }
+
+    if (type === "faq") {
+      const items = this.parseJsonSafe(block.content_html, []);
+      const rows = Array.isArray(items) ? items : [];
+      return `<div class="space-y-2 faq-wrap">${rows.map((item) => `<div class="faq-row p-3 border border-slate-200 dark:border-slate-700 rounded-lg"><input class="faq-q w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded mb-2 dark:bg-slate-800" placeholder="Question" value="${this.escape(item.q || "")}"/><textarea class="faq-a w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded dark:bg-slate-800" rows="3" placeholder="Answer">${this.escape(item.a || "")}</textarea><button class="mt-2 text-xs text-red-500 hover:text-red-700 remove-faq-item" type="button">Remove</button></div>`).join("")}</div><button class="text-xs text-primary hover:underline add-faq-item mt-2" type="button">+ Add Q&A pair</button>`;
+    }
+
+    if (type === "gallery") {
+      const items = this.parseJsonSafe(block.content_html, []);
+      const rows = Array.isArray(items) ? items : [];
+      return `<div class="space-y-2 gallery-wrap">${rows.map((item) => `<div class="gallery-row p-3 border border-slate-200 dark:border-slate-700 rounded-lg"><input class="gallery-src w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded mb-2 dark:bg-slate-800" placeholder="Image URL" value="${this.escape(item.src || "")}"/><input class="gallery-alt w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded mb-2 dark:bg-slate-800" placeholder="Alt text" value="${this.escape(item.alt || "")}"/><input class="gallery-caption w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded mb-2 dark:bg-slate-800" placeholder="Caption" value="${this.escape(item.caption || "")}"/><button class="text-xs text-red-500 hover:text-red-700 remove-gallery-item" type="button">Remove</button></div>`).join("")}</div><button class="text-xs text-primary hover:underline add-gallery-item mt-2" type="button">+ Add image</button>`;
+    }
+
+    if (type === "image") {
+      const image = this.parseJsonSafe(block.content_html, {});
+      return `<div class="space-y-2"><input class="image-src w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded dark:bg-slate-800" placeholder="Image URL" value="${this.escape(image.src || "")}"/><input class="image-alt w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded dark:bg-slate-800" placeholder="Alt text" value="${this.escape(image.alt || "")}"/><input class="image-caption w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded dark:bg-slate-800" placeholder="Caption" value="${this.escape(image.caption || "")}"/></div>`;
+    }
+
+    return `<textarea class="block-content w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg dark:bg-slate-800 font-mono" rows="6">${this.escape(block.content_html || "")}</textarea>`;
+  },
+
+  renderBlocks() {
+    const list = document.getElementById("blocks-list");
+    list.innerHTML = (this.state.blocks || []).map((b) => {
+      const type = b.block_type || "text";
+      return `<div class="block-card p-4 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800" data-block-id="${b.id}" draggable="true"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3 flex-1"><span class="cs-drag-handle cursor-move text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"><span class="material-symbols-outlined">drag_handle</span></span><div class="flex-1"><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary font-bold">${this.escape(type.toUpperCase())}</span><input class="block-title flex-1 font-bold text-sm border-none bg-transparent" value="${this.escape(b.title || "Block")}"/></div><p class="text-xs text-slate-400 mt-1">${this.escape(b.block_key || "")}</p></div></div><button class="text-red-500 hover:text-red-700 delete-block" type="button" data-block-id="${b.id}"><span class="material-symbols-outlined">delete</span></button></div><div class="mt-3">${this.blockEditor(b)}</div></div>`;
+    }).join("");
+
+    this.bindBlockEvents();
+  },
+
+  bindBlockEvents() {
+    const self = this;
+    const list = document.getElementById("blocks-list");
+
+    list.querySelectorAll("input, textarea").forEach((el) => {
+      el.addEventListener("input", () => self.markDirty());
+    });
+
+    list.querySelectorAll(".delete-block").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        if (!confirm("Delete this block?")) return;
+        const id = Number(btn.dataset.blockId || 0);
+        await adminFetch(`/cms.php?block_id=${id}`, { method: "DELETE" });
+        self.state.blocks = self.state.blocks.filter((b) => Number(b.id) !== id);
+        self.renderBlocks();
+        self.markDirty();
+      });
+    });
+
+    list.querySelectorAll(".add-faq-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const wrap = btn.parentElement.querySelector(".faq-wrap");
+        const row = document.createElement("div");
+        row.className = "faq-row p-3 border border-slate-200 dark:border-slate-700 rounded-lg";
+        row.innerHTML = '<input class="faq-q w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded mb-2 dark:bg-slate-800" placeholder="Question"/><textarea class="faq-a w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded dark:bg-slate-800" rows="3" placeholder="Answer"></textarea><button class="mt-2 text-xs text-red-500 hover:text-red-700 remove-faq-item" type="button">Remove</button>';
+        wrap.appendChild(row);
+        row.querySelector(".remove-faq-item").addEventListener("click", () => { row.remove(); self.markDirty(); });
+        row.querySelectorAll("input, textarea").forEach((el) => el.addEventListener("input", () => self.markDirty()));
+        self.markDirty();
+      });
+    });
+
+    list.querySelectorAll(".remove-faq-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        btn.closest(".faq-row").remove();
+        self.markDirty();
+      });
+    });
+
+    list.querySelectorAll(".add-gallery-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const wrap = btn.parentElement.querySelector(".gallery-wrap");
+        const row = document.createElement("div");
+        row.className = "gallery-row p-3 border border-slate-200 dark:border-slate-700 rounded-lg";
+        row.innerHTML = '<input class="gallery-src w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded mb-2 dark:bg-slate-800" placeholder="Image URL"/><input class="gallery-alt w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded mb-2 dark:bg-slate-800" placeholder="Alt text"/><input class="gallery-caption w-full text-sm px-2 py-1 border border-slate-300 dark:border-slate-600 rounded mb-2 dark:bg-slate-800" placeholder="Caption"/><button class="text-xs text-red-500 hover:text-red-700 remove-gallery-item" type="button">Remove</button>';
+        wrap.appendChild(row);
+        row.querySelector(".remove-gallery-item").addEventListener("click", () => { row.remove(); self.markDirty(); });
+        row.querySelectorAll("input").forEach((el) => el.addEventListener("input", () => self.markDirty()));
+        self.markDirty();
+      });
+    });
+
+    list.querySelectorAll(".remove-gallery-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        btn.closest(".gallery-row").remove();
+        self.markDirty();
+      });
+    });
+
+    this.bindDragDrop();
+  },
+
+  bindDragDrop() {
+    const list = document.getElementById("blocks-list");
+    let drag = null;
+
+    list.querySelectorAll(".block-card").forEach((card) => {
+      card.addEventListener("dragstart", () => {
+        drag = card;
+        card.style.opacity = "0.5";
+      });
+      card.addEventListener("dragend", () => {
+        card.style.opacity = "1";
+      });
+    });
+
+    list.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      const after = this.dragAfterElement(list, e.clientY);
+      if (!drag) return;
+      if (after == null) list.appendChild(drag);
+      else list.insertBefore(drag, after);
+    });
+
+    list.addEventListener("drop", () => {
+      this.markDirty();
+    });
+  },
+
+  dragAfterElement(container, y) {
+    const els = [...container.querySelectorAll(".block-card")];
+    return els.reduce((closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      }
+      return closest;
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+  },
+
+  fillPageSettings() {
+    const p = this.state.currentPageData || {};
+    document.getElementById("setting-title").value = p.title || "";
+    document.getElementById("setting-meta-title").value = p.meta_title || "";
+    document.getElementById("setting-meta-desc").value = p.meta_description || "";
+    document.getElementById("setting-active").checked = Number(p.is_active) === 1 || p.is_active === true;
+  },
+
+  collectBlocksFromUI() {
+    const collected = [];
+    document.querySelectorAll(".block-card").forEach((card) => {
+      const id = Number(card.dataset.blockId || 0);
+      const block = this.state.blocks.find((b) => Number(b.id) === id);
+      if (!block) return;
+
+      const type = block.block_type || "text";
+      const title = card.querySelector(".block-title")?.value || block.title || "";
+      let content = "";
+
+      if (["text", "hero", "cta", "team", "testimonial"].includes(type)) {
+        content = card.querySelector(".block-content")?.value || "";
+      } else if (type === "faq") {
+        const items = [];
+        card.querySelectorAll(".faq-row").forEach((row) => {
+          items.push({
+            q: row.querySelector(".faq-q")?.value || "",
+            a: row.querySelector(".faq-a")?.value || ""
+          });
+        });
+        content = JSON.stringify(items);
+      } else if (type === "gallery") {
+        const items = [];
+        card.querySelectorAll(".gallery-row").forEach((row) => {
+          items.push({
+            src: row.querySelector(".gallery-src")?.value || "",
+            alt: row.querySelector(".gallery-alt")?.value || "",
+            caption: row.querySelector(".gallery-caption")?.value || ""
+          });
+        });
+        content = JSON.stringify(items);
+      } else if (type === "image") {
+        content = JSON.stringify({
+          src: card.querySelector(".image-src")?.value || "",
+          alt: card.querySelector(".image-alt")?.value || "",
+          caption: card.querySelector(".image-caption")?.value || ""
+        });
+      }
+
+      collected.push({
+        id: block.id,
+        block_key: block.block_key,
+        block_type: type,
+        title,
+        content_html: content
+      });
+    });
+    return collected;
+  },
+
+  async savePageSettingsOnly() {
+    if (!this.state.currentPage) return;
+    await adminFetch("/cms.php", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "update_seo",
+        page_id: this.state.currentPage.id,
+        title: document.getElementById("setting-title").value,
+        meta_title: document.getElementById("setting-meta-title").value,
+        meta_description: document.getElementById("setting-meta-desc").value,
+        is_active: document.getElementById("setting-active").checked ? 1 : 0
+      })
+    });
+  },
+
+  async saveAll() {
+    if (!this.state.currentPage) return;
+    const payload = this.collectBlocksFromUI();
+    const order = [];
+
+    for (const block of payload) {
+      order.push(block.id);
+      await adminFetch("/cms.php", {
+        method: "POST",
+        body: JSON.stringify({
+          action: "block",
+          page_id: this.state.currentPage.id,
+          block_key: block.block_key,
+          block_type: block.block_type,
+          title: block.title,
+          content_html: block.content_html
+        })
+      });
+    }
+
+    await adminFetch("/cms.php", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "reorder_blocks",
+        page_id: this.state.currentPage.id,
+        order
+      })
+    });
+
+    await this.savePageSettingsOnly();
+    document.getElementById("btn-save-all").disabled = true;
+    alert("All changes saved.");
+  },
+
+  async addBlock(type) {
+    if (!this.state.currentPage) return;
+    const key = `${this.state.currentPage.slug}_${type}_${Date.now()}`;
+    const res = await adminFetch("/cms.php", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "block",
+        page_id: this.state.currentPage.id,
+        block_key: key,
+        block_type: type,
+        title: `New ${type} block`,
+        content_html: ""
+      })
+    });
+
+    this.state.blocks.push({
+      id: res.id,
+      page_id: this.state.currentPage.id,
+      block_key: key,
+      block_type: type,
+      title: `New ${type} block`,
+      content_html: ""
+    });
+
+    this.renderBlocks();
+    this.markDirty();
+  },
+
+  async openNavModal() {
+    const res = await adminFetch("/cms.php?nav=1");
+    const items = res.nav || [];
+    const list = document.getElementById("nav-items-list");
+
+    list.innerHTML = items.map((item) => `<div class="nav-item p-3 border border-slate-200 dark:border-slate-700 rounded-lg space-y-2" data-id="${item.id}"><input class="nav-label w-full px-2 py-1 text-sm border border-slate-300 dark:border-slate-600 rounded dark:bg-slate-800" value="${this.escape(item.label || "")}"/><input class="nav-href w-full px-2 py-1 text-sm border border-slate-300 dark:border-slate-600 rounded dark:bg-slate-800" value="${this.escape(item.href || "")}"/><div class="flex items-center gap-2"><input class="nav-sort w-20 px-2 py-1 text-sm border border-slate-300 dark:border-slate-600 rounded dark:bg-slate-800" type="number" value="${Number(item.sort_order || 0)}"/><label class="flex items-center gap-2 text-sm"><input class="nav-visible" type="checkbox" ${Number(item.is_visible) ? "checked" : ""}/>Visible</label></div></div>`).join("");
+
+    const modal = document.getElementById("modal-nav");
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  },
+
+  async saveNav() {
+    const items = [];
+    document.querySelectorAll(".nav-item").forEach((el) => {
+      items.push({
+        id: Number(el.dataset.id || 0),
+        label: el.querySelector(".nav-label")?.value || "",
+        href: el.querySelector(".nav-href")?.value || "",
+        sort_order: Number(el.querySelector(".nav-sort")?.value || 0),
+        is_visible: el.querySelector(".nav-visible")?.checked ? 1 : 0
+      });
+    });
+
+    await adminFetch("/cms.php", {
+      method: "POST",
+      body: JSON.stringify({ action: "update_nav", items })
+    });
+
+    closeModal("modal-nav");
+    alert("Navigation updated.");
+  },
+
+  async openSettingsModal() {
+    const res = await adminFetch("/cms.php?settings=1");
+    const s = res.settings || {};
+
+    document.getElementById("set-site-name").value = s.site_name || "";
+    document.getElementById("set-site-tagline").value = s.site_tagline || "";
+    document.getElementById("set-contact-email").value = s.contact_email || "";
+    document.getElementById("set-contact-phone").value = s.contact_phone || "";
+    document.getElementById("set-social-facebook").value = s.social_facebook || "";
+    document.getElementById("set-social-instagram").value = s.social_instagram || "";
+
+    const modal = document.getElementById("modal-settings");
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  },
+
+  async saveSettings() {
+    const settings = {
+      site_name: document.getElementById("set-site-name").value,
+      site_tagline: document.getElementById("set-site-tagline").value,
+      contact_email: document.getElementById("set-contact-email").value,
+      contact_phone: document.getElementById("set-contact-phone").value,
+      social_facebook: document.getElementById("set-social-facebook").value,
+      social_instagram: document.getElementById("set-social-instagram").value
+    };
+
+    await adminFetch("/cms.php", {
+      method: "POST",
+      body: JSON.stringify({ action: "update_settings", settings })
+    });
+
+    closeModal("modal-settings");
+    alert("Settings updated.");
+  },
+
+  bindGlobalEvents() {
+    document.getElementById("search-pages").addEventListener("input", (e) => {
+      const q = String(e.target.value || "").toLowerCase();
+      document.querySelectorAll(".page-card").forEach((card) => {
+        card.style.display = card.textContent.toLowerCase().includes(q) ? "" : "none";
+      });
+    });
+
+    document.getElementById("btn-save-all").addEventListener("click", () => this.saveAll());
+
+    document.getElementById("btn-save-seo").addEventListener("click", async () => {
+      await this.savePageSettingsOnly();
+      alert("Page settings saved.");
+    });
+
+    document.getElementById("btn-add-block").addEventListener("click", () => {
+      const modal = document.getElementById("modal-add-block");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    });
+
+    document.getElementById("btn-nav").addEventListener("click", () => this.openNavModal());
+    document.getElementById("btn-settings").addEventListener("click", () => this.openSettingsModal());
+    document.getElementById("btn-save-nav").addEventListener("click", () => this.saveNav());
+    document.getElementById("btn-save-settings").addEventListener("click", () => this.saveSettings());
+
+    document.querySelectorAll(".block-type-button").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const type = btn.dataset.type || "text";
+        await this.addBlock(type);
+        closeModal("modal-add-block");
+      });
+    });
+
+    ["setting-title", "setting-meta-title", "setting-meta-desc", "setting-active"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener("input", () => this.markDirty());
+      el.addEventListener("change", () => this.markDirty());
+    });
+  }
+};
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  CS.init();
 });
 </script>
+</body>
 </html>
-

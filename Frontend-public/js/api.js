@@ -87,6 +87,45 @@ function showToast(message, type = 'info') {
   setTimeout(() => toast.remove(), 4000);
 }
 
+function buildQuoteUrl(product = {}, options = {}) {
+  const params = new URLSearchParams();
+  params.set('intent', 'quote');
+  if (product.id != null) params.set('product_id', String(product.id));
+  if (product.title) params.set('product', String(product.title));
+  if (product.handle) params.set('handle', String(product.handle));
+  if (options.quantity) params.set('quantity', String(options.quantity));
+  if (options.size) params.set('size', String(options.size));
+  if (options.material) params.set('material', String(options.material));
+  if (options.finishes) {
+    const finishes = Array.isArray(options.finishes) ? options.finishes.filter(Boolean).join(', ') : String(options.finishes).trim();
+    if (finishes) params.set('finishes', finishes);
+  }
+  return `contact.html?${params.toString()}`;
+}
+
+function buildWhatsAppUrl(product = {}, options = {}) {
+  const phone = String(options.phone || '923096554946').replace(/\D/g, '');
+  const title = String(product.title || product.name || 'this product').trim();
+  const handle = String(product.handle || '').trim();
+  const size = String(options.size || '').trim();
+  const finishes = Array.isArray(options.finishes)
+    ? options.finishes.filter(Boolean).join(', ')
+    : String(options.finishes || '').trim();
+  const quantity = options.quantity ? String(options.quantity).trim() : '';
+
+  const parts = [
+    `Hi ZAK Printing, I want to discuss ${title}.`,
+  ];
+  if (handle) parts.push(`Handle: ${handle}.`);
+  if (quantity) parts.push(`Quantity: ${quantity}.`);
+  if (size) parts.push(`Size: ${size}.`);
+  if (finishes) parts.push(`Options: ${finishes}.`);
+  parts.push('Please share a quote.');
+
+  const message = encodeURIComponent(parts.join(' '));
+  return `https://wa.me/${phone}?text=${message}`;
+}
+
 /** Check if user is authenticated */
 async function getSession() {
   try {
@@ -100,3 +139,5 @@ window.apiFetch  = apiFetch;
 window.showToast = showToast;
 window.getSession = getSession;
 window.ApiError  = ApiError;
+window.buildQuoteUrl = buildQuoteUrl;
+window.buildWhatsAppUrl = buildWhatsAppUrl;

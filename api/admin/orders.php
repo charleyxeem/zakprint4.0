@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * api/admin/orders.php
  * Admin orders management — super_admin only.
@@ -12,6 +14,8 @@ requireAdmin(['super_admin', 'developer']);
 $method = $_SERVER['REQUEST_METHOD'];
 $id     = isset($_GET['id']) ? (int)$_GET['id'] : null;
 
+$allowedStatuses = ['pending', 'processing', 'completed', 'cancelled'];
+
 if ($method === 'GET') {
     if ($id) {
         $stmt = $pdo->prepare('SELECT * FROM orders WHERE id = ? LIMIT 1');
@@ -22,20 +26,54 @@ if ($method === 'GET') {
         unset($o['items_json']);
         respond(['order' => $o]);
     }
-    $status = $_GET['status'] ?? null;
-    $where  = $status ? "WHERE status = '" . clean($status) . "'" : '';
-    $stmt   = $pdo->query("SELECT id, code, customer_name, customer_phone, total, status, created_at FROM orders $where ORDER BY created_at DESC");
+    $status = queryString('status');
+    $sql = 'SELECT id, code, customer_name, customer_phone, total, status, created_at FROM orders';
+    $params = [];
+
+    if ($status !== '') {
+        $status = requireOneOf($status, $allowedStatuses, 'status');
+        $sql .= ' WHERE status = ?';
+        $params[] = $status;
+    }
+
+    $sql .= ' ORDER BY created_at DESC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
     respond(['orders' => $stmt->fetchAll()]);
 }
 
 if ($method === 'PATCH') {
     if (!$id) err('Order id required.');
+
     $body = getBody();
-    $allowed = ['status','cancel_reason','invoice_id'];
-    $fields = []; $params = [];
-    foreach ($allowed as $f) {
-        if (array_key_exists($f, $body)) { $fields[] = "$f = ?"; $params[] = clean((string)$body[$f]); }
+
+    $fields = [];
+    $params = [];
+
+    if (array_key_exists('status', $body)) {
+        $status = requireOneOf(bodyString($body, 'status'), $allowedStatuses, 'status');
+        $fields[] = 'status = ?';
+        $params[] = $status;
     }
+
+    if (array_key_exists('cancel_reason', $body)) {
+        $reason = bodyString($body, 'cancel_reason');
+        if (strlen($reason) > 1000) {
+            err('cancel_reason is too long.', 422);
+        }
+        $fields[] = 'cancel_reason = ?';
+        $params[] = $reason;
+    }
+
+    if (array_key_exists('invoice_id', $body)) {
+        $invoiceId = bodyInt($body, 'invoice_id');
+        if ($invoiceId === null) {
+            err('Invalid invoice_id.', 422);
+        }
+        $fields[] = 'invoice_id = ?';
+        $params[] = $invoiceId;
+    }
+
     if ($fields) {
         $params[] = $id;
         $pdo->prepare('UPDATE orders SET ' . implode(', ', $fields) . ' WHERE id = ?')->execute($params);

@@ -1,4 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
+  function getBasePrefix() {
+    const path = window.location.pathname || '/';
+    const publicIdx = path.toLowerCase().indexOf('/frontend-public/');
+    if (publicIdx !== -1) {
+      return path.slice(0, publicIdx) || '';
+    }
+
+    const marker = /\/(home|shop|services|about|contact|blog|appointment|product-detail|checkout|order-confirm|user-login|user-dash|user-my-order|user-my-settings|faq|portfolio|privacy-policy|terms|shipping-info)(?:\.html)?(?:\/|$)/i;
+    const match = path.match(marker);
+    if (match && typeof match.index === 'number') {
+      return path.slice(0, match.index) || '';
+    }
+
+    const htmlMarker = /\.html(?:\/|$)/i;
+    const htmlMatch = path.match(htmlMarker);
+    if (htmlMatch && typeof htmlMatch.index === 'number') {
+      return path.slice(0, htmlMatch.index) || '';
+    }
+
+    return '';
+  }
+
+  const BASE_PREFIX = getBasePrefix();
+  const withBase = (route) => `${BASE_PREFIX}${route}`;
+
   function notify(message, type) {
     if (typeof window.showToast === 'function') {
       window.showToast(message, type || 'info');
@@ -42,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.type = 'button';
         button.setAttribute('aria-label', 'Open login page');
         button.addEventListener('click', () => {
-          window.location.href = 'user-login.html';
+          window.location.href = withBase('/user-login');
         });
       }
 
@@ -50,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.type = 'button';
         button.setAttribute('aria-label', 'Open checkout page');
         button.addEventListener('click', () => {
-          window.location.href = 'checkout.html';
+          window.location.href = withBase('/checkout');
         });
       }
     });
@@ -83,27 +108,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (icon === 'mail' || icon === 'location_on') {
-      link.setAttribute('href', 'contact.html');
+      link.setAttribute('href', withBase('/contact'));
       return;
     }
 
     if (label === 'FAQ' || label === 'Help Center') {
-      link.setAttribute('href', 'contact.html?intent=help');
+      link.setAttribute('href', `${withBase('/contact')}?intent=help`);
       return;
     }
 
     if (label === 'Privacy Policy') {
-      link.setAttribute('href', 'contact.html?intent=privacy');
+      link.setAttribute('href', `${withBase('/contact')}?intent=privacy`);
       return;
     }
 
     if (label === 'Shipping Info') {
-      link.setAttribute('href', 'contact.html?intent=shipping');
+      link.setAttribute('href', `${withBase('/contact')}?intent=shipping`);
       return;
     }
 
     if (label === 'Terms of Service') {
-      link.setAttribute('href', 'contact.html?intent=terms');
+      link.setAttribute('href', `${withBase('/contact')}?intent=terms`);
       return;
     }
   });
@@ -120,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const emailInput = wrapper?.querySelector('input[type="email"]');
       const email = emailInput?.value.trim() || '';
       const query = email ? '&email=' + encodeURIComponent(email) : '';
-      window.location.href = 'contact.html?intent=newsletter' + query;
+      window.location.href = `${withBase('/contact')}?intent=newsletter${query}`;
     });
   });
 });

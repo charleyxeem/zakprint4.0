@@ -28,9 +28,10 @@
     </script>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
-<div class="layout-container flex flex-col">
+<div class="layout-container flex min-h-screen">
+<div class="flex-1 flex min-w-0 flex-col">
 <!-- Top Navigation -->
-<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-10 py-3 sticky top-0 z-50">
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-900 sm:px-6 lg:px-10">
 <div class="flex items-center gap-8">
 <div class="flex items-center gap-4 text-primary">
 <div class="size-8">
@@ -70,9 +71,9 @@
 </div>
 </header>
 <!-- Main Content Wrapper -->
-<main class="max-w-[1440px] mx-auto w-full px-4 lg:px-10 py-6">
+<main class="mx-auto w-full max-w-[1440px] px-4 py-6 sm:px-6 lg:px-10">
 <!-- Breadcrumbs -->
-<nav class="flex items-center gap-2 mb-6 text-sm">
+<nav class="mb-6 flex flex-wrap items-center gap-2 text-sm">
 <a class="text-slate-500 hover:text-primary transition-colors" href="admin-dash.html">Billing</a>
 <span class="material-symbols-outlined text-slate-400 text-xs">chevron_right</span>
 <a class="text-slate-500 hover:text-primary transition-colors" href="invoice-list.html">Invoices</a>
@@ -80,25 +81,25 @@
 <span class="text-slate-900 dark:text-white font-medium">#INV-2023-1042</span>
 </nav>
 <!-- Page Header Actions -->
-<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+<div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 <div class="flex flex-col gap-2">
 <div class="flex items-center gap-4">
-<h1 id="invoice-number" class="text-3xl lg:text-4xl font-black tracking-tight">#INV-2023-1042</h1>
+<h1 id="invoice-number" class="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">#INV-2023-1042</h1>
 <span id="invoice-status" class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-800">PARTIALLY PAID</span>
 </div>
-<p id="invoice-dates" class="text-slate-500 text-sm">Issued on Oct 24, 2023 â€¢ Due on Nov 07, 2023</p>
+<p id="invoice-dates" class="text-slate-500 text-sm">Issued on Oct 24, 2023 - Due on Nov 07, 2023</p>
 </div>
-<div class="flex flex-wrap items-center gap-3">
-<button class="flex items-center gap-2 px-4 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<div class="flex flex-wrap items-center gap-3 lg:justify-end">
+<button class="flex h-10 items-center justify-center gap-2 rounded-lg bg-slate-100 px-3 text-xs font-bold text-slate-700 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 sm:px-4 sm:text-sm">
 <span class="material-symbols-outlined text-lg">edit</span>
                         Edit
                     </button>
-<button class="flex items-center gap-2 px-4 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<button class="flex h-10 items-center justify-center gap-2 rounded-lg bg-slate-100 px-3 text-xs font-bold text-slate-700 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 sm:px-4 sm:text-sm">
 <span class="material-symbols-outlined text-lg">download</span>
                         PDF
                     </button>
 <div class="relative group">
-<button class="flex items-center gap-2 px-4 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<button class="flex h-10 items-center justify-center gap-2 rounded-lg bg-slate-100 px-3 text-xs font-bold text-slate-700 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 sm:px-4 sm:text-sm">
 <span class="material-symbols-outlined text-lg">share</span>
                             Share
                             <span class="material-symbols-outlined text-sm">expand_more</span>
@@ -113,25 +114,25 @@
                             </a>
 </div>
 </div>
-<button class="flex items-center gap-2 px-6 h-10 rounded-lg bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<button class="flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-colors hover:bg-primary/90 sm:px-6">
 <span class="material-symbols-outlined text-lg">payments</span>
                         Record Payment
                     </button>
 </div>
 </div>
 <!-- Dashboard Content Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
 <!-- Main Invoice Content -->
 <div class="lg:col-span-8 flex flex-col gap-8">
-<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 <!-- Invoice Header (Branding) -->
-<div class="p-8 lg:p-12 border-b border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between gap-10">
+<div class="flex flex-col justify-between gap-8 border-b border-slate-100 p-6 dark:border-slate-800 sm:p-8 lg:flex-row lg:p-10">
 <div class="flex flex-col gap-4">
-<div id="invoice-brand-name" class="flex items-center gap-2 text-primary font-black text-2xl">
+<div id="invoice-brand-name" class="flex items-center gap-2 text-[18px] font-black text-primary leading-tight">
 <span class="material-symbols-outlined text-3xl">deployed_code</span>
                                     TECHFLOW
                                 </div>
-<div id="invoice-brand-address" class="text-sm text-slate-500 leading-relaxed">
+<div id="invoice-brand-address" class="text-[13px] text-slate-500 leading-[1.5]">
 <p>123 Innovation Drive</p>
 <p>Silicon Valley, CA 94025</p>
 <p>United States</p>
@@ -141,103 +142,115 @@
 <div class="flex flex-col md:items-end gap-4">
 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Bill To</p>
 <div class="md:text-right">
-<p id="invoice-client-name" class="text-lg font-bold">Acme Corporation</p>
-<p id="invoice-client-address" class="text-sm text-slate-500 leading-relaxed">
+<p id="invoice-client-name" class="text-[13px] font-bold leading-[1.5]">Acme Corporation</p>
+<p id="invoice-client-address" class="text-[13px] text-slate-500 leading-[1.5]">
                                         456 Enterprise Way<br/>
                                         New York, NY 10001<br/>
                                         Attention: Sarah Jenkins
                                     </p>
-<p id="invoice-client-email" class="text-sm text-primary mt-1 font-medium underline">sarah@acme.co</p>
+<p id="invoice-client-email" class="mt-1 text-[13px] text-primary font-medium underline break-all">sarah@acme.co</p>
 </div>
 </div>
 </div>
 <!-- Line Items Table -->
 <div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
+<table class="w-full table-fixed text-left border-collapse">
+<colgroup>
+<col class="w-[44%]"/>
+<col class="w-[10%]"/>
+<col class="w-[16%]"/>
+<col class="w-[12%]"/>
+<col class="w-[18%]"/>
+</colgroup>
 <thead>
 <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800">
-<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase">Item Description</th>
-<th class="px-4 py-4 text-xs font-bold text-slate-500 uppercase text-center">Qty</th>
-<th class="px-4 py-4 text-xs font-bold text-slate-500 uppercase text-right">Price</th>
-<th class="px-4 py-4 text-xs font-bold text-slate-500 uppercase text-right">Tax</th>
-<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase text-right">Total</th>
+<th class="px-4 py-4 text-[12px] font-bold uppercase text-slate-500 sm:px-8">Item Description</th>
+<th class="px-4 py-4 text-[12px] font-bold text-slate-500 uppercase text-center whitespace-nowrap">Qty</th>
+<th class="px-4 py-4 text-[12px] font-bold text-slate-500 uppercase text-right whitespace-nowrap">Price</th>
+<th class="px-4 py-4 text-[12px] font-bold text-slate-500 uppercase text-right whitespace-nowrap">Tax</th>
+<th class="px-4 py-4 text-right text-[12px] font-bold uppercase text-slate-500 sm:px-8 whitespace-nowrap">Total</th>
 </tr>
 </thead>
 <tbody id="invoice-items-body" class="divide-y divide-slate-50 dark:divide-slate-800">
 <tr>
 <td class="px-8 py-6">
-<p class="font-bold">UI/UX Design - Dashboard Project</p>
-<p class="text-xs text-slate-500 mt-1">Full design system and high-fidelity wireframes</p>
+<p class="text-[12px] font-bold leading-[1.45]">UI/UX Design - Dashboard Project</p>
+<p class="mt-1 text-[12px] text-slate-500 leading-[1.45]">Full design system and high-fidelity wireframes</p>
 </td>
-<td class="px-4 py-6 text-center text-sm">1</td>
-<td class="px-4 py-6 text-right text-sm">$4,500.00</td>
-<td class="px-4 py-6 text-right text-sm">8%</td>
-<td class="px-8 py-6 text-right font-bold text-sm">$4,860.00</td>
+<td class="px-4 py-6 text-center text-[12px] whitespace-nowrap">1</td>
+<td class="px-4 py-6 text-right text-[12px] whitespace-nowrap">PKR 4,500.00</td>
+<td class="px-4 py-6 text-right text-[12px] whitespace-nowrap">8%</td>
+<td class="px-8 py-6 text-right font-bold text-[12px] whitespace-nowrap">PKR 4,860.00</td>
 </tr>
 <tr>
 <td class="px-8 py-6">
-<p class="font-bold">Frontend Development (React)</p>
-<p class="text-xs text-slate-500 mt-1">Component architecture and API integration</p>
+<p class="text-[12px] font-bold leading-[1.45]">Frontend Development (React)</p>
+<p class="mt-1 text-[12px] text-slate-500 leading-[1.45]">Component architecture and API integration</p>
 </td>
-<td class="px-4 py-6 text-center text-sm">80 hrs</td>
-<td class="px-4 py-6 text-right text-sm">$120.00</td>
-<td class="px-4 py-6 text-right text-sm">8%</td>
-<td class="px-8 py-6 text-right font-bold text-sm">$10,368.00</td>
+<td class="px-4 py-6 text-center text-[12px] whitespace-nowrap">80 hrs</td>
+<td class="px-4 py-6 text-right text-[12px] whitespace-nowrap">PKR 120.00</td>
+<td class="px-4 py-6 text-right text-[12px] whitespace-nowrap">8%</td>
+<td class="px-8 py-6 text-right font-bold text-[12px] whitespace-nowrap">PKR 10,368.00</td>
 </tr>
 <tr>
 <td class="px-8 py-6">
-<p class="font-bold">Hosting &amp; Cloud Services</p>
-<p class="text-xs text-slate-500 mt-1">Annual subscription for AWS managed services</p>
+<p class="text-[12px] font-bold leading-[1.45]">Hosting &amp; Cloud Services</p>
+<p class="mt-1 text-[12px] text-slate-500 leading-[1.45]">Annual subscription for AWS managed services</p>
 </td>
-<td class="px-4 py-6 text-center text-sm">1</td>
-<td class="px-4 py-6 text-right text-sm">$1,200.00</td>
-<td class="px-4 py-6 text-right text-sm">0%</td>
-<td class="px-8 py-6 text-right font-bold text-sm">$1,200.00</td>
+<td class="px-4 py-6 text-center text-[12px] whitespace-nowrap">1</td>
+<td class="px-4 py-6 text-right text-[12px] whitespace-nowrap">PKR 1,200.00</td>
+<td class="px-4 py-6 text-right text-[12px] whitespace-nowrap">0%</td>
+<td class="px-8 py-6 text-right font-bold text-[12px] whitespace-nowrap">PKR 1,200.00</td>
 </tr>
 </tbody>
 </table>
 </div>
 <!-- Financial Summary -->
-<div class="p-8 lg:p-12 flex flex-col md:flex-row justify-between gap-10">
-<div class="flex-1 max-w-md">
-<div class="p-6 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800">
+<div class="grid grid-cols-1 gap-8 p-6 sm:p-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(300px,1fr)] lg:items-start lg:p-10">
+<div class="min-w-0">
+<div class="rounded-xl border border-slate-100 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-800/30">
 <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Notes &amp; Instructions</p>
-<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+<p id="invoice-notes" class="text-[13px] text-slate-600 dark:text-slate-400 leading-[1.5] whitespace-pre-line">
                                         Payment is due within 14 days. Please include the invoice number <span class="font-bold text-slate-900 dark:text-white">#INV-2023-1042</span> as the payment reference for wire transfers.
                                     </p>
+<div id="invoice-bank-details" class="mt-4 hidden rounded-lg border border-slate-200 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-900">
+<p class="mb-2 text-xs font-bold uppercase tracking-widest text-slate-500">Bank Account Info</p>
+<p id="invoice-payment-methods" class="hidden whitespace-pre-wrap text-[13px] leading-[1.5] text-slate-500 dark:text-slate-300"></p>
+<div id="invoice-bank-meta" class="hidden mt-2 space-y-1 text-[13px] leading-[1.5] text-slate-600 dark:text-slate-300"></div>
 </div>
 </div>
-<div class="flex flex-col gap-3 min-w-[240px]">
-<div class="flex justify-between text-sm">
+</div>
+<div class="flex flex-col gap-3 lg:min-w-0">
+<div class="flex justify-between text-[13.5px]">
 <span class="text-slate-500">Subtotal</span>
-<span id="invoice-subtotal" class="font-medium">$15,300.00</span>
+<span id="invoice-subtotal" class="font-medium">PKR 15,300.00</span>
 </div>
-<div class="flex justify-between text-sm">
-<span class="text-slate-500">Tax (Estimated)</span>
-<span id="invoice-tax" class="font-medium">$1,128.00</span>
+<div class="flex justify-between text-[13.5px]">
+<span class="text-slate-500">Total Tax</span>
+<span id="invoice-tax" class="font-medium">PKR 1,128.00</span>
+</div>
+<div class="flex justify-between text-[13.5px] text-emerald-600 font-bold bg-emerald-50 dark:bg-emerald-900/20 px-3 py-2 rounded mt-2">
+<span>Advance / Paid</span>
+<span id="invoice-paid">- PKR 6,000.00</span>
 </div>
 <div class="h-[1px] bg-slate-100 dark:bg-slate-800 my-2"></div>
-<div class="flex justify-between text-lg font-black">
-<span>Total Amount</span>
-<span id="invoice-total">$16,428.00</span>
-</div>
-<div class="flex justify-between text-sm text-emerald-600 font-bold bg-emerald-50 dark:bg-emerald-900/20 px-3 py-2 rounded mt-2">
-<span>Amount Paid</span>
-<span id="invoice-paid">- $6,000.00</span>
+<div class="flex justify-between text-[14px] font-black">
+<span>Grand Total</span>
+<span id="invoice-total">PKR 16,428.00</span>
 </div>
 <div class="flex justify-between text-xl font-black text-primary border-t-2 border-primary/20 pt-4 mt-2">
 <span>Balance Due</span>
-<span id="invoice-balance">$10,428.00</span>
+<span id="invoice-balance">PKR 10,428.00</span>
 </div>
 </div>
 </div>
 <!-- Footer Info -->
-<div class="px-8 py-6 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row gap-6 md:items-center justify-between text-[11px] text-slate-400 font-medium uppercase tracking-widest">
+<div class="flex flex-col justify-between gap-4 border-t border-slate-100 bg-slate-50 px-6 py-5 text-[11px] font-medium uppercase tracking-widest text-slate-400 dark:border-slate-800 dark:bg-slate-800/50 sm:flex-row sm:items-center sm:gap-6 sm:px-8">
 <div class="flex flex-wrap gap-x-8 gap-y-2">
-<span>IBAN: US93 1234 5678 9012 3456</span>
-<span>SWIFT/BIC: TECHFUS33</span>
+<span id="invoice-iban">IBAN: -</span>
+<span id="invoice-account">Account #: -</span>
 </div>
-<span>Tax ID: 98-7654321</span>
+<span id="invoice-tax-id">Tax ID: -</span>
 </div>
 </div>
 </div>
@@ -278,15 +291,15 @@
 <div class="relative flex gap-4">
 <div class="size-4 rounded-full bg-emerald-500 border-4 border-white dark:border-slate-900 z-10 mt-1"></div>
 <div class="flex flex-col">
-<p class="text-sm font-bold text-slate-900 dark:text-white">$6,000.00 Received</p>
-<p class="text-xs text-slate-500">Oct 28, 2023 â€¢ Wire Transfer</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">PKR 6,000.00 Received</p>
+<p class="text-xs text-slate-500">Oct 28, 2023 - Wire Transfer</p>
 </div>
 </div>
 <div class="relative flex gap-4">
 <div class="size-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10 mt-1"></div>
 <div class="flex flex-col">
 <p class="text-sm font-medium text-slate-400 italic">Remaining Balance</p>
-<p class="text-xs text-slate-400">$10,428.00 Pending</p>
+<p class="text-xs text-slate-400">PKR 10,428.00 Pending</p>
 </div>
 </div>
 </div>
@@ -306,7 +319,7 @@
 </div>
 <div class="flex gap-4">
 <div class="flex items-center justify-center size-8 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 shrink-0">
-<span class="material-symbols-outlined text-lg">send</span>
+<span class="material-symbols-outlined text-lg">mail</span>
 </div>
 <div>
 <p class="text-sm font-medium">Sent to sarah@acme.co</p>
@@ -336,7 +349,7 @@
                             </p>
 <div class="mt-2 flex items-center gap-2">
 <div class="size-4 rounded-full bg-amber-200"></div>
-<p class="text-[10px] font-bold text-amber-700 dark:text-amber-500 uppercase">Alex J. â€¢ 2 days ago</p>
+<p class="text-[10px] font-bold text-amber-700 dark:text-amber-500 uppercase">Alex J. - 2 days ago</p>
 </div>
 </div>
 </div>
@@ -359,27 +372,111 @@
                     </p>
 </div>
 <div class="lg:text-right">
-<p class="text-xs text-slate-400 mb-1">Â© 2023 TechFlow Solutions Inc.</p>
+<p class="text-xs text-slate-400 mb-1">(c) 2023 TechFlow Solutions Inc.</p>
 <div class="flex lg:justify-end gap-4 text-xs font-bold text-primary">
-<a class="hover:underline" href="#">Privacy Policy</a>
-<a class="hover:underline" href="#">Terms of Service</a>
+<a class="hover:underline" href="../Frontend-public/privacy-policy.html">Privacy Policy</a>
+<a class="hover:underline" href="../Frontend-public/terms.html">Terms of Service</a>
 </div>
 </div>
 </div>
 </footer>
 </div>
-<script src="js/sidebar-controller.js" defer></script></body>
+<script src="../Frontend-admin/js/sidebar-controller.js" defer></script>
 <!-- ZAK V4: Invoice view wiring -->
-<script src="js/admin-api.js"></script>
-<script src="js/admin-auth.js"></script>
+<script src="../Frontend-admin/js/admin-api.js"></script>
+<script src="../Frontend-admin/js/admin-auth.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const id = new URLSearchParams(window.location.search).get('id');
-  if (!id) return;
 
   let invoiceData = null;
 
+  const setStatusBadge = (status) => {
+    const badge = document.getElementById('invoice-status');
+    if (!badge) return;
+    const normalized = String(status || 'draft').toLowerCase();
+    const styles = {
+      paid: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700/40',
+      overdue: 'bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-700/40',
+      pending: 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-700/40',
+      draft: 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/40'
+    };
+    const label = normalized.charAt(0).toUpperCase() + normalized.slice(1);
+    badge.className = `px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider ${styles[normalized] || styles.draft}`;
+    badge.textContent = label;
+  };
+
+  const renderErrorState = (message) => {
+    const invoiceNumber = document.getElementById('invoice-number');
+    if (invoiceNumber) invoiceNumber.textContent = 'Invoice Unavailable';
+    setStatusBadge('draft');
+
+    const datesEl = document.getElementById('invoice-dates');
+    if (datesEl) datesEl.textContent = message;
+
+    const clientName = document.getElementById('invoice-client-name');
+    if (clientName) clientName.textContent = '-';
+
+    const clientAddress = document.getElementById('invoice-client-address');
+    if (clientAddress) clientAddress.textContent = '-';
+
+    const clientEmail = document.getElementById('invoice-client-email');
+    if (clientEmail) clientEmail.textContent = '-';
+
+    const itemsBody = document.getElementById('invoice-items-body');
+    if (itemsBody) {
+      itemsBody.innerHTML = `<tr><td colspan="5" class="px-8 py-6 text-center text-sm text-rose-500">${escapeHtml(message)}</td></tr>`;
+    }
+
+    const subtotalEl = document.getElementById('invoice-subtotal');
+    if (subtotalEl) subtotalEl.textContent = money(0);
+
+    const taxEl = document.getElementById('invoice-tax');
+    if (taxEl) taxEl.textContent = money(0);
+
+    const totalEl = document.getElementById('invoice-total');
+    if (totalEl) totalEl.textContent = money(0);
+
+    const paidEl = document.getElementById('invoice-paid');
+    if (paidEl) paidEl.textContent = `- ${money(0)}`;
+
+    const balanceEl = document.getElementById('invoice-balance');
+    if (balanceEl) balanceEl.textContent = money(0);
+
+    const paymentsEl = document.getElementById('invoice-payments');
+    if (paymentsEl) {
+      paymentsEl.innerHTML = `
+        <div class="relative flex gap-4">
+          <div class="size-4 rounded-full bg-rose-300 dark:bg-rose-700 border-4 border-white dark:border-slate-900 z-10 mt-1"></div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-rose-600 dark:text-rose-400 italic">${escapeHtml(message)}</p>
+          </div>
+        </div>`;
+    }
+  };
+
   const money = (value) => formatPKR(Number(value) || 0);
+  const projectBase = (() => {
+    const path = window.location.pathname || '';
+    const lower = path.toLowerCase();
+    const frontIdx = lower.indexOf('/frontend-admin/');
+    if (frontIdx !== -1) {
+      return path.slice(0, frontIdx);
+    }
+    return typeof ADMIN_BASE_PREFIX === 'string' ? ADMIN_BASE_PREFIX : '';
+  })();
+
+  const resolveAssetPath = (value) => {
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+    if (/^(?:https?:|data:|blob:)/i.test(raw)) return raw;
+
+    const normalized = raw.replace(/\\/g, '/');
+    if (normalized.startsWith('/uploads/')) return `${projectBase}${normalized}`;
+    if (normalized.startsWith('uploads/')) return `${projectBase}/${normalized}`;
+    if (normalized.startsWith('/')) return `${projectBase}${normalized}`;
+    return `${projectBase}/${normalized}`;
+  };
   const escapeHtml = (value) => String(value ?? '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -387,10 +484,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 
+  if (!id) {
+    renderErrorState('Invoice ID is missing in URL. Open from Invoice List again.');
+    showAdminToast('Missing invoice ID', 'error');
+    return;
+  }
+
   try {
     const data = await adminFetch(`/invoices.php?id=${id}`);
     invoiceData = data.invoice;
-    if (!invoiceData) { showAdminToast('Invoice not found', 'error'); return; }
+    if (!invoiceData) {
+      renderErrorState('Invoice not found for the selected ID.');
+      showAdminToast('Invoice not found', 'error');
+      return;
+    }
     const inv = invoiceData;
 
     const total = Number(inv.total ?? 0);
@@ -400,19 +507,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     const invoiceNumber = document.getElementById('invoice-number');
     if (invoiceNumber) invoiceNumber.textContent = inv.invoice_no || `INV-${id}`;
 
-    const statusBadgeEl = document.getElementById('invoice-status');
-    if (statusBadgeEl) {
-      statusBadgeEl.outerHTML = statusBadge(inv.status || 'draft');
-    }
+    setStatusBadge(inv.status || 'draft');
 
     const datesEl = document.getElementById('invoice-dates');
     if (datesEl) {
-      datesEl.textContent = `Issued on ${formatDate(inv.created_at)} â€¢ Due on ${inv.due_date ? formatDate(inv.due_date) : 'â€”'}`;
+      datesEl.textContent = `Issued on ${formatDate(inv.created_at)} - Due on ${inv.due_date ? formatDate(inv.due_date) : '-'}`;
     }
 
     const brandName = document.getElementById('invoice-brand-name');
     if (brandName) {
-      brandName.innerHTML = `<span class="material-symbols-outlined text-3xl">deployed_code</span>${escapeHtml(inv.company_name || 'ZAK Printing')}`;
+      const logoPath = resolveAssetPath(inv.logo_path || inv.logo_url || '');
+      const logoHtml = logoPath
+        ? `<img src="${escapeHtml(logoPath)}" alt="Brand Logo" class="h-10 w-auto max-w-[220px] object-contain" onerror="this.remove();"/>`
+        : '<span class="material-symbols-outlined text-3xl">deployed_code</span>';
+      brandName.innerHTML = `${logoHtml}${escapeHtml(inv.company_name || 'ZAK Printing')}`;
     }
 
     const brandAddress = document.getElementById('invoice-brand-address');
@@ -433,6 +541,59 @@ document.addEventListener('DOMContentLoaded', async () => {
     const clientEmail = document.getElementById('invoice-client-email');
     if (clientEmail) clientEmail.textContent = inv.client_email || '';
 
+    const notesEl = document.getElementById('invoice-notes');
+    if (notesEl) {
+      const noteText = String(inv.notes || inv.invoice_special_notes || inv.terms || '').trim();
+      notesEl.textContent = noteText || `Payment is due by ${inv.due_date ? formatDate(inv.due_date) : 'the due date'} for invoice ${inv.invoice_no || ''}.`;
+    }
+
+    const paymentMethodsEl = document.getElementById('invoice-payment-methods');
+    const bankDetailsEl = document.getElementById('invoice-bank-details');
+    const bankMetaEl = document.getElementById('invoice-bank-meta');
+    if (paymentMethodsEl) {
+      const paymentInfo = String(inv.payment_methods || '').trim();
+      if (paymentInfo) {
+        paymentMethodsEl.classList.remove('hidden');
+        paymentMethodsEl.textContent = paymentInfo;
+      } else {
+        paymentMethodsEl.classList.add('hidden');
+        paymentMethodsEl.textContent = '';
+      }
+    }
+
+    if (bankMetaEl && bankDetailsEl) {
+      const bankMeta = [];
+      const taxId = String(inv.tax_number || inv.gst_no || inv.ntn_no || '').trim();
+      const account = String(inv.account_number || '').trim();
+      const iban = String(inv.iban || '').trim();
+      if (taxId) bankMeta.push(`<p><span class="font-semibold">Tax ID:</span> ${escapeHtml(taxId)}</p>`);
+      if (account) bankMeta.push(`<p><span class="font-semibold">Account #:</span> ${escapeHtml(account)}</p>`);
+      if (iban) bankMeta.push(`<p><span class="font-semibold">IBAN:</span> ${escapeHtml(iban)}</p>`);
+      bankMetaEl.innerHTML = bankMeta.join('');
+      bankMetaEl.classList.toggle('hidden', bankMeta.length === 0);
+
+      const hasPaymentInfo = paymentMethodsEl && !paymentMethodsEl.classList.contains('hidden');
+      bankDetailsEl.classList.toggle('hidden', !hasPaymentInfo && bankMeta.length === 0);
+    }
+
+    const ibanEl = document.getElementById('invoice-iban');
+    if (ibanEl) {
+      const iban = String(inv.iban || '').trim();
+      ibanEl.textContent = `IBAN: ${iban || '-'}`;
+    }
+
+    const accountEl = document.getElementById('invoice-account');
+    if (accountEl) {
+      const account = String(inv.account_number || '').trim();
+      accountEl.textContent = `Account #: ${account || '-'}`;
+    }
+
+    const taxIdEl = document.getElementById('invoice-tax-id');
+    if (taxIdEl) {
+      const taxId = String(inv.tax_number || inv.gst_no || inv.ntn_no || '').trim();
+      taxIdEl.textContent = `Tax ID: ${taxId || '-'}`;
+    }
+
     const itemsBody = document.getElementById('invoice-items-body');
     if (itemsBody) {
       itemsBody.innerHTML = (inv.items || []).map((item) => {
@@ -443,12 +604,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         return `
           <tr>
             <td class="px-8 py-6">
-              <p class="font-bold">${escapeHtml(item.description || '')}</p>
+              <p class="text-[12px] font-bold leading-[1.45] break-words">${escapeHtml(item.description || '')}</p>
             </td>
-            <td class="px-4 py-6 text-center text-sm">${qty}</td>
-            <td class="px-4 py-6 text-right text-sm">${money(price)}</td>
-            <td class="px-4 py-6 text-right text-sm">${taxPercent ? `${taxPercent}%` : 'Exempt'}</td>
-            <td class="px-8 py-6 text-right font-bold text-sm">${money(lineTotal)}</td>
+            <td class="px-4 py-6 text-center text-[12px] whitespace-nowrap">${qty}</td>
+            <td class="px-4 py-6 text-right text-[12px] whitespace-nowrap">${money(price)}</td>
+            <td class="px-4 py-6 text-right text-[12px] whitespace-nowrap">${taxPercent ? `${taxPercent}%` : 'Exempt'}</td>
+            <td class="px-8 py-6 text-right font-bold text-[12px] whitespace-nowrap">${money(lineTotal)}</td>
           </tr>`;
       }).join('') || '<tr><td colspan="5" class="px-8 py-6 text-center text-sm text-slate-400">No items found.</td></tr>';
     }
@@ -477,7 +638,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="size-4 rounded-full bg-emerald-500 border-4 border-white dark:border-slate-900 z-10 mt-1"></div>
             <div class="flex flex-col">
               <p class="text-sm font-bold text-slate-900 dark:text-white">${money(payment.amount)} Received</p>
-              <p class="text-xs text-slate-500">${formatDate(payment.paid_at)}${payment.method ? ` â€¢ ${escapeHtml(payment.method)}` : ''}</p>
+              <p class="text-xs text-slate-500">${formatDate(payment.paid_at || payment.created_at)}${payment.method ? ` - ${escapeHtml(payment.method)}` : ''}</p>
             </div>
           </div>`).join('');
       } else {
@@ -495,9 +656,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const heading = document.querySelector('h1, h2.text-2xl');
     if (heading && !heading.id) heading.textContent = inv.invoice_no;
 
-  } catch(e) { showAdminToast('Failed to load invoice', 'error'); console.error(e); }
+  } catch(e) {
+    renderErrorState('Unable to load invoice from server. Please retry.');
+    showAdminToast('Failed to load invoice', 'error');
+    console.error(e);
+    return;
+  }
 
-  // â”€â”€â”€ Wire Action Buttons â”€â”€â”€
+  if (!invoiceData) return;
+
+  // Wire Action Buttons
   const buttons = document.querySelectorAll('.flex.flex-wrap.items-center.gap-3 button, .flex.flex-wrap.items-center.gap-3 a');
 
   buttons.forEach(btn => {
@@ -587,9 +755,11 @@ function adminApiBase() {
 const toggle = document.getElementById('mobile-menu-toggle');
 if (toggle) {
   toggle.addEventListener('click', function() {
-    alert('Navigation menu\nDashboard\nInvoices\nQuotations\nProducts\nUsers\nSettings\nEarnings\nQueries');
+    window.location.href = typeof adminRouteUrl === 'function' ? adminRouteUrl('admin-dash.html') : 'admin-dash.html';
   });
 }
 </script>
+</body>
 </html>
+
 

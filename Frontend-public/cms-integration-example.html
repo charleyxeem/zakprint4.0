@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZAK Printing - CMS Integration Example</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Example styling for CMS blocks - customize to match your design */
+    .cms-blocks-container {
+      width: 100%;
+    }
+
+    .cms-block {
+      margin-bottom: 2rem;
+    }
+
+    .cms-block-text {
+      /* Text block styling */
+    }
+
+    .cms-block-hero {
+      background: linear-gradient(135deg, #ec5b13 0%, #f17a48 100%);
+      color: white;
+      padding: 3rem 1.5rem;
+      border-radius: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .cms-block-hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .cms-block-hero p {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cms-block-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-item {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 0.75rem;
+      background: #f5f5f5;
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    .cms-block-faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      background: white;
+    }
+
+    .faq-item[open] {
+      background: #f9fafb;
+    }
+
+    .faq-question {
+      padding: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      background: #f3f4f6;
+    }
+
+    .faq-answer {
+      padding: 1rem;
+      border-top: 1px solid #e5e7eb;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .cms-block-error {
+      background: #fee;
+      border: 1px solid #fcc;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      color: #c00;
+      text-align: center;
+    }
+
+    .cms-loading {
+      background: #f5f5f5;
+      border: 1px dashed #ddd;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+      color: #999;
+    }
+
+    /* Fallback placeholder styling */
+    .placeholder-block {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+      border-radius: 0.5rem;
+      min-height: 200px;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <!-- APPROACH 1: Single container for all CMS blocks -->
+  <!--
+       This approach loads all specified blocks into a single container.
+       Each block gets wrapped in a div with class "cms-block cms-block-{type}".
+       Good for pages where all content comes from CMS.
+  -->
+  <div data-cms-page="home" 
+       data-cms-blocks="hero,features,pricing,faq,testimonials" 
+       class="cms-blocks-container">
+    <!-- Fallback placeholder while loading -->
+    <div class="cms-loading">Loading page content...</div>
+  </div>
+
+  <!-- 
+  ALTERNATIVE APPROACH 2: Specific containers for specific blocks
+  Use this if you want to mix CMS content with static HTML.
+  
+  <div class="page-container">
+    <section data-cms-page="home" data-cms-block="hero">
+      <!- Fallback hero content if CMS fails ->
+      <div class="hero-fallback">
+        <h1>You Think, We Create.</h1>
+        <p>Premium custom printing solutions.</p>
+      </div>
+    </section>
+
+    <section data-cms-page="home" data-cms-block="features">
+      <!- Fallback features if CMS fails ->
+      <h2>Our Features</h2>
+      <p>Fast shipping, quality products...</p>
+    </section>
+
+    <section data-cms-page="home" data-cms-block="pricing">
+      <!- Fallback pricing ->
+      <div class="pricing">...</div>
+    </section>
+  </div>
+  -->
+
+</main>
+
+<footer>
+  <p>&copy; 2025 ZAK Printing. All rights reserved.</p>
+</footer>
+
+<!-- Scripts: Load in order -->
+<!-- 1. API wrapper (provides apiFetch function) -->
+<script src="js/api.js"></script>
+
+<!-- 2. CMS loader (provides CMSLoader utility) -->
+<script src="js/cms-loader.js"></script>
+
+<!-- 3. Optional: Page-specific initialization -->
+<script>
+  // Example: Log when blocks are loaded
+  document.addEventListener('DOMContentLoaded', async () => {
+    console.log('Page ready. CMS blocks auto-loading...');
+    
+    // Wait a moment for auto-rendering to complete
+    await new Promise(r => setTimeout(r, 100));
+    
+    // Example: Access loaded blocks programmatically
+    const cmsData = await CMSLoader.loadPage('home');
+    console.log('Loaded blocks:', Object.keys(cmsData.blocks));
+    console.log('Loaded assets:', Object.keys(cmsData.assets));
+  });
+
+  // Example: Handle CMS updates with custom logic
+  window.addEventListener('cmsUpdated', (event) => {
+    console.log('CMS content updated:', event.detail);
+    // Optionally refresh page or show notification
+  });
+</script>
+
+</body>
+</html>
